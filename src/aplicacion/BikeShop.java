@@ -5,6 +5,10 @@
  */
 package aplicacion;
 
+import java.awt.Frame;
+import javax.swing.UIManager;
+import vista.VentanaPrincipal;
+
 /**
  *
  * @author krypt97
@@ -15,7 +19,15 @@ public class BikeShop {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        try {
+            // TODO code application logic here
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception c) {
+            
+        }
+        VentanaPrincipal sistema= new VentanaPrincipal();
+        sistema.setExtendedState(Frame.MAXIMIZED_BOTH);
+        sistema.setVisible(true);
     }
     
 }
