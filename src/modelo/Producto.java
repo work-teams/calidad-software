@@ -14,20 +14,20 @@ public class Producto {
     private int idProducto;
     private String nombre;
     private int cantidad;
-    private float precio;
     private String categoria;
-    private int idCategoria;
+    private float precio;
     private int idProveedor;
+    private int idCategoria;
 
     //CONSTRUCTOR
-    public Producto(int idProducto, String nombre, int cantidad, float precio, String nombreCategoria, int idCategoria, int idProveedor) {
+    public Producto(int idProducto, String nombre, int cantidad, String categoria, float precio, int idProveedor, int idCategoria) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.cantidad = cantidad;
+        this.categoria = categoria;
         this.precio = precio;
-        this.categoria = nombreCategoria;
-        this.idCategoria = idCategoria;
         this.idProveedor = idProveedor;
+        this.idCategoria = idCategoria;
     }
 
     //GETTERS
@@ -87,4 +87,10 @@ public class Producto {
     public void setIdProveedor(int idProveedor) {
         this.idProveedor = idProveedor;
     }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "idProducto=" + idProducto + ", nombre=" + nombre + ", cantidad=" + cantidad + ", categoria=" + categoria + ", precio=" + precio + ", idProveedor=" + idProveedor + ", idCategoria=" + idCategoria + '}';
+    }
+
 }

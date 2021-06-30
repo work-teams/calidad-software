@@ -25,15 +25,15 @@ public class ProductoDAO {
             Connection con = ConexionDB.getConexion();
             ps = con.prepareStatement("INSERT INTO PRODUCTO "
                     + "(idProducto,nombre,cantidad,categoria,precio,idProveedor,idCategoria) "
-                    + "VALUES (?,?,?,?,?,?)");
+                    + "VALUES (?,?,?,?,?,?,?)");
 
             ps.setInt(1, p.getIdProducto());
             ps.setString(2, p.getNombre());
             ps.setInt(3, p.getCantidad());
-            ps.setString(4, p.getCategoria());//CATEGORIA NOMBRE
+            ps.setString(4, p.getCategoria());
             ps.setFloat(5, p.getPrecio());
-            ps.setInt(6, p.getIdProveedor());//IDPROVEEDOR
-            ps.setInt(7, p.getIdCategoria());//CATEGORIA ID
+            ps.setInt(6, p.getIdProveedor());
+            ps.setInt(7, p.getIdCategoria());
 
             int result = ps.executeUpdate();
 
@@ -55,7 +55,9 @@ public class ProductoDAO {
         try {
             Connection con = ConexionDB.getConexion();
             ps = con.prepareStatement("SELECT * FROM PRODUCTO "
-                    + "WHERE id_producto=?");
+                    + "WHERE idProducto=?");
+
+            ps.setInt(1, id);
 
             r = ps.executeQuery();
 
@@ -66,9 +68,9 @@ public class ProductoDAO {
                 String nombreCat = r.getString("categoria");
                 float precio = r.getFloat("precio");
                 int idProv = r.getInt("idProveedor");
-                int idCat = r.getInt("idProveedor");
+                int idCat = r.getInt("idCategoria");
 
-                p = new Producto(idP, nombre, cantidad, precio, nombreCat, idCat, idProv);
+                p = new Producto(idP, nombre, cantidad, nombreCat, precio, idProv, idCat);
                 System.out.println("PRODUCTO ENCONTRADO");
                 return p;
             } else {
@@ -79,29 +81,29 @@ public class ProductoDAO {
         }
         return p;
     }
-    //Seleccion por ID y modifica
 
-    public static void modificarProducto(Producto p, int id) {
+    //Seleccion por ID y modifica
+    public static void modificarProducto(Producto p) {
         //UPDATE PRODUCTO SET WHERE ID=?
         try {
             Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("UPDATE INTO PRODUCTO "
-                    + "cantidad=?, categoria=?, precio=?, idProveedor=?, idCategoria=? "
+            ps = con.prepareStatement("UPDATE PRODUCTO SET "
+                    + "nombre=?, cantidad=?, categoria=?, precio=?, idProveedor=?, idCategoria=? "
                     + "WHERE idProducto=?");
 
-            ps.setInt(1, p.getCantidad());
-            ps.setString(2, p.getNombre());
+            ps.setString(1, p.getNombre());
+            ps.setInt(2, p.getCantidad());
             ps.setString(3, p.getCategoria());
-            ps.setFloat(5, p.getPrecio());
-            ps.setInt(6, p.getIdProveedor());
-            ps.setInt(7, p.getIdCategoria());
-            //idProducto
-            ps.setInt(8, p.getIdProducto());
+            ps.setFloat(4, p.getPrecio());
+            ps.setInt(5, p.getIdProveedor());
+            ps.setInt(6, p.getIdCategoria());
+            //idProducto del producto a modificar
+            ps.setInt(7, p.getIdProducto());
 
             int result = ps.executeUpdate();
 
             if (result > 0) {
-                System.out.println("PRODUCTO REGISTRADO CON EXITO");
+                System.out.println("PRODUCTO MODIFICADO CON EXITO");
             }
 
             con.close();

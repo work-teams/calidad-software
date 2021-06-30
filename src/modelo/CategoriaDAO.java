@@ -5,8 +5,10 @@
  */
 package modelo;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -18,17 +20,97 @@ public class CategoriaDAO {
     private static ResultSet r;
 
     public static void registrarCategoria(Categoria c) {
+        //INSERT INTO CATEGORIA () VALUES (?)        
+        try {
+            Connection con = ConexionDB.getConexion();
+            ps = con.prepareStatement("INSERT INTO CATEGORIA "
+                    + "(idCategoria,nombreCategoria) "
+                    + "VALUES (?,?)");
 
+            ps.setInt(1, c.getIdCategoria());
+            ps.setString(2, c.getNombreCategoria());
+
+            int result = ps.executeUpdate();
+
+            if (result > 0) {
+                System.out.println("CATEGORIA REGISTRADA CON EXITO");
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
     }
 
-    public static void buscarCategoria(Categoria c) {
+    public static Categoria buscarCategoria(int id) {
+        //SELECT * FROM CATEGORIA WHERE idCategoria=?
+        Categoria p = null;
 
+        try {
+            Connection con = ConexionDB.getConexion();
+            ps = con.prepareStatement("SELECT * FROM CATEGORIA "
+                    + "WHERE idCategoria=?");
+
+            ps.setInt(1, id);
+            r = ps.executeQuery();
+
+            if (r.next()) {
+                Categoria a;
+                int idCat = r.getInt("idCategoria");
+                String nombreCat = r.getString("nombreCategoria");
+
+                a = new Categoria(idCat, nombreCat);
+                System.out.println("CATEGORIA ENCONTRADA");
+                return a;
+            } else {
+                System.out.println("CATEGORIA NO ENCONTRADA");
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return p;
     }
 
     public static void modificarCategoria(Categoria c) {
+        //UPDATE PRODUCTO SET WHERE ID=?
+        try {
+            Connection con = ConexionDB.getConexion();
+            ps = con.prepareStatement("UPDATE CATEGORIA SET "
+                    + "nombreCategoria=? "
+                    + "WHERE idCategoria=?");
+
+            ps.setString(1, c.getNombreCategoria());
+            //idCategoria
+            ps.setInt(2, c.getIdCategoria());
+
+            int result = ps.executeUpdate();
+
+            if (result > 0) {
+                System.out.println("CATEGORIA MODIFICADA CON EXITO");
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
     }
 
-    public static void eliminarCategoria(Categoria c) {
+    public static void eliminarCategoria(int id) {
+        //DELETE FROM CATEGORIA WHERE ID=?
+        try {
+            Connection con = ConexionDB.getConexion();
+            ps = con.prepareStatement("DELETE FROM CATEGORIA "
+                    + "WHERE idCategoria=?");
 
+            ps.setInt(1, id);
+
+            int result = ps.executeUpdate();
+
+            if (result > 0) {
+                System.out.println("CATEGORIA ELIMINADA");
+            }
+
+            con.close();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
     }
 }

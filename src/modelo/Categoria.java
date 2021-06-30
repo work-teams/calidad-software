@@ -37,4 +37,10 @@ public class Categoria {
         this.nombreCategoria = nombreCategoria;
     }
 
+    @Override
+    public String toString() {
+        return "Categoria{" + "idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria + '}';
+    }
+    
+    
 }
