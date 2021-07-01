@@ -13,17 +13,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 
 public class ProveedorDAO extends ConexionDB{
     
-    private final Connection con = ConexionDB.getConexion();
+    private final Connection con = getConexion();
     
     final String INSERT = "INSERT INTO proveedor(idProveedor, nombre, direccion, telefono, correo) VALUES(?,?,?,?,?)";
     final String UPDATE = "UPDATE proveedor SET nombre = ?, direccion = ?, telefono = ?, correo = ? WHERE idProveedor = ?";
     final String DELETE = "DELETE from proveedor WHERE idProveedor = ?";
     final String SEARCH = "SELECT idProveedor, nombre, direccion, telefono, correo from proveedor WHERE idProveedor = ?";
+    final String SEARCHALL = "SELECT idProveedor, nombre, direccion, telefono, correo from proveedor";
 
     public ProveedorDAO() {
     }
@@ -100,6 +103,40 @@ public class ProveedorDAO extends ConexionDB{
         }
         return p;
     };
+    
+    public List<Proveedor> mostrarProveedores(){ 
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        List<Proveedor> p = new ArrayList<>();
+        try{
+            stat = con.prepareStatement(SEARCHALL);
+            rs = stat.executeQuery();
+            while(rs.next()){
+                p.add(convertir(rs));
+            }
+        } catch(SQLException ex){
+            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error de SQL");
+        } finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                    System.out.println("Error de SQL");
+                }
+            } 
+            if(stat != null){
+                try {
+                    stat.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                    System.out.println("Error de SQL");
+                }
+            } 
+        }
+        return p;    
+    }
     
     public void modificarProveedor(Proveedor p){
         PreparedStatement stat = null;
