@@ -12,10 +12,9 @@ package modelo;
 
 import java.sql.*;
 import javax.swing.*; 
+import java.util.*;
 
 public class UsuarioDAO extends ConexionDB{
-    
-    private final Connection con = ConexionDB.getConexion();
     
     final String INSERT = "INSERT INTO usuario(dniUsuario, apellido, nombre, username, password, privilegios)";
     final String UPDATE = "UPDATE usuario SET dniUsuario = ?, apellido = ?, nombre = ?, username = ?, password= ?, privilegios = ? WHERE dniUsuario = ?";
@@ -27,6 +26,7 @@ public class UsuarioDAO extends ConexionDB{
     }
     
     public void registrarUsuario(Usuario u){
+        Connection con = ConexionDB.getConexion();
         PreparedStatement stat = null;
         try{
            stat = con.prepareStatement(INSERT);
@@ -66,6 +66,7 @@ public class UsuarioDAO extends ConexionDB{
     }
     
     public Usuario buscarUsuario(int dniUsuario){
+        Connection con = ConexionDB.getConexion();
         PreparedStatement stat = null;
         ResultSet rs = null;
         Usuario u = null;
@@ -95,6 +96,7 @@ public class UsuarioDAO extends ConexionDB{
     }
     
     public void modificarUsuario(Usuario u){
+        Connection con = ConexionDB.getConexion();
         PreparedStatement stat = null;
         try{
             stat = con.prepareStatement(UPDATE);
@@ -123,6 +125,7 @@ public class UsuarioDAO extends ConexionDB{
     }
     
     public void eliminarUsuario(int dniUsuario){
+        Connection con = ConexionDB.getConexion();
         PreparedStatement stat = null; 
         try{
             stat = con.prepareStatement(DELETE);
@@ -134,5 +137,39 @@ public class UsuarioDAO extends ConexionDB{
             System.out.println(ex.getMessage());
             JOptionPane.showMessageDialog(null, "Error SQL");
         }
+    }
+    
+    public ArrayList<Usuario> mostrarUsuarios(){
+        ArrayList<Usuario> u = new ArrayList<Usuario>();
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        try{
+            Connection con = ConexionDB.getConexion();
+            stat = con.prepareStatement("SELECT * FROM bikeshop.USUARIO");
+            rs = stat.executeQuery();
+            
+            while(rs.next()){
+                u.add(convertir(rs));
+            }
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("Probablemente no se hallo a todos los Usuarios");
+        }finally{
+            if(rs != null){
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());
+                }
+            }
+            if(stat != null){
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+        return u;
     }
 }
