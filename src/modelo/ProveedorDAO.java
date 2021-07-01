@@ -19,9 +19,7 @@ import javax.swing.JOptionPane;
 
 
 public class ProveedorDAO extends ConexionDB{
-    
-    private final Connection con = getConexion();
-    
+      
     final String INSERT = "INSERT INTO proveedor(idProveedor, nombre, direccion, telefono, correo) VALUES(?,?,?,?,?)";
     final String UPDATE = "UPDATE proveedor SET nombre = ?, direccion = ?, telefono = ?, correo = ? WHERE idProveedor = ?";
     final String DELETE = "DELETE from proveedor WHERE idProveedor = ?";
@@ -32,6 +30,7 @@ public class ProveedorDAO extends ConexionDB{
     }
 
     public void registrarProveedor(Proveedor p){
+        Connection con = getConexion();
         PreparedStatement stat = null;
         try{
             stat = con.prepareStatement(INSERT);
@@ -43,6 +42,7 @@ public class ProveedorDAO extends ConexionDB{
             if(stat.executeUpdate() ==0){
                 System.out.println("Puede que el proveedor no haya sido registrado");
             }
+            con.close();
         } catch(SQLException ex){
             System.out.println(ex.getMessage());
             JOptionPane.showMessageDialog(null, "No se Registro el proveedor");
@@ -68,6 +68,7 @@ public class ProveedorDAO extends ConexionDB{
     }
    
     public Proveedor buscarProveedor(int idProveedor) {
+        Connection con = getConexion();
         PreparedStatement stat = null;
         ResultSet rs = null;
         Proveedor p = null;
@@ -80,6 +81,7 @@ public class ProveedorDAO extends ConexionDB{
             }else{
                 System.out.println("No se ha encontrando ese registro");
             }
+            con.close();
         } catch(SQLException ex){
             System.out.println(ex.getMessage());
             JOptionPane.showMessageDialog(null, "No se encontro el proveedor");
@@ -105,6 +107,7 @@ public class ProveedorDAO extends ConexionDB{
     };
     
     public List<Proveedor> mostrarProveedores(){ 
+        Connection con = getConexion();
         PreparedStatement stat = null;
         ResultSet rs = null;
         List<Proveedor> p = new ArrayList<>();
@@ -114,6 +117,7 @@ public class ProveedorDAO extends ConexionDB{
             while(rs.next()){
                 p.add(convertir(rs));
             }
+            con.close();
         } catch(SQLException ex){
             System.out.println(ex.getMessage());
             JOptionPane.showMessageDialog(null, "Error de SQL");
@@ -139,6 +143,7 @@ public class ProveedorDAO extends ConexionDB{
     }
     
     public void modificarProveedor(Proveedor p){
+        Connection con = getConexion();
         PreparedStatement stat = null;
         try{
             stat = con.prepareStatement(UPDATE);
@@ -150,6 +155,7 @@ public class ProveedorDAO extends ConexionDB{
             if(stat.executeUpdate()==0){
                 System.out.println("Puede que el proveedor no haya sido modificado");
             }
+            con.close();
         } catch(SQLException ex){
             System.out.println(ex.getMessage());
             System.out.println("No se modifico el proveedor");
@@ -166,6 +172,7 @@ public class ProveedorDAO extends ConexionDB{
     };
     
     public void eliminarProveedor(int idProveedor){
+        Connection con = getConexion();
         PreparedStatement stat = null;
         try{
             stat = con.prepareStatement(DELETE);
@@ -173,6 +180,7 @@ public class ProveedorDAO extends ConexionDB{
             if(stat.executeUpdate()==0){
                 System.out.println("Puede que el proveedor no haya sido eliminado");
             }
+            con.close();
         } catch(SQLException ex){
             System.out.println(ex.getMessage());
             System.out.println("No se elimino proveedor");
