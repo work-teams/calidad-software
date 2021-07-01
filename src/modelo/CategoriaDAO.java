@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -68,6 +69,29 @@ public class CategoriaDAO {
             System.err.println(e);
         }
         return p;
+    }
+
+    //
+    public static ArrayList<Categoria> mostrarCategorias() {
+        ArrayList<Categoria> c = new ArrayList<Categoria>();
+        try {
+            Connection con = ConexionDB.getConexion();
+            ps = con.prepareStatement("SELECT * FROM bikeshop.CATEGORIA ");
+
+            r = ps.executeQuery();
+            while (r.next()) {
+                String nombreCat = r.getString("nombreCategoria");
+                int idCat = r.getInt("idCategoria");
+
+                c.add(new Categoria(idCat, nombreCat));
+            }
+            System.out.println("LISTA DE CATEGORIAS ENVIADA");
+            return c;
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+
+        return null;
     }
 
     public static void modificarCategoria(Categoria c) {

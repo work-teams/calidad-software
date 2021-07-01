@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 /**
  *
@@ -80,6 +81,35 @@ public class ProductoDAO {
             System.err.println(e);
         }
         return p;
+    }
+
+    //Devuelve arraylist con productos
+    public static ArrayList<Producto> mostrarProductos() {
+        ArrayList<Producto> p = new ArrayList<Producto>();
+        try {
+            Connection con = ConexionDB.getConexion();
+            ps = con.prepareStatement("SELECT * FROM bikeshop.PRODUCTO ");
+
+            r = ps.executeQuery();
+            while (r.next()) {
+                int idP = r.getInt("idProducto");
+                String nombre = r.getString("nombre");
+                int cantidad = r.getInt("cantidad");
+                String nombreCat = r.getString("categoria");
+                float precio = r.getFloat("precio");
+                int idProv = r.getInt("idProveedor");
+                int idCat = r.getInt("idCategoria");
+
+                p.add(new Producto(idP, nombre, cantidad, nombreCat, precio, idProv, idCat));
+            }
+
+            System.out.println("LISTA DE PRODUCTOS ENVIADA");
+            return p;
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+
+        return null;
     }
 
     //Seleccion por ID y modifica
