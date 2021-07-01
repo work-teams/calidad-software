@@ -40,6 +40,7 @@ public class UsuarioDAO extends ConexionDB{
            if(stat.executeUpdate() == 0){
                JOptionPane.showMessageDialog(null,"Puede que no se haya registrado el usuario");
            }
+           con.close();
         }catch (SQLException ex){
             System.out.println(ex.getMessage());
             JOptionPane.showMessageDialog(null,"No se pudo registrar el usuario");
@@ -79,6 +80,7 @@ public class UsuarioDAO extends ConexionDB{
             }else{
                 System.out.println("No se encontro usuario");
             }
+            con.close();
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             JOptionPane.showMessageDialog(null, "No se encontro usuario");
@@ -109,6 +111,7 @@ public class UsuarioDAO extends ConexionDB{
             if(stat.executeUpdate() == 0){
                 System.out.println("Es posible que no se haya modificado el Usuario");
             }
+            con.close();
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             JOptionPane.showMessageDialog(null, "No se modifico el Usuario");
@@ -132,7 +135,8 @@ public class UsuarioDAO extends ConexionDB{
             stat.setInt(1,dniUsuario);
             if(stat.executeUpdate() == 0){
                 System.out.println("Puede que no se halla eliminado el usuario");
-            }       
+            } 
+            con.close();
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             JOptionPane.showMessageDialog(null, "Error SQL");
@@ -151,6 +155,7 @@ public class UsuarioDAO extends ConexionDB{
             while(rs.next()){
                 u.add(convertir(rs));
             }
+            con.close();
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             System.out.println("Probablemente no se hallo a todos los Usuarios");
