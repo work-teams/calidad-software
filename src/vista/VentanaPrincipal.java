@@ -34,7 +34,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ButtonUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(204, 153, 0));
