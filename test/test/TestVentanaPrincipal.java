@@ -5,6 +5,7 @@
  */
 package test;
 
+import vista.NewPanelUsuarios;
 import vista.VentanaPrincipal;
 
 /**
@@ -19,6 +20,9 @@ public class TestVentanaPrincipal {
     public static void main(String[] args) {
         // TODO code application logic here
         VentanaPrincipal vp = new VentanaPrincipal();
+        NewPanelUsuarios panel = new NewPanelUsuarios();
+        panel.setBounds(0, 180, 1446, 736);
+        vp.add(panel);
         vp.setVisible(true);
     }
     
