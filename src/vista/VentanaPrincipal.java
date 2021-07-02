@@ -27,24 +27,57 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        ButtonUsuario = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1446, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 942, Short.MAX_VALUE)
-        );
+        jPanel1.setBackground(new java.awt.Color(204, 153, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setLayout(null);
 
-        pack();
+        jLabel1.setFont(new java.awt.Font("Cooper Black", 1, 68)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Bike Shop");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(528, 10, 390, 80);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bike.png"))); // NOI18N
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(25, 15, 70, 70);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 1446, 106);
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setLayout(null);
+
+        ButtonUsuario.setBackground(new java.awt.Color(102, 102, 102));
+        ButtonUsuario.setForeground(new java.awt.Color(102, 102, 102));
+        ButtonUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/person.png"))); // NOI18N
+        ButtonUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
+        ButtonUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(ButtonUsuario);
+        ButtonUsuario.setBounds(45, 14, 109, 46);
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 106, 1446, 74);
+
+        setSize(new java.awt.Dimension(1446, 942));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonUsuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
