@@ -27,6 +27,9 @@ public class Usuario {
         this.privilegios = privilegios;
     }
 
+    public Usuario() {
+    }
+
     /**
      * @return the dniUsuario
      */

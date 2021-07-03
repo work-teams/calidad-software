@@ -10,16 +10,18 @@ package modelo;
  * @author willi
  */
 
+import controlador.ControladorUsuario;
 import java.sql.*;
 import javax.swing.*; 
 import java.util.*;
 
 public class UsuarioDAO extends ConexionDB{
+    ControladorUsuario miconControladorUsuario;
     
-    final String INSERT = "INSERT INTO usuario(dniUsuario, apellido, nombre, username, password, privilegios)";
-    final String UPDATE = "UPDATE usuario SET dniUsuario = ?, apellido = ?, nombre = ?, username = ?, password= ?, privilegios = ? WHERE dniUsuario = ?";
-    final String DELETE = "DELETE  from usuario WHERE dniUsuario = ?";
-    final String SEARCH = "SELECT dniUsuario, apellido, nombre, username, password, privilegios WHERE dniUsuario = ?";
+    final String INSERT = "INSERT INTO usuarios(dniUsuario, apellido, nombre, username, password, privilegios) VALUES (?,?,?,?,?,?)";
+    final String UPDATE = "UPDATE usuarios SET dniUsuario = ?, apellido = ?, nombre = ?, username = ?, password= ?, privilegios = ? WHERE dniUsuario = ?";
+    final String DELETE = "DELETE from usuarios WHERE dniUsuario = ?";
+    final String SEARCH = "SELECT dniUsuario, apellido, nombre, username, password, privilegios FROM usuarios WHERE dniUsuario = ?";
     
     public UsuarioDAO (){
         
@@ -36,10 +38,11 @@ public class UsuarioDAO extends ConexionDB{
            stat.setString(4, u.getUsername());
            stat.setString(5, u.getPassword());
            stat.setBoolean(6, u.isPrivilegios());
+           stat.executeUpdate();
            
-           if(stat.executeUpdate() == 0){
-               JOptionPane.showMessageDialog(null,"Puede que no se haya registrado el usuario");
-           }
+//           if(stat.executeUpdate() == 0){
+//               JOptionPane.showMessageDialog(null,"Puede que no se haya registrado el usuario");
+//           }
            con.close();
         }catch (SQLException ex){
             System.out.println(ex.getMessage());
@@ -133,9 +136,10 @@ public class UsuarioDAO extends ConexionDB{
         try{
             stat = con.prepareStatement(DELETE);
             stat.setInt(1,dniUsuario);
-            if(stat.executeUpdate() == 0){
-                System.out.println("Puede que no se halla eliminado el usuario");
-            } 
+            stat.executeUpdate();
+//            if(stat.executeUpdate() == 0){
+//                System.out.println("Puede que no se halla eliminado el usuario");
+//            } 
             con.close();
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
@@ -176,5 +180,9 @@ public class UsuarioDAO extends ConexionDB{
             }
         }
         return u;
+    }
+
+    public void setControlador(ControladorUsuario miControladorUsuario) {
+        this.miconControladorUsuario = miControladorUsuario;
     }
 }
