@@ -14,31 +14,26 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 
 public class ProveedorDAO extends ConexionDB{
       
-    final String INSERT = "INSERT INTO proveedor(idProveedor, nombre, direccion, telefono, correo) VALUES(?,?,?,?,?)";
-    final String UPDATE = "UPDATE proveedor SET nombre = ?, direccion = ?, telefono = ?, correo = ? WHERE idProveedor = ?";
-    final String DELETE = "DELETE from proveedor WHERE idProveedor = ?";
-    final String SEARCH = "SELECT idProveedor, nombre, direccion, telefono, correo from proveedor WHERE idProveedor = ?";
-    final String SEARCHALL = "SELECT idProveedor, nombre, direccion, telefono, correo from proveedor";
+    final String INSERT = "INSERT INTO proveedores(idProveedor, nombre, direccion, telefono) VALUES(?,?,?,?)";
+    final String UPDATE = "UPDATE proveedores SET nombre = ?, direccion = ?, telefono = ? WHERE idProveedor = ?";
+    final String DELETE = "DELETE from proveedores WHERE idProveedor = ?";
+    final String SEARCH = "SELECT idProveedor, nombre, direccion, telefono from proveedores WHERE idProveedor = ?";
+    final String SEARCHALL = "SELECT idProveedor, nombre, direccion, telefono from proveedores";
 
-    public ProveedorDAO() {
-    }
-
-    public void registrarProveedor(Proveedor p){
-        Connection con = getConexion();
+    public void registrarProveedor(Proveedor p){     
         PreparedStatement stat = null;
         try{
+            Connection con = getConexion();
             stat = con.prepareStatement(INSERT);
             stat.setInt(1, p.getIdProveedor());
             stat.setString(2, p.getNombre());
             stat.setString(3, p.getDireccion());
             stat.setString(4, p.getTelefono());
-            stat.setString(5, p.getCorreo());
             if(stat.executeUpdate() ==0){
                 System.out.println("Puede que el proveedor no haya sido registrado");
             }
@@ -62,17 +57,16 @@ public class ProveedorDAO extends ConexionDB{
         String nombre = rs.getString("nombre");
         String direccion = rs.getString("direccion");
         String telefono = rs.getString("telefono");
-        String correo = rs.getString("correo");
-        Proveedor p = new Proveedor(idProveedor, nombre, direccion, telefono, correo);
+        Proveedor p = new Proveedor(idProveedor, nombre, direccion, telefono);
         return p;
     }
    
-    public Proveedor buscarProveedor(int idProveedor) {
-        Connection con = getConexion();
+    public Proveedor buscarProveedor(int idProveedor) {   
         PreparedStatement stat = null;
         ResultSet rs = null;
         Proveedor p = null;
         try{
+            Connection con = getConexion();
             stat = con.prepareStatement(SEARCH);
             stat.setInt(1, idProveedor);
             rs = stat.executeQuery();
@@ -106,12 +100,12 @@ public class ProveedorDAO extends ConexionDB{
         return p;
     };
     
-    public List<Proveedor> mostrarProveedores(){ 
-        Connection con = getConexion();
+    public ArrayList<Proveedor> mostrarProveedores(){   
         PreparedStatement stat = null;
         ResultSet rs = null;
-        List<Proveedor> p = new ArrayList<>();
+        ArrayList<Proveedor> p = new ArrayList<>();
         try{
+            Connection con = getConexion();
             stat = con.prepareStatement(SEARCHALL);
             rs = stat.executeQuery();
             while(rs.next()){
@@ -142,16 +136,15 @@ public class ProveedorDAO extends ConexionDB{
         return p;    
     }
     
-    public void modificarProveedor(Proveedor p){
-        Connection con = getConexion();
+    public void modificarProveedor(Proveedor p){   
         PreparedStatement stat = null;
         try{
+            Connection con = getConexion();
             stat = con.prepareStatement(UPDATE);
             stat.setString(1, p.getNombre());
             stat.setString(2, p.getDireccion());
             stat.setString(3, p.getTelefono());
-            stat.setString(4, p.getCorreo());
-            stat.setInt(5, p.getIdProveedor());
+            stat.setInt(4, p.getIdProveedor());
             if(stat.executeUpdate()==0){
                 System.out.println("Puede que el proveedor no haya sido modificado");
             }
@@ -171,10 +164,10 @@ public class ProveedorDAO extends ConexionDB{
         }   
     };
     
-    public void eliminarProveedor(int idProveedor){
-        Connection con = getConexion();
+    public void eliminarProveedor(int idProveedor){   
         PreparedStatement stat = null;
         try{
+            Connection con = getConexion();
             stat = con.prepareStatement(DELETE);
             stat.setInt(1, idProveedor);
             if(stat.executeUpdate()==0){

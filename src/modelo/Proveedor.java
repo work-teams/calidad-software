@@ -15,14 +15,12 @@ public class Proveedor {
     private String nombre;
     private String direccion;
     private String telefono;
-    private String correo;
 
-    public Proveedor(int idProveedor, String nombre, String direccion, String telefono, String correo) {
+    public Proveedor(int idProveedor, String nombre, String direccion, String telefono) {
         this.idProveedor = idProveedor;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.correo = correo;
     }
     
     public int getIdProveedor() {
@@ -41,10 +39,6 @@ public class Proveedor {
         return telefono;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
     public void setIdProveedor(int idProveedor) {
         this.idProveedor = idProveedor;
     }
@@ -61,14 +55,8 @@ public class Proveedor {
         this.telefono = telefono;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
     @Override
     public String toString() {
-        return "Proveedor{" + "id=" + idProveedor + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", correo=" + correo + '}';
+        return "Proveedor{" + "id=" + idProveedor + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono+ '}';
     }
-    
-    
 }
