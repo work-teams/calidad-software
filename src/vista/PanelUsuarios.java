@@ -7,7 +7,6 @@ package vista;
 
 import controlador.ControladorUsuario;
 import java.util.ArrayList;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 
@@ -480,9 +479,9 @@ public class PanelUsuarios extends javax.swing.JPanel {
         miUsuario.setPrivilegios(true);
         
         miconControladorUsuario.registrar(miUsuario);
+        setTabla(miconControladorUsuario.mostrarDatos());
         
         miUsuario = null;
-        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -499,8 +498,6 @@ public class PanelUsuarios extends javax.swing.JPanel {
         miconControladorUsuario.modificar(miUsuario);
         
         miUsuario = null;
-        
-        setTabla(miconControladorUsuario.mostrarDatos());
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
