@@ -105,15 +105,17 @@ public class UsuarioDAO extends ConexionDB{
         PreparedStatement stat = null;
         try{
             stat = con.prepareStatement(UPDATE);
-            stat.setString(1, u.getApellido());
-            stat.setString(2, u.getNombre());
-            stat.setString(3, u.getUsername());
-            stat.setString(4, u.getPassword());
-            stat.setBoolean(5, u.isPrivilegios());
-            stat.setInt(6, u.getDniUsuario());
-            if(stat.executeUpdate() == 0){
-                System.out.println("Es posible que no se haya modificado el Usuario");
-            }
+            stat.setInt(1, u.getDniUsuario());
+            stat.setString(2, u.getApellido());
+            stat.setString(3, u.getNombre());
+            stat.setString(4, u.getUsername());
+            stat.setString(5, u.getPassword());
+            stat.setBoolean(6, u.isPrivilegios());
+            stat.setInt(7, u.getDniUsuario());
+            stat.executeUpdate();
+//            if(stat.executeUpdate() == 0){
+//                System.out.println("Es posible que no se haya modificado el Usuario");
+//            }
             con.close();
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
@@ -148,12 +150,12 @@ public class UsuarioDAO extends ConexionDB{
     }
     
     public ArrayList<Usuario> mostrarUsuarios(){
-        ArrayList<Usuario> u = new ArrayList<Usuario>();
+        ArrayList<Usuario> u = new ArrayList<>();
         PreparedStatement stat = null;
         ResultSet rs = null;
         try{
             Connection con = ConexionDB.getConexion();
-            stat = con.prepareStatement("SELECT * FROM bikeshop.USUARIO");
+            stat = con.prepareStatement("SELECT * FROM usuarios");
             rs = stat.executeQuery();
             
             while(rs.next()){
@@ -163,22 +165,23 @@ public class UsuarioDAO extends ConexionDB{
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             System.out.println("Probablemente no se hallo a todos los Usuarios");
-        }finally{
-            if(rs != null){
-                try{
-                    rs.close();
-                }catch(SQLException ex){
-                    System.out.println(ex.getMessage());
-                }
-            }
-            if(stat != null){
-                try{
-                    rs.close();
-                }catch(SQLException ex){
-                    System.out.println(ex.getMessage());
-                }
-            }
         }
+//        finally{
+//            if(rs != null){
+//                try{
+//                    rs.close();
+//                }catch(SQLException ex){
+//                    System.out.println(ex.getMessage());
+//                }
+//            }
+//            if(stat != null){
+//                try{
+//                    rs.close();
+//                }catch(SQLException ex){
+//                    System.out.println(ex.getMessage());
+//                }
+//            }
+//        }
         return u;
     }
 

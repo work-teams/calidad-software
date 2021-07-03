@@ -6,6 +6,9 @@
 package vista;
 
 import controlador.ControladorUsuario;
+import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 
 /**
@@ -56,8 +59,9 @@ public class PanelUsuarios extends javax.swing.JPanel {
         jCheckBox1 = new javax.swing.JCheckBox();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
-        ButtonUsuario2 = new javax.swing.JButton();
-        ButtonUsuario1 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel11 = new javax.swing.JPanel();
@@ -266,25 +270,36 @@ public class PanelUsuarios extends javax.swing.JPanel {
 
         jTabbedPane2.addTab("Registro de Usuario", jPanel7);
 
-        ButtonUsuario2.setBackground(new java.awt.Color(102, 102, 102));
-        ButtonUsuario2.setForeground(new java.awt.Color(102, 102, 102));
-        ButtonUsuario2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Agregar.png"))); // NOI18N
-        ButtonUsuario2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
-        ButtonUsuario2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        ButtonUsuario2.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setBackground(new java.awt.Color(102, 102, 102));
+        btnAgregar.setForeground(new java.awt.Color(102, 102, 102));
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Agregar.png"))); // NOI18N
+        btnAgregar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonUsuario2ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
-        ButtonUsuario1.setBackground(new java.awt.Color(102, 102, 102));
-        ButtonUsuario1.setForeground(new java.awt.Color(102, 102, 102));
-        ButtonUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Cancelar.png"))); // NOI18N
-        ButtonUsuario1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
-        ButtonUsuario1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        ButtonUsuario1.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setBackground(new java.awt.Color(102, 102, 102));
+        btnModificar.setForeground(new java.awt.Color(102, 102, 102));
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Right-12.png"))); // NOI18N
+        btnModificar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
+        btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonUsuario1ActionPerformed(evt);
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setBackground(new java.awt.Color(102, 102, 102));
+        btnEliminar.setForeground(new java.awt.Color(102, 102, 102));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Cancelar.png"))); // NOI18N
+        btnEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
             }
         });
 
@@ -296,10 +311,12 @@ public class PanelUsuarios extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(ButtonUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -307,11 +324,12 @@ public class PanelUsuarios extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ButtonUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
         );
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
@@ -320,17 +338,6 @@ public class PanelUsuarios extends javax.swing.JPanel {
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        Table_Usuarios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
         jScrollPane1.setViewportView(Table_Usuarios);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -429,7 +436,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -461,8 +468,10 @@ public class PanelUsuarios extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuario2ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
+        miUsuario = new Usuario();
+        
         miUsuario.setDniUsuario(Integer.parseInt(txtDni.getText()));
         miUsuario.setNombre(txtNombre.getText());
         miUsuario.setApellido(txtApellido.getText());
@@ -474,18 +483,37 @@ public class PanelUsuarios extends javax.swing.JPanel {
         
         miUsuario = null;
         
-    }//GEN-LAST:event_ButtonUsuario2ActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void ButtonUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuario1ActionPerformed
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        miUsuario = new Usuario();
+        
+        miUsuario.setDniUsuario(Integer.parseInt(txtDni.getText()));
+        miUsuario.setNombre(txtNombre.getText());
+        miUsuario.setApellido(txtApellido.getText());
+        miUsuario.setUsername(txtUsuario.getText());
+        miUsuario.setPassword(txtContrasenia.getText());
+        miUsuario.setPrivilegios(true);
+        
+        miconControladorUsuario.modificar(miUsuario);
+        
+        miUsuario = null;
+        
+        setTabla(miconControladorUsuario.mostrarDatos());
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         miconControladorUsuario.eliminar(Integer.parseInt(txtDni.getText()));
-    }//GEN-LAST:event_ButtonUsuario1ActionPerformed
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonUsuario1;
-    private javax.swing.JButton ButtonUsuario2;
     private javax.swing.JTable Table_Usuarios;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -529,5 +557,25 @@ public class PanelUsuarios extends javax.swing.JPanel {
 
     public void setUsuario(Usuario miUsuario) {
         this.miUsuario = miUsuario;
+    }
+    
+    public void setTabla(ArrayList<Usuario> miArrayList) {
+        miUsuario = new Usuario();
+        String[] columnas = {"ID", "NOMBRE", "APELLIDO", "USERNAME", "PASSWORD"};
+        Object[][] miData = new Object[miArrayList.size()][5];
+        
+        for (int i = 0; i < miArrayList.size(); i++) {
+            miUsuario = miArrayList.get(i);
+            miData[i][0] = miUsuario.getDniUsuario();
+            miData[i][1] = miUsuario.getNombre();
+            miData[i][2] = miUsuario.getApellido();
+            miData[i][3] = miUsuario.getUsername();
+            miData[i][4] = miUsuario.getPassword();
+        }
+        
+        DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
+        Table_Usuarios.setModel(modelo);
+        
+        miUsuario = null;
     }
 }

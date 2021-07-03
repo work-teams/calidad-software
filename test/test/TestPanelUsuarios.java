@@ -30,7 +30,7 @@ public class TestPanelUsuarios {
         // TODO code application logic here
         VentanaPrincipal miVentanaPrincipal = new VentanaPrincipal();
 
-        Usuario miUsuario = new Usuario();
+        Usuario miUsuario = null;
         UsuarioDAO miUsuarioDAO = new UsuarioDAO();
         PanelUsuarios miPanelUsuarios = new PanelUsuarios();
         ControladorUsuario miControladorUsuario = new ControladorUsuario();

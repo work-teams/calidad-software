@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import java.util.ArrayList;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import vista.PanelUsuarios;
@@ -31,6 +32,14 @@ public class ControladorUsuario {
     
     public void eliminar(int dniUsuario) {
         miUsuarioDAO.eliminarUsuario(dniUsuario);
+    }
+
+    public void modificar(Usuario miUsuario) {
+        miUsuarioDAO.modificarUsuario(miUsuario);
+    }
+    
+    public ArrayList<Usuario> mostrarDatos() {
+        return miUsuarioDAO.mostrarUsuarios();
     }
 
 }
