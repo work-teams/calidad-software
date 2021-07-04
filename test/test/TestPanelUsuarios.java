@@ -5,7 +5,8 @@
  */
 package test;
 
-import vista.PanelUsuarios;
+import controlador.ControladorProducto;
+import vista.PanelProducto;
 import vista.VentanaPrincipal;
 
 /**
@@ -20,10 +21,10 @@ public class TestPanelUsuarios {
     public static void main(String[] args) {
         // TODO code application logic here
         VentanaPrincipal vp = new VentanaPrincipal();
-        PanelUsuarios panel = new PanelUsuarios();
-        panel.setBounds(0, 180, 1446, 736);
-        vp.add(panel);
+        PanelProducto panel = new PanelProducto();
+        ControladorProducto con = new ControladorProducto(panel);
+        vp.panCardChange.add(panel);
         vp.setVisible(true);
     }
-    
+
 }

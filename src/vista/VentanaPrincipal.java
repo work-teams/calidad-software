@@ -32,6 +32,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         ButtonUsuario = new javax.swing.JButton();
+        panCardChange = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -68,15 +69,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 106, 1446, 74);
 
+        panCardChange.setLayout(new java.awt.CardLayout());
+        getContentPane().add(panCardChange);
+        panCardChange.setBounds(0, 180, 1430, 720);
+
         setSize(new java.awt.Dimension(1446, 942));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    public javax.swing.JPanel panCardChange;
     // End of variables declaration//GEN-END:variables
 }
