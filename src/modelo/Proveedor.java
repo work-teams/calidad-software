@@ -22,6 +22,9 @@ public class Proveedor {
         this.direccion = direccion;
         this.telefono = telefono;
     }
+
+    public Proveedor() {
+    }
     
     public int getIdProveedor() {
         return idProveedor;

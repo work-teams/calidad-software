@@ -9,6 +9,7 @@ package modelo;
  *
  * @author Daniel
  */
+import controlador.ControladorProveedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -18,6 +19,8 @@ import javax.swing.JOptionPane;
 
 
 public class ProveedorDAO extends ConexionDB{
+    
+    ControladorProveedor miControladorProveedor;
       
     final String INSERT = "INSERT INTO proveedores(idProveedor, nombre, direccion, telefono) VALUES(?,?,?,?)";
     final String UPDATE = "UPDATE proveedores SET nombre = ?, direccion = ?, telefono = ? WHERE idProveedor = ?";
@@ -187,5 +190,9 @@ public class ProveedorDAO extends ConexionDB{
                 }
             } 
         } 
+    }
+
+    public void setControladorProveedor(ControladorProveedor miControladorProveedor) {
+        this.miControladorProveedor = miControladorProveedor;
     }
 }
