@@ -20,23 +20,23 @@ import java.util.ArrayList;
 public class UsuarioDAO extends ConexionDB{
     // Atributos de clase
     ControladorUsuario miControladorUsuario;
-    Connection miConnection;
-    PreparedStatement miPreparedStatement;
-    ResultSet miResultSet;
+    private Connection miConnection;
+    private PreparedStatement miPreparedStatement;
+    private ResultSet miResultSet;
     
-    // Sentencias SQL
+    // SENTENCIAS SQL
     private final String INSERT = "INSERT INTO usuarios (dniUsuario, apellido, nombre, username, password, rol) VALUES (?,?,?,?,?,?)";
     private final String UPDATE = "UPDATE usuarios SET apellido=?, nombre=?, username=?, password=?, rol=? WHERE dniUsuario=?";
     private final String SEARCH = "SELECT apellido, nombre, username, password, rol FROM usuarios WHERE dniUsuario=?";
     private final String DELETE = "DELETE FROM usuarios WHERE dniUsuario=?";
     private final String LISTAR = "SELECT * FROM usuarios";
     
-    // Enlance controlador
+    // ENLACE CONTROLADOR
     public void setControlador(ControladorUsuario miControladorUsuario) {
         this.miControladorUsuario = miControladorUsuario;
     }
     
-    // Metodos CRUD
+    // MÉTODOS C.R.U.D.
     public void registrarUsuario(Usuario miUsuario) {
         try {
             miConnection = getConexion();
@@ -57,14 +57,16 @@ public class UsuarioDAO extends ConexionDB{
         }
     }
     
-    public Usuario buscarUsuario(String dniUsuario) throws NullPointerException {
+    public Usuario buscarUsuario(String dniUsuario) {
         Usuario miUsuario = null;
         try {
             miConnection = getConexion();
             miPreparedStatement = miConnection.prepareStatement(SEARCH);
             miPreparedStatement.setString(1, dniUsuario);
             miResultSet = miPreparedStatement.executeQuery();
-            miUsuario = empaquetarDatos(miResultSet);
+            if (miResultSet.next()) {
+                miUsuario = empaquetarDatosBuscarUsuario(miResultSet);
+            }
         } catch (SQLException ex) {System.out.println(ex);
         } finally {
             try {
@@ -110,32 +112,14 @@ public class UsuarioDAO extends ConexionDB{
         }
     }
     
-    // Métodos auxiliares
-    private Usuario empaquetarDatos(ResultSet miResultSet) throws SQLException {
-        if (miResultSet.next()) {
-            Usuario miUsuario = new Usuario();
-            miUsuario.setApellido(miResultSet.getString(1));
-            miUsuario.setNombre(miResultSet.getString(2));
-            miUsuario.setUsername(miResultSet.getString(3));
-            miUsuario.setPassword(miResultSet.getString(4));
-            miUsuario.setRol(miResultSet.getString(5));
-            return miUsuario;
-        }
-        else {
-            return null;
-        }
-    }
-    
-    public ArrayList<Usuario> listarUsuarios() throws NullPointerException {
+    public ArrayList<Usuario> listarUsuarios() {
         ArrayList<Usuario> misUsuarios = new ArrayList<>();
-        Usuario miUsuario;
         try {
             miConnection = getConexion();
             miPreparedStatement = miConnection.prepareStatement(LISTAR);
             miResultSet = miPreparedStatement.executeQuery();
             while (miResultSet.next()) {
-                miUsuario = empaquetarDatos(miResultSet);
-                misUsuarios.add(miUsuario);
+                misUsuarios.add(empaquetarDatosListarUsuarios(miResultSet));
             }
         } catch (SQLException e) {System.out.println(e);
         } finally {
@@ -145,5 +129,27 @@ public class UsuarioDAO extends ConexionDB{
             }
         }
         return misUsuarios;
+    }
+    
+    // MÉTODOS AUXILIARES
+    private Usuario empaquetarDatosBuscarUsuario(ResultSet miResultSet) throws SQLException {
+        Usuario miUsuario = new Usuario();
+        miUsuario.setApellido(miResultSet.getString("apellido"));
+        miUsuario.setNombre(miResultSet.getString("nombre"));
+        miUsuario.setUsername(miResultSet.getString("username"));
+        miUsuario.setPassword(miResultSet.getString("password"));
+        miUsuario.setRol(miResultSet.getString("rol"));
+        return miUsuario;
+    }
+    
+    private Usuario empaquetarDatosListarUsuarios(ResultSet miResultSet) throws SQLException {
+        Usuario miUsuario = new Usuario();
+        miUsuario.setDniUsuario(miResultSet.getString("dniUsuario"));
+        miUsuario.setApellido(miResultSet.getString("apellido"));
+        miUsuario.setNombre(miResultSet.getString("nombre"));
+        miUsuario.setUsername(miResultSet.getString("username"));
+        miUsuario.setPassword(miResultSet.getString("password"));
+        miUsuario.setRol(miResultSet.getString("rol"));
+        return miUsuario;
     }
 }

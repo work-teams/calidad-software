@@ -20,46 +20,26 @@ public class TestPanelUsuarios {
     /**
      * @param args the command line arguments
      */
-//        VentanaPrincipal vp = new VentanaPrincipal();
-//        PanelUsuarios panel = new PanelUsuarios();
-//        panel.setBounds(0, 180, 1446, 736);
-//        vp.add(panel);
-//        vp.setVisible(true);
-//        
     public static void main(String[] args) {
         // TODO code application logic here
         VentanaPrincipal miVentanaPrincipal = new VentanaPrincipal();
 
-        Usuario miUsuario = null;
+        // Unica instancia de los elementos a conectar
         UsuarioDAO miUsuarioDAO = new UsuarioDAO();
         PanelUsuarios miPanelUsuarios = new PanelUsuarios();
         ControladorUsuario miControladorUsuario = new ControladorUsuario();
         
+        // Conectando elementos al controlador
         miControladorUsuario.setPanelUsuarios(miPanelUsuarios);
         miControladorUsuario.setUsuarioDAO(miUsuarioDAO);
         
+        // Conectando controlador a los elementos
         miUsuarioDAO.setControlador(miControladorUsuario);
         miPanelUsuarios.setControlador(miControladorUsuario);
-        miPanelUsuarios.setUsuario(miUsuario);
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        // Esto es solo una demo
         miPanelUsuarios.setBounds(0, 180, 1446, 736);
         miVentanaPrincipal.add(miPanelUsuarios);
         miVentanaPrincipal.setVisible(true);
-        
-        
-        
-        
-        
     }
-    
 }

@@ -5,8 +5,6 @@
  */
 package controlador;
 
-import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import vista.PanelUsuarios;
@@ -16,20 +14,21 @@ import vista.PanelUsuarios;
  * @author krypt97
  */
 public class ControladorUsuario {
-    // Atributos de clase
+    // ATRIBUTOS DE CLASE
     PanelUsuarios miPanelUsuarios;
     UsuarioDAO miUsuarioDAO;
 
-    // Enlace con vista y modelo
+    // ENLACE VISTA
     public void setPanelUsuarios(PanelUsuarios miPanelUsuarios) {
         this.miPanelUsuarios = miPanelUsuarios;
     }
 
+    // ENLACE MODELO
     public void setUsuarioDAO(UsuarioDAO miUsuarioDAO) {
         this.miUsuarioDAO = miUsuarioDAO;
     }
     
-    // Métodos de clase
+    // MÉTODOS DE CLASE
     public void registrar(Usuario miUsuario) {
         miUsuarioDAO.registrarUsuario(miUsuario);
     }
@@ -43,19 +42,6 @@ public class ControladorUsuario {
     }
     
     public void listar() {
-        ArrayList<Usuario> miArrayList = miUsuarioDAO.listarUsuarios();
-        String[] columnas = {"DNI", "APELLIDO", "NOMBRE", "USUARIO", "CONTRASEÑA", "ROL"};
-        Object[][] miData = new Object[miArrayList.size()][6];
-        for (int i = 0; i < miArrayList.size(); i++) {
-            miData[i][0] = miArrayList.get(i).getDniUsuario();
-            miData[i][1] = miArrayList.get(i).getDniUsuario();
-            miData[i][2] = miArrayList.get(i).getDniUsuario();
-            miData[i][3] = miArrayList.get(i).getDniUsuario();
-            miData[i][4] = miArrayList.get(i).getDniUsuario();
-            miData[i][5] = miArrayList.get(i).getDniUsuario();
-        }
-        DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
-        miPanelUsuarios.setTablaUsuarios(modelo);
     }
 
 }

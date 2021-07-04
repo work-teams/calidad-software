@@ -6,7 +6,6 @@
 package vista;
 
 import controlador.ControladorUsuario;
-import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 
 /**
@@ -14,8 +13,7 @@ import modelo.Usuario;
  * @author krypt97
  */
 public class PanelUsuarios extends javax.swing.JPanel {
-    ControladorUsuario miconControladorUsuario;
-    Usuario miUsuario;
+    ControladorUsuario miControladorUsuario;
 
     /**
      * Creates new form NewPanelUsuarios
@@ -468,40 +466,20 @@ public class PanelUsuarios extends javax.swing.JPanel {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        miUsuario = new Usuario();
-        
-        miUsuario.setDniUsuario(txtDni.getText());
-        miUsuario.setNombre(txtNombre.getText());
-        miUsuario.setApellido(txtApellido.getText());
-        miUsuario.setUsername(txtUsuario.getText());
-        miUsuario.setPassword(txtContrasenia.getText());
-        miUsuario.setRol((String)cboxRol.getSelectedItem());
-        
-        miconControladorUsuario.registrar(miUsuario);
-        //setTabla(miconControladorUsuario.listar());
-        
-        miUsuario = null;
+        miControladorUsuario.registrar(empaquetarDatos());
+        limpiarCampos();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        miUsuario = new Usuario();
-        
-        miUsuario.setDniUsuario(txtDni.getText());
-        miUsuario.setNombre(txtNombre.getText());
-        miUsuario.setApellido(txtApellido.getText());
-        miUsuario.setUsername(txtUsuario.getText());
-        miUsuario.setPassword(txtContrasenia.getText());
-        miUsuario.setRol((String)cboxRol.getSelectedItem());
-        
-        miconControladorUsuario.modificar(miUsuario);
-        
-        miUsuario = null;
+        miControladorUsuario.modificar(empaquetarDatos());
+        limpiarCampos();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        miconControladorUsuario.eliminar(txtDni.getText());
+        miControladorUsuario.eliminar(txtDni.getText());
+        limpiarCampos();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 
@@ -547,18 +525,30 @@ public class PanelUsuarios extends javax.swing.JPanel {
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
-    // Enlace controlador
+    // ENLACE CONTROLADOR
     public void setControlador(ControladorUsuario miControladorUsuario) {
-        this.miconControladorUsuario = miControladorUsuario;
+        this.miControladorUsuario = miControladorUsuario;
     }
 
-    // En duda de usar ... posible eliminación
-    public void setUsuario(Usuario miUsuario) {
-        this.miUsuario = miUsuario;
+    // MÉTODOS AUXILIARES
+    private Usuario empaquetarDatos() {
+        Usuario miUsuario = new Usuario();
+        miUsuario.setDniUsuario(txtDni.getText());
+        miUsuario.setNombre(txtNombre.getText());
+        miUsuario.setApellido(txtApellido.getText());
+        miUsuario.setUsername(txtUsuario.getText());
+        miUsuario.setPassword(txtContrasenia.getText());
+        miUsuario.setRol((String)cboxRol.getSelectedItem());
+        return miUsuario;
     }
     
-    // Métodos auxiliares
-    public void setTablaUsuarios(DefaultTableModel modelo) {
-        this.Table_Usuarios.setModel(modelo);
+    private void limpiarCampos() {
+        txtDni.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtUsuario.setText("");
+        txtContrasenia.setText("");
+        
+        txtDni.requestFocus();
     }
 }
