@@ -6,7 +6,6 @@
 package vista;
 
 import controlador.ControladorUsuario;
-import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 
@@ -479,7 +478,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
         miUsuario.setRol((String)cboxRol.getSelectedItem());
         
         miconControladorUsuario.registrar(miUsuario);
-        //setTabla(miconControladorUsuario.mostrarDatos());
+        //setTabla(miconControladorUsuario.listar());
         
         miUsuario = null;
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -548,31 +547,18 @@ public class PanelUsuarios extends javax.swing.JPanel {
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
+    // Enlace controlador
     public void setControlador(ControladorUsuario miControladorUsuario) {
         this.miconControladorUsuario = miControladorUsuario;
     }
 
+    // En duda de usar ... posible eliminación
     public void setUsuario(Usuario miUsuario) {
         this.miUsuario = miUsuario;
     }
     
-    public void setTabla(ArrayList<Usuario> miArrayList) {
-        miUsuario = new Usuario();
-        String[] columnas = {"ID", "NOMBRE", "APELLIDO", "USERNAME", "PASSWORD"};
-        Object[][] miData = new Object[miArrayList.size()][5];
-        
-        for (int i = 0; i < miArrayList.size(); i++) {
-            miUsuario = miArrayList.get(i);
-            miData[i][0] = miUsuario.getDniUsuario();
-            miData[i][1] = miUsuario.getNombre();
-            miData[i][2] = miUsuario.getApellido();
-            miData[i][3] = miUsuario.getUsername();
-            miData[i][4] = miUsuario.getPassword();
-        }
-        
-        DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
-        Table_Usuarios.setModel(modelo);
-        
-        miUsuario = null;
+    // Métodos auxiliares
+    public void setTablaUsuarios(DefaultTableModel modelo) {
+        this.Table_Usuarios.setModel(modelo);
     }
 }
