@@ -56,7 +56,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         txtContrasenia = new javax.swing.JTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cboxRol = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
@@ -186,7 +186,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
 
         jCheckBox1.setText("Estado");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VENDEDOR", "ADMINISTRADOR" }));
+        cboxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VENDEDOR", "ADMINISTRADOR" }));
 
         jLabel14.setBackground(new java.awt.Color(70, 106, 124));
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -224,7 +224,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtContrasenia)
                                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cboxRol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))))))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
@@ -263,7 +263,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
                 .addGap(1, 1, 1)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboxRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
 
@@ -471,15 +471,15 @@ public class PanelUsuarios extends javax.swing.JPanel {
         // TODO add your handling code here:
         miUsuario = new Usuario();
         
-        miUsuario.setDniUsuario(Integer.parseInt(txtDni.getText()));
+        miUsuario.setDniUsuario(txtDni.getText());
         miUsuario.setNombre(txtNombre.getText());
         miUsuario.setApellido(txtApellido.getText());
         miUsuario.setUsername(txtUsuario.getText());
         miUsuario.setPassword(txtContrasenia.getText());
-        miUsuario.setPrivilegios(true);
+        miUsuario.setRol((String)cboxRol.getSelectedItem());
         
         miconControladorUsuario.registrar(miUsuario);
-        setTabla(miconControladorUsuario.mostrarDatos());
+        //setTabla(miconControladorUsuario.mostrarDatos());
         
         miUsuario = null;
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -488,12 +488,12 @@ public class PanelUsuarios extends javax.swing.JPanel {
         // TODO add your handling code here:
         miUsuario = new Usuario();
         
-        miUsuario.setDniUsuario(Integer.parseInt(txtDni.getText()));
+        miUsuario.setDniUsuario(txtDni.getText());
         miUsuario.setNombre(txtNombre.getText());
         miUsuario.setApellido(txtApellido.getText());
         miUsuario.setUsername(txtUsuario.getText());
         miUsuario.setPassword(txtContrasenia.getText());
-        miUsuario.setPrivilegios(true);
+        miUsuario.setRol((String)cboxRol.getSelectedItem());
         
         miconControladorUsuario.modificar(miUsuario);
         
@@ -502,7 +502,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        miconControladorUsuario.eliminar(Integer.parseInt(txtDni.getText()));
+        miconControladorUsuario.eliminar(txtDni.getText());
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 
@@ -511,12 +511,12 @@ public class PanelUsuarios extends javax.swing.JPanel {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JComboBox<String> cboxRol;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

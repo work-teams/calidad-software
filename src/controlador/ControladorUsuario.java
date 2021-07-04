@@ -30,7 +30,7 @@ public class ControladorUsuario {
         miUsuarioDAO.registrarUsuario(miUsuario);
     }
     
-    public void eliminar(int dniUsuario) {
+    public void eliminar(String dniUsuario) {
         miUsuarioDAO.eliminarUsuario(dniUsuario);
     }
 
@@ -38,8 +38,8 @@ public class ControladorUsuario {
         miUsuarioDAO.modificarUsuario(miUsuario);
     }
     
-    public ArrayList<Usuario> mostrarDatos() {
-        return miUsuarioDAO.mostrarUsuarios();
-    }
+//    public ArrayList<Usuario> mostrarDatos() {
+//        return miUsuarioDAO.mostrarUsuarios();
+//    }
 
 }
