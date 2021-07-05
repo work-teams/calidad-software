@@ -1,6 +1,6 @@
 # BIKE-SHOP PROJECT
 
-## WorkFlow
+## Workflow
 Pasos para trabajar en un mismo repositorio con git.  
 
 1. Clona el reposotrio  

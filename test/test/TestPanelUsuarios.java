@@ -5,6 +5,8 @@
  */
 package test;
 
+import controlador.ControladorUsuario;
+import modelo.UsuarioDAO;
 import vista.PanelUsuarios;
 import vista.VentanaPrincipal;
 
@@ -19,11 +21,25 @@ public class TestPanelUsuarios {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        VentanaPrincipal vp = new VentanaPrincipal();
-        PanelUsuarios panel = new PanelUsuarios();
-        panel.setBounds(0, 180, 1446, 736);
-        vp.add(panel);
-        vp.setVisible(true);
-    }
+        VentanaPrincipal miVentanaPrincipal = new VentanaPrincipal();
 
+        // Unica instancia de los elementos a conectar
+        UsuarioDAO miUsuarioDAO = new UsuarioDAO();
+        PanelUsuarios miPanelUsuarios = new PanelUsuarios();
+        miPanelUsuarios.setTabla(miUsuarioDAO.listarUsuarios());
+        ControladorUsuario miControladorUsuario = new ControladorUsuario();
+        
+        // Conectando elementos al controlador
+        miControladorUsuario.setPanelUsuarios(miPanelUsuarios);
+        miControladorUsuario.setUsuarioDAO(miUsuarioDAO);
+        
+        // Conectando controlador a los elementos
+        miUsuarioDAO.setControlador(miControladorUsuario);
+        miPanelUsuarios.setControlador(miControladorUsuario);
+        
+        // Esto es solo una demo
+        miPanelUsuarios.setBounds(0, 180, 1446, 736);
+        miVentanaPrincipal.add(miPanelUsuarios);
+        miVentanaPrincipal.setVisible(true);
+    }
 }

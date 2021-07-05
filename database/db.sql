@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: bikeshop
+-- Host: localhost    Database: bikeshop
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -150,9 +150,11 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
   `dniUsuario` varchar(8) NOT NULL,
-  `nombre` varchar(30) DEFAULT NULL,
-  `apellido` varchar(30) DEFAULT NULL,
-  `privilegios` tinyint(1) DEFAULT NULL,
+  `apellido` varchar(30) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `rol` varchar(13) NOT NULL,
   PRIMARY KEY (`dniUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -163,7 +165,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('74854108','Alexander','Torre',1);
+INSERT INTO `usuarios` VALUES ('47519383','SUEL ARROYO','WALTER NICK','walter@unmsm.edu','12345','VENDEDOR'),('71204347','CACHIQUE FALCÓN','WILLIAMS EDUARDO','williams@unmsm.edu','12345','VENDEDOR'),('72427114','HINOSTROZA DE LA PEÑA','CRISTHIAN','cristhian@unmsm.edu','12345','VENDEDOR'),('72691164','SANTOS ROJAS','DANIEL ISRAEL','daniel@unmsm.edu','12345','VENDEDOR'),('73367034','MARIN EVANGELISTA','JORGE LUIS','jorge@bikeshop.com','12345','ADMINISTRADOR'),('74854108','TORRE ARTEAGA','ALEXANDER','alex@unmsm.edu','12345','VENDEDOR');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,4 +206,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-30 16:54:42
+-- Dump completed on 2021-07-04 13:56:26
