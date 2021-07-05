@@ -16,9 +16,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class UsuarioDAO extends ConexionDB{
-    // Atributos de clase
+    // ATRIBUTOS DE CLASE
     ControladorUsuario miControladorUsuario;
     private Connection miConnection;
     private PreparedStatement miPreparedStatement;
@@ -47,8 +48,10 @@ public class UsuarioDAO extends ConexionDB{
             miPreparedStatement.setString(4, miUsuario.getUsername());
             miPreparedStatement.setString(5, miUsuario.getPassword());
             miPreparedStatement.setString(6, miUsuario.getRol());
-            miPreparedStatement.executeUpdate();
-        } catch (SQLException ex) {System.out.println(ex);
+            // Mensaje
+            if (miPreparedStatement.executeUpdate() != 0) {JOptionPane.showMessageDialog(null, "Usuario registrado con exito.");}
+            // Fin mensaje
+        } catch (SQLException ex) {System.out.println(ex);JOptionPane.showMessageDialog(null, "Usuario ya registrado.");
         } finally {
             try {
                 miConnection.close();
@@ -67,6 +70,9 @@ public class UsuarioDAO extends ConexionDB{
             if (miResultSet.next()) {
                 miUsuario = empaquetarDatosBuscarUsuario(miResultSet);
             }
+            // Mensaje
+            else {JOptionPane.showMessageDialog(null, "El dni ingresado no coincide con ningún usuario registrado.");}
+            // Fin mensaje
         } catch (SQLException ex) {System.out.println(ex);
         } finally {
             try {
@@ -87,7 +93,10 @@ public class UsuarioDAO extends ConexionDB{
             miPreparedStatement.setString(4, miUsuario.getPassword());
             miPreparedStatement.setString(5, miUsuario.getRol());
             miPreparedStatement.setString(6, miUsuario.getDniUsuario());
-            miPreparedStatement.executeUpdate();
+            // Mensaje
+            if (miPreparedStatement.executeUpdate() != 0) {JOptionPane.showMessageDialog(null, "Usuario eliminado con exito.");}
+            else {JOptionPane.showMessageDialog(null, "El dni ingresado no coincide con ningún usuario registrado.");}
+            // Fin mensaje
         } catch (SQLException ex) {System.out.println(ex);
         } finally {
             try {
@@ -102,7 +111,10 @@ public class UsuarioDAO extends ConexionDB{
             miConnection = getConexion();
             miPreparedStatement = miConnection.prepareStatement(DELETE);
             miPreparedStatement.setString(1, dniUsuario);
-            miPreparedStatement.executeUpdate();
+            // Mensaje
+            if (miPreparedStatement.executeUpdate() != 0) {JOptionPane.showMessageDialog(null, "Usuario eliminado con exito.");}
+            else {JOptionPane.showMessageDialog(null, "El dni ingresado no coincide con ningún usuario registrado.");}
+            // Fin mensaje
         } catch (SQLException ex) {System.out.println(ex);
         } finally {
             try {

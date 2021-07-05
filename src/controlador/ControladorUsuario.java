@@ -44,6 +44,12 @@ public class ControladorUsuario {
         miPanelUsuarios.limpiarCampos();
     }
     
+    public void buscar(String dniUsuario) {
+        if (miUsuarioDAO.buscarUsuario(dniUsuario) != null) {
+            miPanelUsuarios.desempaquetarDatos(miUsuarioDAO.buscarUsuario(dniUsuario));
+        }
+    }
+    
     public void actualizarTabla() {
         miPanelUsuarios.setTabla(miUsuarioDAO.listarUsuarios());
     }
