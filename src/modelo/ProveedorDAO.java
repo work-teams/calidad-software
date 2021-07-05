@@ -45,7 +45,7 @@ public class ProveedorDAO extends ConexionDB{
             
         } catch(SQLException ex){
             System.out.println(ex.getMessage());
-            JOptionPane.showMessageDialog(null, "No se Registro el proveedor");
+            JOptionPane.showMessageDialog(null, "Este id ya esta siendo usado");
         } finally{
                 try {
                     miConnection.close();
@@ -75,6 +75,7 @@ public class ProveedorDAO extends ConexionDB{
                 p = convertir(rs);
             }else{
                 System.out.println("No se ha encontrando ese registro");
+                JOptionPane.showMessageDialog(null, "No se encontro el proveedor");
             }
         } catch(SQLException ex){
             System.out.println(ex.getMessage());
@@ -123,6 +124,7 @@ public class ProveedorDAO extends ConexionDB{
             stat.setInt(4, p.getIdProveedor());
             if(stat.executeUpdate()==0){
                 System.out.println("Puede que el proveedor no haya sido modificado");
+                JOptionPane.showMessageDialog(null, "No se encontro el proveedor");
             }
         } catch(SQLException ex){
             System.out.println(ex.getMessage());
@@ -144,6 +146,7 @@ public class ProveedorDAO extends ConexionDB{
             stat.setInt(1, idProveedor);
             if(stat.executeUpdate()==0){
                 System.out.println("Puede que el proveedor no haya sido eliminado");
+                JOptionPane.showMessageDialog(null, "No se encontro el proveedor");
             }
         } catch(SQLException ex){
             System.out.println(ex.getMessage());

@@ -32,7 +32,9 @@ public class ControladorProveedor {
     }
     
     public void buscar(int idProveedor){
-        miProveedorDAO.buscarProveedor(idProveedor);
+        if (miProveedorDAO.buscarProveedor(idProveedor) != null) {
+            miPanelProveedores.escribirDatos(miProveedorDAO.buscarProveedor(idProveedor));
+        }
     }
     
     public void modificar(Proveedor miProveedor){
