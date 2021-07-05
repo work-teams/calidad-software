@@ -7,7 +7,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOError;
+import java.awt.event.KeyAdapter;
 import java.util.ArrayList;
 import modelo.Categoria;
 import modelo.CategoriaDAO;
@@ -20,9 +20,38 @@ import vista.PanelProducto;
  * @author AlexTprog
  */
 public class ControladorProducto {
-
-    private PanelProducto panel;
-
+    
+    PanelProducto panel;
+    ProductoDAO DAO;
+    
+    public void setPanelProducto(PanelProducto panelProd) {
+        this.panel = panelProd;
+    }
+    
+    public void SetProductoDAO(ProductoDAO DAO) {
+        this.DAO = DAO;
+    }
+    
+    public void registrar(Producto p) {
+        DAO.registrarProducto(p);
+    }
+    
+    public void buscar(int idProducto) {
+        DAO.buscarProducto(idProducto);
+    }
+    
+    public ArrayList<Producto> mostrarProductos() {
+        return DAO.mostrarProductos();
+    }
+    
+    public void modificar(Producto p) {
+        DAO.modificarProducto(p);
+    }
+    
+    public void eliminar(int idProducto) {
+        DAO.eliminarProducto(idProducto);
+    }
+    /*
     public ControladorProducto(PanelProducto pan) {
         this.panel = pan;
 
@@ -33,6 +62,7 @@ public class ControladorProducto {
             public void actionPerformed(ActionEvent e) {
 
                 try {
+
                     int idP = Integer.parseInt(panel.txtIdProducto.getText());
                     String nombre = panel.txtNombre.getText();
                     int cantidad = Integer.parseInt(panel.txtCantidad.getText());
@@ -42,13 +72,14 @@ public class ControladorProducto {
                     int idCat = panel.cbxCategoria.getSelectedIndex() + 1;
                     ProductoDAO.registrarProducto(new Producto(idP, nombre, cantidad, nombreCat, precio, idProv, idCat));
                     rellenarTabla();
+                    limpiar();
                     panel.lblAlerta.setText("Insertado con exito");
+
                 } catch (NumberFormatException error) {
+
                     System.out.println("CAMPOS INCOMPLETOS");
                     panel.lblAlerta.setText("Complete todos los campos");
-                    limpiar();
                 }
-
             }
         });
 
@@ -59,6 +90,20 @@ public class ControladorProducto {
             }
         });
 
+        this.panel.tblProductos.addKeyListener(new KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                int posFila = panel.tblProductos.getSelectedRow();
+                int seleccion = Integer.parseInt((String) panel.tblProductos.getValueAt(posFila, 0));
+                //Busca 
+                Producto prod = ProductoDAO.buscarProducto(seleccion);
+                panel.txtIdProducto.setText(String.valueOf(prod.getIdProducto()));
+                panel.txtNombre.setText(prod.getNombre());
+                panel.txtCantidad.setText(String.valueOf(prod.getCantidad()));
+                panel.cbxCategoria.setSelectedItem(prod.getCategoria());
+                panel.txtPrecio.setText(Float.toString(prod.getPrecio()));
+                panel.txtProveedor.setText(String.valueOf(prod.getIdProveedor()));
+            }
+        });
     }
 
     void rellenarTabla() {
@@ -107,5 +152,5 @@ public class ControladorProducto {
         panel.txtPrecio.setText("");
         panel.txtProveedor.setText("");
     }
-
+     */
 }

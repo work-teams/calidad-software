@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import controlador.ControladorProducto;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
  */
 public class ProductoDAO {
 
+    private static ControladorProducto controlador;
     private static PreparedStatement ps;
     private static ResultSet r;
 
@@ -154,13 +156,20 @@ public class ProductoDAO {
 
             int result = ps.executeUpdate();
 
-            if (result > 0) {
+            if (result == 0) {
+                System.out.println("PRODUCTO NO ENCONTRADO");
+            }
+            else{
                 System.out.println("PRODUCTO ELIMINADO");
             }
 
             con.close();
         } catch (SQLException e) {
-            System.err.println(e);
+            System.err.println(e);            
         }
+    }
+
+    public void setControladorProducto(ControladorProducto control) {
+        this.controlador = control;
     }
 }
