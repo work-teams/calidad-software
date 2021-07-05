@@ -31,7 +31,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        ButtonUsuario = new javax.swing.JButton();
+        ButtonUsuario1 = new javax.swing.JButton();
+        btnProductos = new javax.swing.JButton();
+        btnProveedores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -54,16 +56,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1446, 106);
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 198, 25));
         jPanel2.setLayout(null);
 
-        ButtonUsuario.setBackground(new java.awt.Color(102, 102, 102));
-        ButtonUsuario.setForeground(new java.awt.Color(102, 102, 102));
-        ButtonUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/person.png"))); // NOI18N
-        ButtonUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
-        ButtonUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.add(ButtonUsuario);
-        ButtonUsuario.setBounds(45, 14, 109, 46);
+        ButtonUsuario1.setBackground(new java.awt.Color(102, 102, 102));
+        ButtonUsuario1.setForeground(new java.awt.Color(102, 102, 102));
+        ButtonUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/person.png"))); // NOI18N
+        ButtonUsuario1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
+        ButtonUsuario1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(ButtonUsuario1);
+        ButtonUsuario1.setBounds(50, 10, 109, 46);
+
+        btnProductos.setBackground(new java.awt.Color(102, 102, 102));
+        btnProductos.setForeground(new java.awt.Color(102, 102, 102));
+        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/productos.png"))); // NOI18N
+        btnProductos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
+        btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(btnProductos);
+        btnProductos.setBounds(210, 10, 109, 46);
+
+        btnProveedores.setBackground(new java.awt.Color(102, 102, 102));
+        btnProveedores.setForeground(new java.awt.Color(102, 102, 102));
+        btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/proveedor32pbnx.png"))); // NOI18N
+        btnProveedores.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
+        btnProveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(btnProveedores);
+        btnProveedores.setBounds(400, 10, 109, 46);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 106, 1446, 74);
@@ -73,7 +91,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonUsuario;
+    private javax.swing.JButton ButtonUsuario1;
+    private javax.swing.JButton btnProductos;
+    private javax.swing.JButton btnProveedores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
