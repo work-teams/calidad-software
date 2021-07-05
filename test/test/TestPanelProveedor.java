@@ -6,7 +6,6 @@
 package test;
 
 import controlador.ControladorProveedor;
-import modelo.Proveedor;
 import modelo.ProveedorDAO;
 import vista.PanelProveedores;
 import vista.VentanaPrincipal;
@@ -21,9 +20,9 @@ public class TestPanelProveedor {
         
         VentanaPrincipal miVentanaPrincipal = new VentanaPrincipal();
         
-        Proveedor miProveedor = null;
         ProveedorDAO miProveedorDAO = new ProveedorDAO();
         PanelProveedores miPanelProveedores = new PanelProveedores();
+        miPanelProveedores.setTabla(miProveedorDAO.mostrarProveedores());
         ControladorProveedor miControladorProveedor = new ControladorProveedor();
         
         miControladorProveedor.setPanelProveedores(miPanelProveedores);
@@ -31,9 +30,9 @@ public class TestPanelProveedor {
         
         miProveedorDAO.setControladorProveedor(miControladorProveedor);
         miPanelProveedores.setControlador(miControladorProveedor);
-        miPanelProveedores.setProveedor(miProveedor);
         
-        miPanelProveedores.setBounds(0, 180, 1446, 736);
+        miVentanaPrincipal.setSize(1366, 700);
+        miPanelProveedores.setBounds(0, 0, 1366, 768);
         miVentanaPrincipal.add(miPanelProveedores);
         miVentanaPrincipal.setVisible(true);
     }

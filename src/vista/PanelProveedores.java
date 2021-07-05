@@ -21,8 +21,8 @@ public class PanelProveedores extends javax.swing.JPanel {
      */
     
     ControladorProveedor miControladorProveedor;
-    Proveedor miProveedor;
-    
+    private DefaultTableModel miDefaultTableModel;
+
     public PanelProveedores() {
         initComponents();
     }
@@ -450,33 +450,20 @@ public class PanelProveedores extends javax.swing.JPanel {
 
     private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
         // TODO add your handling code here:
-        miProveedor = new Proveedor();
-        miProveedor.setIdProveedor(Integer.parseInt(txtIdProveedor.getText()));
-        miProveedor.setNombre(txtNombre.getText());
-        miProveedor.setDireccion(txtDireccion.getText());
-        miProveedor.setTelefono(txtTelefono.getText());
-        
-        miControladorProveedor.registrar(miProveedor);
-        setTabla(miControladorProveedor.mostrarProveedores());
-        miProveedor = null;
+        miControladorProveedor.registrar(datosProveedor());
+        miControladorProveedor.actualizarTabla();
     }//GEN-LAST:event_BtnAgregarActionPerformed
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
         // TODO add your handling code here:
         miControladorProveedor.eliminar(Integer.parseInt(txtIdProveedor.getText()));
+        miControladorProveedor.actualizarTabla();
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
     private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
-        // TODO add your handling code here:
-        miProveedor = new Proveedor();
-        miProveedor.setIdProveedor(Integer.parseInt(txtIdProveedor.getText()));
-        miProveedor.setNombre(txtNombre.getText());
-        miProveedor.setDireccion(txtDireccion.getText());
-        miProveedor.setTelefono(txtTelefono.getText());
-        
-        miControladorProveedor.modificar(miProveedor);
-        setTabla(miControladorProveedor.mostrarProveedores());
-        miProveedor = null;
+        // TODO add your handling code here:     
+        miControladorProveedor.modificar(datosProveedor());
+        miControladorProveedor.actualizarTabla();
     }//GEN-LAST:event_BtnModificarActionPerformed
 
 
@@ -520,26 +507,36 @@ public class PanelProveedores extends javax.swing.JPanel {
     public void setControlador(ControladorProveedor miControladorProveedor) {
         this.miControladorProveedor = miControladorProveedor;
     }
-
-    public void setProveedor(Proveedor miProveedor) {
-        this.miProveedor = miProveedor;
+    
+    private Proveedor datosProveedor(){
+        Proveedor miProveedor = new Proveedor();
+        miProveedor.setIdProveedor(Integer.parseInt(txtIdProveedor.getText()));
+        miProveedor.setNombre(txtNombre.getText());
+        miProveedor.setDireccion(txtDireccion.getText());
+        miProveedor.setTelefono(txtTelefono.getText());
+        return miProveedor;
     }
+
     public void setTabla(ArrayList<Proveedor> miArrayList) {
-        miProveedor = new Proveedor();
         String[] columnas = {"ID", "NOMBRE", "DIRECCION", "TELEFONO"};
         Object[][] miData = new Object[miArrayList.size()][4];
         
         for (int i = 0; i < miArrayList.size(); i++) {
-            miProveedor = miArrayList.get(i);
-            miData[i][0] = miProveedor.getIdProveedor();
-            miData[i][1] = miProveedor.getNombre();
-            miData[i][2] = miProveedor.getDireccion();
-            miData[i][3] = miProveedor.getTelefono();
+            miData[i][0] = miArrayList.get(i).getIdProveedor();
+            miData[i][1] = miArrayList.get(i).getNombre();
+            miData[i][2] = miArrayList.get(i).getDireccion();
+            miData[i][3] = miArrayList.get(i).getTelefono();
         }
         
-        DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
-        Table_Proveedores.setModel(modelo);
-        
-        miProveedor = null;
+        miDefaultTableModel = new DefaultTableModel(miData, columnas);
+        Table_Proveedores.setModel(miDefaultTableModel);
+    }
+    
+    public void limpiarCampos(){
+        txtIdProveedor.setText("");
+        txtNombre.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtIdProveedor.requestFocus();
     }
 }

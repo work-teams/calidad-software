@@ -28,21 +28,24 @@ public class ControladorProveedor {
     
     public void registrar(Proveedor miProveedor){
         miProveedorDAO.registrarProveedor(miProveedor);
+        miPanelProveedores.limpiarCampos();
     }
     
     public void buscar(int idProveedor){
         miProveedorDAO.buscarProveedor(idProveedor);
     }
     
-    public ArrayList<Proveedor> mostrarProveedores(){
-        return miProveedorDAO.mostrarProveedores();
-    }
-    
     public void modificar(Proveedor miProveedor){
         miProveedorDAO.modificarProveedor(miProveedor);
+        miPanelProveedores.limpiarCampos();
     }
     
     public void eliminar(int idProveedor){
         miProveedorDAO.eliminarProveedor(idProveedor);
+        miPanelProveedores.limpiarCampos();
+    }
+    
+    public void actualizarTabla(){
+        miPanelProveedores.setTabla(miProveedorDAO.mostrarProveedores());
     }
 }
