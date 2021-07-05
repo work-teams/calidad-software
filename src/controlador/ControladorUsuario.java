@@ -31,17 +31,21 @@ public class ControladorUsuario {
     // MÉTODOS DE CLASE
     public void registrar(Usuario miUsuario) {
         miUsuarioDAO.registrarUsuario(miUsuario);
+        miPanelUsuarios.limpiarCampos();
     }
     
     public void eliminar(String dniUsuario) {
         miUsuarioDAO.eliminarUsuario(dniUsuario);
+        miPanelUsuarios.limpiarCampos();
     }
 
     public void modificar(Usuario miUsuario) {
         miUsuarioDAO.modificarUsuario(miUsuario);
+        miPanelUsuarios.limpiarCampos();
     }
     
-    public void listar() {
+    public void actualizarTabla() {
+        miPanelUsuarios.setTabla(miUsuarioDAO.listarUsuarios());
     }
 
 }

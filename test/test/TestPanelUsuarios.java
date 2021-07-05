@@ -6,7 +6,6 @@
 package test;
 
 import controlador.ControladorUsuario;
-import modelo.Usuario;
 import modelo.UsuarioDAO;
 import vista.PanelUsuarios;
 import vista.VentanaPrincipal;
@@ -27,6 +26,7 @@ public class TestPanelUsuarios {
         // Unica instancia de los elementos a conectar
         UsuarioDAO miUsuarioDAO = new UsuarioDAO();
         PanelUsuarios miPanelUsuarios = new PanelUsuarios();
+        miPanelUsuarios.setTabla(miUsuarioDAO.listarUsuarios());
         ControladorUsuario miControladorUsuario = new ControladorUsuario();
         
         // Conectando elementos al controlador
