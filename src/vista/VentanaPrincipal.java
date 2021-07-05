@@ -5,11 +5,14 @@
  */
 package vista;
 
+import controlador.ControladorGeneral;
+
 /**
  *
  * @author krypt97
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
+    ControladorGeneral miControladorGeneral;
 
     /**
      * Creates new form VentanaPrincipal
@@ -31,7 +34,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        ButtonUsuario1 = new javax.swing.JButton();
+        btnUsuarios = new javax.swing.JButton();
         btnProductos = new javax.swing.JButton();
         btnProveedores = new javax.swing.JButton();
 
@@ -55,23 +58,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1446, 106);
+        this.setVisible(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 198, 25));
         jPanel2.setLayout(null);
 
-        ButtonUsuario1.setBackground(new java.awt.Color(102, 102, 102));
-        ButtonUsuario1.setForeground(new java.awt.Color(102, 102, 102));
-        ButtonUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/person.png"))); // NOI18N
-        ButtonUsuario1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
-        ButtonUsuario1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.add(ButtonUsuario1);
-        ButtonUsuario1.setBounds(50, 10, 109, 46);
+        btnUsuarios.setBackground(new java.awt.Color(102, 102, 102));
+        btnUsuarios.setForeground(new java.awt.Color(102, 102, 102));
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/person.png"))); // NOI18N
+        btnUsuarios.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
+        btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnUsuarios);
+        btnUsuarios.setBounds(50, 10, 109, 46);
 
         btnProductos.setBackground(new java.awt.Color(102, 102, 102));
         btnProductos.setForeground(new java.awt.Color(102, 102, 102));
         btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/productos.png"))); // NOI18N
         btnProductos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductosActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnProductos);
         btnProductos.setBounds(210, 10, 109, 46);
 
@@ -80,6 +94,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/proveedor32pbnx.png"))); // NOI18N
         btnProveedores.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         btnProveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProveedoresActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnProveedores);
         btnProveedores.setBounds(400, 10, 109, 46);
 
@@ -90,13 +109,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        // TODO add your handling code here:
+        miControladorGeneral.cargarPanelUsuarios();
+    }//GEN-LAST:event_btnUsuariosActionPerformed
+
+    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
+        // TODO add your handling code here:
+        miControladorGeneral.cargarPanelProductos();
+    }//GEN-LAST:event_btnProductosActionPerformed
+
+    private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
+        // TODO add your handling code here:
+        miControladorGeneral.cargarPanelProveedores();
+    }//GEN-LAST:event_btnProveedoresActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonUsuario1;
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnProveedores;
+    private javax.swing.JButton btnUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+    public void setControladorGeneral(ControladorGeneral miControladorGeneral) {
+        this.miControladorGeneral = miControladorGeneral;
+    }
 }
