@@ -26,7 +26,7 @@ public class ProductoDAO {
         //INSERT INTO PRODUCTO () VALUES (?)        
         try {
             Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("INSERT INTO PRODUCTO "
+            ps = con.prepareStatement("INSERT INTO producto "
                     + "(idProducto,nombre,cantidad,categoria,precio,idProveedor,idCategoria) "
                     + "VALUES (?,?,?,?,?,?,?)");
 
@@ -57,7 +57,7 @@ public class ProductoDAO {
 
         try {
             Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("SELECT * FROM PRODUCTO "
+            ps = con.prepareStatement("SELECT * FROM producto "
                     + "WHERE idProducto=?");
 
             ps.setInt(1, id);
@@ -90,7 +90,7 @@ public class ProductoDAO {
         ArrayList<Producto> p = new ArrayList<Producto>();
         try {
             Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("SELECT * FROM bikeshop.PRODUCTO ");
+            ps = con.prepareStatement("SELECT * FROM bikeshop.producto ");
 
             r = ps.executeQuery();
             while (r.next()) {
@@ -119,7 +119,7 @@ public class ProductoDAO {
         //UPDATE PRODUCTO SET WHERE ID=?
         try {
             Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("UPDATE PRODUCTO SET "
+            ps = con.prepareStatement("UPDATE producto SET "
                     + "nombre=?, cantidad=?, categoria=?, precio=?, idProveedor=?, idCategoria=? "
                     + "WHERE idProducto=?");
 
@@ -149,7 +149,7 @@ public class ProductoDAO {
         //DELETE FROM PRODUCTO WHERE ID=?
         try {
             Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("DELETE FROM PRODUCTO "
+            ps = con.prepareStatement("DELETE FROM producto "
                     + "WHERE idProducto=?");
 
             ps.setInt(1, id);

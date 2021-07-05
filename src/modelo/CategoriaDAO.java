@@ -24,7 +24,7 @@ public class CategoriaDAO {
         //INSERT INTO CATEGORIA () VALUES (?)        
         try {
             Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("INSERT INTO CATEGORIA "
+            ps = con.prepareStatement("INSERT INTO categoria "
                     + "(idCategoria,nombreCategoria) "
                     + "VALUES (?,?)");
 
@@ -48,7 +48,7 @@ public class CategoriaDAO {
 
         try {
             Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("SELECT * FROM CATEGORIA "
+            ps = con.prepareStatement("SELECT * FROM categoria "
                     + "WHERE idCategoria=?");
 
             ps.setInt(1, id);
@@ -76,7 +76,7 @@ public class CategoriaDAO {
         ArrayList<Categoria> c = new ArrayList<Categoria>();
         try {
             Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("SELECT * FROM bikeshop.CATEGORIA ");
+            ps = con.prepareStatement("SELECT * FROM bikeshop.categoria ");
 
             r = ps.executeQuery();
             while (r.next()) {
@@ -98,7 +98,7 @@ public class CategoriaDAO {
         //UPDATE PRODUCTO SET WHERE ID=?
         try {
             Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("UPDATE CATEGORIA SET "
+            ps = con.prepareStatement("UPDATE categoria SET "
                     + "nombreCategoria=? "
                     + "WHERE idCategoria=?");
 
@@ -121,7 +121,7 @@ public class CategoriaDAO {
         //DELETE FROM CATEGORIA WHERE ID=?
         try {
             Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("DELETE FROM CATEGORIA "
+            ps = con.prepareStatement("DELETE FROM categoria "
                     + "WHERE idCategoria=?");
 
             ps.setInt(1, id);
