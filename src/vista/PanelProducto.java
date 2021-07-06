@@ -40,8 +40,6 @@ public class PanelProducto extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtBuscar = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         tbpRegistro = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
@@ -63,6 +61,7 @@ public class PanelProducto extends javax.swing.JPanel {
         btnAgregarProd = new javax.swing.JButton();
         btnBorrarProd = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         tbpListaProd = new javax.swing.JTabbedPane();
         jPanel11 = new javax.swing.JPanel();
@@ -92,12 +91,6 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(70, 106, 124));
         jLabel7.setText("Productos");
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(70, 106, 124));
-        jLabel8.setText("Buscar");
-
-        txtBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -105,20 +98,13 @@ public class PanelProducto extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel7)
-                .addGap(418, 418, 418)
-                .addComponent(jLabel8)
-                .addGap(40, 40, 40)
-                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel7)
                 .addGap(25, 25, 25))
         );
 
@@ -133,11 +119,6 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel9.setText("ID");
 
         txtIdProducto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        txtIdProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdProductoActionPerformed(evt);
-            }
-        });
 
         jLabel10.setBackground(new java.awt.Color(70, 106, 124));
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -257,8 +238,8 @@ public class PanelProducto extends javax.swing.JPanel {
         tbpRegistro.addTab("Registro de Productos", jPanel7);
 
         btnAgregarProd.setBackground(new java.awt.Color(102, 102, 102));
-        btnAgregarProd.setForeground(new java.awt.Color(102, 102, 102));
-        btnAgregarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Agregar.png"))); // NOI18N
+        btnAgregarProd.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarProd.setText("Agregar");
         btnAgregarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         btnAgregarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAgregarProd.addActionListener(new java.awt.event.ActionListener() {
@@ -268,8 +249,8 @@ public class PanelProducto extends javax.swing.JPanel {
         });
 
         btnBorrarProd.setBackground(new java.awt.Color(102, 102, 102));
-        btnBorrarProd.setForeground(new java.awt.Color(102, 102, 102));
-        btnBorrarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Cancelar.png"))); // NOI18N
+        btnBorrarProd.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrarProd.setText("Eliminar");
         btnBorrarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         btnBorrarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBorrarProd.addActionListener(new java.awt.event.ActionListener() {
@@ -279,12 +260,22 @@ public class PanelProducto extends javax.swing.JPanel {
         });
 
         btnModificar.setBackground(new java.awt.Color(102, 102, 102));
-        btnModificar.setForeground(new java.awt.Color(102, 102, 102));
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Right-12.png"))); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setText("Modificar");
         btnModificar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setBackground(new java.awt.Color(102, 102, 102));
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("Buscar");
+        btnBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -296,14 +287,18 @@ public class PanelProducto extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(tbpRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(btnAgregarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
+                        .addGap(29, 29, 29)
                         .addComponent(btnBorrarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tbpRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,10 +306,11 @@ public class PanelProducto extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(tbpRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnAgregarProd, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                    .addComponent(btnBorrarProd, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(btnAgregarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBorrarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -496,10 +492,6 @@ public class PanelProducto extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIdProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdProductoActionPerformed
-
     private void btnAgregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProdActionPerformed
         try {
             int idP = Integer.parseInt(txtIdProducto.getText());
@@ -515,29 +507,43 @@ public class PanelProducto extends javax.swing.JPanel {
             setTablaProductos(conProd.mostrarProductos());
         } catch (NumberFormatException error) {
             System.out.println("CAMPOS INCOMPLETOS");
+            lblAlerta.setForeground(new java.awt.Color(252, 3, 3));
             lblAlerta.setText("Complete todos los campos");
-            lblAlerta.setBackground(new java.awt.Color(252, 3, 3));
+            
         }
     }//GEN-LAST:event_btnAgregarProdActionPerformed
 
     private void btnBorrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProdActionPerformed
-        conProd.eliminar(Integer.parseInt(txtIdProducto.getText()));
-        setTablaProductos(conProd.mostrarProductos());
+        try {
+            conProd.eliminar(Integer.parseInt(txtIdProducto.getText()));
+            setTablaProductos(conProd.mostrarProductos());
+            limpiar();
+        } catch (NullPointerException|NumberFormatException ex) {
+            System.out.println("ERROR");
+            limpiar();
+        }
+
     }//GEN-LAST:event_btnBorrarProdActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
+        try {
+            int idP = Integer.parseInt(txtIdProducto.getText());
+            String nombre = txtNombre.getText();
+            int cantidad = Integer.parseInt(txtCantidad.getText());
+            String nombreCat = cbxCategoria.getSelectedItem().toString();
+            float precio = Float.parseFloat(txtPrecio.getText());
+            int idProv = Integer.parseInt(txtProveedor.getText());
+            int idCat = cbxCategoria.getSelectedIndex() + 1;
 
-        int idP = Integer.parseInt(txtIdProducto.getText());
-        String nombre = txtNombre.getText();
-        int cantidad = Integer.parseInt(txtCantidad.getText());
-        String nombreCat = cbxCategoria.getSelectedItem().toString();
-        float precio = Float.parseFloat(txtPrecio.getText());
-        int idProv = Integer.parseInt(txtProveedor.getText());
-        int idCat = cbxCategoria.getSelectedIndex() + 1;
+            conProd.modificar(new Producto(idP, nombre, cantidad, nombreCat, precio, idProv, idCat));
+            setTablaProductos(conProd.mostrarProductos());
+            limpiar();
+        } catch (NumberFormatException ex) {
+            System.out.println("ERROR EN CAMPOS");
+            limpiar();
+        }
 
-        conProd.modificar(new Producto(idP, nombre, cantidad, nombreCat, precio, idProv, idCat));
-        setTablaProductos(conProd.mostrarProductos());
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnAgregarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCatActionPerformed
@@ -548,13 +554,33 @@ public class PanelProducto extends javax.swing.JPanel {
         CategoriaDAO.registrarCategoria(new Categoria(index, nombre.toUpperCase()));
         colocarCategorias(CategoriaDAO.mostrarCategorias());
         setTablaCategoria(CategoriaDAO.mostrarCategorias());
+        limpiar();
     }//GEN-LAST:event_btnAgregarCatActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        try {
+            int idProd = Integer.parseInt(txtIdProducto.getText());
+            Producto p = conProd.buscar(idProd);
+            txtIdProducto.setText(Integer.toString(p.getIdProducto()));
+            txtNombre.setText(p.getNombre());
+            txtCantidad.setText(Integer.toString(p.getCantidad()));
+            cbxCategoria.setSelectedIndex(p.getIdCategoria() - 1);
+            txtPrecio.setText(Float.toString(p.getPrecio()));
+            txtProveedor.setText(Integer.toString(p.getIdProveedor()));
+        } catch (NullPointerException | NumberFormatException ex) {
+            limpiar();
+            System.out.println("ERROR EN CAMPOS");
+        }
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAgregarCat;
     public javax.swing.JButton btnAgregarProd;
     public javax.swing.JButton btnBorrarProd;
+    public javax.swing.JButton btnBuscar;
     public javax.swing.JButton btnModificar;
     public javax.swing.JComboBox<String> cbxCategoria;
     public javax.swing.JButton jButton3;
@@ -569,7 +595,6 @@ public class PanelProducto extends javax.swing.JPanel {
     public javax.swing.JLabel jLabel16;
     public javax.swing.JLabel jLabel17;
     public javax.swing.JLabel jLabel7;
-    public javax.swing.JLabel jLabel8;
     public javax.swing.JLabel jLabel9;
     public javax.swing.JPanel jPanel10;
     public javax.swing.JPanel jPanel11;
@@ -587,7 +612,6 @@ public class PanelProducto extends javax.swing.JPanel {
     public javax.swing.JTable tblProductos;
     public javax.swing.JTabbedPane tbpListaProd;
     public javax.swing.JTabbedPane tbpRegistro;
-    public javax.swing.JTextField txtBuscar;
     public javax.swing.JTextField txtCantidad;
     public javax.swing.JTextField txtIdProducto;
     public javax.swing.JTextField txtNombre;

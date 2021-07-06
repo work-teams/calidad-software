@@ -20,34 +20,34 @@ import vista.PanelProducto;
  * @author AlexTprog
  */
 public class ControladorProducto {
-    
+
     PanelProducto panel;
     ProductoDAO DAO;
-    
+
     public void setPanelProducto(PanelProducto panelProd) {
         this.panel = panelProd;
     }
-    
+
     public void SetProductoDAO(ProductoDAO DAO) {
         this.DAO = DAO;
     }
-    
+
     public void registrar(Producto p) {
         DAO.registrarProducto(p);
     }
-    
-    public void buscar(int idProducto) {
-        DAO.buscarProducto(idProducto);
+
+    public Producto buscar(int idProducto) {
+        return DAO.buscarProducto(idProducto);
     }
-    
+
     public ArrayList<Producto> mostrarProductos() {
         return DAO.mostrarProductos();
     }
-    
+
     public void modificar(Producto p) {
         DAO.modificarProducto(p);
     }
-    
+
     public void eliminar(int idProducto) {
         DAO.eliminarProducto(idProducto);
     }
