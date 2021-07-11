@@ -31,55 +31,52 @@ public class BikeShop {
         // ÚNICA INSTANCIA DE LOS ELEMENTOS A CONECTAR
         VentanaPrincipal miVentanaPrincipal = new VentanaPrincipal();
         ControladorGeneral miControladorGeneral = new ControladorGeneral();
-        
+
         UsuarioDAO miUsuarioDAO = new UsuarioDAO();
         PanelUsuarios miPanelUsuarios = new PanelUsuarios();
         ControladorUsuario miControladorUsuario = new ControladorUsuario();
-        
+
         PanelProducto MiPanelProducto = new PanelProducto();
         ProductoDAO miProductoDAO = new ProductoDAO();
         ControladorProducto miControladorProducto = new ControladorProducto();
-        
+
         ProveedorDAO miProveedorDAO = new ProveedorDAO();
         PanelProveedores miPanelProveedores = new PanelProveedores();
         ControladorProveedor miControladorProveedor = new ControladorProveedor();
-        
-        
+
         // CONECTANDO CONTROLADOR A VISTAS Y/O MODELOS
         miControladorGeneral.setVentanaPrincipal(miVentanaPrincipal);
         miControladorGeneral.setPanelUsuarios(miPanelUsuarios);
         miControladorGeneral.setPanelProveedores(miPanelProveedores);
         miControladorGeneral.setPanelProducto(MiPanelProducto);
-        
+
         miControladorUsuario.setPanelUsuarios(miPanelUsuarios);
         miControladorUsuario.setUsuarioDAO(miUsuarioDAO);
-        
+
         miControladorProveedor.setPanelProveedores(miPanelProveedores);
         miControladorProveedor.setProveedorDAO(miProveedorDAO);
-        
+
         miControladorProducto.setPanelProducto(MiPanelProducto);
         miControladorProducto.SetProductoDAO(miProductoDAO);
-        
-        
+
         // CONECTANDO VISTAS Y MODELOS AL CONTROLADOR
         miVentanaPrincipal.setControladorGeneral(miControladorGeneral);
-        
+
         miUsuarioDAO.setControlador(miControladorUsuario);
         miPanelUsuarios.setControlador(miControladorUsuario);
 
         miProveedorDAO.setControladorProveedor(miControladorProveedor);
         miPanelProveedores.setControlador(miControladorProveedor);
-        
+
         miProductoDAO.setControladorProducto(miControladorProducto);
         MiPanelProducto.setControlador(miControladorProducto);
-        
-        
+
         // SETEANDO TABLAS
         miPanelUsuarios.setTabla(miUsuarioDAO.listarUsuarios());
-        
+
         miPanelProveedores.setTabla(miProveedorDAO.mostrarProveedores());
-        
-        MiPanelProducto.setTablaProductos(miControladorProducto.mostrarProductos());        
+
+        MiPanelProducto.setTablaProductos(miControladorProducto.mostrarProductos());
         MiPanelProducto.setTablaCategoria(CategoriaDAO.mostrarCategorias());
         MiPanelProducto.colocarCategorias(CategoriaDAO.mostrarCategorias());
     }

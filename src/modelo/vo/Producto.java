@@ -30,6 +30,10 @@ public class Producto {
         this.idCategoria = idCategoria;
     }
 
+    public Producto() {
+
+    }
+
     //GETTERS
     public int getIdProducto() {
         return idProducto;

@@ -493,65 +493,28 @@ public class PanelProducto extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProdActionPerformed
-        try {
-            int idP = Integer.parseInt(txtIdProducto.getText());
-            String nombre = txtNombre.getText();
-            int cantidad = Integer.parseInt(txtCantidad.getText());
-            String nombreCat = cbxCategoria.getSelectedItem().toString();
-            float precio = Float.parseFloat(txtPrecio.getText());
-            int idProv = Integer.parseInt(txtProveedor.getText());
-            int idCat = cbxCategoria.getSelectedIndex() + 1;
 
-            conProd.registrar(new Producto(idP, nombre.toUpperCase(), cantidad, nombreCat, precio, idProv, idCat));
-            limpiar();
-            setTablaProductos(conProd.mostrarProductos());
-        } catch (NumberFormatException error) {
-            System.out.println("CAMPOS INCOMPLETOS");
-            lblAlerta.setForeground(new java.awt.Color(252, 3, 3));
-            lblAlerta.setText("Complete todos los campos");
-            
-        }
+        conProd.registrar(capturarDatos());
+        limpiar();
+        setTablaProductos(conProd.mostrarProductos());
     }//GEN-LAST:event_btnAgregarProdActionPerformed
 
     private void btnBorrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProdActionPerformed
-        try {
-            conProd.eliminar(Integer.parseInt(txtIdProducto.getText()));
-            setTablaProductos(conProd.mostrarProductos());
-            limpiar();
-        } catch (NullPointerException|NumberFormatException ex) {
-            System.out.println("ERROR");
-            limpiar();
-        }
 
+        conProd.eliminar(Integer.parseInt(txtIdProducto.getText()));
+        setTablaProductos(conProd.mostrarProductos());
     }//GEN-LAST:event_btnBorrarProdActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        try {
-            int idP = Integer.parseInt(txtIdProducto.getText());
-            String nombre = txtNombre.getText();
-            int cantidad = Integer.parseInt(txtCantidad.getText());
-            String nombreCat = cbxCategoria.getSelectedItem().toString();
-            float precio = Float.parseFloat(txtPrecio.getText());
-            int idProv = Integer.parseInt(txtProveedor.getText());
-            int idCat = cbxCategoria.getSelectedIndex() + 1;
-
-            conProd.modificar(new Producto(idP, nombre, cantidad, nombreCat, precio, idProv, idCat));
-            setTablaProductos(conProd.mostrarProductos());
-            limpiar();
-        } catch (NumberFormatException ex) {
-            System.out.println("ERROR EN CAMPOS");
-            limpiar();
-        }
-
+        conProd.modificar(capturarDatos());
+        setTablaProductos(conProd.mostrarProductos());
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnAgregarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCatActionPerformed
         // TODO add your handling code here:
         String nombre = JOptionPane.showInputDialog(null, "Nombre cateogoria", "Agregar Categoria", JOptionPane.INFORMATION_MESSAGE);;
-        int index = cbxCategoria.getItemCount() + 1;
-
-        CategoriaDAO.registrarCategoria(new Categoria(index, nombre.toUpperCase()));
+        CategoriaDAO.registrarCategoria(new Categoria(cbxCategoria.getItemCount() + 1, nombre.toUpperCase()));
         colocarCategorias(CategoriaDAO.mostrarCategorias());
         setTablaCategoria(CategoriaDAO.mostrarCategorias());
         limpiar();
@@ -559,20 +522,8 @@ public class PanelProducto extends javax.swing.JPanel {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        try {
-            int idProd = Integer.parseInt(txtIdProducto.getText());
-            Producto p = conProd.buscar(idProd);
-            txtIdProducto.setText(Integer.toString(p.getIdProducto()));
-            txtNombre.setText(p.getNombre());
-            txtCantidad.setText(Integer.toString(p.getCantidad()));
-            cbxCategoria.setSelectedIndex(p.getIdCategoria() - 1);
-            txtPrecio.setText(Float.toString(p.getPrecio()));
-            txtProveedor.setText(Integer.toString(p.getIdProveedor()));
-        } catch (NullPointerException | NumberFormatException ex) {
-            limpiar();
-            System.out.println("ERROR EN CAMPOS");
-        }
-
+        int idProd = Integer.parseInt(txtIdProducto.getText());
+        setDatos(conProd.buscar(idProd));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
 
@@ -662,11 +613,31 @@ public class PanelProducto extends javax.swing.JPanel {
         txtProveedor.setText("");
     }
 
+    private Producto capturarDatos() {
+        Producto p = new Producto();
+        p.setIdProducto(Integer.parseInt(txtIdProducto.getText()));
+        p.setNombre(txtNombre.getText().toUpperCase());
+        p.setCantidad(Integer.parseInt(txtCantidad.getText()));
+        p.setCategoria(cbxCategoria.getSelectedItem().toString());
+        p.setIdProveedor(Integer.parseInt(txtProveedor.getText()));
+        p.setIdCategoria(cbxCategoria.getSelectedIndex() + 1);
+        return p;
+    }
+
     public void colocarCategorias(ArrayList<Categoria> cat) {
         cbxCategoria.removeAllItems();
         for (int i = 0; i < cat.size(); i++) {
             cbxCategoria.addItem(cat.get(i).getNombreCategoria());
         }
+    }
+
+    public void setDatos(Producto p) {
+        txtIdProducto.setText(Integer.toString(p.getIdProducto()));
+        txtNombre.setText(p.getNombre());
+        txtCantidad.setText(Integer.toString(p.getCantidad()));
+        cbxCategoria.setSelectedIndex(p.getIdCategoria() - 1);
+        txtPrecio.setText(Float.toString(p.getPrecio()));
+        txtProveedor.setText(Integer.toString(p.getIdProveedor()));
     }
 
 }

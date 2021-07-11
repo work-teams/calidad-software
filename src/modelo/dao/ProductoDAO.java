@@ -20,11 +20,11 @@ import modelo.vo.Producto;
  */
 public class ProductoDAO {
 
-    private static ControladorProducto controlador;
-    private static PreparedStatement ps;
-    private static ResultSet r;
+    private ControladorProducto controlador;
+    private PreparedStatement ps;
+    private ResultSet r;
 
-    public static void registrarProducto(Producto p) {
+    public void registrarProducto(Producto p) {
         //INSERT INTO PRODUCTO () VALUES (?)        
         try {
             Connection con = ConexionDB.getConexion();
@@ -50,10 +50,11 @@ public class ProductoDAO {
         } catch (SQLException e) {
             System.err.println(e);
         }
+
     }
 
     //Buscar por ID
-    public static Producto buscarProducto(int id) {
+    public Producto buscarProducto(int id) {
         //SELECT * FROM PRODUCTO WHERE id_producto=?
         Producto p = null;
 
@@ -88,7 +89,7 @@ public class ProductoDAO {
     }
 
     //Devuelve arraylist con productos
-    public static ArrayList<Producto> mostrarProductos() {
+    public ArrayList<Producto> mostrarProductos() {
         ArrayList<Producto> p = new ArrayList<Producto>();
         try {
             Connection con = ConexionDB.getConexion();
@@ -117,7 +118,7 @@ public class ProductoDAO {
     }
 
     //Seleccion por ID y modifica
-    public static void modificarProducto(Producto p) {
+    public void modificarProducto(Producto p) {
         //UPDATE PRODUCTO SET WHERE ID=?
         try {
             Connection con = ConexionDB.getConexion();
@@ -147,7 +148,7 @@ public class ProductoDAO {
     }
 
     //Elimina por id
-    public static void eliminarProducto(int id) {
+    public void eliminarProducto(int id) {
         //DELETE FROM PRODUCTO WHERE ID=?
         try {
             Connection con = ConexionDB.getConexion();
@@ -160,14 +161,13 @@ public class ProductoDAO {
 
             if (result == 0) {
                 System.out.println("PRODUCTO NO ENCONTRADO");
-            }
-            else{
+            } else {
                 System.out.println("PRODUCTO ELIMINADO");
             }
 
             con.close();
         } catch (SQLException e) {
-            System.err.println(e);            
+            System.err.println(e);
         }
     }
 
