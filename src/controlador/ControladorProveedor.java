@@ -5,9 +5,8 @@
  */
 package controlador;
 
-import java.util.ArrayList;
-import modelo.Proveedor;
-import modelo.ProveedorDAO;
+import modelo.vo.Proveedor;
+import modelo.dao.ProveedorDAO;
 import vista.PanelProveedores;
 
 /**

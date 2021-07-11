@@ -6,8 +6,8 @@
 package test;
 
 import controlador.ControladorProducto;
-import modelo.CategoriaDAO;
-import modelo.ProductoDAO;
+import modelo.dao.CategoriaDAO;
+import modelo.dao.ProductoDAO;
 import vista.PanelProducto;
 import vista.VentanaPrincipal;
 

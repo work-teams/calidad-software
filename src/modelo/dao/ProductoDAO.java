@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package modelo.dao;
 
 import controlador.ControladorProducto;
 import java.sql.ResultSet;
@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.util.ArrayList;
+import modelo.ConexionDB;
+import modelo.vo.Producto;
 
 /**
  *

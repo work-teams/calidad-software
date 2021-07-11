@@ -6,7 +6,7 @@
 package test;
 
 import controlador.ControladorUsuario;
-import modelo.UsuarioDAO;
+import modelo.dao.UsuarioDAO;
 import vista.PanelUsuarios;
 import vista.VentanaPrincipal;
 

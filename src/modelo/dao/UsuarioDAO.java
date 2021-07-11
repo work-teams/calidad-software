@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package modelo.dao;
 
 /**
  *
@@ -17,6 +17,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.ConexionDB;
+import modelo.vo.Usuario;
 
 public class UsuarioDAO extends ConexionDB{
     // ATRIBUTOS DE CLASE

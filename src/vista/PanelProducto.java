@@ -9,9 +9,9 @@ import controlador.ControladorProducto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Categoria;
-import modelo.CategoriaDAO;
-import modelo.Producto;
+import modelo.vo.Categoria;
+import modelo.dao.CategoriaDAO;
+import modelo.vo.Producto;
 
 /**
  *

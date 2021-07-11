@@ -5,8 +5,8 @@
  */
 package controlador;
 
-import modelo.Usuario;
-import modelo.UsuarioDAO;
+import modelo.vo.Usuario;
+import modelo.dao.UsuarioDAO;
 import vista.PanelUsuarios;
 
 /**

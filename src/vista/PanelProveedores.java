@@ -8,7 +8,7 @@ package vista;
 import controlador.ControladorProveedor;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import modelo.Proveedor;
+import modelo.vo.Proveedor;
 
 /**
  *

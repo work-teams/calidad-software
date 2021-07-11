@@ -6,7 +6,7 @@
 package test;
 
 import controlador.ControladorProveedor;
-import modelo.ProveedorDAO;
+import modelo.dao.ProveedorDAO;
 import vista.PanelProveedores;
 import vista.VentanaPrincipal;
 

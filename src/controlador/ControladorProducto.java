@@ -9,10 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.util.ArrayList;
-import modelo.Categoria;
-import modelo.CategoriaDAO;
-import modelo.Producto;
-import modelo.ProductoDAO;
+import modelo.vo.Categoria;
+import modelo.dao.CategoriaDAO;
+import modelo.vo.Producto;
+import modelo.dao.ProductoDAO;
 import vista.PanelProducto;
 
 /**
