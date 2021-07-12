@@ -41,7 +41,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(204, 153, 0));
+        jPanel1.setBackground(new java.awt.Color(44, 80, 154));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(null);
 
@@ -60,7 +60,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.setBounds(0, 0, 1446, 106);
         this.setVisible(true);
 
-        jPanel2.setBackground(new java.awt.Color(255, 198, 25));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
         btnUsuarios.setBackground(new java.awt.Color(102, 102, 102));
