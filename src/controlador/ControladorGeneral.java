@@ -46,7 +46,6 @@ public class ControladorGeneral {
         this.miPanelProducto.setVisible(false);
         this.miPanelProveedores.setVisible(false);
         
-        this.miVentanaPrincipal.add(miPanelUsuarios);
         this.miPanelUsuarios.setBounds(0, 180, 1446, 736);
         this.miPanelUsuarios.setVisible(true);
     }
@@ -55,7 +54,6 @@ public class ControladorGeneral {
         this.miPanelProducto.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
         
-        this.miVentanaPrincipal.add(miPanelProveedores);
         this.miPanelProveedores.setBounds(0, 180, 1446, 736);
         this.miPanelProveedores.setVisible(true);
     }
@@ -64,7 +62,6 @@ public class ControladorGeneral {
         this.miPanelProveedores.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
         
-        this.miVentanaPrincipal.add(miPanelProducto);
         this.miPanelProducto.setBounds(0, 180, 1446, 736);
         this.miPanelProducto.setVisible(true);
     }
