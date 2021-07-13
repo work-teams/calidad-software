@@ -30,52 +30,54 @@ public class BikeShop {
     public static void main(String[] args) {
         // ÚNICA INSTANCIA DE LOS ELEMENTOS A CONECTAR
         VentanaPrincipal miVentanaPrincipal = new VentanaPrincipal();
+        PanelUsuarios miPanelUsuarios = new PanelUsuarios();
+        PanelProducto MiPanelProducto = new PanelProducto();
+        PanelProveedores miPanelProveedores = new PanelProveedores();
+        UsuarioDAO miUsuarioDAO = new UsuarioDAO();
+        ProductoDAO miProductoDAO = new ProductoDAO();
+        ProveedorDAO miProveedorDAO = new ProveedorDAO();
+        ControladorUsuario miControladorUsuario = new ControladorUsuario();
+        ControladorProducto miControladorProducto = new ControladorProducto();
+        ControladorProveedor miControladorProveedor = new ControladorProveedor();
         ControladorGeneral miControladorGeneral = new ControladorGeneral();
 
-        UsuarioDAO miUsuarioDAO = new UsuarioDAO();
-        PanelUsuarios miPanelUsuarios = new PanelUsuarios();
-        ControladorUsuario miControladorUsuario = new ControladorUsuario();
-
-        PanelProducto MiPanelProducto = new PanelProducto();
-        ProductoDAO miProductoDAO = new ProductoDAO();
-        ControladorProducto miControladorProducto = new ControladorProducto();
-
-        ProveedorDAO miProveedorDAO = new ProveedorDAO();
-        PanelProveedores miPanelProveedores = new PanelProveedores();
-        ControladorProveedor miControladorProveedor = new ControladorProveedor();
+        
 
         // CONECTANDO CONTROLADOR A VISTAS Y/O MODELOS
-        miControladorGeneral.setVentanaPrincipal(miVentanaPrincipal);
+        miControladorUsuario.setPanelUsuarios(miPanelUsuarios);
+        miControladorProveedor.setPanelProveedores(miPanelProveedores);
+        miControladorProducto.setPanelProducto(MiPanelProducto);
+        miControladorUsuario.setUsuarioDAO(miUsuarioDAO);
+        miControladorProveedor.setProveedorDAO(miProveedorDAO);
+        miControladorProducto.SetProductoDAO(miProductoDAO);
         miControladorGeneral.setPanelUsuarios(miPanelUsuarios);
         miControladorGeneral.setPanelProveedores(miPanelProveedores);
         miControladorGeneral.setPanelProducto(MiPanelProducto);
+        miControladorGeneral.setVentanaPrincipal(miVentanaPrincipal);
 
-        miControladorUsuario.setPanelUsuarios(miPanelUsuarios);
-        miControladorUsuario.setUsuarioDAO(miUsuarioDAO);
-
-        miControladorProveedor.setPanelProveedores(miPanelProveedores);
-        miControladorProveedor.setProveedorDAO(miProveedorDAO);
-
-        miControladorProducto.setPanelProducto(MiPanelProducto);
-        miControladorProducto.SetProductoDAO(miProductoDAO);
+        
 
         // CONECTANDO VISTAS Y MODELOS AL CONTROLADOR
+        miPanelUsuarios.setControlador(miControladorUsuario);
+        MiPanelProducto.setControlador(miControladorProducto);
+        miPanelProveedores.setControlador(miControladorProveedor);
+        miUsuarioDAO.setControlador(miControladorUsuario);
+        miProductoDAO.setControladorProducto(miControladorProducto);
+        miProveedorDAO.setControladorProveedor(miControladorProveedor);
         miVentanaPrincipal.setControladorGeneral(miControladorGeneral);
 
-        miUsuarioDAO.setControlador(miControladorUsuario);
-        miPanelUsuarios.setControlador(miControladorUsuario);
+        
+        
+        // CARGANDO PANELES
+        miVentanaPrincipal.add(miPanelUsuarios);
+        miVentanaPrincipal.add(MiPanelProducto);
+        miVentanaPrincipal.add(miPanelProveedores);
+        
 
-        miProveedorDAO.setControladorProveedor(miControladorProveedor);
-        miPanelProveedores.setControlador(miControladorProveedor);
-
-        miProductoDAO.setControladorProducto(miControladorProducto);
-        MiPanelProducto.setControlador(miControladorProducto);
-
+        
         // SETEANDO TABLAS
         miPanelUsuarios.setTabla(miUsuarioDAO.listarUsuarios());
-
         miPanelProveedores.setTabla(miProveedorDAO.mostrarProveedores());
-
         MiPanelProducto.setTablaProductos(miControladorProducto.mostrarProductos());
         MiPanelProducto.setTablaCategoria(CategoriaDAO.mostrarCategorias());
         MiPanelProducto.colocarCategorias(CategoriaDAO.mostrarCategorias());
