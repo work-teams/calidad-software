@@ -96,7 +96,7 @@ public class UsuarioDAO extends ConexionDB{
             miPreparedStatement.setString(5, miUsuario.getRol());
             miPreparedStatement.setString(6, miUsuario.getDniUsuario());
             // Mensaje
-            if (miPreparedStatement.executeUpdate() != 0) {JOptionPane.showMessageDialog(null, "Usuario eliminado con exito.");}
+            if (miPreparedStatement.executeUpdate() != 0) {JOptionPane.showMessageDialog(null, "Usuario modificado con exito.");}
             else {JOptionPane.showMessageDialog(null, "El dni ingresado no coincide con ningún usuario registrado.");}
             // Fin mensaje
         } catch (SQLException ex) {System.out.println(ex);
