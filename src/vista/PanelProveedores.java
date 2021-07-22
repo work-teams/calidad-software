@@ -19,7 +19,6 @@ public class PanelProveedores extends javax.swing.JPanel {
     /**
      * Creates new form NewPanelUsuarios
      */
-    
     ControladorProveedor miControladorProveedor;
     private DefaultTableModel miDefaultTableModel;
 
@@ -77,9 +76,8 @@ public class PanelProveedores extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,21 +202,19 @@ public class PanelProveedores extends javax.swing.JPanel {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(BtnEliminar)
-                            .addGap(68, 68, 68)
-                            .addComponent(BtnModificar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BtnBuscar)
-                            .addGap(8, 8, 8))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtIdProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(BtnEliminar)
+                        .addGap(62, 62, 62)
+                        .addComponent(BtnBuscar))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtIdProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(BtnModificar)
                                 .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -227,8 +223,7 @@ public class PanelProveedores extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)))
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -269,9 +264,9 @@ public class PanelProveedores extends javax.swing.JPanel {
                                 .addGap(55, 55, 55)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(BtnModificar)
                                         .addComponent(BtnBuscar)
-                                        .addComponent(BtnEliminar))
+                                        .addComponent(BtnEliminar)
+                                        .addComponent(BtnModificar))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(1, 1, 1)
                                         .addComponent(BtnAgregar)))))))
@@ -334,8 +329,8 @@ public class PanelProveedores extends javax.swing.JPanel {
     public void setControlador(ControladorProveedor miControladorProveedor) {
         this.miControladorProveedor = miControladorProveedor;
     }
-    
-    private Proveedor datosProveedor(){
+
+    private Proveedor datosProveedor() {
         Proveedor miProveedor = new Proveedor();
         miProveedor.setIdProveedor(Integer.parseInt(txtIdProveedor.getText()));
         miProveedor.setNombre(txtNombre.getText());
@@ -347,27 +342,27 @@ public class PanelProveedores extends javax.swing.JPanel {
     public void setTabla(ArrayList<Proveedor> miArrayList) {
         String[] columnas = {"ID", "NOMBRE", "DIRECCION", "TELEFONO"};
         Object[][] miData = new Object[miArrayList.size()][4];
-        
+
         for (int i = 0; i < miArrayList.size(); i++) {
             miData[i][0] = miArrayList.get(i).getIdProveedor();
             miData[i][1] = miArrayList.get(i).getNombre();
             miData[i][2] = miArrayList.get(i).getDireccion();
             miData[i][3] = miArrayList.get(i).getTelefono();
         }
-        
+
         miDefaultTableModel = new DefaultTableModel(miData, columnas);
         Table_Proveedores.setModel(miDefaultTableModel);
     }
-    
-    public void limpiarCampos(){
+
+    public void limpiarCampos() {
         txtIdProveedor.setText("");
         txtNombre.setText("");
         txtDireccion.setText("");
         txtTelefono.setText("");
         txtIdProveedor.requestFocus();
     }
-    
-    public void escribirDatos(Proveedor p){
+
+    public void escribirDatos(Proveedor p) {
         txtNombre.setText(p.getNombre());
         txtDireccion.setText(p.getDireccion());
         txtTelefono.setText(p.getTelefono());

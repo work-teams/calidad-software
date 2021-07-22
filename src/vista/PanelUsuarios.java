@@ -119,7 +119,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
         btnBuscar.setBackground(new java.awt.Color(102, 102, 102));
         btnBuscar.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/editar.png"))); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
         btnBuscar.setToolTipText("");
         btnBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         btnBuscar.setBorderPainted(false);
@@ -134,7 +134,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
         btnModificar.setBackground(new java.awt.Color(102, 102, 102));
         btnModificar.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/editar.png"))); // NOI18N
         btnModificar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         btnModificar.setBorderPainted(false);
         btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
