@@ -130,9 +130,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel1.setOpaque(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Isaac\\Desktop\\Projects\\Logo\\logo1.2.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.2.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 40)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Bienvenido a Bike Shop");
 
