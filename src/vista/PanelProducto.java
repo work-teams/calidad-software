@@ -112,7 +112,7 @@ public class PanelProducto extends javax.swing.JPanel {
         btnAgregarProd.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/agregar.png"))); // NOI18N
         btnAgregarProd.setToolTipText("Agregar");
-        btnAgregarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnAgregarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(50, 133, 203))); // NOI18N
         btnAgregarProd.setBorderPainted(false);
         btnAgregarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAgregarProd.setFocusPainted(false);
@@ -126,7 +126,7 @@ public class PanelProducto extends javax.swing.JPanel {
         btnBorrarProd.setBackground(new java.awt.Color(44, 80, 154));
         btnBorrarProd.setForeground(new java.awt.Color(255, 255, 255));
         btnBorrarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/eliminar.png"))); // NOI18N
-        btnBorrarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnBorrarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(50, 133, 203))); // NOI18N
         btnBorrarProd.setBorderPainted(false);
         btnBorrarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBorrarProd.setFocusPainted(false);
@@ -140,7 +140,7 @@ public class PanelProducto extends javax.swing.JPanel {
         btnBuscar.setBackground(new java.awt.Color(44, 80, 154));
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
-        btnBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(50, 133, 203))); // NOI18N
         btnBuscar.setBorderPainted(false);
         btnBuscar.setFocusPainted(false);
         btnBuscar.setOpaque(false);
@@ -153,7 +153,7 @@ public class PanelProducto extends javax.swing.JPanel {
         btnModificar.setBackground(new java.awt.Color(44, 80, 154));
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/editar.png"))); // NOI18N
-        btnModificar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnModificar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(50, 133, 203))); // NOI18N
         btnModificar.setBorderPainted(false);
         btnModificar.setFocusPainted(false);
         btnModificar.setOpaque(false);
