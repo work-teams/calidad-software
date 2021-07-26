@@ -5,7 +5,6 @@
  */
 package modelo.dao;
 
-import controlador.ControladorVenta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -19,7 +18,6 @@ import modelo.vo.Venta;
  * @author nick_
  */
 public class VentaDAO {
-    private ControladorVenta controlador;
     private PreparedStatement ps;
     private ResultSet r;
     
@@ -166,8 +164,5 @@ public class VentaDAO {
         } catch (SQLException e) {
             System.err.println(e);
         }
-    }
-    public void setControladorVenta(ControladorVenta control) {
-        this.controlador = control;
     }
 }
