@@ -17,7 +17,7 @@ import vista.VentanaPrincipal;
 public class TestPanelProveedor {
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        /*
         VentanaPrincipal miVentanaPrincipal = new VentanaPrincipal();
         
         ProveedorDAO miProveedorDAO = new ProveedorDAO();
@@ -34,6 +34,9 @@ public class TestPanelProveedor {
         miVentanaPrincipal.setSize(1366, 700);
         miPanelProveedores.setBounds(0, 0, 1366, 768);
         miVentanaPrincipal.add(miPanelProveedores);
-        miVentanaPrincipal.setVisible(true);
+        miVentanaPrincipal.setVisible(true);*/
+        
+        VentanaPrincipal miventana = new VentanaPrincipal();
+        miventana.setVisible(true);
     }
 }
