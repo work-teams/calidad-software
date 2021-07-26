@@ -81,5 +81,7 @@ public class BikeShop {
         MiPanelProducto.setTablaProductos(miControladorProducto.mostrarProductos());
         MiPanelProducto.setTablaCategoria(CategoriaDAO.mostrarCategorias());
         MiPanelProducto.colocarCategorias(CategoriaDAO.mostrarCategorias());
+        
+        miVentanaPrincipal.setVisible(true);
     }
 }
