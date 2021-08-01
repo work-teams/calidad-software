@@ -35,7 +35,7 @@ public class UsuarioDAO extends ConexionDB{
     private final String LISTAR = "SELECT * FROM usuarios";
     
     // ENLACE CONTROLADOR
-    public void setControlador(ControladorUsuario miControladorUsuario) {
+    public void setControladorUsuarios(ControladorUsuario miControladorUsuario) {
         this.miControladorUsuario = miControladorUsuario;
     }
     

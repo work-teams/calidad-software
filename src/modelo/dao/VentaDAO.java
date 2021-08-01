@@ -5,12 +5,15 @@
  */
 package modelo.dao;
 
+import controlador.ControladorVenta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import modelo.ConexionDB;
+import static modelo.ConexionDB.getConexion;
 import modelo.vo.Venta;
 
 /**
@@ -18,24 +21,35 @@ import modelo.vo.Venta;
  * @author nick_
  */
 public class VentaDAO {
+    ControladorVenta miControladorVenta;
     private PreparedStatement ps;
     private ResultSet r;
     
+    // ATRIBUTOS DE CLASE
+    private Connection miConnection;
+    private PreparedStatement miPreparedStatement;
+    private ResultSet miResultSet;
+    
+    // SENTENCIAS MYSQL
+    private String LAST_VENTA = "SELECT idVenta FROM venta ORDER BY idVenta DESC LIMIT 1";
+    
+    // ENLACE CONTROLADOR
+    public void setControladorVentas(ControladorVenta miControladorVenta) {
+        this.miControladorVenta = miControladorVenta;
+    }
     
     public void registrarVenta(Venta p){
         //INSERT INTO VENTA () VALUES (?)        
         try {
             Connection con = ConexionDB.getConexion();
             ps = con.prepareStatement("INSERT INTO venta "
-                    + "(idVenta,dniUsuario,dniCliente,idPedido,monto,boleta) "
-                    + "VALUES (?,?,?,?,?,?)");
+                    + "(dniUsuario,dniCliente,monto,boleta) "
+                    + "VALUES (?,?,?,?)");
 
-            ps.setInt(1, p.getIdVenta());
-            ps.setString(2, p.getDniUsuario());
-            ps.setString(3, p.getDniCliente());
-            ps.setInt(4, p.getIdPedido());
-            ps.setFloat(5, p.getMonto());
-            ps.setBoolean(6, p.isBoleta());
+            ps.setString(1, p.getDniUsuario());
+            ps.setString(2, p.getDniCliente());
+            ps.setFloat(3, p.getMonto());
+            ps.setBoolean(4, p.isBoleta());
                     
             int result = ps.executeUpdate();
 
@@ -71,7 +85,7 @@ public class VentaDAO {
                 boolean boleta = r.getBoolean("boleta");
                 
 
-                p = new Venta(idV, dniUsuario, dniCliente, idPedido, monto, boleta);
+                //p = new Venta(idV, dniUsuario, dniCliente, idPedido, monto, boleta);
                 System.out.println("VENTA ENCONTRADA");
                 return p;
             } else {
@@ -84,7 +98,7 @@ public class VentaDAO {
     }
     
     //Devuelve arraylist con ventas
-    public ArrayList<Venta> mostrarVentas() {
+    public ArrayList<Venta> listarVentas() {
         ArrayList<Venta> p = new ArrayList<Venta>();
         try {
             Connection con = ConexionDB.getConexion();
@@ -99,7 +113,7 @@ public class VentaDAO {
                 float monto = r.getFloat("monto");
                 boolean boleta = r.getBoolean("boleta");
 
-                p.add(new Venta(idV, dniUsuario, dniCliente, idPedido, monto, boleta));
+                //p.add(new Venta(idV, dniUsuario, dniCliente, idPedido, monto, boleta));
             }
 
             System.out.println("LISTA DE VENTAS ENVIADA");
@@ -122,7 +136,7 @@ public class VentaDAO {
 
             ps.setString(1, p.getDniUsuario());
             ps.setString(2, p.getDniCliente());
-            ps.setInt(3, p.getIdPedido());
+            //ps.setInt(3, p.getIdPedido());
             ps.setFloat(4, p.getMonto());
             ps.setBoolean(5, p.isBoleta());
             
@@ -164,5 +178,27 @@ public class VentaDAO {
         } catch (SQLException e) {
             System.err.println(e);
         }
+    }
+    
+    // Devolver id de la nueva venta realizada.
+    public int generarIdVenta() {
+        int idNuevaVenta = 1;
+        try {
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(LAST_VENTA);
+            miResultSet = miPreparedStatement.executeQuery();
+            if (miResultSet.next()) {
+                idNuevaVenta = miResultSet.getInt("idVenta") + 1;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return idNuevaVenta;
     }
 }

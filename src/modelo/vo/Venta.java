@@ -13,22 +13,28 @@ public class Venta {
     private int idVenta;
     private String dniUsuario;
     private String dniCliente;
-    private int idPedido;
     private float monto;
     private boolean boleta;
     
     //CONSTRUCTOR
-    public Venta(int idVenta, String dniUsuario, String dniCliente, int idPedido, float monto, boolean boleta) {
-        this.idVenta = idVenta;
+    public Venta() {
+    }
+    
+    // Enviar datos a DB.
+    public Venta(String dniUsuario, String dniCliente, float monto, boolean boleta) {
         this.dniUsuario = dniUsuario;
         this.dniCliente = dniCliente;
-        this.idPedido = idPedido;
         this.monto = monto;
         this.boleta = boleta;
     }
     
-    public Venta() {
-
+    // Recibir datos de DB.
+    public Venta(int idVenta, String dniUsuario, String dniCliente, float monto, boolean boleta) {
+        this.idVenta = idVenta;
+        this.dniUsuario = dniUsuario;
+        this.dniCliente = dniCliente;
+        this.monto = monto;
+        this.boleta = boleta;
     }
     
     //GETTERS
@@ -42,10 +48,6 @@ public class Venta {
 
     public String getDniCliente() {
         return dniCliente;
-    }
-
-    public int getIdPedido() {
-        return idPedido;
     }
 
     public float getMonto() {
@@ -70,10 +72,6 @@ public class Venta {
         this.dniCliente = dniCliente;
     }
 
-    public void setIdPedido(int idPedido) {
-        this.idPedido = idPedido;
-    }
-
     public void setMonto(float monto) {
         this.monto = monto;
     }
@@ -84,6 +82,6 @@ public class Venta {
     
     @Override
     public String toString() {
-        return "Venta{" + "idVenta=" + idVenta + ", dniUsuario=" + dniUsuario + ", dniCliente=" + dniCliente + ", idPedido=" + idPedido + ", monto=" + monto + ", boleta=" + boleta +'}';
+        return "Venta{" + "idVenta=" + idVenta + ", dniUsuario=" + dniUsuario + ", dniCliente=" + dniCliente + ", monto=" + monto + ", boleta=" + boleta +'}';
     }
 }

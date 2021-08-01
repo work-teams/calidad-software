@@ -34,7 +34,7 @@ public class TestPanelUsuarios {
         miControladorUsuario.setUsuarioDAO(miUsuarioDAO);
         
         // Conectando controlador a los elementos
-        miUsuarioDAO.setControlador(miControladorUsuario);
+        miUsuarioDAO.setControladorUsuarios(miControladorUsuario);
         miPanelUsuarios.setControlador(miControladorUsuario);
         
         // Esto es solo una demo

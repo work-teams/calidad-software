@@ -5,11 +5,23 @@
  */
 package vista;
 
+import controlador.ControladorVenta;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelo.vo.Cliente;
+import modelo.vo.Pedido;
+import modelo.vo.Producto;
+import modelo.vo.Venta;
+
 /**
  *
  * @author Cesar
  */
 public class PanelVentas extends javax.swing.JPanel {
+    // ATRIBUTOS DE CLASE
+    ControladorVenta miControladorVenta;
+    private DefaultTableModel miDefaultTableModel;
+    private int idPedidoSelecionado = -1;
 
     /**
      * Creates new form PanelVentas
@@ -35,7 +47,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextFieldRound1 = new jtextfieldround.JTextFieldRound();
+        txtDni = new jtextfieldround.JTextFieldRound();
         txtRuc = new jtextfieldround.JTextFieldRound();
         txtNombre = new jtextfieldround.JTextFieldRound();
         txtApellido = new jtextfieldround.JTextFieldRound();
@@ -54,12 +66,13 @@ public class PanelVentas extends javax.swing.JPanel {
         txtCantProd = new jtextfieldround.JTextFieldRound();
         txtPrecioProd = new jtextfieldround.JTextFieldRound();
         txtCategoria = new jtextfieldround.JTextFieldRound();
-        btnAgregarProd = new javax.swing.JButton();
+        btnAgregarPedido = new javax.swing.JButton();
         btnBorrarProd = new javax.swing.JButton();
         btnBuscarProd = new javax.swing.JButton();
         btnModificarProd = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jTextFieldRound8 = new jtextfieldround.JTextFieldRound();
+        btnVenta = new javax.swing.JButton();
+        txtMonto = new jtextfieldround.JTextFieldRound();
+        btnCancelarVenta = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(57, 103, 196));
         setMaximumSize(new java.awt.Dimension(1189, 903));
@@ -113,19 +126,14 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Nombre");
 
-        jTextFieldRound1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextFieldRound1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtDni.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtDni.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         txtRuc.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtRuc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         txtNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
 
         txtApellido.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -151,7 +159,7 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jTextFieldRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -170,7 +178,7 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel18))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFieldRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel12)))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -190,15 +198,17 @@ public class PanelVentas extends javax.swing.JPanel {
 
         tblVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "ID", "PRODUCTO", "CANT.", "PRECIO"
+                "ID", "PRODUCTO", "CATEGORIA", "CANTIDAD", "PRECIO", "MONTO"
             }
         ));
+        tblVentas.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tblVentasFocusGained(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblVentas);
 
         jPanel3.setBackground(new java.awt.Color(50, 133, 203));
@@ -233,9 +243,13 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Nombre");
 
-        txtIdProd.setEditable(false);
         txtIdProd.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtIdProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtIdProd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtIdProdFocusGained(evt);
+            }
+        });
 
         txtNomProd.setEditable(false);
         txtNomProd.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -247,11 +261,6 @@ public class PanelVentas extends javax.swing.JPanel {
         txtPrecioProd.setEditable(false);
         txtPrecioProd.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtPrecioProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtPrecioProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecioProdActionPerformed(evt);
-            }
-        });
 
         txtCategoria.setEditable(false);
         txtCategoria.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -319,29 +328,27 @@ public class PanelVentas extends javax.swing.JPanel {
                 .addGap(25, 25, 25))
         );
 
-        btnAgregarProd.setBackground(new java.awt.Color(40, 35, 127));
-        btnAgregarProd.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/agregar.png"))); // NOI18N
-        btnAgregarProd.setToolTipText("Agregar");
-        btnAgregarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 133, 203))); // NOI18N
-        btnAgregarProd.setBorderPainted(false);
-        btnAgregarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnAgregarProd.setFocusPainted(false);
-        btnAgregarProd.setOpaque(false);
-        btnAgregarProd.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarPedido.setBackground(new java.awt.Color(40, 35, 127));
+        btnAgregarPedido.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/agregar.png"))); // NOI18N
+        btnAgregarPedido.setToolTipText("Agregar");
+        btnAgregarPedido.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnAgregarPedido.setBorderPainted(false);
+        btnAgregarPedido.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAgregarPedido.setFocusPainted(false);
+        btnAgregarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarProdActionPerformed(evt);
+                btnAgregarPedidoActionPerformed(evt);
             }
         });
 
         btnBorrarProd.setBackground(new java.awt.Color(44, 80, 154));
         btnBorrarProd.setForeground(new java.awt.Color(255, 255, 255));
         btnBorrarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/eliminar.png"))); // NOI18N
-        btnBorrarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnBorrarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(50, 133, 203))); // NOI18N
         btnBorrarProd.setBorderPainted(false);
         btnBorrarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBorrarProd.setFocusPainted(false);
-        btnBorrarProd.setOpaque(false);
         btnBorrarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBorrarProdActionPerformed(evt);
@@ -351,35 +358,40 @@ public class PanelVentas extends javax.swing.JPanel {
         btnBuscarProd.setBackground(new java.awt.Color(44, 80, 154));
         btnBuscarProd.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
-        btnBuscarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnBuscarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(50, 133, 203))); // NOI18N
         btnBuscarProd.setBorderPainted(false);
+        btnBuscarProd.setEnabled(false);
         btnBuscarProd.setFocusPainted(false);
-        btnBuscarProd.setOpaque(false);
-        btnBuscarProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarProdActionPerformed(evt);
-            }
-        });
 
         btnModificarProd.setBackground(new java.awt.Color(44, 80, 154));
         btnModificarProd.setForeground(new java.awt.Color(255, 255, 255));
         btnModificarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/editar.png"))); // NOI18N
-        btnModificarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnModificarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(50, 133, 203))); // NOI18N
         btnModificarProd.setBorderPainted(false);
         btnModificarProd.setFocusPainted(false);
-        btnModificarProd.setOpaque(false);
         btnModificarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarProdActionPerformed(evt);
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/carrito-de-compras.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setOpaque(false);
+        btnVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/carrito-de-compras.png"))); // NOI18N
+        btnVenta.setBorderPainted(false);
+        btnVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentaActionPerformed(evt);
+            }
+        });
 
-        jTextFieldRound8.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextFieldRound8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtMonto.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtMonto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        btnCancelarVenta.setText("Cancelar venta");
+        btnCancelarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarVentaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -397,7 +409,7 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAgregarProd)
+                                .addComponent(btnAgregarPedido)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBorrarProd))
                             .addGroup(layout.createSequentialGroup()
@@ -405,11 +417,17 @@ public class PanelVentas extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnModificarProd))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldRound8, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCancelarVenta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -425,7 +443,7 @@ public class PanelVentas extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAgregarProd)
+                            .addComponent(btnAgregarPedido)
                             .addComponent(btnBorrarProd))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,47 +451,75 @@ public class PanelVentas extends javax.swing.JPanel {
                             .addComponent(btnBuscarProd))))
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel17)
-                        .addComponent(jTextFieldRound8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel17)
+                                .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnVenta)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(btnCancelarVenta)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProdActionPerformed
+    private void btnAgregarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPedidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarProdActionPerformed
+        miControladorVenta.registrarPedido(empaquetarDatosPedido());
+        miControladorVenta.actualizarTablaVenta();
+    }//GEN-LAST:event_btnAgregarPedidoActionPerformed
 
     private void btnBorrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProdActionPerformed
         // TODO add your handling code here:
+        miControladorVenta.eliminarPedido(idPedidoSelecionado);
+        miControladorVenta.actualizarTablaVenta();
     }//GEN-LAST:event_btnBorrarProdActionPerformed
-
-    private void btnBuscarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarProdActionPerformed
 
     private void btnModificarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProdActionPerformed
         // TODO add your handling code here:
+        if (!"".equals(txtCantProd.getText())) {
+            int cantidad = Integer.parseInt(txtCantProd.getText());
+            miControladorVenta.modificarPedido(cantidad, idPedidoSelecionado);
+            miControladorVenta.actualizarTablaVenta();
+        }
     }//GEN-LAST:event_btnModificarProdActionPerformed
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+    private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
+        miControladorVenta.registrarVenta(empaquetarDatosVenta());
+        miControladorVenta.registrarCliente(empaquetarDatosCliente());
+        miControladorVenta.actualizarTablaVenta();
+    }//GEN-LAST:event_btnVentaActionPerformed
 
-    private void txtPrecioProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioProdActionPerformed
+    private void tblVentasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblVentasFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecioProdActionPerformed
+        int filaSeleccionada = tblVentas.getSelectedRow();
+        idPedidoSelecionado = (Integer)tblVentas.getValueAt(filaSeleccionada, 0);
+        miControladorVenta.buscarPedido(idPedidoSelecionado);
+    }//GEN-LAST:event_tblVentasFocusGained
+
+    private void txtIdProdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdProdFocusGained
+        // TODO add your handling code here:
+        limpiarCamposPanelProducto();
+    }//GEN-LAST:event_txtIdProdFocusGained
+
+    private void btnCancelarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarVentaActionPerformed
+        // TODO add your handling code here:
+        miControladorVenta.eliminarCarritoPedidos();
+        miControladorVenta.actualizarTablaVenta();
+    }//GEN-LAST:event_btnCancelarVentaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnAgregarProd;
+    public javax.swing.JButton btnAgregarPedido;
     public javax.swing.JButton btnBorrarProd;
     public javax.swing.JButton btnBuscarProd;
+    private javax.swing.JButton btnCancelarVenta;
     public javax.swing.JButton btnModificarProd;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnVenta;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel11;
     public javax.swing.JLabel jLabel12;
@@ -491,16 +537,103 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private jtextfieldround.JTextFieldRound jTextFieldRound1;
-    private jtextfieldround.JTextFieldRound jTextFieldRound8;
     private javax.swing.JTable tblVentas;
     private jtextfieldround.JTextFieldRound txtApellido;
     private jtextfieldround.JTextFieldRound txtCantProd;
     private jtextfieldround.JTextFieldRound txtCategoria;
+    private jtextfieldround.JTextFieldRound txtDni;
     private jtextfieldround.JTextFieldRound txtIdProd;
+    private jtextfieldround.JTextFieldRound txtMonto;
     private jtextfieldround.JTextFieldRound txtNomProd;
     private jtextfieldround.JTextFieldRound txtNombre;
     private jtextfieldround.JTextFieldRound txtPrecioProd;
     private jtextfieldround.JTextFieldRound txtRuc;
     // End of variables declaration//GEN-END:variables
+
+    public void setControlador(ControladorVenta miControladorVenta) {
+        this.miControladorVenta = miControladorVenta;
+    }
+    
+    // MÉTODOS AUXILIARES
+    private Venta empaquetarDatosVenta() {
+        Venta miVenta = new Venta();
+        miVenta.setDniUsuario("73367034"); // Por mientras hasta que se agregue el login.
+        miVenta.setDniCliente(txtDni.getText());
+        miVenta.setMonto(Float.parseFloat(txtMonto.getText()));
+        miVenta.setBoleta(true); // Agregar checkbox a vista para este campo.
+        return miVenta;
+    }
+    
+    private Pedido empaquetarDatosPedido() {
+        Pedido miPedido = new Pedido();
+        miPedido.setIdVenta(miControladorVenta.generarIdVenta());
+        miPedido.setIdProducto(Integer.parseInt(txtIdProd.getText()));
+        miPedido.setCantidad(Integer.parseInt(txtCantProd.getText()));
+        return miPedido;
+    }
+    
+    private Cliente empaquetarDatosCliente() {
+        Cliente miCliente = new Cliente();
+        miCliente.setDniCliente(txtDni.getText());
+        miCliente.setNombre(txtNombre.getText());
+        miCliente.setApellido(txtApellido.getText());
+        miCliente.setRuc(txtRuc.getText());
+        return miCliente;
+    }
+
+    public void limpiarCamposPanelProducto() {
+        txtIdProd.setText("");
+        txtCantProd.setText("");
+        txtCategoria.setText("");
+        txtNomProd.setText("");
+        txtPrecioProd.setText("");
+        txtIdProd.requestFocus();
+    }
+    
+    public void limpiarCamposPanelCliente() {
+        txtDni.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtRuc.setText("");
+        txtMonto.setText("");
+        txtDni.requestFocus();
+    }
+
+    public void setTabla(ArrayList<Pedido> carritoPedidos) {
+        String[] columnas = {"ID", "PRODUCTO", "CATEGORIA", "CANTIDAD", "PRECIO", "MONTO"};
+        Object[][] miData = new Object[carritoPedidos.size()][6];
+        Producto miProducto;
+        float precio;
+        int cantidad;
+        float monto;
+        float total = 0;
+        for (int i = 0; i < carritoPedidos.size(); i++) {
+            miProducto = miControladorVenta.buscarIdProducto(carritoPedidos.get(i).getIdProducto());
+            precio = miProducto.getPrecio();
+            cantidad = carritoPedidos.get(i).getCantidad();
+            monto = precio * cantidad;
+            miData[i][0] = carritoPedidos.get(i).getIdPedido();
+            miData[i][1] = miProducto.getNombre();
+            miData[i][2] = miProducto.getCategoria();
+            miData[i][3] = cantidad;
+            miData[i][4] = precio;
+            miData[i][5] = monto;
+            total += monto;
+        }
+        miDefaultTableModel = new DefaultTableModel(miData, columnas);
+        tblVentas.setModel(miDefaultTableModel);
+        txtMonto.setText(""+total);
+    }
+
+    public void desempaquetarDatosProducto(Producto miProducto) {
+        txtNomProd.setText(miProducto.getNombre());
+        txtCategoria.setText(miProducto.getCategoria());
+        txtPrecioProd.setText(""+miProducto.getPrecio());
+    }
+    
+    public void desempaquetarDatosPedido(Pedido miPedido) {
+        txtIdProd.setText(""+miPedido.getIdProducto());
+        txtCantProd.setText(""+miPedido.getCantidad());
+        txtCantProd.requestFocus();
+    }
 }
