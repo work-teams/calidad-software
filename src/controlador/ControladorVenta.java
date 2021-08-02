@@ -56,6 +56,10 @@ public class ControladorVenta {
         miPanelVentas.limpiarCamposPanelProducto();
     }
     
+    public int generarIdVenta() {
+        return miVentaDAO.generarIdVenta();
+    }
+    
     public void actualizarTablaVenta() {
         miPanelVentas.setTabla(miPedidoDAO.listarCarritoPedidos(miVentaDAO.generarIdVenta()));
     }
@@ -90,10 +94,6 @@ public class ControladorVenta {
     public void modificarPedido(int cantidad, int idPedido) {
         miPedidoDAO.modificarPedido(cantidad, idPedido);
         miPanelVentas.limpiarCamposPanelProducto();
-    }
-    
-    public int generarIdVenta() {
-        return miVentaDAO.generarIdVenta();
     }
     
     // METODOS DE CLASE PARA CLIENTE DAO

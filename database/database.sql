@@ -35,7 +35,7 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
-INSERT INTO `categoria` VALUES (1,'MONTAÑERAS');
+INSERT INTO `categoria` VALUES (1,'MONTAÑERAS'),(2,'RUTA'),(3,'URBANAS'),(4,'PLEGABLES'),(5,'BMX');
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,6 +61,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES ('47519383','WALTER NICK','SUEL ARROYO','18'),('71204347','WILLIAMS EDUARDO','CACHIQUE FALCÓN','19'),('72427114','CRISTHIAN','HINOSTROZA DE LA PEÑA','19'),('72691164','DANIEL ISRAEL','SANTOS ROJAS','19'),('73367034','JORGE LUIS','MARIN EVANGELISTA','18200275'),('74854108','ALEXANDER','TORRE ARTEAGA','19');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,10 +73,12 @@ DROP TABLE IF EXISTS `pedido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pedido` (
-  `idPedido` int NOT NULL,
-  `idProducto` int DEFAULT NULL,
+  `idPedido` int NOT NULL AUTO_INCREMENT,
+  `idVenta` int NOT NULL,
+  `idProducto` int NOT NULL,
+  `cantidad` int NOT NULL,
   PRIMARY KEY (`idPedido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,6 +87,7 @@ CREATE TABLE `pedido` (
 
 LOCK TABLES `pedido` WRITE;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
+INSERT INTO `pedido` VALUES (1,1,1,10),(2,1,2,1),(3,1,1,3);
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,7 +116,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (2,'RUEDAS',20,'MOTAÑERA',10.2,1,10),(3,'ARO 20',10,'MOTAÑERA',10.2,5,15);
+INSERT INTO `producto` VALUES (1,'BICICLETA ARO 20',150,'PLEGABLES',50,2,4),(2,'RUEDAS',20,'MOTAÑERA',10.2,1,1),(3,'CASCO 20',50,'EQUIPO DE PROTECCION',30,2,6),(4,'FRENOS',150,'MONTAÑERAS',50,2,1),(5,'BICICLETA INFANTIL',20,'RUTA',1200,3,2);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,9 +129,9 @@ DROP TABLE IF EXISTS `proveedores`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `proveedores` (
   `idProveedor` int NOT NULL,
-  `nombre` varchar(20) DEFAULT NULL,
-  `direccion` varchar(20) DEFAULT NULL,
-  `telefono` varchar(9) DEFAULT NULL,
+  `nombre` varchar(60) NOT NULL,
+  `direccion` varchar(90) NOT NULL,
+  `telefono` varchar(9) NOT NULL,
   PRIMARY KEY (`idProveedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -138,6 +142,7 @@ CREATE TABLE `proveedores` (
 
 LOCK TABLES `proveedores` WRITE;
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
+INSERT INTO `proveedores` VALUES (1,'BICIMUNDO','AV. TUPAC AMARU 1516','5346894'),(2,'URBAN BIKE','AV. LA MARINA 560','5346873'),(3,'SHIMANO','AV. UNIVERSITARIA 1596','5346897'),(4,'TOI BICICLETAS','AV. COLONIAL 569','5369428'),(5,'FROST BIKE','AV. MEXICO 967','5452685');
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,7 +170,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('47519383','SUEL ARROYO','WALTER NICK','walter@unmsm.edu','12345','VENDEDOR'),('71204347','CACHIQUE FALCÓN','WILLIAMS EDUARDO','williams@unmsm.edu','12345','VENDEDOR'),('72427114','HINOSTROZA DE LA PEÑA','CRISTHIAN','cristhian@unmsm.edu','12345','VENDEDOR'),('72691164','SANTOS ROJAS','DANIEL ISRAEL','daniel@unmsm.edu','12345','VENDEDOR'),('73367034','MARIN EVANGELISTA','JORGE LUIS','jorge@bikeshop.com','12345','ADMINISTRADOR'),('74854108','TORRE ARTEAGA','ALEXANDER','alex@unmsm.edu','12345','VENDEDOR');
+INSERT INTO `usuarios` VALUES ('47519383','SUEL ARROYO','WALTER NICK','walter','12345','VENDEDOR'),('71204347','CACHIQUE FALCÓN','WILLIAMS EDUARDO','williams','12345','VENDEDOR'),('72427114','HINOSTROZA DE LA PEÑA','CRISTHIAN','cristhian','12345','VENDEDOR'),('72691164','SANTOS ROJAS','DANIEL ISRAEL','daniel','12345','VENDEDOR'),('73367034','MARIN EVANGELISTA','JORGE LUIS','jorge','12345','ADMINISTRADOR'),('74854108','TORRE ARTEAGA','ALEXANDER','alex','12345','VENDEDOR');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,15 +182,13 @@ DROP TABLE IF EXISTS `venta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `venta` (
-  `idVenta` int NOT NULL,
+  `idVenta` int NOT NULL AUTO_INCREMENT,
   `dniUsuario` varchar(8) DEFAULT NULL,
   `dniCliente` varchar(8) DEFAULT NULL,
-  `idPedido` int DEFAULT NULL,
-  `fecha` date DEFAULT NULL,
   `monto` float DEFAULT NULL,
   `boleta` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idVenta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,6 +197,7 @@ CREATE TABLE `venta` (
 
 LOCK TABLES `venta` WRITE;
 /*!40000 ALTER TABLE `venta` DISABLE KEYS */;
+INSERT INTO `venta` VALUES (1,'73367034','73367034',660.2,1);
 /*!40000 ALTER TABLE `venta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -206,4 +210,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-07-04 13:56:26
+-- Dump completed on 2021-08-01 22:57:01

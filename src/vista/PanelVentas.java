@@ -71,7 +71,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btnBuscarProd = new javax.swing.JButton();
         btnModificarProd = new javax.swing.JButton();
         btnVenta = new javax.swing.JButton();
-        txtMonto = new jtextfieldround.JTextFieldRound();
+        txtTotal = new jtextfieldround.JTextFieldRound();
         btnCancelarVenta = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(57, 103, 196));
@@ -383,8 +383,8 @@ public class PanelVentas extends javax.swing.JPanel {
             }
         });
 
-        txtMonto.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtMonto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtTotal.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         btnCancelarVenta.setText("Cancelar venta");
         btnCancelarVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -427,7 +427,7 @@ public class PanelVentas extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCancelarVenta)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -457,7 +457,7 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel17)
-                                .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnVenta)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
@@ -543,11 +543,11 @@ public class PanelVentas extends javax.swing.JPanel {
     private jtextfieldround.JTextFieldRound txtCategoria;
     private jtextfieldround.JTextFieldRound txtDni;
     private jtextfieldround.JTextFieldRound txtIdProd;
-    private jtextfieldround.JTextFieldRound txtMonto;
     private jtextfieldround.JTextFieldRound txtNomProd;
     private jtextfieldround.JTextFieldRound txtNombre;
     private jtextfieldround.JTextFieldRound txtPrecioProd;
     private jtextfieldround.JTextFieldRound txtRuc;
+    private jtextfieldround.JTextFieldRound txtTotal;
     // End of variables declaration//GEN-END:variables
 
     public void setControlador(ControladorVenta miControladorVenta) {
@@ -559,7 +559,7 @@ public class PanelVentas extends javax.swing.JPanel {
         Venta miVenta = new Venta();
         miVenta.setDniUsuario("73367034"); // Por mientras hasta que se agregue el login.
         miVenta.setDniCliente(txtDni.getText());
-        miVenta.setMonto(Float.parseFloat(txtMonto.getText()));
+        miVenta.setMonto(Float.parseFloat(txtTotal.getText()));
         miVenta.setBoleta(true); // Agregar checkbox a vista para este campo.
         return miVenta;
     }
@@ -595,7 +595,7 @@ public class PanelVentas extends javax.swing.JPanel {
         txtNombre.setText("");
         txtApellido.setText("");
         txtRuc.setText("");
-        txtMonto.setText("");
+        txtTotal.setText("");
         txtDni.requestFocus();
     }
 
@@ -605,24 +605,25 @@ public class PanelVentas extends javax.swing.JPanel {
         Producto miProducto;
         float precio;
         int cantidad;
-        float monto;
         float total = 0;
+        
         for (int i = 0; i < carritoPedidos.size(); i++) {
             miProducto = miControladorVenta.buscarIdProducto(carritoPedidos.get(i).getIdProducto());
             precio = miProducto.getPrecio();
             cantidad = carritoPedidos.get(i).getCantidad();
-            monto = precio * cantidad;
+            
             miData[i][0] = carritoPedidos.get(i).getIdPedido();
             miData[i][1] = miProducto.getNombre();
             miData[i][2] = miProducto.getCategoria();
             miData[i][3] = cantidad;
             miData[i][4] = precio;
-            miData[i][5] = monto;
-            total += monto;
+            miData[i][5] = precio*cantidad;
+            total += precio*cantidad;
         }
+        
         miDefaultTableModel = new DefaultTableModel(miData, columnas);
         tblVentas.setModel(miDefaultTableModel);
-        txtMonto.setText(""+total);
+        txtTotal.setText(""+total);
     }
 
     public void desempaquetarDatosProducto(Producto miProducto) {

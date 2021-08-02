@@ -67,7 +67,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="txtMonto" min="-2" pref="129" max="-2" attributes="0"/>
+                      <Component id="txtTotal" min="-2" pref="129" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -107,7 +107,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtMonto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="btnVenta" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -815,7 +815,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVentaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="jtextfieldround.JTextFieldRound" name="txtMonto">
+    <Component class="jtextfieldround.JTextFieldRound" name="txtTotal">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
