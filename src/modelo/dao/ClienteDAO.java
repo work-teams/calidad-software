@@ -6,6 +6,7 @@
 package modelo.dao;
 
 //import controlador.ControladorCliente;
+import controlador.ControladorVenta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +22,7 @@ import modelo.vo.Cliente;
  */
 public class ClienteDAO extends ConexionDB {
     // ATRIBUTOS DE CLASE
-    //ControladorCliente miControladorCliente;
+    ControladorVenta miControladorVenta;
     private Connection miConnection;
     private PreparedStatement miPreparedStatement;
     private ResultSet miResultSet;
@@ -33,10 +34,10 @@ public class ClienteDAO extends ConexionDB {
     private final String DELETE = "DELETE FROM cliente WHERE dniCliente=?";
     private final String LISTAR = "SELECT * FROM cliente";
     
-    // ENLACE CONTROLADOR
-    //public void setControlador(ControladorCliente miControladorCliente) {
-        //this.miControladorCliente = miControladorCliente;
-    //}
+//     ENLACE CONTROLADOR
+    public void setControladorVentas(ControladorVenta miControladorVenta) {
+        this.miControladorVenta = miControladorVenta;
+    }
     
     // MÉTODOS C.R.U.D.
     public void registrarCliente(Cliente miCliente) {
@@ -70,7 +71,7 @@ public class ClienteDAO extends ConexionDB {
                 miCliente = empaquetarDatosBuscarCliente(miResultSet);
             }
             // Mensaje
-            else {JOptionPane.showMessageDialog(null, "El dni ingresado no coincide con ningún cliente registrado.");}
+            //else {JOptionPane.showMessageDialog(null, "El dni ingresado no coincide con ningún cliente registrado.");}
             // Fin mensaje
         } catch (SQLException ex) {System.out.println(ex);
         } finally {

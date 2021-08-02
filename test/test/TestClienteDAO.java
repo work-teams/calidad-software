@@ -27,13 +27,13 @@ public class TestClienteDAO {
         Pedido miCliente2 = new Pedido();
         
         miCliente2.setIdPedido(1);
-        miCliente2.setIdVenta("10");
-        miCliente2.setIdProducto("120");
+        //miCliente2.setIdVenta("10");
+        //miCliente2.setIdProducto("120");
         miCliente2.setCantidad(145);
         
         miCliente.setIdPedido(12);
-        miCliente.setIdVenta("10");
-        miCliente.setIdProducto("121");
+        //miCliente.setIdVenta("10");
+        //miCliente.setIdProducto("121");
         miCliente.setCantidad(141);
         
         
@@ -41,7 +41,7 @@ public class TestClienteDAO {
         //miClienteDAO.registrarPedido(miCliente);
         //miClienteDAO.registrarPedido(miCliente2);
         //miClienteDAO.eliminarPedido(1000);
-        //System.out.println(miClienteDAO.buscarPedido("1000").getCantidad());
+        //System.out.println(miClienteDAO.listarCarritoPedidos("1000").getCantidad());
         //miClienteDAO.modificarPedido(miCliente);
         
         /*
@@ -55,11 +55,11 @@ public class TestClienteDAO {
         System.out.println("\n\nListar Busqueda \n\n");
         
         ArrayList<Pedido> miArrayList;
-        miArrayList = miClienteDAO.buscarPedido("10");
+        //miArrayList = miClienteDAO.listarCarritoPedidos("10");
         
-        for (int i = 0; i < miArrayList.size(); i++) {
-            System.out.println(miArrayList.get(i).getIdVenta());
-        }
+        //for (int i = 0; i < miArrayList.size(); i++) {
+            //System.out.println(miArrayList.get(i).getIdVenta());
+        //}
         
         
     }

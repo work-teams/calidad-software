@@ -12,9 +12,9 @@ package modelo.vo;
 public class Pedido {
     
     //atributo de la clase
-    private int idPedido;
-    private String idVenta;
-    private String idProducto;
+    private int idPedido; // Autoincremental
+    private int idVenta;
+    private int idProducto;
     private int cantidad; 
     
     //Constructor
@@ -25,28 +25,28 @@ public class Pedido {
     /**
      * @return the idVenta
      */
-    public String getIdVenta() {
+    public int getIdVenta() {
         return idVenta;
     }
 
     /**
      * @param idVenta the idVenta to set
      */
-    public void setIdVenta(String idVenta) {
+    public void setIdVenta(int idVenta) {
         this.idVenta = idVenta;
     }
 
     /**
      * @return the idProducto
      */
-    public String getIdProducto() {
+    public int getIdProducto() {
         return idProducto;
     }
 
     /**
      * @param idProducto the idProducto to set
      */
-    public void setIdProducto(String idProducto) {
+    public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
 
