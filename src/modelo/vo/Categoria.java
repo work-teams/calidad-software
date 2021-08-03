@@ -18,6 +18,9 @@ public class Categoria {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
     }
+    
+    public Categoria() {
+    }
 
     //GETTERS
     public int getIdCategoria() {

@@ -5,14 +5,11 @@
  */
 package modelo.dao;
 
-//import controlador.ControladorCliente;
-import controlador.ControladorVenta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import modelo.ConexionDB;
 import modelo.vo.Cliente;
 
@@ -21,24 +18,19 @@ import modelo.vo.Cliente;
  * @author krypt97
  */
 public class ClienteDAO extends ConexionDB {
+
     // ATRIBUTOS DE CLASE
-    ControladorVenta miControladorVenta;
     private Connection miConnection;
     private PreparedStatement miPreparedStatement;
     private ResultSet miResultSet;
-    
+
     // SENTENCIAS SQL
-    private final String INSERT = "INSERT INTO cliente (dniCliente, apellido, nombre, ruc) VALUES (?,?,?,?)";
-    private final String UPDATE = "UPDATE cliente SET apellido=?, nombre=?, ruc=? WHERE dniCliente=?";
-    private final String SEARCH = "SELECT apellido, nombre, ruc FROM cliente WHERE dniCliente=?";
-    private final String DELETE = "DELETE FROM cliente WHERE dniCliente=?";
-    private final String LISTAR = "SELECT * FROM cliente";
-    
-//     ENLACE CONTROLADOR
-    public void setControladorVentas(ControladorVenta miControladorVenta) {
-        this.miControladorVenta = miControladorVenta;
-    }
-    
+    private final String INSERT = "INSERT INTO bikeshop.cliente (dniCliente, apellido, nombre, ruc) VALUES (?,?,?,?)";
+    private final String UPDATE = "UPDATE bikeshop.cliente SET apellido=?, nombre=?, ruc=? WHERE dniCliente=?";
+    private final String SEARCH = "SELECT apellido, nombre, ruc FROM bikeshop.cliente WHERE dniCliente=?";
+    private final String DELETE = "DELETE FROM bikeshop.cliente WHERE dniCliente=?";
+    private final String LISTAR = "SELECT * FROM bikeshop.cliente";
+
     // MÉTODOS C.R.U.D.
     public void registrarCliente(Cliente miCliente) {
         try {
@@ -48,18 +40,22 @@ public class ClienteDAO extends ConexionDB {
             miPreparedStatement.setString(2, miCliente.getApellido());
             miPreparedStatement.setString(3, miCliente.getNombre());
             miPreparedStatement.setString(4, miCliente.getRuc());
+            int mensaje = miPreparedStatement.executeUpdate();
             // Mensaje
-            if (miPreparedStatement.executeUpdate() != 0) {JOptionPane.showMessageDialog(null, "Cliente registrado con exito.");}
+            if (mensaje != 0) {
+            }
             // Fin mensaje
-        } catch (SQLException ex) {System.out.println(ex);JOptionPane.showMessageDialog(null, "Cliente ya registrado.");
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex);
         } finally {
             try {
                 miConnection.close();
-            } catch (SQLException e) {System.out.println(e);
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
             }
         }
     }
-    
+
     public Cliente buscarCliente(String dniCliente) {
         Cliente miCliente = null;
         try {
@@ -70,20 +66,19 @@ public class ClienteDAO extends ConexionDB {
             if (miResultSet.next()) {
                 miCliente = empaquetarDatosBuscarCliente(miResultSet);
             }
-            // Mensaje
-            //else {JOptionPane.showMessageDialog(null, "El dni ingresado no coincide con ningún cliente registrado.");}
-            // Fin mensaje
-        } catch (SQLException ex) {System.out.println(ex);
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex);
         } finally {
             try {
                 miConnection.close();
-            } catch (SQLException e) {System.out.println(e);
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
             }
         }
         return miCliente;
     }
-    
-    public void modificarCliente(Cliente miCliente){
+
+    public void modificarCliente(Cliente miCliente) {
         try {
             miConnection = getConexion();
             miPreparedStatement = miConnection.prepareStatement(UPDATE);
@@ -91,37 +86,45 @@ public class ClienteDAO extends ConexionDB {
             miPreparedStatement.setString(2, miCliente.getNombre());
             miPreparedStatement.setString(3, miCliente.getRuc());
             miPreparedStatement.setString(4, miCliente.getDniCliente());
+            int mensaje = miPreparedStatement.executeUpdate();
             // Mensaje
-            if (miPreparedStatement.executeUpdate() != 0) {JOptionPane.showMessageDialog(null, "Cliente modificado con exito.");}
-            else {JOptionPane.showMessageDialog(null, "El dni ingresado no coincide con ningún cliente registrado.");}
+            if (mensaje != 0) {
+                System.out.println("Cliente modificado");
+            }
             // Fin mensaje
-        } catch (SQLException ex) {System.out.println(ex);
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex);
         } finally {
             try {
                 miConnection.close();
-            } catch (SQLException e) {System.out.println(e);
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
             }
         }
     }
-    
-    public void eliminarCliente(String dniCliente){
+
+    public void eliminarCliente(String dniCliente) {
         try {
             miConnection = getConexion();
             miPreparedStatement = miConnection.prepareStatement(DELETE);
             miPreparedStatement.setString(1, dniCliente);
+            int mensaje = miPreparedStatement.executeUpdate();
             // Mensaje
-            if (miPreparedStatement.executeUpdate() != 0) {JOptionPane.showMessageDialog(null, "Cliente eliminado con exito.");}
-            else {JOptionPane.showMessageDialog(null, "El dni ingresado no coincide con ningún cliente registrado.");}
+            if (mensaje != 0) {
+                System.out.println("Cliente eliminado");
+            }
             // Fin mensaje
-        } catch (SQLException ex) {System.out.println(ex);
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex);
         } finally {
             try {
                 miConnection.close();
-            } catch (SQLException e) {System.out.println(e);
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
             }
         }
     }
-    
+
     public ArrayList<Cliente> listarClientes() {
         ArrayList<Cliente> misClientes = new ArrayList<>();
         try {
@@ -131,16 +134,18 @@ public class ClienteDAO extends ConexionDB {
             while (miResultSet.next()) {
                 misClientes.add(empaquetarDatosListarClientes(miResultSet));
             }
-        } catch (SQLException e) {System.out.println(e);
+        } catch (SQLException | NullPointerException e) {
+            System.out.println(e);
         } finally {
             try {
                 miConnection.close();
-            } catch (SQLException e) {System.out.println(e);
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
             }
         }
         return misClientes;
     }
-    
+
     // MÉTODOS AUXILIARES
     private Cliente empaquetarDatosBuscarCliente(ResultSet miResultSet) throws SQLException {
         Cliente miCliente = new Cliente();
@@ -149,7 +154,7 @@ public class ClienteDAO extends ConexionDB {
         miCliente.setRuc(miResultSet.getString("ruc"));
         return miCliente;
     }
-    
+
     private Cliente empaquetarDatosListarClientes(ResultSet miResultSet) throws SQLException {
         Cliente miCliente = new Cliente();
         miCliente.setDniCliente(miResultSet.getString("dniCliente"));

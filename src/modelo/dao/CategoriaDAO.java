@@ -17,126 +17,144 @@ import modelo.ConexionDB;
  *
  * @author AlexTprog
  */
-public class CategoriaDAO {
+public class CategoriaDAO extends ConexionDB {
 
-    private static PreparedStatement ps;
-    private static ResultSet r;
+    // ATRIBUTOS DE CLASE
+    private Connection miConnection;
+    private PreparedStatement miPreparedStatement;
+    private ResultSet miResultSet;
 
-    public static void registrarCategoria(Categoria c) {
-        //INSERT INTO CATEGORIA () VALUES (?)        
+    // SENTENCIAS SQL
+    private final String INSERT = "INSERT INTO bikeshop.categoria (idCategoria, nombreCategoria) VALUES (?,?)";
+    private final String UPDATE = "UPDATE bikeshop.categoria SET nombreCategoria=? WHERE idCategoria=?";
+    private final String SEARCH = "SELECT nombreCategoria FROM bikeshop.categoria WHERE idCategoria=?";
+    private final String DELETE = "DELETE FROM bikeshop.categoria WHERE idCategoria=?";
+    private final String LISTAR = "SELECT * FROM bikeshop.categoria";
+
+    // MÉTODOS C.R.U.D.
+    public void registrarCategoria(Categoria miCategoria) {
         try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("INSERT INTO categoria "
-                    + "(idCategoria,nombreCategoria) "
-                    + "VALUES (?,?)");
-
-            ps.setInt(1, c.getIdCategoria());
-            ps.setString(2, c.getNombreCategoria());
-
-            int result = ps.executeUpdate();
-
-            if (result > 0) {
-                System.out.println("CATEGORIA REGISTRADA CON EXITO");
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(INSERT);
+            miPreparedStatement.setInt(1, miCategoria.getIdCategoria());
+            miPreparedStatement.setString(2, miCategoria.getNombreCategoria());
+            int mensaje = miPreparedStatement.executeUpdate();
+            // Mensaje
+            if (mensaje != 0) {
+                System.out.println("Categoria registrada");
             }
-            con.close();
-        } catch (SQLException e) {
+            // Fin mensaje
+        } catch (SQLException | NullPointerException e) {
             System.err.println(e);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
+            }
         }
     }
 
-    public static Categoria buscarCategoria(int id) {
-        //SELECT * FROM CATEGORIA WHERE idCategoria=?
-        Categoria p = null;
-
+    public Categoria buscarCategoria(int idCategoria) {
+        Categoria miCategoria = null;
         try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("SELECT * FROM categoria "
-                    + "WHERE idCategoria=?");
-
-            ps.setInt(1, id);
-            r = ps.executeQuery();
-
-            if (r.next()) {
-                Categoria a;
-                int idCat = r.getInt("idCategoria");
-                String nombreCat = r.getString("nombreCategoria");
-
-                a = new Categoria(idCat, nombreCat);
-                System.out.println("CATEGORIA ENCONTRADA");
-                return a;
-            } else {
-                System.out.println("CATEGORIA NO ENCONTRADA");
+            Connection con = getConexion();
+            miPreparedStatement = con.prepareStatement(SEARCH);
+            miPreparedStatement.setInt(1, idCategoria);
+            miResultSet = miPreparedStatement.executeQuery();
+            if (miResultSet.next()) {
+                miCategoria = empaquetarDatosBuscarCategoria(miResultSet);
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println(e);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
+            }
         }
-        return p;
+        return miCategoria;
     }
 
     //
-    public static ArrayList<Categoria> mostrarCategorias() {
-        ArrayList<Categoria> c = new ArrayList<Categoria>();
+    public ArrayList<Categoria> listarCategorias() {
+        ArrayList<Categoria> misCategorias = new ArrayList<>();
         try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("SELECT * FROM bikeshop.categoria ");
-
-            r = ps.executeQuery();
-            while (r.next()) {
-                String nombreCat = r.getString("nombreCategoria");
-                int idCat = r.getInt("idCategoria");
-
-                c.add(new Categoria(idCat, nombreCat));
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(LISTAR);
+            miResultSet = miPreparedStatement.executeQuery();
+            while (miResultSet.next()) {
+                misCategorias.add(empaquetarDatosListarCategoria(miResultSet));
             }
-            System.out.println("LISTA DE CATEGORIAS ENVIADA");
-            return c;
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println(e);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
+            }
         }
-
-        return null;
+        return misCategorias;
     }
 
-    public static void modificarCategoria(Categoria c) {
-        //UPDATE PRODUCTO SET WHERE ID=?
+    public void modificarCategoria(Categoria miCategoria) {
         try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("UPDATE categoria SET "
-                    + "nombreCategoria=? "
-                    + "WHERE idCategoria=?");
-
-            ps.setString(1, c.getNombreCategoria());
-            //idCategoria
-            ps.setInt(2, c.getIdCategoria());
-
-            int result = ps.executeUpdate();
-
-            if (result > 0) {
-                System.out.println("CATEGORIA MODIFICADA CON EXITO");
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(UPDATE);
+            miPreparedStatement.setString(1, miCategoria.getNombreCategoria());
+            miPreparedStatement.setInt(2, miCategoria.getIdCategoria());
+            int mensaje = miPreparedStatement.executeUpdate();
+            // Mensaje
+            if (mensaje != 0) {
+                System.out.println("Categoria modificada");
             }
-            con.close();
-        } catch (SQLException e) {
+            // Fin mensaje
+        } catch (SQLException | NullPointerException e) {
             System.err.println(e);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
+            }
         }
     }
 
-    public static void eliminarCategoria(int id) {
-        //DELETE FROM CATEGORIA WHERE ID=?
+    public void eliminarCategoria(int idCategoria) {
         try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("DELETE FROM categoria "
-                    + "WHERE idCategoria=?");
-
-            ps.setInt(1, id);
-
-            int result = ps.executeUpdate();
-
-            if (result > 0) {
-                System.out.println("CATEGORIA ELIMINADA");
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(DELETE);
+            miPreparedStatement.setInt(1, idCategoria);
+            int mensaje = miPreparedStatement.executeUpdate();
+            // Mensaje
+            if (mensaje != 0) {
+                System.out.println("Categoria eliminada");
             }
-
-            con.close();
-        } catch (SQLException e) {
+            // Fin mensaje
+        } catch (SQLException | NullPointerException e) {
             System.err.println(e);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
+            }
         }
+    }
+
+    // MÉTODOS AUXILIARES
+    private Categoria empaquetarDatosBuscarCategoria(ResultSet miResultSet) throws SQLException {
+        Categoria miCategoria = new Categoria();
+        miCategoria.setNombreCategoria(miResultSet.getString("nombreCategoria"));
+        return miCategoria;
+    }
+
+    private Categoria empaquetarDatosListarCategoria(ResultSet miResultSet) throws SQLException {
+        Categoria miCategoria = new Categoria();
+        miCategoria.setIdCategoria(miResultSet.getInt("idCategoria"));
+        miCategoria.setNombreCategoria(miResultSet.getString("nombreCategoria"));
+        return miCategoria;
     }
 }

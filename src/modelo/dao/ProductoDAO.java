@@ -5,7 +5,6 @@
  */
 package modelo.dao;
 
-import controlador.ControladorProducto;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -18,160 +17,163 @@ import modelo.vo.Producto;
  *
  * @author AlexTprog
  */
-public class ProductoDAO {
+public class ProductoDAO extends ConexionDB {
 
-    private ControladorProducto controlador;
-    private PreparedStatement ps;
-    private ResultSet r;
+    // ATRIBUTOS DE CLASE
+    private Connection miConnection;
+    private PreparedStatement miPreparedStatement;
+    private ResultSet miResultSet;
 
-    public void registrarProducto(Producto p) {
-        //INSERT INTO PRODUCTO () VALUES (?)        
+    // SENTENCIAS SQL
+    private final String INSERT = "INSERT INTO bikeshop.producto (idProducto, nombre, cantidad, categoria, precio, idProveedor, idCategoria) VALUES (?,?,?,?,?,?,?)";
+    private final String UPDATE = "UPDATE bikeshop.producto SET nombre=?, cantidad=?, categoria=?, precio=?, idProveedor=?, idCategoria=? WHERE idProducto=?";
+    private final String SEARCH = "SELECT nombre, cantidad, categoria, precio, idProveedor, idCategoria FROM bikeshop.producto WHERE idProducto=?";
+    private final String DELETE = "DELETE FROM bikeshop.producto WHERE idProducto=?";
+    private final String LISTAR = "SELECT * FROM bikeshop.producto";
+
+    // MÉTODOS C.R.U.D.
+    public void registrarProducto(Producto miProducto) {
         try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("INSERT INTO producto "
-                    + "(idProducto,nombre,cantidad,categoria,precio,idProveedor,idCategoria) "
-                    + "VALUES (?,?,?,?,?,?,?)");
-
-            ps.setInt(1, p.getIdProducto());
-            ps.setString(2, p.getNombre());
-            ps.setInt(3, p.getCantidad());
-            ps.setString(4, p.getCategoria());
-            ps.setFloat(5, p.getPrecio());
-            ps.setInt(6, p.getIdProveedor());
-            ps.setInt(7, p.getIdCategoria());
-
-            int result = ps.executeUpdate();
-
-            if (result > 0) {
-                System.out.println("PRODUCTO REGISTRADO CON EXITO");
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(INSERT);
+            miPreparedStatement.setInt(1, miProducto.getIdProducto());
+            miPreparedStatement.setString(2, miProducto.getNombre());
+            miPreparedStatement.setInt(3, miProducto.getCantidad());
+            miPreparedStatement.setString(4, miProducto.getCategoria());
+            miPreparedStatement.setFloat(5, miProducto.getPrecio());
+            miPreparedStatement.setInt(6, miProducto.getIdProveedor());
+            miPreparedStatement.setInt(7, miProducto.getIdCategoria());
+            int mensaje = miPreparedStatement.executeUpdate();
+            // Mensaje
+            if (mensaje != 0) {
+                System.out.println("Producto registrado");
             }
-
-            con.close();
-        } catch (SQLException e) {
+            // Fin mensaje
+        } catch (SQLException | NullPointerException e) {
             System.err.println(e);
-        }
-
-    }
-
-    //Buscar por ID
-    public Producto buscarProducto(int id) {
-        //SELECT * FROM PRODUCTO WHERE id_producto=?
-        Producto p = null;
-
-        try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("SELECT * FROM producto "
-                    + "WHERE idProducto=?");
-
-            ps.setInt(1, id);
-
-            r = ps.executeQuery();
-
-            if (r.next()) {
-                int idP = r.getInt("idProducto");
-                String nombre = r.getString("nombre");
-                int cantidad = r.getInt("cantidad");
-                String nombreCat = r.getString("categoria");
-                float precio = r.getFloat("precio");
-                int idProv = r.getInt("idProveedor");
-                int idCat = r.getInt("idCategoria");
-
-                p = new Producto(idP, nombre, cantidad, nombreCat, precio, idProv, idCat);
-                System.out.println("PRODUCTO ENCONTRADO");
-                return p;
-            } else {
-                System.out.println("PRODUCTO NO ENCONTRADO");
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
-        }
-        return p;
-    }
-
-    //Devuelve arraylist con productos
-    public ArrayList<Producto> mostrarProductos() {
-        ArrayList<Producto> p = new ArrayList<Producto>();
-        try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("SELECT * FROM bikeshop.producto ");
-
-            r = ps.executeQuery();
-            while (r.next()) {
-                int idP = r.getInt("idProducto");
-                String nombre = r.getString("nombre");
-                int cantidad = r.getInt("cantidad");
-                String nombreCat = r.getString("categoria");
-                float precio = r.getFloat("precio");
-                int idProv = r.getInt("idProveedor");
-                int idCat = r.getInt("idCategoria");
-
-                p.add(new Producto(idP, nombre, cantidad, nombreCat, precio, idProv, idCat));
-            }
-
-            System.out.println("LISTA DE PRODUCTOS ENVIADA");
-            return p;
-        } catch (SQLException e) {
-            System.err.println(e);
-        }
-
-        return null;
-    }
-
-    //Seleccion por ID y modifica
-    public void modificarProducto(Producto p) {
-        //UPDATE PRODUCTO SET WHERE ID=?
-        try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("UPDATE producto SET "
-                    + "nombre=?, cantidad=?, categoria=?, precio=?, idProveedor=?, idCategoria=? "
-                    + "WHERE idProducto=?");
-
-            ps.setString(1, p.getNombre());
-            ps.setInt(2, p.getCantidad());
-            ps.setString(3, p.getCategoria());
-            ps.setFloat(4, p.getPrecio());
-            ps.setInt(5, p.getIdProveedor());
-            ps.setInt(6, p.getIdCategoria());
-            //idProducto del producto a modificar
-            ps.setInt(7, p.getIdProducto());
-
-            int result = ps.executeUpdate();
-
-            if (result > 0) {
-                System.out.println("PRODUCTO MODIFICADO CON EXITO");
-            }
-
-            con.close();
-        } catch (SQLException e) {
-            System.err.println(e);
         }
     }
 
-    //Elimina por id
-    public void eliminarProducto(int id) {
-        //DELETE FROM PRODUCTO WHERE ID=?
+    public Producto buscarProducto(int idProducto) {
+        Producto miProducto = null;
         try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("DELETE FROM producto "
-                    + "WHERE idProducto=?");
-
-            ps.setInt(1, id);
-
-            int result = ps.executeUpdate();
-
-            if (result == 0) {
-                System.out.println("PRODUCTO NO ENCONTRADO");
-            } else {
-                System.out.println("PRODUCTO ELIMINADO");
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(SEARCH);
+            miPreparedStatement.setInt(1, idProducto);
+            miResultSet = miPreparedStatement.executeQuery();
+            if (miResultSet.next()) {
+                miProducto = empaquetarDatosBuscarProducto(miResultSet);
             }
-
-            con.close();
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println(e);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
+            }
+        }
+        return miProducto;
+    }
+
+    public ArrayList<Producto> listarProductos() {
+        ArrayList<Producto> misProductos = new ArrayList<>();
+        try {
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(LISTAR);
+            miResultSet = miPreparedStatement.executeQuery();
+            while (miResultSet.next()) {
+                misProductos.add(empaquetarDatosListarProducto(miResultSet));
+            }
+        } catch (SQLException | NullPointerException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
+            }
+        }
+        return misProductos;
+    }
+
+    public void modificarProducto(Producto miProducto) {
+        try {
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(UPDATE);
+            miPreparedStatement.setString(1, miProducto.getNombre());
+            miPreparedStatement.setInt(2, miProducto.getCantidad());
+            miPreparedStatement.setString(3, miProducto.getCategoria());
+            miPreparedStatement.setFloat(4, miProducto.getPrecio());
+            miPreparedStatement.setInt(5, miProducto.getIdProveedor());
+            miPreparedStatement.setInt(6, miProducto.getIdCategoria());
+            miPreparedStatement.setInt(7, miProducto.getIdProducto());
+            int mensaje = miPreparedStatement.executeUpdate();
+            // Mensaje
+            if (mensaje != 0) {
+                System.out.println("Producto modificado");
+            }
+            // Fin mensaje
+        } catch (SQLException | NullPointerException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
+            }
         }
     }
 
-    public void setControladorProducto(ControladorProducto control) {
-        this.controlador = control;
+    public void eliminarProducto(int idProducto) {
+        try {
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(DELETE);
+            miPreparedStatement.setInt(1, idProducto);
+            int mensaje = miPreparedStatement.executeUpdate();
+            // Mensaje
+            if (mensaje != 0) {
+                System.out.println("Producto eliminado");
+            }
+            // Fin mensaje
+        } catch (SQLException | NullPointerException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    // MÉTODOS AUXILIARES
+    private Producto empaquetarDatosBuscarProducto(ResultSet miResultSet) throws SQLException {
+        Producto miProducto = new Producto();
+        miProducto.setNombre(miResultSet.getString("nombre"));
+        miProducto.setCantidad(miResultSet.getInt("cantidad"));
+        miProducto.setCategoria(miResultSet.getString("categoria"));
+        miProducto.setPrecio(miResultSet.getFloat("precio"));
+        miProducto.setIdProveedor(miResultSet.getInt("idProveedor"));
+        miProducto.setIdCategoria(miResultSet.getInt("idCategoria"));
+        return miProducto;
+    }
+
+    private Producto empaquetarDatosListarProducto(ResultSet miResultSet) throws SQLException {
+        Producto miProducto = new Producto();
+        miProducto.setIdProducto(miResultSet.getInt("idProducto"));
+        miProducto.setNombre(miResultSet.getString("nombre"));
+        miProducto.setCantidad(miResultSet.getInt("cantidad"));
+        miProducto.setCategoria(miResultSet.getString("categoria"));
+        miProducto.setPrecio(miResultSet.getFloat("precio"));
+        miProducto.setIdProveedor(miResultSet.getInt("idProveedor"));
+        miProducto.setIdCategoria(miResultSet.getInt("idCategoria"));
+        return miProducto;
     }
 }

@@ -34,40 +34,36 @@ public class BikeShop {
      */
     public static void main(String[] args) {
         // ÚNICA INSTANCIA DE LOS ELEMENTOS A CONECTAR
-        
-        // [vista]
+        // Vista
         VentanaPrincipal miVentanaPrincipal = new VentanaPrincipal();
         PanelUsuarios miPanelUsuarios = new PanelUsuarios();
         PanelProducto miPanelProducto = new PanelProducto();
         PanelProveedores miPanelProveedores = new PanelProveedores();
         PanelVentas miPanelVentas = new PanelVentas();
-        
-        // [dao]
+        // Dao
         UsuarioDAO miUsuarioDAO = new UsuarioDAO();
         ProductoDAO miProductoDAO = new ProductoDAO();
+        CategoriaDAO miCategoriaDAO = new CategoriaDAO();
         ProveedorDAO miProveedorDAO = new ProveedorDAO();
         VentaDAO miVentaDAO = new VentaDAO();
         PedidoDAO miPedidoDAO = new PedidoDAO();
         ClienteDAO miClienteDAO = new ClienteDAO();
-        
-        // [controlador]
+        // Controlador
         ControladorUsuario miControladorUsuario = new ControladorUsuario();
         ControladorProducto miControladorProducto = new ControladorProducto();
         ControladorProveedor miControladorProveedor = new ControladorProveedor();
         ControladorVenta miControladorVenta = new ControladorVenta();
-        
+
         ControladorGeneral miControladorGeneral = new ControladorGeneral();
 
-/* ---------------------------------------------------------------------------------------- */
-        // CONECTANDO CONTROLADOR A VISTAS Y/O MODELOS
-        
-        // [vistas]
+        /* ------------------------------------------------------------------ */
+        // CONECTANDO CONTROLADOR A VISTAS
+        // Vistas
         miControladorUsuario.setPanelUsuarios(miPanelUsuarios);
         miControladorProveedor.setPanelProveedores(miPanelProveedores);
         miControladorProducto.setPanelProducto(miPanelProducto);
         miControladorVenta.setPanelVentas(miPanelVentas);
-        
-        // [dao]
+        // Dao
         miControladorUsuario.setUsuarioDAO(miUsuarioDAO);
         miControladorProveedor.setProveedorDAO(miProveedorDAO);
         miControladorProducto.SetProductoDAO(miProductoDAO);
@@ -75,46 +71,34 @@ public class BikeShop {
         miControladorVenta.setClienteDAO(miClienteDAO);
         miControladorVenta.setPedidoDAO(miPedidoDAO);
         miControladorVenta.SetProductoDAO(miProductoDAO);
-        
-        // [general vistas]
+        // General vistas
         miControladorGeneral.setPanelUsuarios(miPanelUsuarios);
         miControladorGeneral.setPanelProveedores(miPanelProveedores);
         miControladorGeneral.setPanelProducto(miPanelProducto);
         miControladorGeneral.setPanelVentas(miPanelVentas);
         miControladorGeneral.setVentanaPrincipal(miVentanaPrincipal);
 
-/* ---------------------------------------------------------------------------------------- */
+        /* ------------------------------------------------------------------ */
         // CONECTANDO VISTAS Y MODELOS AL CONTROLADOR
-        
-        // [vistas]
+        // Vistas
         miPanelUsuarios.setControlador(miControladorUsuario);
         miPanelProducto.setControlador(miControladorProducto);
         miPanelProveedores.setControlador(miControladorProveedor);
         miPanelVentas.setControlador(miControladorVenta);
-        
-        // [dao]
-        miUsuarioDAO.setControladorUsuarios(miControladorUsuario);
-        miProductoDAO.setControladorProducto(miControladorProducto);
-        miProveedorDAO.setControladorProveedor(miControladorProveedor);
-        miVentaDAO.setControladorVentas(miControladorVenta);
-        miPedidoDAO.setControladorVentas(miControladorVenta);
-        miClienteDAO.setControladorVentas(miControladorVenta);
-        
         miVentanaPrincipal.setControladorGeneral(miControladorGeneral);
 
-/* ---------------------------------------------------------------------------------------- */
+        /* ------------------------------------------------------------------ */
         // CARGANDO PANELES
         miVentanaPrincipal.add(miPanelUsuarios);
         miVentanaPrincipal.add(miPanelProducto);
         miVentanaPrincipal.add(miPanelProveedores);
         miVentanaPrincipal.add(miPanelVentas);
-        
-/* ---------------------------------------------------------------------------------------- */
+
+        /* ------------------------------------------------------------------ */
         // SETEANDO TABLAS
         miPanelUsuarios.setTabla(miUsuarioDAO.listarUsuarios());
-        miPanelProveedores.setTabla(miProveedorDAO.mostrarProveedores());
-        miPanelProducto.setTablaProductos(miControladorProducto.mostrarProductos());
-        miPanelProducto.setTablaCategoria(CategoriaDAO.mostrarCategorias());
-        miPanelProducto.colocarCategorias(CategoriaDAO.mostrarCategorias());
+        miPanelProveedores.setTabla(miProveedorDAO.listarProveedores());
+        miPanelProducto.setTablaProductos(miControladorProducto.listarProductos());
+        miPanelProducto.setTablaCategoria(miCategoriaDAO.listarCategorias());
     }
 }

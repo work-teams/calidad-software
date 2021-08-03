@@ -376,20 +376,20 @@ public class PanelProducto extends javax.swing.JPanel {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         conProd.modificar(capturarDatos());
-        setTablaProductos(conProd.mostrarProductos());
+        setTablaProductos(conProd.listarProductos());
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnBorrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProdActionPerformed
 
         conProd.eliminar(Integer.parseInt(txtIdProducto.getText()));
-        setTablaProductos(conProd.mostrarProductos());
+        setTablaProductos(conProd.listarProductos());
     }//GEN-LAST:event_btnBorrarProdActionPerformed
 
     private void btnAgregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProdActionPerformed
 
         conProd.registrar(capturarDatos());
         limpiar();
-        setTablaProductos(conProd.mostrarProductos());
+        setTablaProductos(conProd.listarProductos());
     }//GEN-LAST:event_btnAgregarProdActionPerformed
 
     private void cbxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCategoriaActionPerformed
