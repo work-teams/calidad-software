@@ -15,19 +15,17 @@ import java.sql.SQLException;
  */
 public class ConexionDB {
     
-    private static final String URL = "jdbc:mysql://localhost/bikeshop";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "12345678";
+    private final String URL = "jdbc:mysql://localhost/bikeshop";
+    private final String USERNAME = "root";
+    private final String PASSWORD = "12345678";
     
-    public static Connection getConexion() {
-        Connection con = null;
-        
+    public Connection getConexion() throws NullPointerException {
+        Connection miConnection = null;
         try {
-            con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            miConnection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        
-        return con;
+        return miConnection;
     }
 }

@@ -9,161 +9,159 @@ package modelo.dao;
  *
  * @author Daniel
  */
-import controlador.ControladorProveedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import modelo.ConexionDB;
 import modelo.vo.Proveedor;
 
+public class ProveedorDAO extends ConexionDB {
 
-public class ProveedorDAO extends ConexionDB{
-    
-    ControladorProveedor miControladorProveedor;
+    // ATRIBUTOS DE CLASE
     private Connection miConnection;
-    private PreparedStatement stat;
-    private ResultSet rs;
-      
-    final String INSERT = "INSERT INTO proveedores(idProveedor, nombre, direccion, telefono) VALUES(?,?,?,?)";
-    final String UPDATE = "UPDATE proveedores SET nombre = ?, direccion = ?, telefono = ? WHERE idProveedor = ?";
-    final String DELETE = "DELETE from proveedores WHERE idProveedor = ?";
-    final String SEARCH = "SELECT idProveedor, nombre, direccion, telefono from proveedores WHERE idProveedor = ?";
-    final String SEARCHALL = "SELECT idProveedor, nombre, direccion, telefono from proveedores";
+    private PreparedStatement miPreparedStatement;
+    private ResultSet miResultSet;
 
-    public void registrarProveedor(Proveedor p){     
-        try{
+    // SENTENCIAS SQL
+    private final String INSERT = "INSERT INTO bikeshop.proveedores(idProveedor, nombre, direccion, telefono) VALUES (?,?,?,?)";
+    private final String UPDATE = "UPDATE bikeshop.proveedores SET nombre=?, direccion=?, telefono=? WHERE idProveedor=?";
+    private final String DELETE = "DELETE FROM bikeshop.proveedores WHERE idProveedor=?";
+    private final String SEARCH = "SELECT nombre, direccion, telefono FROM bikeshop.proveedores WHERE idProveedor=?";
+    private final String LISTAR = "SELECT * FROM bikeshop.proveedores";
+
+    // MÉTODOS C.R.U.D.
+    public void registrarProveedor(Proveedor miProveedor) {
+        try {
             miConnection = getConexion();
-            stat = miConnection.prepareStatement(INSERT);
-            stat.setInt(1, p.getIdProveedor());
-            stat.setString(2, p.getNombre());
-            stat.setString(3, p.getDireccion());
-            stat.setString(4, p.getTelefono());
-            if(stat.executeUpdate() ==0){
-                System.out.println("Puede que el proveedor no haya sido registrado");
+            miPreparedStatement = miConnection.prepareStatement(INSERT);
+            miPreparedStatement.setInt(1, miProveedor.getIdProveedor());
+            miPreparedStatement.setString(2, miProveedor.getNombre());
+            miPreparedStatement.setString(3, miProveedor.getDireccion());
+            miPreparedStatement.setString(4, miProveedor.getTelefono());
+            int mensaje = miPreparedStatement.executeUpdate();
+            // Mensaje
+            if (mensaje != 0) {
+                System.out.println("Proveedor registrado");
             }
-            
-        } catch(SQLException ex){
+            // Fin mensaje
+        } catch (SQLException | NullPointerException ex) {
             System.out.println(ex.getMessage());
-            JOptionPane.showMessageDialog(null, "Este id ya esta siendo usado");
-        } finally{
-                try {
-                    miConnection.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.getMessage());
-                }
-        }    
-    };
-    
-    private Proveedor convertir(ResultSet rs)throws SQLException{
-        int idProveedor = rs.getInt("idProveedor");
-        String nombre = rs.getString("nombre");
-        String direccion = rs.getString("direccion");
-        String telefono = rs.getString("telefono");
-        Proveedor p = new Proveedor(idProveedor, nombre, direccion, telefono);
-        return p;
-    }
-   
-    public Proveedor buscarProveedor(int idProveedor) {   
-        Proveedor p = null;
-        try{
-            miConnection = getConexion();
-            stat = miConnection.prepareStatement(SEARCH);
-            stat.setInt(1, idProveedor);
-            rs = stat.executeQuery();
-            if(rs.next()){
-                p = convertir(rs);
-            }else{
-                System.out.println("No se ha encontrando ese registro");
-                JOptionPane.showMessageDialog(null, "No se encontro el proveedor");
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException ex) {
+                System.out.println(ex.getMessage());
             }
-        } catch(SQLException ex){
-            System.out.println(ex.getMessage());
-            JOptionPane.showMessageDialog(null, "No se encontro el proveedor");
-        } finally{
-                try {
-                    miConnection.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.getMessage());
-                    System.out.println("Error de SQL");
-                }
         }
-        return p;
-    };
-    
-    public ArrayList<Proveedor> mostrarProveedores(){   
-        ArrayList<Proveedor> p = new ArrayList<>();
-        try{
-            miConnection = getConexion();
-            stat = miConnection.prepareStatement(SEARCHALL);
-            rs = stat.executeQuery();
-            while(rs.next()){
-                p.add(convertir(rs));
-            }
-        } catch(SQLException ex){
-            System.out.println(ex.getMessage());
-            JOptionPane.showMessageDialog(null, "Error de SQL");
-        } finally{
-                try {
-                    miConnection.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.getMessage());
-                    System.out.println("Error de SQL");
-                }
-        }
-        return p;    
-    }
-    
-    public void modificarProveedor(Proveedor p){   
-        try{
-            miConnection = getConexion();
-            stat = miConnection.prepareStatement(UPDATE);
-            stat.setString(1, p.getNombre());
-            stat.setString(2, p.getDireccion());
-            stat.setString(3, p.getTelefono());
-            stat.setInt(4, p.getIdProveedor());
-            if(stat.executeUpdate()==0){
-                System.out.println("Puede que el proveedor no haya sido modificado");
-                JOptionPane.showMessageDialog(null, "No se encontro el proveedor");
-            }
-        } catch(SQLException ex){
-            System.out.println(ex.getMessage());
-            System.out.println("No se modifico el proveedor");
-        } finally{
-                try {
-                    miConnection.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.getMessage());
-                    System.out.println("Error de SQL");
-                }
-        }   
-    };
-    
-    public void eliminarProveedor(int idProveedor){   
-        try{
-            miConnection = getConexion();
-            stat = miConnection.prepareStatement(DELETE);
-            stat.setInt(1, idProveedor);
-            if(stat.executeUpdate()==0){
-                System.out.println("Puede que el proveedor no haya sido eliminado");
-                JOptionPane.showMessageDialog(null, "No se encontro el proveedor");
-            }
-        } catch(SQLException ex){
-            System.out.println(ex.getMessage());
-            System.out.println("No se elimino proveedor");
-        } finally{
-                try {
-                    miConnection.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.getMessage());
-                    System.out.println("Error de SQL");
-                } 
-        } 
     }
 
-    public void setControladorProveedor(ControladorProveedor miControladorProveedor) {
-        this.miControladorProveedor = miControladorProveedor;
+    public Proveedor buscarProveedor(int idProveedor) {
+        Proveedor miProveedor = null;
+        try {
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(SEARCH);
+            miPreparedStatement.setInt(1, idProveedor);
+            miResultSet = miPreparedStatement.executeQuery();
+            if (miResultSet.next()) {
+                miProveedor = empaquetarDatosBuscarProveedor(miResultSet);
+            }
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return miProveedor;
+    }
+
+    public ArrayList<Proveedor> listarProveedores() {
+        ArrayList<Proveedor> misProveedores = new ArrayList<>();
+        try {
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(LISTAR);
+            miResultSet = miPreparedStatement.executeQuery();
+            while (miResultSet.next()) {
+                misProveedores.add(empaquetarDatosListarProveedor(miResultSet));
+            }
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return misProveedores;
+    }
+
+    public void modificarProveedor(Proveedor miProveedor) {
+        try {
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(UPDATE);
+            miPreparedStatement.setString(1, miProveedor.getNombre());
+            miPreparedStatement.setString(2, miProveedor.getDireccion());
+            miPreparedStatement.setString(3, miProveedor.getTelefono());
+            miPreparedStatement.setInt(4, miProveedor.getIdProveedor());
+            int mensaje = miPreparedStatement.executeUpdate();
+            // Mensaje
+            if (mensaje != 0) {
+                System.out.println("Proveedor modificado");
+            }
+            // Fin mensaje
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
+
+    public void eliminarProveedor(int idProveedor) {
+        try {
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(DELETE);
+            miPreparedStatement.setInt(1, idProveedor);
+            int mensaje = miPreparedStatement.executeUpdate();
+            // Mensaje
+            if (mensaje != 0) {
+                System.out.println("Proveedor eliminado");
+            }
+            // Fin mensaje
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
+
+    // MÉTODOS AUXILIARES
+    private Proveedor empaquetarDatosBuscarProveedor(ResultSet miResultSet) throws SQLException {
+        Proveedor miProveedor = new Proveedor();
+        miProveedor.setNombre(miResultSet.getString("nombre"));
+        miProveedor.setDireccion(miResultSet.getString("direccion"));
+        miProveedor.setTelefono(miResultSet.getString("telefono"));
+        return miProveedor;
+    }
+
+    private Proveedor empaquetarDatosListarProveedor(ResultSet miResultSet) throws SQLException {
+        Proveedor miProveedor = new Proveedor();
+        miProveedor.setIdProveedor(miResultSet.getInt("idProveedor"));
+        miProveedor.setNombre(miResultSet.getString("nombre"));
+        miProveedor.setDireccion(miResultSet.getString("direccion"));
+        miProveedor.setTelefono(miResultSet.getString("telefono"));
+        return miProveedor;
     }
 }

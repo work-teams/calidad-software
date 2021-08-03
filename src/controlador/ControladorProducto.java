@@ -40,8 +40,8 @@ public class ControladorProducto {
         return DAO.buscarProducto(idProducto);
     }
 
-    public ArrayList<Producto> mostrarProductos() {
-        return DAO.mostrarProductos();
+    public ArrayList<Producto> listarProductos() {
+        return DAO.listarProductos();
     }
 
     public void modificar(Producto p) {
@@ -107,7 +107,7 @@ public class ControladorProducto {
     }
 
     void rellenarTabla() {
-        ArrayList<Producto> prod = ProductoDAO.mostrarProductos();
+        ArrayList<Producto> prod = ProductoDAO.listarProductos();
         String matriz[][] = new String[prod.size()][6];
 
         for (int i = 0; i < prod.size(); i++) {

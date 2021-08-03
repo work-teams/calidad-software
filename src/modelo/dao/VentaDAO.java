@@ -5,182 +5,100 @@
  */
 package modelo.dao;
 
-import controlador.ControladorVenta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import modelo.ConexionDB;
-import static modelo.ConexionDB.getConexion;
 import modelo.vo.Venta;
 
 /**
  *
  * @author nick_
  */
-public class VentaDAO {
-    ControladorVenta miControladorVenta;
-    private PreparedStatement ps;
-    private ResultSet r;
-    
+public class VentaDAO extends ConexionDB {
+
     // ATRIBUTOS DE CLASE
     private Connection miConnection;
     private PreparedStatement miPreparedStatement;
     private ResultSet miResultSet;
-    
-    // SENTENCIAS MYSQL
-    private String LAST_VENTA = "SELECT idVenta FROM venta ORDER BY idVenta DESC LIMIT 1";
-    
-    // ENLACE CONTROLADOR
-    public void setControladorVentas(ControladorVenta miControladorVenta) {
-        this.miControladorVenta = miControladorVenta;
-    }
-    
-    public void registrarVenta(Venta p){
-        //INSERT INTO VENTA () VALUES (?)        
+
+    // SENTENCIAS SQL
+    private final String INSERT = "INSERT INTO bikeshop.venta (dniUsuario, dniCliente, monto, boleta) VALUES (?,?,?,?)";
+    private final String SEARCH = "SELECT dniUsuario, dniCliente, monto, boleta FROM bikeshop.venta WHERE idVenta=?";
+    private final String LISTAR = "SELECT * FROM bikeshop.venta";
+    private final String LAST_VENTA = "SELECT idVenta FROM bikeshop.venta ORDER BY idVenta DESC LIMIT 1";
+
+    // MÉTODOS C.R.U.D.
+    public void registrarVenta(Venta miVenta) {
         try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("INSERT INTO venta "
-                    + "(dniUsuario,dniCliente,monto,boleta) "
-                    + "VALUES (?,?,?,?)");
-
-            ps.setString(1, p.getDniUsuario());
-            ps.setString(2, p.getDniCliente());
-            ps.setFloat(3, p.getMonto());
-            ps.setBoolean(4, p.isBoleta());
-                    
-            int result = ps.executeUpdate();
-
-            if (result > 0) {
-                System.out.println("VENTA REGISTRADA CON EXITO");
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(INSERT);
+            miPreparedStatement.setString(1, miVenta.getDniUsuario());
+            miPreparedStatement.setString(2, miVenta.getDniCliente());
+            miPreparedStatement.setFloat(3, miVenta.getMonto());
+            miPreparedStatement.setBoolean(4, miVenta.isBoleta());
+            int resultado = miPreparedStatement.executeUpdate();
+            // Mensaje
+            if (resultado != 0) {
+                System.out.println("Venta registrada");
             }
-
-            con.close();
-        } catch (SQLException e) {
-            System.err.println(e);
+            // Fin mensaje
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
+            }
         }
     }
-    //Buscar por ID
-    public Venta buscarVenta(int id) {
-        //SELECT * FROM VENTA WHERE id_venta=?
-        Venta p = null;
 
+    public Venta buscarVenta(int idVenta) {
+        Venta miVenta = null;
         try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("SELECT * FROM venta "
-                    + "WHERE idVenta=?");
-
-            ps.setInt(1, id);
-
-            r = ps.executeQuery();
-
-            if (r.next()) {
-                int idV = r.getInt("idVenta");
-                String dniUsuario = r.getString("dniUsuario");
-                String dniCliente = r.getString("dniCliente");
-                int idPedido = r.getInt("idPedido");
-                float monto = r.getFloat("monto");
-                boolean boleta = r.getBoolean("boleta");
-                
-
-                //p = new Venta(idV, dniUsuario, dniCliente, idPedido, monto, boleta);
-                System.out.println("VENTA ENCONTRADA");
-                return p;
-            } else {
-                System.out.println("VENTA NO ENCONTRADA");
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(SEARCH);
+            miPreparedStatement.setInt(1, idVenta);
+            miResultSet = miPreparedStatement.executeQuery();
+            if (miResultSet.next()) {
+                miVenta = empaquetarDatosBuscarVentas(miResultSet);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
+            }
         }
-        return p;
+        return miVenta;
     }
-    
-    //Devuelve arraylist con ventas
+
     public ArrayList<Venta> listarVentas() {
-        ArrayList<Venta> p = new ArrayList<Venta>();
+        ArrayList<Venta> misVentas = new ArrayList<>();
         try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("SELECT * FROM bikeshop.venta ");
-
-            r = ps.executeQuery();
-            while (r.next()) {
-                int idV = r.getInt("idVenta");
-                String dniUsuario = r.getString("dniUsuario");
-                String dniCliente = r.getString("dniCliente");
-                int idPedido = r.getInt("idPedido");
-                float monto = r.getFloat("monto");
-                boolean boleta = r.getBoolean("boleta");
-
-                //p.add(new Venta(idV, dniUsuario, dniCliente, idPedido, monto, boleta));
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(LISTAR);
+            miResultSet = miPreparedStatement.executeQuery();
+            while (miResultSet.next()) {
+                misVentas.add(empaquetarDatosListarVentas(miResultSet));
             }
-
-            System.out.println("LISTA DE VENTAS ENVIADA");
-            return p;
-        } catch (SQLException e) {
-            System.err.println(e);
-        }
-
-        return null;
-    }
-    
-    //Seleccion por ID y modifica
-    public void modificarVenta(Venta p) {
-        //UPDATE VENTA SET WHERE ID=?
-        try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("UPDATE venta SET "
-                    + "dniUsuario=?, dniCliente=?, idPedido=?, monto=?, boleta=? "
-                    + "WHERE idVenta=?");
-
-            ps.setString(1, p.getDniUsuario());
-            ps.setString(2, p.getDniCliente());
-            //ps.setInt(3, p.getIdPedido());
-            ps.setFloat(4, p.getMonto());
-            ps.setBoolean(5, p.isBoleta());
-            
-            //idProducto de la venta a modificar
-            ps.setInt(7, p.getIdVenta());
-
-            int result = ps.executeUpdate();
-
-            if (result > 0) {
-                System.out.println("VENTA MODIFICADA CON EXITO");
+        } catch (SQLException | NullPointerException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
             }
-
-            con.close();
-        } catch (SQLException e) {
-            System.err.println(e);
         }
+        return misVentas;
     }
 
-    
-    //Elimina por id
-    public void eliminarVenta(int id) {
-        //DELETE FROM VENTA WHERE ID=?
-        try {
-            Connection con = ConexionDB.getConexion();
-            ps = con.prepareStatement("DELETE FROM venta "
-                    + "WHERE idVenta=?");
-
-            ps.setInt(1, id);
-
-            int result = ps.executeUpdate();
-
-            if (result == 0) {
-                System.out.println("VENTA NO ENCONTRADA");
-            } else {
-                System.out.println("VENTA ELIMINADA");
-            }
-
-            con.close();
-        } catch (SQLException e) {
-            System.err.println(e);
-        }
-    }
-    
-    // Devolver id de la nueva venta realizada.
     public int generarIdVenta() {
         int idNuevaVenta = 1;
         try {
@@ -190,15 +108,35 @@ public class VentaDAO {
             if (miResultSet.next()) {
                 idNuevaVenta = miResultSet.getInt("idVenta") + 1;
             }
-        } catch (SQLException ex) {
+        } catch (SQLException | NullPointerException ex) {
             System.out.println(ex);
         } finally {
             try {
                 miConnection.close();
-            } catch (SQLException e) {
+            } catch (SQLException | NullPointerException e) {
                 System.out.println(e);
             }
         }
         return idNuevaVenta;
+    }
+
+    // MÉTODOS AUXILIARES
+    private Venta empaquetarDatosBuscarVentas(ResultSet miResultSet) throws SQLException {
+        Venta miVenta = new Venta();
+        miVenta.setDniUsuario(miResultSet.getString("dniUsuario"));
+        miVenta.setDniCliente(miResultSet.getString("dniCliente"));
+        miVenta.setMonto(miResultSet.getFloat("monto"));
+        miVenta.setBoleta(miResultSet.getBoolean("boleta"));
+        return miVenta;
+    }
+
+    private Venta empaquetarDatosListarVentas(ResultSet miResultSet) throws SQLException {
+        Venta miVenta = new Venta();
+        miVenta.setIdVenta(miResultSet.getInt("idVenta"));
+        miVenta.setDniUsuario(miResultSet.getString("dniUsuario"));
+        miVenta.setDniCliente(miResultSet.getString("dniCliente"));
+        miVenta.setMonto(miResultSet.getFloat("monto"));
+        miVenta.setBoleta(miResultSet.getBoolean("boleta"));
+        return miVenta;
     }
 }

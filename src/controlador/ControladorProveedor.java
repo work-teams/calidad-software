@@ -47,6 +47,6 @@ public class ControladorProveedor {
     }
     
     public void actualizarTabla(){
-        miPanelProveedores.setTabla(miProveedorDAO.mostrarProveedores());
+        miPanelProveedores.setTabla(miProveedorDAO.listarProveedores());
     }
 }

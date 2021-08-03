@@ -9,36 +9,28 @@ package modelo.dao;
  *
  * @author willi
  */
-
-import controlador.ControladorUsuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import modelo.ConexionDB;
 import modelo.vo.Usuario;
 
-public class UsuarioDAO extends ConexionDB{
+public class UsuarioDAO extends ConexionDB {
+
     // ATRIBUTOS DE CLASE
-    ControladorUsuario miControladorUsuario;
     private Connection miConnection;
     private PreparedStatement miPreparedStatement;
     private ResultSet miResultSet;
-    
+
     // SENTENCIAS SQL
-    private final String INSERT = "INSERT INTO usuarios (dniUsuario, apellido, nombre, username, password, rol) VALUES (?,?,?,?,?,?)";
-    private final String UPDATE = "UPDATE usuarios SET apellido=?, nombre=?, username=?, password=?, rol=? WHERE dniUsuario=?";
-    private final String SEARCH = "SELECT apellido, nombre, username, password, rol FROM usuarios WHERE dniUsuario=?";
-    private final String DELETE = "DELETE FROM usuarios WHERE dniUsuario=?";
-    private final String LISTAR = "SELECT * FROM usuarios";
-    
-    // ENLACE CONTROLADOR
-    public void setControladorUsuarios(ControladorUsuario miControladorUsuario) {
-        this.miControladorUsuario = miControladorUsuario;
-    }
-    
+    private final String INSERT = "INSERT INTO bikeshop.usuarios (dniUsuario, apellido, nombre, username, password, rol) VALUES (?,?,?,?,?,?)";
+    private final String UPDATE = "UPDATE bikeshop.usuarios SET apellido=?, nombre=?, username=?, password=?, rol=? WHERE dniUsuario=?";
+    private final String SEARCH = "SELECT apellido, nombre, username, password, rol FROM bikeshop.usuarios WHERE dniUsuario=?";
+    private final String DELETE = "DELETE FROM bikeshop.usuarios WHERE dniUsuario=?";
+    private final String LISTAR = "SELECT * FROM bikeshop.usuarios";
+
     // MÉTODOS C.R.U.D.
     public void registrarUsuario(Usuario miUsuario) {
         try {
@@ -50,18 +42,23 @@ public class UsuarioDAO extends ConexionDB{
             miPreparedStatement.setString(4, miUsuario.getUsername());
             miPreparedStatement.setString(5, miUsuario.getPassword());
             miPreparedStatement.setString(6, miUsuario.getRol());
+            int mensaje = miPreparedStatement.executeUpdate();
             // Mensaje
-            if (miPreparedStatement.executeUpdate() != 0) {JOptionPane.showMessageDialog(null, "Usuario registrado con exito.");}
+            if (mensaje != 0) {
+                System.out.println("Usuario registrado");
+            }
             // Fin mensaje
-        } catch (SQLException ex) {System.out.println(ex);JOptionPane.showMessageDialog(null, "Usuario ya registrado.");
+        } catch (SQLException | NullPointerException e) {
+            System.out.println(e);
         } finally {
             try {
                 miConnection.close();
-            } catch (SQLException e) {System.out.println(e);
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
             }
         }
     }
-    
+
     public Usuario buscarUsuario(String dniUsuario) {
         Usuario miUsuario = null;
         try {
@@ -70,22 +67,22 @@ public class UsuarioDAO extends ConexionDB{
             miPreparedStatement.setString(1, dniUsuario);
             miResultSet = miPreparedStatement.executeQuery();
             if (miResultSet.next()) {
-                miUsuario = empaquetarDatosBuscarUsuario(miResultSet);
+                miUsuario = empaquetarDatosUsuario(miResultSet);
             }
-            // Mensaje
-            else {JOptionPane.showMessageDialog(null, "El dni ingresado no coincide con ningún usuario registrado.");}
             // Fin mensaje
-        } catch (SQLException ex) {System.out.println(ex);
+        } catch (SQLException | NullPointerException e) {
+            System.out.println(e);
         } finally {
             try {
                 miConnection.close();
-            } catch (SQLException e) {System.out.println(e);
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
             }
         }
         return miUsuario;
     }
-    
-    public void modificarUsuario(Usuario miUsuario){
+
+    public void modificarUsuario(Usuario miUsuario) {
         try {
             miConnection = getConexion();
             miPreparedStatement = miConnection.prepareStatement(UPDATE);
@@ -95,37 +92,45 @@ public class UsuarioDAO extends ConexionDB{
             miPreparedStatement.setString(4, miUsuario.getPassword());
             miPreparedStatement.setString(5, miUsuario.getRol());
             miPreparedStatement.setString(6, miUsuario.getDniUsuario());
+            int mensaje = miPreparedStatement.executeUpdate();
             // Mensaje
-            if (miPreparedStatement.executeUpdate() != 0) {JOptionPane.showMessageDialog(null, "Usuario modificado con exito.");}
-            else {JOptionPane.showMessageDialog(null, "El dni ingresado no coincide con ningún usuario registrado.");}
+            if (mensaje != 0) {
+                System.out.println("Usuario modificado");
+            }
             // Fin mensaje
-        } catch (SQLException ex) {System.out.println(ex);
+        } catch (SQLException | NullPointerException e) {
+            System.out.println(e);
         } finally {
             try {
                 miConnection.close();
-            } catch (SQLException e) {System.out.println(e);
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
             }
         }
     }
-    
-    public void eliminarUsuario(String dniUsuario){
+
+    public void eliminarUsuario(String dniUsuario) {
         try {
             miConnection = getConexion();
             miPreparedStatement = miConnection.prepareStatement(DELETE);
             miPreparedStatement.setString(1, dniUsuario);
+            int mensaje = miPreparedStatement.executeUpdate();
             // Mensaje
-            if (miPreparedStatement.executeUpdate() != 0) {JOptionPane.showMessageDialog(null, "Usuario eliminado con exito.");}
-            else {JOptionPane.showMessageDialog(null, "El dni ingresado no coincide con ningún usuario registrado.");}
+            if (mensaje != 0) {
+                System.out.println("Usuario eliminado");
+            }
             // Fin mensaje
-        } catch (SQLException ex) {System.out.println(ex);
+        } catch (SQLException | NullPointerException e) {
+            System.out.println(e);
         } finally {
             try {
                 miConnection.close();
-            } catch (SQLException e) {System.out.println(e);
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
             }
         }
     }
-    
+
     public ArrayList<Usuario> listarUsuarios() {
         ArrayList<Usuario> misUsuarios = new ArrayList<>();
         try {
@@ -135,18 +140,20 @@ public class UsuarioDAO extends ConexionDB{
             while (miResultSet.next()) {
                 misUsuarios.add(empaquetarDatosListarUsuarios(miResultSet));
             }
-        } catch (SQLException e) {System.out.println(e);
+        } catch (SQLException | NullPointerException e) {
+            System.out.println(e);
         } finally {
             try {
                 miConnection.close();
-            } catch (SQLException e) {System.out.println(e);
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
             }
         }
         return misUsuarios;
     }
-    
+
     // MÉTODOS AUXILIARES
-    private Usuario empaquetarDatosBuscarUsuario(ResultSet miResultSet) throws SQLException {
+    private Usuario empaquetarDatosUsuario(ResultSet miResultSet) throws SQLException {
         Usuario miUsuario = new Usuario();
         miUsuario.setApellido(miResultSet.getString("apellido"));
         miUsuario.setNombre(miResultSet.getString("nombre"));
@@ -155,7 +162,7 @@ public class UsuarioDAO extends ConexionDB{
         miUsuario.setRol(miResultSet.getString("rol"));
         return miUsuario;
     }
-    
+
     private Usuario empaquetarDatosListarUsuarios(ResultSet miResultSet) throws SQLException {
         Usuario miUsuario = new Usuario();
         miUsuario.setDniUsuario(miResultSet.getString("dniUsuario"));
