@@ -46,6 +46,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnProductos = new javax.swing.JButton();
         btnProveedores = new javax.swing.JButton();
         btnVentas = new javax.swing.JButton();
+        btnClientes = new javax.swing.JButton();
+        btnHistorial = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -120,6 +122,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnClientes.setBackground(new java.awt.Color(44, 80, 154));
+        btnClientes.setForeground(new java.awt.Color(255, 255, 255));
+        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/cliente_hand.png"))); // NOI18N
+        btnClientes.setText("Clientes");
+        btnClientes.setBorder(new RoundedBorder(20));
+        btnClientes.setContentAreaFilled(false);
+        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        btnHistorial.setBackground(new java.awt.Color(44, 80, 154));
+        btnHistorial.setForeground(new java.awt.Color(255, 255, 255));
+        btnHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/historial.png"))); // NOI18N
+        btnHistorial.setText("Historial");
+        btnHistorial.setBorder(new RoundedBorder(20));
+        btnHistorial.setContentAreaFilled(false);
+        btnHistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnHistorial.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnHistorial.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -127,6 +149,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 23, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,8 +166,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(26, 26, 26)
                 .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -235,6 +263,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVentasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnHistorial;
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnProveedores;
     private javax.swing.JButton btnUsuarios;
