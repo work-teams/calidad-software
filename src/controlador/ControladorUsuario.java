@@ -14,9 +14,12 @@ import vista.PanelUsuarios;
  * @author krypt97
  */
 public class ControladorUsuario {
+
     // ATRIBUTOS DE CLASE
-    PanelUsuarios miPanelUsuarios;
-    UsuarioDAO miUsuarioDAO;
+    private PanelUsuarios miPanelUsuarios;
+    private UsuarioDAO miUsuarioDAO;
+    private Usuario miUsuario;
+    private String dniUsuario;
 
     // ENLACE VISTA
     public void setPanelUsuarios(PanelUsuarios miPanelUsuarios) {
@@ -24,34 +27,42 @@ public class ControladorUsuario {
     }
 
     // ENLACE MODELO
+    // Vo
+    public void setUsuario(Usuario miUsuario) {
+        this.miUsuario = miUsuario;
+    }
+
+    // Dao
     public void setUsuarioDAO(UsuarioDAO miUsuarioDAO) {
         this.miUsuarioDAO = miUsuarioDAO;
     }
-    
+
     // MÉTODOS DE CLASE
-    public void registrar(Usuario miUsuario) {
+    public void registrarUsuario() {
+        miUsuario = miPanelUsuarios.empaquetarDatosUsuario();
         miUsuarioDAO.registrarUsuario(miUsuario);
-        miPanelUsuarios.limpiarCampos();
-    }
-    
-    public void eliminar(String dniUsuario) {
-        miUsuarioDAO.eliminarUsuario(dniUsuario);
+        miPanelUsuarios.setTablaUsuarios(miUsuarioDAO.listarUsuarios());
         miPanelUsuarios.limpiarCampos();
     }
 
-    public void modificar(Usuario miUsuario) {
-        miUsuarioDAO.modificarUsuario(miUsuario);
+    public void eliminarUsuario() {
+        dniUsuario = miPanelUsuarios.txtDni.getText();
+        miUsuarioDAO.eliminarUsuario(dniUsuario);
+        miPanelUsuarios.setTablaUsuarios(miUsuarioDAO.listarUsuarios());
         miPanelUsuarios.limpiarCampos();
     }
-    
-    public void buscar(String dniUsuario) {
+
+    public void modificarUsuario() {
+        miUsuario = miPanelUsuarios.empaquetarDatosUsuario();
+        miUsuarioDAO.modificarUsuario(miUsuario);
+        miPanelUsuarios.setTablaUsuarios(miUsuarioDAO.listarUsuarios());
+        miPanelUsuarios.limpiarCampos();
+    }
+
+    public void buscarUsuario() {
+        dniUsuario = miPanelUsuarios.txtDni.getText();
         if (miUsuarioDAO.buscarUsuario(dniUsuario) != null) {
-            miPanelUsuarios.desempaquetarDatos(miUsuarioDAO.buscarUsuario(dniUsuario));
+            miPanelUsuarios.desempaquetarDatosUsuario(miUsuarioDAO.buscarUsuario(dniUsuario));
         }
     }
-    
-    public void actualizarTabla() {
-        miPanelUsuarios.setTabla(miUsuarioDAO.listarUsuarios());
-    }
-
 }

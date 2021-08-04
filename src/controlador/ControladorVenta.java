@@ -6,10 +6,12 @@
 package controlador;
 
 import java.util.ArrayList;
+import modelo.dao.CategoriaDAO;
 import modelo.dao.ClienteDAO;
 import modelo.dao.PedidoDAO;
 import modelo.dao.ProductoDAO;
 import modelo.dao.VentaDAO;
+import modelo.vo.Categoria;
 import modelo.vo.Cliente;
 import modelo.vo.Pedido;
 import modelo.vo.Producto;
@@ -21,12 +23,20 @@ import vista.PanelVentas;
  * @author krypt97
  */
 public class ControladorVenta {
+
     // ATRIBUTOS DE CLASE
-    PanelVentas miPanelVentas;
-    VentaDAO miVentaDAO;
-    ClienteDAO miClienteDAO;
-    PedidoDAO miPedidoDAO;
-    ProductoDAO miProductoDAO;
+    private PanelVentas miPanelVentas;
+    private VentaDAO miVentaDAO;
+    private ClienteDAO miClienteDAO;
+    private PedidoDAO miPedidoDAO;
+    private ProductoDAO miProductoDAO;
+    private CategoriaDAO miCategoriaDAO;
+    private Venta miVenta;
+    private Cliente miCliente;
+    private Pedido miPedido;
+    private int idPedido;
+    private int cantidad;
+    //private int idProducto;
 
     // ENLACE VISTA
     public void setPanelVentas(PanelVentas miPanelVentas) {
@@ -34,6 +44,20 @@ public class ControladorVenta {
     }
 
     // ENLACE MODELO
+    // Vo
+    public void setVenta(Venta miVenta) {
+        this.miVenta = miVenta;
+    }
+
+    public void setCliente(Cliente miCliente) {
+        this.miCliente = miCliente;
+    }
+
+    public void setPedido(Pedido miPedido) {
+        this.miPedido = miPedido;
+    }
+
+    // Dao
     public void setVentaDAO(VentaDAO miVentaDAO) {
         this.miVentaDAO = miVentaDAO;
     }
@@ -49,62 +73,78 @@ public class ControladorVenta {
     public void SetProductoDAO(ProductoDAO miProductoDAO) {
         this.miProductoDAO = miProductoDAO;
     }
-    
-    // METODOS DE CLASE PARA VENTA DAO
-    public void registrarVenta(Venta miVenta) {
+
+    public void setCategoriaDAO(CategoriaDAO miCategoriaDAO) {
+        this.miCategoriaDAO = miCategoriaDAO;
+    }
+
+    // METODOS DE CLASE
+    // VentaDAO
+    public void registrarVenta() {
+        miVenta = miPanelVentas.empaquetarDatosVenta();
         miVentaDAO.registrarVenta(miVenta);
+        miPanelVentas.setTablaPedido(miPedidoDAO.listarCarritoPedidos(miVentaDAO.generarIdVenta()), miCategoriaDAO.listarCategorias());
         miPanelVentas.limpiarCamposPanelProducto();
     }
-    
+
     public int generarIdVenta() {
         return miVentaDAO.generarIdVenta();
     }
-    
-    public void actualizarTablaVenta() {
-        miPanelVentas.setTabla(miPedidoDAO.listarCarritoPedidos(miVentaDAO.generarIdVenta()));
-    }
-    
-    // METODOS DE CLASE PARA PEDIDO DAO
-    public void registrarPedido(Pedido miPedido) {
+
+    // PedidoDAO
+    public void registrarPedido() {
+        miPedido = miPanelVentas.empaquetarDatosPedido();
         miPedidoDAO.registrarPedido(miPedido);
+        miPanelVentas.setTablaPedido(miPedidoDAO.listarCarritoPedidos(miVentaDAO.generarIdVenta()), miCategoriaDAO.listarCategorias());
         miPanelVentas.limpiarCamposPanelProducto();
     }
-    
-    public void buscarPedido(int idPedido) {
-        if (idPedido != -1) {
-            Pedido miPedidoBuscado = miPedidoDAO.buscarPedido(idPedido);
-            Producto miProductoBuscado = miProductoDAO.buscarProducto(miPedidoBuscado.getIdProducto());
-            miPanelVentas.desempaquetarDatosPedido(miPedidoBuscado);
-            miPanelVentas.desempaquetarDatosProducto(miProductoBuscado);
-        }
+
+    public void buscarPedido() { // siempre existe
+        idPedido = miPanelVentas.idPedidoSeleccionado();
+        Pedido miPedidoBuscado = miPedidoDAO.buscarPedido(idPedido);
+        Producto miProductoBuscado = miProductoDAO.buscarProducto(miPedidoBuscado.getIdProducto());
+        Categoria miCategoriaBuscada = miCategoriaDAO.buscarCategoria(miProductoBuscado.getIdCategoria());
+        miPanelVentas.desempaquetarDatosPedido(miPedidoBuscado);
+        miPanelVentas.desempaquetarDatosProducto(miProductoBuscado, miCategoriaBuscada);
     }
-    
-    public void eliminarPedido(int idPedido) {
-        miPedidoDAO.eliminarPedido(idPedido);
+
+    public void eliminarPedido() {
+        idPedido = miPanelVentas.idPedidoSeleccionado();
+        if (idPedido != -1) {
+            miPedidoDAO.eliminarPedido(idPedido);
+            miPanelVentas.setTablaPedido(miPedidoDAO.listarCarritoPedidos(miVentaDAO.generarIdVenta()), miCategoriaDAO.listarCategorias());
+        }
         miPanelVentas.limpiarCamposPanelProducto();
     }
 
     public void eliminarCarritoPedidos() {
         ArrayList<Pedido> miCarritoPedidos = miPedidoDAO.listarCarritoPedidos(miVentaDAO.generarIdVenta());
-        miCarritoPedidos.forEach(miPedido -> {
-            miPedidoDAO.eliminarPedido(miPedido.getIdPedido());
+        miCarritoPedidos.forEach((var pedido) -> {
+            miPedidoDAO.eliminarPedido(pedido.getIdPedido());
         });
+        miPanelVentas.setTablaPedido(miPedidoDAO.listarCarritoPedidos(miVentaDAO.generarIdVenta()), miCategoriaDAO.listarCategorias());
     }
 
-    public void modificarPedido(int cantidad, int idPedido) {
-        miPedidoDAO.modificarPedido(cantidad, idPedido);
+    public void modificarPedido() {
+        if (!"".equals(miPanelVentas.txtCantProd.getText())) {
+            idPedido = miPanelVentas.idPedidoSeleccionado();
+            cantidad = Integer.parseInt(miPanelVentas.txtCantProd.getText());
+            miPedidoDAO.modificarPedido(cantidad, idPedido);
+            miPanelVentas.setTablaPedido(miPedidoDAO.listarCarritoPedidos(miVentaDAO.generarIdVenta()), miCategoriaDAO.listarCategorias());
+        }
         miPanelVentas.limpiarCamposPanelProducto();
     }
-    
-    // METODOS DE CLASE PARA CLIENTE DAO
-    public void registrarCliente(Cliente miCliente) {
+
+    // ClienteDAO
+    public void registrarCliente() {
+        miCliente = miPanelVentas.empaquetarDatosCliente();
         if (miClienteDAO.buscarCliente(miCliente.getDniCliente()) == null) {
             miClienteDAO.registrarCliente(miCliente);
         }
         miPanelVentas.limpiarCamposPanelCliente();
     }
 
-    // METODOS DE CLASE PARA PRODUCTO DAO
+    // ProductoDAO
     public Producto buscarIdProducto(int idProducto) {
         return miProductoDAO.buscarProducto(idProducto);
     }

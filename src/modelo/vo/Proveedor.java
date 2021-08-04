@@ -10,28 +10,20 @@ package modelo.vo;
  * @author Daniel
  */
 public class Proveedor {
-    
+
+    // ATRIBUTOS DE CLASE
     private int idProveedor;
     private String nombre;
     private String direccion;
     private String telefono;
 
-    public Proveedor(int idProveedor, String nombre, String direccion, String telefono) {
-        this.idProveedor = idProveedor;
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-    }
-
+    // CONSTRUCTOR
     public Proveedor() {
     }
-    
+
+    // GETTERS
     public int getIdProveedor() {
         return idProveedor;
-    }
-
-    public String getNombre() {
-        return nombre;
     }
 
     public String getDireccion() {
@@ -42,6 +34,11 @@ public class Proveedor {
         return telefono;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    // SETTERS
     public void setIdProveedor(int idProveedor) {
         this.idProveedor = idProveedor;
     }
@@ -56,10 +53,5 @@ public class Proveedor {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
-    }
-
-    @Override
-    public String toString() {
-        return "Proveedor{" + "id=" + idProveedor + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono+ '}';
     }
 }

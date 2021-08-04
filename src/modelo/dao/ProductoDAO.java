@@ -25,9 +25,9 @@ public class ProductoDAO extends ConexionDB {
     private ResultSet miResultSet;
 
     // SENTENCIAS SQL
-    private final String INSERT = "INSERT INTO bikeshop.producto (idProducto, nombre, cantidad, categoria, precio, idProveedor, idCategoria) VALUES (?,?,?,?,?,?,?)";
-    private final String UPDATE = "UPDATE bikeshop.producto SET nombre=?, cantidad=?, categoria=?, precio=?, idProveedor=?, idCategoria=? WHERE idProducto=?";
-    private final String SEARCH = "SELECT nombre, cantidad, categoria, precio, idProveedor, idCategoria FROM bikeshop.producto WHERE idProducto=?";
+    private final String INSERT = "INSERT INTO bikeshop.producto (idProducto, nombre, cantidad, precio, idProveedor, idCategoria) VALUES (?,?,?,?,?,?)";
+    private final String UPDATE = "UPDATE bikeshop.producto SET nombre=?, cantidad=?, precio=?, idProveedor=?, idCategoria=? WHERE idProducto=?";
+    private final String SEARCH = "SELECT nombre, cantidad, precio, idProveedor, idCategoria FROM bikeshop.producto WHERE idProducto=?";
     private final String DELETE = "DELETE FROM bikeshop.producto WHERE idProducto=?";
     private final String LISTAR = "SELECT * FROM bikeshop.producto";
 
@@ -39,10 +39,9 @@ public class ProductoDAO extends ConexionDB {
             miPreparedStatement.setInt(1, miProducto.getIdProducto());
             miPreparedStatement.setString(2, miProducto.getNombre());
             miPreparedStatement.setInt(3, miProducto.getCantidad());
-            miPreparedStatement.setString(4, miProducto.getCategoria());
-            miPreparedStatement.setFloat(5, miProducto.getPrecio());
-            miPreparedStatement.setInt(6, miProducto.getIdProveedor());
-            miPreparedStatement.setInt(7, miProducto.getIdCategoria());
+            miPreparedStatement.setFloat(4, miProducto.getPrecio());
+            miPreparedStatement.setInt(5, miProducto.getIdProveedor());
+            miPreparedStatement.setInt(6, miProducto.getIdCategoria());
             int mensaje = miPreparedStatement.executeUpdate();
             // Mensaje
             if (mensaje != 0) {
@@ -109,11 +108,10 @@ public class ProductoDAO extends ConexionDB {
             miPreparedStatement = miConnection.prepareStatement(UPDATE);
             miPreparedStatement.setString(1, miProducto.getNombre());
             miPreparedStatement.setInt(2, miProducto.getCantidad());
-            miPreparedStatement.setString(3, miProducto.getCategoria());
-            miPreparedStatement.setFloat(4, miProducto.getPrecio());
-            miPreparedStatement.setInt(5, miProducto.getIdProveedor());
-            miPreparedStatement.setInt(6, miProducto.getIdCategoria());
-            miPreparedStatement.setInt(7, miProducto.getIdProducto());
+            miPreparedStatement.setFloat(3, miProducto.getPrecio());
+            miPreparedStatement.setInt(4, miProducto.getIdProveedor());
+            miPreparedStatement.setInt(5, miProducto.getIdCategoria());
+            miPreparedStatement.setInt(6, miProducto.getIdProducto());
             int mensaje = miPreparedStatement.executeUpdate();
             // Mensaje
             if (mensaje != 0) {
@@ -158,7 +156,6 @@ public class ProductoDAO extends ConexionDB {
         Producto miProducto = new Producto();
         miProducto.setNombre(miResultSet.getString("nombre"));
         miProducto.setCantidad(miResultSet.getInt("cantidad"));
-        miProducto.setCategoria(miResultSet.getString("categoria"));
         miProducto.setPrecio(miResultSet.getFloat("precio"));
         miProducto.setIdProveedor(miResultSet.getInt("idProveedor"));
         miProducto.setIdCategoria(miResultSet.getInt("idCategoria"));
@@ -170,7 +167,6 @@ public class ProductoDAO extends ConexionDB {
         miProducto.setIdProducto(miResultSet.getInt("idProducto"));
         miProducto.setNombre(miResultSet.getString("nombre"));
         miProducto.setCantidad(miResultSet.getInt("cantidad"));
-        miProducto.setCategoria(miResultSet.getString("categoria"));
         miProducto.setPrecio(miResultSet.getFloat("precio"));
         miProducto.setIdProveedor(miResultSet.getInt("idProveedor"));
         miProducto.setIdCategoria(miResultSet.getInt("idCategoria"));
