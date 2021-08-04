@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.ControladorCliente;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.vo.Cliente;
@@ -15,8 +16,9 @@ import modelo.vo.Venta;
  *
  * @author Daniel
  */
-
 public class PanelClientes extends javax.swing.JPanel {
+
+    private ControladorCliente miControladorCliente;
 
     /**
      * Creates new form NewPanelUsuarios
@@ -94,6 +96,11 @@ public class PanelClientes extends javax.swing.JPanel {
                 "D.N.I.", "Apellidos", "Nombre", "R.U.C."
             }
         ));
+        tblCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tblClienteFocusGained(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCliente);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -152,6 +159,11 @@ public class PanelClientes extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tblClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblClienteFocusGained
+        // TODO add your handling code here:
+        miControladorCliente.cargarVentasSeleccionadas();
+    }//GEN-LAST:event_tblClienteFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -162,9 +174,14 @@ public class PanelClientes extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblCliente;
-    private javax.swing.JTable tblVenta;
+    public javax.swing.JTable tblCliente;
+    public javax.swing.JTable tblVenta;
     // End of variables declaration//GEN-END:variables
+
+    // ENLACE CONTROLADOR
+    public void setControlador(ControladorCliente miControladorCliente) {
+        this.miControladorCliente = miControladorCliente;
+    }
 
     // MÉTODOS AUXILIARES
     public void setTablaClientes(ArrayList<Cliente> misClientes) {
@@ -179,7 +196,7 @@ public class PanelClientes extends javax.swing.JPanel {
         DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas);
         tblCliente.setModel(miDefaultTableModel);
     }
-    
+
     // Forma iterativa se puede mejorar generando un metodo en el DAO que te devuela la lista en cuestión.
     public void setTablaVentas(ArrayList<Venta> misVentas, ArrayList<Usuario> misUsuarios, String dniUsuario) {
         String[] columnas = {"ID Venta", "DNI Vendedor", "Nombre Vendedor", "Monto"};
@@ -202,8 +219,16 @@ public class PanelClientes extends javax.swing.JPanel {
                 }
             }
         }
-        
+
         DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas);
         tblVenta.setModel(miDefaultTableModel);
+    }
+
+    public String dniClienteSeleccionado() {
+        String dniClienteSelecionado = "";
+        if (tblCliente.getSelectedRow() != -1) {
+            dniClienteSelecionado = (String) tblCliente.getValueAt(tblCliente.getSelectedRow(), 0);
+        }
+        return dniClienteSelecionado;
     }
 }
