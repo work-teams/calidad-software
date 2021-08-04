@@ -17,6 +17,13 @@ import modelo.dao.ProductoDAO;
 import modelo.dao.ProveedorDAO;
 import modelo.dao.UsuarioDAO;
 import modelo.dao.VentaDAO;
+import modelo.vo.Categoria;
+import modelo.vo.Cliente;
+import modelo.vo.Pedido;
+import modelo.vo.Producto;
+import modelo.vo.Proveedor;
+import modelo.vo.Usuario;
+import modelo.vo.Venta;
 import vista.PanelProducto;
 import vista.PanelProveedores;
 import vista.PanelUsuarios;
@@ -40,6 +47,14 @@ public class BikeShop {
         PanelProducto miPanelProducto = new PanelProducto();
         PanelProveedores miPanelProveedores = new PanelProveedores();
         PanelVentas miPanelVentas = new PanelVentas();
+        // Vo
+        Usuario miUsuario = new Usuario();
+        Producto miProducto = new Producto();
+        Categoria miCategoria = new Categoria();
+        Proveedor miProveedor = new Proveedor();
+        Venta miVenta = new Venta();
+        Pedido miPedido = new Pedido();
+        Cliente miCliente = new Cliente();
         // Dao
         UsuarioDAO miUsuarioDAO = new UsuarioDAO();
         ProductoDAO miProductoDAO = new ProductoDAO();
@@ -63,14 +78,23 @@ public class BikeShop {
         miControladorProveedor.setPanelProveedores(miPanelProveedores);
         miControladorProducto.setPanelProducto(miPanelProducto);
         miControladorVenta.setPanelVentas(miPanelVentas);
+        // Vo
+        miControladorUsuario.setUsuario(miUsuario);
+        miControladorProveedor.setProveedor(miProveedor);
+        miControladorProducto.setProducto(miProducto);
+        miControladorVenta.setVenta(miVenta);
+        miControladorVenta.setCliente(miCliente);
+        miControladorVenta.setPedido(miPedido);
         // Dao
         miControladorUsuario.setUsuarioDAO(miUsuarioDAO);
         miControladorProveedor.setProveedorDAO(miProveedorDAO);
         miControladorProducto.SetProductoDAO(miProductoDAO);
+        miControladorProducto.SetCategoriaDAO(miCategoriaDAO);
         miControladorVenta.setVentaDAO(miVentaDAO);
         miControladorVenta.setClienteDAO(miClienteDAO);
         miControladorVenta.setPedidoDAO(miPedidoDAO);
         miControladorVenta.SetProductoDAO(miProductoDAO);
+        miControladorVenta.setCategoriaDAO(miCategoriaDAO);
         // General vistas
         miControladorGeneral.setPanelUsuarios(miPanelUsuarios);
         miControladorGeneral.setPanelProveedores(miPanelProveedores);
@@ -96,9 +120,11 @@ public class BikeShop {
 
         /* ------------------------------------------------------------------ */
         // SETEANDO TABLAS
-        miPanelUsuarios.setTabla(miUsuarioDAO.listarUsuarios());
-        miPanelProveedores.setTabla(miProveedorDAO.listarProveedores());
-        miPanelProducto.setTablaProductos(miControladorProducto.listarProductos());
+        miPanelUsuarios.setTablaUsuarios(miUsuarioDAO.listarUsuarios());
+        miPanelProveedores.setTablaProveedores(miProveedorDAO.listarProveedores());
+        miPanelProducto.setTablaProductos(miProductoDAO.listarProductos(), miCategoriaDAO.listarCategorias(), miProveedorDAO.listarProveedores());
         miPanelProducto.setTablaCategoria(miCategoriaDAO.listarCategorias());
+        miPanelProducto.setCmbxCategorias(miCategoriaDAO.listarCategorias());
+        miPanelVentas.setTablaPedido(miPedidoDAO.listarCarritoPedidos(miVentaDAO.generarIdVenta()), miCategoriaDAO.listarCategorias());
     }
 }

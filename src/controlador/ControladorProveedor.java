@@ -14,39 +14,55 @@ import vista.PanelProveedores;
  * @author Daniel
  */
 public class ControladorProveedor {
-    PanelProveedores miPanelProveedores;
-    ProveedorDAO miProveedorDAO;
 
+    // ATRIBUTOS DE CLASE
+    private PanelProveedores miPanelProveedores;
+    private ProveedorDAO miProveedorDAO;
+    private Proveedor miProveedor;
+    private int idProveedor;
+
+    // ENLACE VISTA
     public void setPanelProveedores(PanelProveedores miPanelProveedores) {
         this.miPanelProveedores = miPanelProveedores;
     }
 
+    // ENLACE MODELO
+    // Vo
+    public void setProveedor(Proveedor miProveedor) {
+        this.miProveedor = miProveedor;
+    }
+
+    // Dao
     public void setProveedorDAO(ProveedorDAO miProveedorDAO) {
         this.miProveedorDAO = miProveedorDAO;
     }
-    
-    public void registrar(Proveedor miProveedor){
+
+    // MÉTODOS DE CLASE
+    public void registrarProveedor() {
+        miProveedor = miPanelProveedores.empaquetarDatosProveedor();
         miProveedorDAO.registrarProveedor(miProveedor);
+        miPanelProveedores.setTablaProveedores(miProveedorDAO.listarProveedores());
         miPanelProveedores.limpiarCampos();
     }
-    
-    public void buscar(int idProveedor){
+
+    public void buscarProveedor() {
+        idProveedor = Integer.parseInt(miPanelProveedores.txtIdProveedor.getText());
         if (miProveedorDAO.buscarProveedor(idProveedor) != null) {
-            miPanelProveedores.escribirDatos(miProveedorDAO.buscarProveedor(idProveedor));
+            miPanelProveedores.desempaquetarDatosProveedor(miProveedorDAO.buscarProveedor(idProveedor));
         }
     }
-    
-    public void modificar(Proveedor miProveedor){
+
+    public void modificarProveedor() {
+        miProveedor = miPanelProveedores.empaquetarDatosProveedor();
         miProveedorDAO.modificarProveedor(miProveedor);
+        miPanelProveedores.setTablaProveedores(miProveedorDAO.listarProveedores());
         miPanelProveedores.limpiarCampos();
     }
-    
-    public void eliminar(int idProveedor){
+
+    public void eliminarProveedor() {
+        idProveedor = Integer.parseInt(miPanelProveedores.txtIdProveedor.getText());
         miProveedorDAO.eliminarProveedor(idProveedor);
+        miPanelProveedores.setTablaProveedores(miProveedorDAO.listarProveedores());
         miPanelProveedores.limpiarCampos();
-    }
-    
-    public void actualizarTabla(){
-        miPanelProveedores.setTabla(miProveedorDAO.listarProveedores());
     }
 }

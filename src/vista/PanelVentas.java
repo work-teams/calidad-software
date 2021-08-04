@@ -8,6 +8,7 @@ package vista;
 import controlador.ControladorVenta;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import modelo.vo.Categoria;
 import modelo.vo.Cliente;
 import modelo.vo.Pedido;
 import modelo.vo.Producto;
@@ -21,7 +22,6 @@ public class PanelVentas extends javax.swing.JPanel {
     // ATRIBUTOS DE CLASE
     ControladorVenta miControladorVenta;
     private DefaultTableModel miDefaultTableModel;
-    private int idPedidoSelecionado = -1;
 
     /**
      * Creates new form PanelVentas
@@ -53,7 +53,7 @@ public class PanelVentas extends javax.swing.JPanel {
         txtApellido = new jtextfieldround.JTextFieldRound();
         jLabel17 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblVentas = new javax.swing.JTable();
+        tblPedido = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -196,7 +196,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("TOTAL");
 
-        tblVentas.setModel(new javax.swing.table.DefaultTableModel(
+        tblPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -204,12 +204,12 @@ public class PanelVentas extends javax.swing.JPanel {
                 "ID", "PRODUCTO", "CATEGORIA", "CANTIDAD", "PRECIO", "MONTO"
             }
         ));
-        tblVentas.addFocusListener(new java.awt.event.FocusAdapter() {
+        tblPedido.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                tblVentasFocusGained(evt);
+                tblPedidoFocusGained(evt);
             }
         });
-        jScrollPane2.setViewportView(tblVentas);
+        jScrollPane2.setViewportView(tblPedido);
 
         jPanel3.setBackground(new java.awt.Color(50, 133, 203));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
@@ -332,7 +332,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btnAgregarPedido.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregarPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/agregar.png"))); // NOI18N
         btnAgregarPedido.setToolTipText("Agregar");
-        btnAgregarPedido.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnAgregarPedido.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(50, 133, 203))); // NOI18N
         btnAgregarPedido.setBorderPainted(false);
         btnAgregarPedido.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAgregarPedido.setFocusPainted(false);
@@ -345,7 +345,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btnBorrarProd.setBackground(new java.awt.Color(44, 80, 154));
         btnBorrarProd.setForeground(new java.awt.Color(255, 255, 255));
         btnBorrarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/eliminar.png"))); // NOI18N
-        btnBorrarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnBorrarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(50, 133, 203))); // NOI18N
         btnBorrarProd.setBorderPainted(false);
         btnBorrarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBorrarProd.setFocusPainted(false);
@@ -358,7 +358,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btnBuscarProd.setBackground(new java.awt.Color(44, 80, 154));
         btnBuscarProd.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
-        btnBuscarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnBuscarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(50, 133, 203))); // NOI18N
         btnBuscarProd.setBorderPainted(false);
         btnBuscarProd.setEnabled(false);
         btnBuscarProd.setFocusPainted(false);
@@ -366,7 +366,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btnModificarProd.setBackground(new java.awt.Color(44, 80, 154));
         btnModificarProd.setForeground(new java.awt.Color(255, 255, 255));
         btnModificarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/editar.png"))); // NOI18N
-        btnModificarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnModificarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(50, 133, 203))); // NOI18N
         btnModificarProd.setBorderPainted(false);
         btnModificarProd.setFocusPainted(false);
         btnModificarProd.addActionListener(new java.awt.event.ActionListener() {
@@ -468,38 +468,29 @@ public class PanelVentas extends javax.swing.JPanel {
 
     private void btnAgregarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPedidoActionPerformed
         // TODO add your handling code here:
-        miControladorVenta.registrarPedido(empaquetarDatosPedido());
-        miControladorVenta.actualizarTablaVenta();
+        miControladorVenta.registrarPedido();
     }//GEN-LAST:event_btnAgregarPedidoActionPerformed
 
     private void btnBorrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProdActionPerformed
         // TODO add your handling code here:
-        miControladorVenta.eliminarPedido(idPedidoSelecionado);
-        miControladorVenta.actualizarTablaVenta();
+        miControladorVenta.eliminarPedido();
     }//GEN-LAST:event_btnBorrarProdActionPerformed
 
     private void btnModificarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProdActionPerformed
         // TODO add your handling code here:
-        if (!"".equals(txtCantProd.getText())) {
-            int cantidad = Integer.parseInt(txtCantProd.getText());
-            miControladorVenta.modificarPedido(cantidad, idPedidoSelecionado);
-            miControladorVenta.actualizarTablaVenta();
-        }
+        miControladorVenta.modificarPedido();
     }//GEN-LAST:event_btnModificarProdActionPerformed
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         // TODO add your handling code here:
-        miControladorVenta.registrarVenta(empaquetarDatosVenta());
-        miControladorVenta.registrarCliente(empaquetarDatosCliente());
-        miControladorVenta.actualizarTablaVenta();
+        miControladorVenta.registrarVenta();
+        miControladorVenta.registrarCliente();
     }//GEN-LAST:event_btnVentaActionPerformed
 
-    private void tblVentasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblVentasFocusGained
+    private void tblPedidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblPedidoFocusGained
         // TODO add your handling code here:
-        int filaSeleccionada = tblVentas.getSelectedRow();
-        idPedidoSelecionado = (Integer)tblVentas.getValueAt(filaSeleccionada, 0);
-        miControladorVenta.buscarPedido(idPedidoSelecionado);
-    }//GEN-LAST:event_tblVentasFocusGained
+        miControladorVenta.buscarPedido();
+    }//GEN-LAST:event_tblPedidoFocusGained
 
     private void txtIdProdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdProdFocusGained
         // TODO add your handling code here:
@@ -509,7 +500,6 @@ public class PanelVentas extends javax.swing.JPanel {
     private void btnCancelarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarVentaActionPerformed
         // TODO add your handling code here:
         miControladorVenta.eliminarCarritoPedidos();
-        miControladorVenta.actualizarTablaVenta();
     }//GEN-LAST:event_btnCancelarVentaActionPerformed
 
 
@@ -537,12 +527,12 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblVentas;
+    public javax.swing.JTable tblPedido;
     private jtextfieldround.JTextFieldRound txtApellido;
-    private jtextfieldround.JTextFieldRound txtCantProd;
+    public jtextfieldround.JTextFieldRound txtCantProd;
     private jtextfieldround.JTextFieldRound txtCategoria;
-    private jtextfieldround.JTextFieldRound txtDni;
-    private jtextfieldround.JTextFieldRound txtIdProd;
+    public jtextfieldround.JTextFieldRound txtDni;
+    public jtextfieldround.JTextFieldRound txtIdProd;
     private jtextfieldround.JTextFieldRound txtNomProd;
     private jtextfieldround.JTextFieldRound txtNombre;
     private jtextfieldround.JTextFieldRound txtPrecioProd;
@@ -555,7 +545,7 @@ public class PanelVentas extends javax.swing.JPanel {
     }
     
     // MÉTODOS AUXILIARES
-    private Venta empaquetarDatosVenta() {
+    public Venta empaquetarDatosVenta() {
         Venta miVenta = new Venta();
         miVenta.setDniUsuario("73367034"); // Por mientras hasta que se agregue el login.
         miVenta.setDniCliente(txtDni.getText());
@@ -564,7 +554,7 @@ public class PanelVentas extends javax.swing.JPanel {
         return miVenta;
     }
     
-    private Pedido empaquetarDatosPedido() {
+    public Pedido empaquetarDatosPedido() {
         Pedido miPedido = new Pedido();
         miPedido.setIdVenta(miControladorVenta.generarIdVenta());
         miPedido.setIdProducto(Integer.parseInt(txtIdProd.getText()));
@@ -572,7 +562,7 @@ public class PanelVentas extends javax.swing.JPanel {
         return miPedido;
     }
     
-    private Cliente empaquetarDatosCliente() {
+    public Cliente empaquetarDatosCliente() {
         Cliente miCliente = new Cliente();
         miCliente.setDniCliente(txtDni.getText());
         miCliente.setNombre(txtNombre.getText());
@@ -599,7 +589,7 @@ public class PanelVentas extends javax.swing.JPanel {
         txtDni.requestFocus();
     }
 
-    public void setTabla(ArrayList<Pedido> carritoPedidos) {
+    public void setTablaPedido(ArrayList<Pedido> carritoPedidos, ArrayList<Categoria> misCategorias) {
         String[] columnas = {"ID", "PRODUCTO", "CATEGORIA", "CANTIDAD", "PRECIO", "MONTO"};
         Object[][] miData = new Object[carritoPedidos.size()][6];
         Producto miProducto;
@@ -614,21 +604,26 @@ public class PanelVentas extends javax.swing.JPanel {
             
             miData[i][0] = carritoPedidos.get(i).getIdPedido();
             miData[i][1] = miProducto.getNombre();
-            miData[i][2] = miProducto.getCategoria();
             miData[i][3] = cantidad;
             miData[i][4] = precio;
             miData[i][5] = precio*cantidad;
             total += precio*cantidad;
+            
+            for (int j = 0; j < misCategorias.size(); j++) {
+                if (misCategorias.get(j).getIdCategoria() == miProducto.getIdCategoria()) {
+                    miData[i][2] = misCategorias.get(j).getNombreCategoria();
+                }
+            }
         }
         
         miDefaultTableModel = new DefaultTableModel(miData, columnas);
-        tblVentas.setModel(miDefaultTableModel);
+        tblPedido.setModel(miDefaultTableModel);
         txtTotal.setText(""+total);
     }
 
-    public void desempaquetarDatosProducto(Producto miProducto) {
+    public void desempaquetarDatosProducto(Producto miProducto, Categoria miCategoria) {
         txtNomProd.setText(miProducto.getNombre());
-        txtCategoria.setText(miProducto.getCategoria());
+        txtCategoria.setText(miCategoria.getNombreCategoria());
         txtPrecioProd.setText(""+miProducto.getPrecio());
     }
     
@@ -636,5 +631,13 @@ public class PanelVentas extends javax.swing.JPanel {
         txtIdProd.setText(""+miPedido.getIdProducto());
         txtCantProd.setText(""+miPedido.getCantidad());
         txtCantProd.requestFocus();
+    }
+    
+    public int idPedidoSeleccionado() {
+        int idPedidoSelecionado = -1;
+        if (tblPedido.getSelectedRow() != -1) {
+            idPedidoSelecionado = (Integer) tblPedido.getValueAt(tblPedido.getSelectedRow(), 0);
+        }
+        return idPedidoSelecionado;
     }
 }

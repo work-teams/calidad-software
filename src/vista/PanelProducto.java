@@ -9,8 +9,8 @@ import controlador.ControladorProducto;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.vo.Categoria;
-import modelo.dao.CategoriaDAO;
 import modelo.vo.Producto;
+import modelo.vo.Proveedor;
 
 /**
  *
@@ -18,7 +18,7 @@ import modelo.vo.Producto;
  */
 public class PanelProducto extends javax.swing.JPanel {
 
-    ControladorProducto conProd;
+    ControladorProducto miControladorProducto;
 
     /**
      * Creates new form NewPanelUsuarios
@@ -87,12 +87,6 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Categoria");
 
-        cbxCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxCategoriaActionPerformed(evt);
-            }
-        });
-
         jLabel10.setBackground(new java.awt.Color(70, 106, 124));
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,11 +106,10 @@ public class PanelProducto extends javax.swing.JPanel {
         btnAgregarProd.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/agregar.png"))); // NOI18N
         btnAgregarProd.setToolTipText("Agregar");
-        btnAgregarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnAgregarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(50, 133, 203))); // NOI18N
         btnAgregarProd.setBorderPainted(false);
         btnAgregarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAgregarProd.setFocusPainted(false);
-        btnAgregarProd.setOpaque(false);
         btnAgregarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarProdActionPerformed(evt);
@@ -126,11 +119,10 @@ public class PanelProducto extends javax.swing.JPanel {
         btnBorrarProd.setBackground(new java.awt.Color(44, 80, 154));
         btnBorrarProd.setForeground(new java.awt.Color(255, 255, 255));
         btnBorrarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/eliminar.png"))); // NOI18N
-        btnBorrarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnBorrarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(50, 133, 203))); // NOI18N
         btnBorrarProd.setBorderPainted(false);
         btnBorrarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBorrarProd.setFocusPainted(false);
-        btnBorrarProd.setOpaque(false);
         btnBorrarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBorrarProdActionPerformed(evt);
@@ -140,10 +132,9 @@ public class PanelProducto extends javax.swing.JPanel {
         btnBuscar.setBackground(new java.awt.Color(44, 80, 154));
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
-        btnBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(50, 133, 203))); // NOI18N
         btnBuscar.setBorderPainted(false);
         btnBuscar.setFocusPainted(false);
-        btnBuscar.setOpaque(false);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -153,10 +144,9 @@ public class PanelProducto extends javax.swing.JPanel {
         btnModificar.setBackground(new java.awt.Color(44, 80, 154));
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/editar.png"))); // NOI18N
-        btnModificar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnModificar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(50, 133, 203))); // NOI18N
         btnModificar.setBorderPainted(false);
         btnModificar.setFocusPainted(false);
-        btnModificar.setOpaque(false);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
@@ -196,7 +186,7 @@ public class PanelProducto extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Cantidad", "Categoria", "Precio", "ID Proveedor"
+                "ID", "Nombre", "Categoria", "Proveedor", "Precio", "Cantidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -369,32 +359,21 @@ public class PanelProducto extends javax.swing.JPanel {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        int idProd = Integer.parseInt(txtIdProducto.getText());
-        setDatos(conProd.buscar(idProd));
+        miControladorProducto.buscarProducto();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        conProd.modificar(capturarDatos());
-        setTablaProductos(conProd.listarProductos());
+        miControladorProducto.modificarProducto();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnBorrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProdActionPerformed
-
-        conProd.eliminar(Integer.parseInt(txtIdProducto.getText()));
-        setTablaProductos(conProd.listarProductos());
+        miControladorProducto.eliminarProducto();
     }//GEN-LAST:event_btnBorrarProdActionPerformed
 
     private void btnAgregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProdActionPerformed
-
-        conProd.registrar(capturarDatos());
-        limpiar();
-        setTablaProductos(conProd.listarProductos());
+        miControladorProducto.registrarProducto();
     }//GEN-LAST:event_btnAgregarProdActionPerformed
-
-    private void cbxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCategoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxCategoriaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -421,30 +400,40 @@ public class PanelProducto extends javax.swing.JPanel {
     private javax.swing.JTable tblCategoria;
     public javax.swing.JTable tblProductos;
     private jtextfieldround.JTextFieldRound txtCantidad;
-    private jtextfieldround.JTextFieldRound txtIdProducto;
+    public jtextfieldround.JTextFieldRound txtIdProducto;
     private jtextfieldround.JTextFieldRound txtNombre;
     private jtextfieldround.JTextFieldRound txtPrecio;
     private jtextfieldround.JTextFieldRound txtProveedor;
     // End of variables declaration//GEN-END:variables
 
-    public void setControlador(ControladorProducto control) {
-        this.conProd = control;
+    public void setControlador(ControladorProducto miControladorProducto) {
+        this.miControladorProducto = miControladorProducto;
     }
 
-    public void setTablaProductos(ArrayList<Producto> prod) {
-        String matriz[][] = new String[prod.size()][6];
-        String[] columnas = {"ID", "Nombre", "Cantidad", "Categoria", "Precio", "ID Proveedor"};
+    public void setTablaProductos(ArrayList<Producto> misProductos, ArrayList<Categoria> misCategorias, ArrayList<Proveedor> misProveedores) {
+        String[] columnas = {"ID", "Nombre", "Categoria", "Proveedor", "Precio", "Cantidad"};
+        Object[][] miData = new Object[misProductos.size()][6];
 
-        for (int i = 0; i < prod.size(); i++) {
-            matriz[i][0] = Integer.toString(prod.get(i).getIdProducto());
-            matriz[i][1] = prod.get(i).getNombre();
-            matriz[i][2] = Integer.toString(prod.get(i).getCantidad());
-            matriz[i][3] = prod.get(i).getCategoria();
-            matriz[i][4] = Float.toString(prod.get(i).getPrecio());
-            matriz[i][5] = Integer.toString(prod.get(i).getIdProveedor());
+        for (int i = 0; i < misProductos.size(); i++) {
+            miData[i][0] = Integer.toString(misProductos.get(i).getIdProducto());
+            miData[i][1] = misProductos.get(i).getNombre();
+            miData[i][4] = misProductos.get(i).getPrecio();
+            miData[i][5] = misProductos.get(i).getCantidad();
+
+            for (int j = 0; j < misCategorias.size(); j++) {
+                if (misCategorias.get(j).getIdCategoria() == misProductos.get(i).getIdCategoria()) {
+                    miData[i][2] = misCategorias.get(j).getNombreCategoria();
+                }
+            }
+
+            for (int j = 0; j < misProveedores.size(); j++) {
+                if (misProveedores.get(j).getIdProveedor() == misProductos.get(i).getIdProveedor()) {
+                    miData[i][3] = misProveedores.get(j).getNombre();
+                }
+            }
         }
 
-        DefaultTableModel modelo = new DefaultTableModel(matriz, columnas);
+        DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
         tblProductos.setModel(modelo);
     }
 
@@ -461,40 +450,40 @@ public class PanelProducto extends javax.swing.JPanel {
         tblCategoria.setModel(modelo);
     }
 
-    private void limpiar() {
+    public void limpiarCampos() {
         txtIdProducto.setText("");
         txtNombre.setText("");
         txtCantidad.setText("");
         cbxCategoria.setSelectedIndex(0);
         txtPrecio.setText("");
         txtProveedor.setText("");
+        txtIdProducto.requestFocus();
     }
 
-    private Producto capturarDatos() {
-        Producto p = new Producto();
-        p.setIdProducto(Integer.parseInt(txtIdProducto.getText()));
-        p.setNombre(txtNombre.getText().toUpperCase());
-        p.setCantidad(Integer.parseInt(txtCantidad.getText()));
-        p.setCategoria(cbxCategoria.getSelectedItem().toString());
-        p.setIdProveedor(Integer.parseInt(txtProveedor.getText()));
-        p.setIdCategoria(cbxCategoria.getSelectedIndex() + 1);
-        return p;
+    public Producto empaquetarDatosProducto() {
+        Producto miProducto = new Producto();
+        miProducto.setIdProducto(Integer.parseInt(txtIdProducto.getText()));
+        miProducto.setNombre(txtNombre.getText().toUpperCase());
+        miProducto.setCantidad(Integer.parseInt(txtCantidad.getText()));
+        miProducto.setIdProveedor(Integer.parseInt(txtProveedor.getText()));
+        miProducto.setIdCategoria(cbxCategoria.getSelectedIndex() + 1);
+        return miProducto;
     }
 
-    public void colocarCategorias(ArrayList<Categoria> cat) {
+    public void setCmbxCategorias(ArrayList<Categoria> cat) {
         cbxCategoria.removeAllItems();
         for (int i = 0; i < cat.size(); i++) {
             cbxCategoria.addItem(cat.get(i).getNombreCategoria());
         }
     }
 
-    public void setDatos(Producto p) {
-        txtIdProducto.setText(Integer.toString(p.getIdProducto()));
-        txtNombre.setText(p.getNombre());
-        txtCantidad.setText(Integer.toString(p.getCantidad()));
-        cbxCategoria.setSelectedIndex(p.getIdCategoria() - 1);
-        txtPrecio.setText(Float.toString(p.getPrecio()));
-        txtProveedor.setText(Integer.toString(p.getIdProveedor()));
+    public void desempaquetarDatosProducto(Producto miProducto) {
+        txtIdProducto.setText(Integer.toString(miProducto.getIdProducto()));
+        txtNombre.setText(miProducto.getNombre());
+        txtCantidad.setText(Integer.toString(miProducto.getCantidad()));
+        cbxCategoria.setSelectedIndex(miProducto.getIdCategoria() - 1);
+        txtPrecio.setText(Float.toString(miProducto.getPrecio()));
+        txtProveedor.setText(Integer.toString(miProducto.getIdProveedor()));
     }
 
 }

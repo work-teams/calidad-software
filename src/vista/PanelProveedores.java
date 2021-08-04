@@ -48,7 +48,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         BtnModificar = new javax.swing.JButton();
         BtnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Table_Proveedores = Table_Proveedores = new javax.swing.JTable(){
+        tblProveedores = tblProveedores = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex,int colIndex){
                 return false;//Disallow the editing of any cell
             }
@@ -117,7 +117,6 @@ public class PanelProveedores extends javax.swing.JPanel {
         BtnAgregar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         BtnAgregar.setBorderPainted(false);
         BtnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BtnAgregar.setOpaque(false);
         BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAgregarActionPerformed(evt);
@@ -132,7 +131,6 @@ public class PanelProveedores extends javax.swing.JPanel {
         BtnEliminar.setBorderPainted(false);
         BtnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BtnEliminar.setFocusPainted(false);
-        BtnEliminar.setOpaque(false);
         BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnEliminarActionPerformed(evt);
@@ -147,7 +145,6 @@ public class PanelProveedores extends javax.swing.JPanel {
         BtnModificar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         BtnModificar.setBorderPainted(false);
         BtnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BtnModificar.setOpaque(false);
         BtnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnModificarActionPerformed(evt);
@@ -162,14 +159,13 @@ public class PanelProveedores extends javax.swing.JPanel {
         BtnBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         BtnBuscar.setBorderPainted(false);
         BtnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BtnBuscar.setOpaque(false);
         BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBuscarActionPerformed(evt);
             }
         });
 
-        Table_Proveedores.setModel(new javax.swing.table.DefaultTableModel(
+        tblProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -180,26 +176,16 @@ public class PanelProveedores extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(Table_Proveedores);
+        jScrollPane1.setViewportView(tblProveedores);
 
         txtNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
 
         txtIdProveedor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtIdProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         txtTelefono.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoActionPerformed(evt);
-            }
-        });
 
         txtDireccion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -289,34 +275,23 @@ public class PanelProveedores extends javax.swing.JPanel {
 
     private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
         // TODO add your handling code here:
-        miControladorProveedor.buscar(Integer.parseInt(txtIdProveedor.getText()));
+        miControladorProveedor.buscarProveedor();
     }//GEN-LAST:event_BtnBuscarActionPerformed
 
     private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
         // TODO add your handling code here:
-        miControladorProveedor.modificar(datosProveedor());
-        miControladorProveedor.actualizarTabla();
+        miControladorProveedor.modificarProveedor();
     }//GEN-LAST:event_BtnModificarActionPerformed
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
         // TODO add your handling code here:
-        miControladorProveedor.eliminar(Integer.parseInt(txtIdProveedor.getText()));
-        miControladorProveedor.actualizarTabla();
+        miControladorProveedor.eliminarProveedor();
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
     private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
         // TODO add your handling code here:
-        miControladorProveedor.registrar(datosProveedor());
-        miControladorProveedor.actualizarTabla();
+        miControladorProveedor.registrarProveedor();
     }//GEN-LAST:event_BtnAgregarActionPerformed
-
-    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -324,7 +299,6 @@ public class PanelProveedores extends javax.swing.JPanel {
     private javax.swing.JButton BtnBuscar;
     private javax.swing.JButton BtnEliminar;
     private javax.swing.JButton BtnModificar;
-    private javax.swing.JTable Table_Proveedores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -334,8 +308,9 @@ public class PanelProveedores extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblProveedores;
     private jtextfieldround.JTextFieldRound txtDireccion;
-    private jtextfieldround.JTextFieldRound txtIdProveedor;
+    public jtextfieldround.JTextFieldRound txtIdProveedor;
     private jtextfieldround.JTextFieldRound txtNombre;
     private jtextfieldround.JTextFieldRound txtTelefono;
     // End of variables declaration//GEN-END:variables
@@ -344,7 +319,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         this.miControladorProveedor = miControladorProveedor;
     }
 
-    private Proveedor datosProveedor() {
+    public Proveedor empaquetarDatosProveedor() {
         Proveedor miProveedor = new Proveedor();
         miProveedor.setIdProveedor(Integer.parseInt(txtIdProveedor.getText()));
         miProveedor.setNombre(txtNombre.getText());
@@ -353,7 +328,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         return miProveedor;
     }
 
-    public void setTabla(ArrayList<Proveedor> miArrayList) {
+    public void setTablaProveedores(ArrayList<Proveedor> miArrayList) {
         String[] columnas = {"ID", "NOMBRE", "DIRECCION", "TELEFONO"};
         Object[][] miData = new Object[miArrayList.size()][4];
 
@@ -365,7 +340,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         }
 
         miDefaultTableModel = new DefaultTableModel(miData, columnas);
-        Table_Proveedores.setModel(miDefaultTableModel);
+        tblProveedores.setModel(miDefaultTableModel);
     }
 
     public void limpiarCampos() {
@@ -376,9 +351,9 @@ public class PanelProveedores extends javax.swing.JPanel {
         txtIdProveedor.requestFocus();
     }
 
-    public void escribirDatos(Proveedor p) {
-        txtNombre.setText(p.getNombre());
-        txtDireccion.setText(p.getDireccion());
-        txtTelefono.setText(p.getTelefono());
+    public void desempaquetarDatosProveedor(Proveedor miProveedor) {
+        txtNombre.setText(miProveedor.getNombre());
+        txtDireccion.setText(miProveedor.getDireccion());
+        txtTelefono.setText(miProveedor.getTelefono());
     }
 }

@@ -50,7 +50,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
         cboxRol = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Table_Usuarios = Table_Usuarios = new javax.swing.JTable(){
+        tblUsuarios = tblUsuarios = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex,int colIndex){
                 return false;//Disallow the editing of any cell
             }
@@ -101,7 +101,6 @@ public class PanelUsuarios extends javax.swing.JPanel {
         btnAgregar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         btnAgregar.setBorderPainted(false);
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnAgregar.setOpaque(false);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -116,7 +115,6 @@ public class PanelUsuarios extends javax.swing.JPanel {
         btnEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         btnEliminar.setBorderPainted(false);
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnEliminar.setOpaque(false);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -131,7 +129,6 @@ public class PanelUsuarios extends javax.swing.JPanel {
         btnBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         btnBuscar.setBorderPainted(false);
         btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnBuscar.setOpaque(false);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -145,7 +142,6 @@ public class PanelUsuarios extends javax.swing.JPanel {
         btnModificar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         btnModificar.setBorderPainted(false);
         btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnModificar.setOpaque(false);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
@@ -189,7 +185,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Contraseña");
 
-        Table_Usuarios.setModel(new javax.swing.table.DefaultTableModel(
+        tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -202,9 +198,9 @@ public class PanelUsuarios extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
-        Table_Usuarios.setDoubleBuffered(true);
-        Table_Usuarios.setShowGrid(true);
-        jScrollPane1.setViewportView(Table_Usuarios);
+        tblUsuarios.setDoubleBuffered(true);
+        tblUsuarios.setShowGrid(true);
+        jScrollPane1.setViewportView(tblUsuarios);
 
         txtDni.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtDni.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -317,30 +313,26 @@ public class PanelUsuarios extends javax.swing.JPanel {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        miControladorUsuario.registrar(empaquetarDatos());
-        miControladorUsuario.actualizarTabla();
+        miControladorUsuario.registrarUsuario();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        miControladorUsuario.modificar(empaquetarDatos());
-        miControladorUsuario.actualizarTabla();
+        miControladorUsuario.modificarUsuario();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        miControladorUsuario.eliminar(txtDni.getText());
-        miControladorUsuario.actualizarTabla();
+        miControladorUsuario.eliminarUsuario();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        miControladorUsuario.buscar(txtDni.getText());
+        miControladorUsuario.buscarUsuario();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Table_Usuarios;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
@@ -357,9 +349,10 @@ public class PanelUsuarios extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblUsuarios;
     private jtextfieldround.JTextFieldRound txtApellido;
     private jtextfieldround.JTextFieldRound txtContrasenia;
-    private jtextfieldround.JTextFieldRound txtDni;
+    public jtextfieldround.JTextFieldRound txtDni;
     private jtextfieldround.JTextFieldRound txtNombre;
     private jtextfieldround.JTextFieldRound txtUsuario;
     // End of variables declaration//GEN-END:variables
@@ -370,7 +363,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
     }
 
     // MÉTODOS AUXILIARES
-    private Usuario empaquetarDatos() {
+    public Usuario empaquetarDatosUsuario() {
         Usuario miUsuario = new Usuario();
         miUsuario.setDniUsuario(txtDni.getText());
         miUsuario.setNombre(txtNombre.getText());
@@ -381,7 +374,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
         return miUsuario;
     }
     
-    public void setTabla(ArrayList<Usuario> miArrayList) {
+    public void setTablaUsuarios(ArrayList<Usuario> miArrayList) {
         String[] columnas = {"DNI", "APELLIDO", "NOMBRE", "USUARIO", "CONTRASEÑA", "ROL"};
         Object[][] miData = new Object[miArrayList.size()][6];
         for (int i = 0; i < miArrayList.size(); i++) {
@@ -393,10 +386,10 @@ public class PanelUsuarios extends javax.swing.JPanel {
             miData[i][5] = miArrayList.get(i).getRol();
         }
         miDefaultTableModel = new DefaultTableModel(miData, columnas);
-        Table_Usuarios.setModel(miDefaultTableModel);
+        tblUsuarios.setModel(miDefaultTableModel);
     }
     
-    public void desempaquetarDatos(Usuario miUsuario) {
+    public void desempaquetarDatosUsuario(Usuario miUsuario) {
         txtNombre.setText(miUsuario.getNombre());
         txtApellido.setText(miUsuario.getApellido());
         txtUsuario.setText(miUsuario.getUsername());

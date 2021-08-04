@@ -16,6 +16,7 @@ import vista.VentanaPrincipal;
  * @author krypt97
  */
 public class ControladorGeneral {
+
     // ATRIBUTOS DE CLASE
     VentanaPrincipal miVentanaPrincipal;
     PanelProveedores miPanelProveedores;
@@ -49,44 +50,44 @@ public class ControladorGeneral {
         this.miPanelProducto.setBounds(171, 0, 1265, 912);
         this.miPanelProducto.setVisible(false);
     }
-    
+
     // ENLACE PANEL VENTAS
     public void setPanelVentas(PanelVentas miPanelVentas) {
         this.miPanelVentas = miPanelVentas;
         this.miPanelVentas.setBounds(171, 0, 1265, 912);
         this.miPanelVentas.setVisible(false);
     }
-    
+
     // MÉTODOS DE CLASE
     public void cargarPanelUsuarios() {
         this.miPanelProducto.setVisible(false);
         this.miPanelProveedores.setVisible(false);
         this.miPanelVentas.setVisible(false);
-        
+
         this.miPanelUsuarios.setVisible(true);
     }
-    
+
     public void cargarPanelProveedores() {
         this.miPanelProducto.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
         this.miPanelVentas.setVisible(false);
-        
+
         this.miPanelProveedores.setVisible(true);
     }
-    
+
     public void cargarPanelProductos() {
         this.miPanelProveedores.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
         this.miPanelVentas.setVisible(false);
-        
+
         this.miPanelProducto.setVisible(true);
     }
-    
+
     public void cargarPanelVentas() {
         this.miPanelProveedores.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
         this.miPanelProducto.setVisible(false);
-        
+
         this.miPanelVentas.setVisible(true);
     }
 }

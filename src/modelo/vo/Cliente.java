@@ -10,40 +10,45 @@ package modelo.vo;
  * @author krypt97
  */
 public class Cliente {
+    
+    // ATRIBUTOS DE CLASE
     private String dniCliente;
     private String nombre;
     private String apellido;
     private String ruc;
 
+    // CONSTRUCTOR
     public Cliente() {
     }
 
+    // GETTERS
     public String getDniCliente() {
         return dniCliente;
     }
 
-    public void setDniCliente(String dniCliente) {
-        this.dniCliente = dniCliente;
-    }
-
     public String getNombre() {
         return nombre;
+    }
+    
+    public String getApellido() {
+        return apellido;
+    }
+    
+    public String getRuc() {
+        return ruc;
+    }
+    
+    // SETTERS
+    public void setDniCliente(String dniCliente) {
+        this.dniCliente = dniCliente;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
     public void setApellido(String apellido) {
         this.apellido = apellido;
-    }
-
-    public String getRuc() {
-        return ruc;
     }
 
     public void setRuc(String ruc) {

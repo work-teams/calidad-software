@@ -10,33 +10,18 @@ package modelo.vo;
  * @author nick_
  */
 public class Venta {
+
+    // ATRIBUTOS DE CLASE
     private int idVenta;
     private String dniUsuario;
     private String dniCliente;
     private float monto;
     private boolean boleta;
-    
+
     //CONSTRUCTOR
     public Venta() {
     }
-    
-    // Enviar datos a DB.
-    public Venta(String dniUsuario, String dniCliente, float monto, boolean boleta) {
-        this.dniUsuario = dniUsuario;
-        this.dniCliente = dniCliente;
-        this.monto = monto;
-        this.boleta = boleta;
-    }
-    
-    // Recibir datos de DB.
-    public Venta(int idVenta, String dniUsuario, String dniCliente, float monto, boolean boleta) {
-        this.idVenta = idVenta;
-        this.dniUsuario = dniUsuario;
-        this.dniCliente = dniCliente;
-        this.monto = monto;
-        this.boleta = boleta;
-    }
-    
+
     //GETTERS
     public int getIdVenta() {
         return idVenta;
@@ -58,7 +43,6 @@ public class Venta {
         return boleta;
     }
 
-    
     //SETTERS
     public void setIdVenta(int idVenta) {
         this.idVenta = idVenta;
@@ -78,10 +62,5 @@ public class Venta {
 
     public void setBoleta(boolean boleta) {
         this.boleta = boleta;
-    }
-    
-    @Override
-    public String toString() {
-        return "Venta{" + "idVenta=" + idVenta + ", dniUsuario=" + dniUsuario + ", dniCliente=" + dniCliente + ", monto=" + monto + ", boleta=" + boleta +'}';
     }
 }

@@ -10,72 +10,48 @@ package modelo.vo;
  * @author willi
  */
 public class Pedido {
-    
-    //atributo de la clase
-    private int idPedido; // Autoincremental
+
+    // ATRIBUTOS DE CLASE
+    private int idPedido; // autoincremental
     private int idVenta;
     private int idProducto;
-    private int cantidad; 
-    
+    private int cantidad;
+
     //Constructor
-    public Pedido(){
-        
+    public Pedido() {
     }
-       
-    /**
-     * @return the idVenta
-     */
+
+    // GETTERS
     public int getIdVenta() {
         return idVenta;
     }
 
-    /**
-     * @param idVenta the idVenta to set
-     */
-    public void setIdVenta(int idVenta) {
-        this.idVenta = idVenta;
-    }
-
-    /**
-     * @return the idProducto
-     */
     public int getIdProducto() {
         return idProducto;
     }
 
-    /**
-     * @param idProducto the idProducto to set
-     */
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
-    }
-
-    /**
-     * @return the cantidad
-     */
     public int getCantidad() {
         return cantidad;
     }
 
-    /**
-     * @param cantidad the cantidad to set
-     */
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    /**
-     * @return the idPedido
-     */
     public int getIdPedido() {
         return idPedido;
     }
 
-    /**
-     * @param idPedido the idPedido to set
-     */
+    // SETTERS
+    public void setIdVenta(int idVenta) {
+        this.idVenta = idVenta;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
     public void setIdPedido(int idPedido) {
         this.idPedido = idPedido;
     }
-
 }
