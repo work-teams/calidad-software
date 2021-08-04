@@ -90,6 +90,7 @@ public class BikeShop {
         miControladorProveedor.setProveedorDAO(miProveedorDAO);
         miControladorProducto.SetProductoDAO(miProductoDAO);
         miControladorProducto.SetCategoriaDAO(miCategoriaDAO);
+        miControladorProducto.SetProveedorDAO(miProveedorDAO);
         miControladorVenta.setVentaDAO(miVentaDAO);
         miControladorVenta.setClienteDAO(miClienteDAO);
         miControladorVenta.setPedidoDAO(miPedidoDAO);

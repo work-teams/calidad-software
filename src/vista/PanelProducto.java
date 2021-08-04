@@ -463,10 +463,11 @@ public class PanelProducto extends javax.swing.JPanel {
     public Producto empaquetarDatosProducto() {
         Producto miProducto = new Producto();
         miProducto.setIdProducto(Integer.parseInt(txtIdProducto.getText()));
-        miProducto.setNombre(txtNombre.getText().toUpperCase());
-        miProducto.setCantidad(Integer.parseInt(txtCantidad.getText()));
         miProducto.setIdProveedor(Integer.parseInt(txtProveedor.getText()));
         miProducto.setIdCategoria(cbxCategoria.getSelectedIndex() + 1);
+        miProducto.setNombre(txtNombre.getText().toUpperCase());
+        miProducto.setCantidad(Integer.parseInt(txtCantidad.getText()));
+        miProducto.setPrecio(Float.parseFloat(txtPrecio.getText()));
         return miProducto;
     }
 
