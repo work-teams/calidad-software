@@ -24,6 +24,8 @@ import modelo.vo.Producto;
 import modelo.vo.Proveedor;
 import modelo.vo.Usuario;
 import modelo.vo.Venta;
+import vista.PanelClientes;
+import vista.PanelHistorialVentas;
 import vista.PanelProducto;
 import vista.PanelProveedores;
 import vista.PanelUsuarios;
@@ -47,6 +49,8 @@ public class BikeShop {
         PanelProducto miPanelProducto = new PanelProducto();
         PanelProveedores miPanelProveedores = new PanelProveedores();
         PanelVentas miPanelVentas = new PanelVentas();
+        PanelClientes  miPanelClientes = new PanelClientes();
+        PanelHistorialVentas miPanelHistorialVentas = new PanelHistorialVentas();
         // Vo
         Usuario miUsuario = new Usuario();
         Producto miProducto = new Producto();
@@ -100,6 +104,8 @@ public class BikeShop {
         miControladorGeneral.setPanelProveedores(miPanelProveedores);
         miControladorGeneral.setPanelProducto(miPanelProducto);
         miControladorGeneral.setPanelVentas(miPanelVentas);
+        miControladorGeneral.setPanelClientes(miPanelClientes);
+        miControladorGeneral.setPanelHistorialVentas(miPanelHistorialVentas);
         miControladorGeneral.setVentanaPrincipal(miVentanaPrincipal);
 
         /* ------------------------------------------------------------------ */
@@ -117,6 +123,8 @@ public class BikeShop {
         miVentanaPrincipal.add(miPanelProducto);
         miVentanaPrincipal.add(miPanelProveedores);
         miVentanaPrincipal.add(miPanelVentas);
+        miVentanaPrincipal.add(miPanelClientes);
+        miVentanaPrincipal.add(miPanelHistorialVentas);
 
         /* ------------------------------------------------------------------ */
         // SETEANDO TABLAS

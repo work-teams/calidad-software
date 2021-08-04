@@ -131,6 +131,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
 
         btnHistorial.setBackground(new java.awt.Color(44, 80, 154));
         btnHistorial.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,6 +146,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnHistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnHistorial.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHistorial.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistorialActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -261,6 +271,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.setVisible(false);
         miControladorGeneral.cargarPanelVentas();
     }//GEN-LAST:event_btnVentasActionPerformed
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        // TODO add your handling code here:
+        jPanel1.setVisible(false);
+        miControladorGeneral.cargarPanelClientes();
+    }//GEN-LAST:event_btnClientesActionPerformed
+
+    private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
+        // TODO add your handling code here:
+        jPanel1.setVisible(false);
+        miControladorGeneral.cargarPanelHistorialVentas();
+    }//GEN-LAST:event_btnHistorialActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClientes;
