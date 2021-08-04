@@ -135,5 +135,8 @@ public class BikeShop {
         miPanelProducto.setTablaCategoria(miCategoriaDAO.listarCategorias());
         miPanelProducto.setCmbxCategorias(miCategoriaDAO.listarCategorias());
         miPanelVentas.setTablaPedido(miPedidoDAO.listarCarritoPedidos(miVentaDAO.generarIdVenta()), miCategoriaDAO.listarCategorias());
+        miPanelClientes.setTablaClientes(miClienteDAO.listarClientes());
+        miPanelClientes.setTablaVentas(miVentaDAO.listarVentas(), miUsuarioDAO.listarUsuarios());
+        miPanelHistorialVentas.setTablaVentas(miVentaDAO.listarVentas());
     }
 }

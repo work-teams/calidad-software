@@ -5,6 +5,11 @@
  */
 package vista;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelo.vo.Usuario;
+import modelo.vo.Venta;
+
 /**
  *
  * @author Daniel
@@ -34,7 +39,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblVenta = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
         jTextField1 = new jtextfieldround.JTextFieldRound();
         jLabel2 = new javax.swing.JLabel();
@@ -90,7 +95,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         jPanel7.setBackground(new java.awt.Color(57, 103, 196));
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ventas realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -101,7 +106,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
                 "ID Venta", "DNI Vendedor", "DNI Cliente", "Monto"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(tblVenta);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -264,11 +269,24 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private jtextfieldround.JTextFieldRound jTextField1;
     private jtextfieldround.JTextFieldRound jTextField2;
     private jtextfieldround.JTextFieldRound jTextField3;
     private jtextfieldround.JTextFieldRound jTextField4;
+    private javax.swing.JTable tblVenta;
     // End of variables declaration//GEN-END:variables
 
+    // MÉTODOS AUXILIARES
+    public void setTablaVentas(ArrayList<Venta> misVentas) {
+        String[] columnas = {"ID Venta", "DNI Vendedor", "DNI Cliente", "Monto"};
+        Object[][] miData = new Object[misVentas.size()][4];
+        for (int i = 0; i < misVentas.size(); i++) {
+            miData[i][0] = misVentas.get(i).getIdVenta();
+            miData[i][1] = misVentas.get(i).getDniUsuario();
+            miData[i][2] = misVentas.get(i).getDniCliente();
+            miData[i][3] = misVentas.get(i).getMonto();
+        }
+        DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas);
+        tblVenta.setModel(miDefaultTableModel);
+    }
 }

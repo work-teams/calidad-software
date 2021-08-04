@@ -5,6 +5,12 @@
  */
 package vista;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelo.vo.Cliente;
+import modelo.vo.Usuario;
+import modelo.vo.Venta;
+
 /**
  *
  * @author Daniel
@@ -34,10 +40,10 @@ public class PanelClientes extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCliente = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblVenta = new javax.swing.JTable();
 
         setMaximumSize(new java.awt.Dimension(1189, 903));
         setMinimumSize(new java.awt.Dimension(1189, 903));
@@ -80,18 +86,15 @@ public class PanelClientes extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(57, 103, 196));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Historial de clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "D.N.I.", "Apellidos", "Nombre", "R.U.C."
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblCliente);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -107,18 +110,15 @@ public class PanelClientes extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(57, 103, 196));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Compras realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID Venta", "D.N.I Vendedor", "Nombre Vendedor", "Monto"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblVenta);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -162,8 +162,39 @@ public class PanelClientes extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblCliente;
+    private javax.swing.JTable tblVenta;
     // End of variables declaration//GEN-END:variables
 
+    // MÉTODOS AUXILIARES
+    public void setTablaClientes(ArrayList<Cliente> misClientes) {
+        String[] columnas = {"DNI", "APELLIDO", "NOMBRE", "R.U.C"};
+        Object[][] miData = new Object[misClientes.size()][4];
+        for (int i = 0; i < misClientes.size(); i++) {
+            miData[i][0] = misClientes.get(i).getDniCliente();
+            miData[i][1] = misClientes.get(i).getApellido();
+            miData[i][2] = misClientes.get(i).getNombre();
+            miData[i][3] = misClientes.get(i).getRuc();
+        }
+        DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas);
+        tblCliente.setModel(miDefaultTableModel);
+    }
+    
+    public void setTablaVentas(ArrayList<Venta> misVentas, ArrayList<Usuario> misUsuarios) {
+        String[] columnas = {"ID Venta", "DNI Vendedor", "Nombre Vendedor", "Monto"};
+        Object[][] miData = new Object[misVentas.size()][4];
+        for (int i = 0; i < misVentas.size(); i++) {
+            miData[i][0] = misVentas.get(i).getIdVenta();
+            miData[i][1] = misVentas.get(i).getDniUsuario();
+            miData[i][3] = misVentas.get(i).getMonto();
+            
+            for (int j = 0; j < misUsuarios.size(); j++) {
+                if (misUsuarios.get(j).getDniUsuario().equals(misVentas.get(i).getDniUsuario())) {
+                    miData[i][2] = misUsuarios.get(j).getNombre();
+                }
+            }
+        }
+        DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas);
+        tblVenta.setModel(miDefaultTableModel);
+    }
 }
