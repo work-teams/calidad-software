@@ -136,4 +136,13 @@ public class ControladorGeneral {
 
         this.miPanelHistorialVentas.setVisible(true);
     }
+    
+    public void ocultarPaneles() {
+        this.miPanelProveedores.setVisible(false);
+        this.miPanelUsuarios.setVisible(false);
+        this.miPanelProducto.setVisible(false);
+        this.miPanelVentas.setVisible(false);
+        this.miPanelClientes.setVisible(false);
+        this.miPanelHistorialVentas.setVisible(false);
+    }
 }
