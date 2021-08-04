@@ -180,20 +180,29 @@ public class PanelClientes extends javax.swing.JPanel {
         tblCliente.setModel(miDefaultTableModel);
     }
     
-    public void setTablaVentas(ArrayList<Venta> misVentas, ArrayList<Usuario> misUsuarios) {
+    // Forma iterativa se puede mejorar generando un metodo en el DAO que te devuela la lista en cuestión.
+    public void setTablaVentas(ArrayList<Venta> misVentas, ArrayList<Usuario> misUsuarios, String dniUsuario) {
         String[] columnas = {"ID Venta", "DNI Vendedor", "Nombre Vendedor", "Monto"};
-        Object[][] miData = new Object[misVentas.size()][4];
+        ArrayList<Venta> misVentasSeleccionadas = new ArrayList<>();
+        // Recorre todas las ventas y selecciona las que coinciden con dniUsuario
         for (int i = 0; i < misVentas.size(); i++) {
-            miData[i][0] = misVentas.get(i).getIdVenta();
-            miData[i][1] = misVentas.get(i).getDniUsuario();
-            miData[i][3] = misVentas.get(i).getMonto();
-            
+            if (misVentas.get(i).getDniUsuario().equals(dniUsuario)) {
+                misVentasSeleccionadas.add(misVentas.get(i));
+            }
+        }
+        // Setea la tabla con las ventas seleccionadas
+        Object[][] miData = new Object[misVentasSeleccionadas.size()][4];
+        for (int i = 0; i < misVentasSeleccionadas.size(); i++) {
+            miData[i][0] = misVentasSeleccionadas.get(i).getIdVenta();
+            miData[i][1] = misVentasSeleccionadas.get(i).getDniUsuario();
+            miData[i][3] = misVentasSeleccionadas.get(i).getMonto();
             for (int j = 0; j < misUsuarios.size(); j++) {
-                if (misUsuarios.get(j).getDniUsuario().equals(misVentas.get(i).getDniUsuario())) {
+                if (misUsuarios.get(j).getDniUsuario().equals(misVentasSeleccionadas.get(i).getDniUsuario())) {
                     miData[i][2] = misUsuarios.get(j).getNombre();
                 }
             }
         }
+        
         DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas);
         tblVenta.setModel(miDefaultTableModel);
     }

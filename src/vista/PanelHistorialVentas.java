@@ -97,10 +97,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
 
         tblVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID Venta", "DNI Vendedor", "DNI Cliente", "Monto"
@@ -207,10 +204,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Producto", "Categoria", "Cantidad", "Precio"

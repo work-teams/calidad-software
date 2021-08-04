@@ -169,7 +169,7 @@
                     <Component class="javax.swing.JTable" name="tblVenta">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="4">
+                          <Table columnCount="4" rowCount="0">
                             <Column editable="true" title="ID Venta" type="java.lang.Object"/>
                             <Column editable="true" title="DNI Vendedor" type="java.lang.Object"/>
                             <Column editable="true" title="DNI Cliente" type="java.lang.Object"/>
@@ -424,7 +424,7 @@
                     <Component class="javax.swing.JTable" name="jTable3">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="4">
+                          <Table columnCount="4" rowCount="0">
                             <Column editable="true" title="Producto" type="java.lang.Object"/>
                             <Column editable="true" title="Categoria" type="java.lang.Object"/>
                             <Column editable="true" title="Cantidad" type="java.lang.Object"/>
