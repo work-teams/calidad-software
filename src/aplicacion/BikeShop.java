@@ -7,6 +7,7 @@ package aplicacion;
 
 import controlador.ControladorCliente;
 import controlador.ControladorGeneral;
+import controlador.ControladorHistorialVenta;
 import controlador.ControladorProducto;
 import controlador.ControladorProveedor;
 import controlador.ControladorUsuario;
@@ -18,7 +19,6 @@ import modelo.dao.ProductoDAO;
 import modelo.dao.ProveedorDAO;
 import modelo.dao.UsuarioDAO;
 import modelo.dao.VentaDAO;
-import modelo.vo.Categoria;
 import modelo.vo.Cliente;
 import modelo.vo.Pedido;
 import modelo.vo.Producto;
@@ -55,7 +55,6 @@ public class BikeShop {
         // Vo
         Usuario miUsuario = new Usuario();
         Producto miProducto = new Producto();
-        Categoria miCategoria = new Categoria();
         Proveedor miProveedor = new Proveedor();
         Venta miVenta = new Venta();
         Pedido miPedido = new Pedido();
@@ -74,6 +73,7 @@ public class BikeShop {
         ControladorProveedor miControladorProveedor = new ControladorProveedor();
         ControladorVenta miControladorVenta = new ControladorVenta();
         ControladorCliente miControladorCliente = new ControladorCliente();
+        ControladorHistorialVenta miControladorHistorialVenta = new ControladorHistorialVenta();
         // Controlador general
         ControladorGeneral miControladorGeneral = new ControladorGeneral();
 
@@ -85,6 +85,7 @@ public class BikeShop {
         miControladorProducto.setPanelProducto(miPanelProducto);
         miControladorVenta.setPanelVentas(miPanelVentas);
         miControladorCliente.setPanelClientes(miPanelClientes);
+        miControladorHistorialVenta.setPanelHistorialVentas(miPanelHistorialVentas);
         // Vo
         miControladorUsuario.setUsuario(miUsuario);
         miControladorProveedor.setProveedor(miProveedor);
@@ -105,6 +106,11 @@ public class BikeShop {
         miControladorVenta.setCategoriaDAO(miCategoriaDAO);
         miControladorCliente.setUsuarioDAO(miUsuarioDAO);
         miControladorCliente.setVentaDAO(miVentaDAO);
+        miControladorHistorialVenta.setCategoriaDAO(miCategoriaDAO);
+        miControladorHistorialVenta.setClienteDAO(miClienteDAO);
+        miControladorHistorialVenta.setPedidoDAO(miPedidoDAO);
+        miControladorHistorialVenta.setProductoDAO(miProductoDAO);
+        miControladorHistorialVenta.setUsuarioDAO(miUsuarioDAO);
         // General vistas
         miControladorGeneral.setPanelUsuarios(miPanelUsuarios);
         miControladorGeneral.setPanelProveedores(miPanelProveedores);
@@ -113,6 +119,9 @@ public class BikeShop {
         miControladorGeneral.setPanelClientes(miPanelClientes);
         miControladorGeneral.setPanelHistorialVentas(miPanelHistorialVentas);
         miControladorGeneral.setVentanaPrincipal(miVentanaPrincipal);
+        // General dao
+        miControladorGeneral.setMiClienteDAO(miClienteDAO);
+        miControladorGeneral.setMiVentaDAO(miVentaDAO);
 
         /* ------------------------------------------------------------------ */
         // CONECTANDO VISTAS AL CONTROLADOR
@@ -122,6 +131,7 @@ public class BikeShop {
         miPanelProveedores.setControlador(miControladorProveedor);
         miPanelVentas.setControlador(miControladorVenta);
         miPanelClientes.setControlador(miControladorCliente);
+        miPanelHistorialVentas.setControlador(miControladorHistorialVenta);
         miVentanaPrincipal.setControladorGeneral(miControladorGeneral);
 
         /* ------------------------------------------------------------------ */

@@ -479,7 +479,7 @@ public class PanelProducto extends javax.swing.JPanel {
     }
 
     public void desempaquetarDatosProducto(Producto miProducto) {
-        txtIdProducto.setText(Integer.toString(miProducto.getIdProducto()));
+        //txtIdProducto.setText(Integer.toString(miProducto.getIdProducto()));
         txtNombre.setText(miProducto.getNombre());
         txtCantidad.setText(Integer.toString(miProducto.getCantidad()));
         cbxCategoria.setSelectedIndex(miProducto.getIdCategoria() - 1);

@@ -5,6 +5,8 @@
  */
 package controlador;
 
+import modelo.dao.ClienteDAO;
+import modelo.dao.VentaDAO;
 import vista.PanelClientes;
 import vista.PanelHistorialVentas;
 import vista.PanelProducto;
@@ -27,6 +29,18 @@ public class ControladorGeneral {
     PanelVentas miPanelVentas;
     PanelClientes miPanelClientes;
     PanelHistorialVentas miPanelHistorialVentas;
+    private VentaDAO miVentaDAO;
+    private ClienteDAO miClienteDAO;
+
+    // ENLACE VENTA DAO
+    public void setMiVentaDAO(VentaDAO miVentaDAO) {
+        this.miVentaDAO = miVentaDAO;
+    }
+
+    // ENLACE CLIENTE DAO
+    public void setMiClienteDAO(ClienteDAO miClienteDAO) {
+        this.miClienteDAO = miClienteDAO;
+    }
 
     // ENLACE VENTANA PRINCIPAL
     public void setVentanaPrincipal(VentanaPrincipal miVentanaPrincipal) {
@@ -125,6 +139,7 @@ public class ControladorGeneral {
         this.miPanelHistorialVentas.setVisible(false);
 
         this.miPanelClientes.setVisible(true);
+        this.miPanelClientes.setTablaClientes(miClienteDAO.listarClientes());
     }
     
     public void cargarPanelHistorialVentas() {
@@ -135,5 +150,6 @@ public class ControladorGeneral {
         this.miPanelClientes.setVisible(false);
 
         this.miPanelHistorialVentas.setVisible(true);
+        this.miPanelHistorialVentas.setTablaVentas(miVentaDAO.listarVentas());
     }
 }

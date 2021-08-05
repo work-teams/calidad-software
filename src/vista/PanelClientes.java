@@ -93,7 +93,7 @@ public class PanelClientes extends javax.swing.JPanel {
 
             },
             new String [] {
-                "D.N.I.", "Apellidos", "Nombre", "R.U.C."
+                "DNI", "Apellidos", "Nombre", "RUC"
             }
         ));
         tblCliente.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -115,14 +115,14 @@ public class PanelClientes extends javax.swing.JPanel {
         );
 
         jPanel6.setBackground(new java.awt.Color(57, 103, 196));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Compras realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ventas realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(255, 255, 255))); // NOI18N
 
         tblVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID Venta", "D.N.I Vendedor", "Nombre Vendedor", "Monto"
+                "ID Venta", "DNI Vendedor", "Nombre Vendedor", "Monto vendido"
             }
         ));
         jScrollPane2.setViewportView(tblVenta);
@@ -185,7 +185,7 @@ public class PanelClientes extends javax.swing.JPanel {
 
     // MÉTODOS AUXILIARES
     public void setTablaClientes(ArrayList<Cliente> misClientes) {
-        String[] columnas = {"DNI", "APELLIDO", "NOMBRE", "R.U.C"};
+        String[] columnas = {"DNI", "APELLIDO", "NOMBRE", "RUC"};
         Object[][] miData = new Object[misClientes.size()][4];
         for (int i = 0; i < misClientes.size(); i++) {
             miData[i][0] = misClientes.get(i).getDniCliente();
@@ -199,7 +199,7 @@ public class PanelClientes extends javax.swing.JPanel {
 
     // Forma iterativa se puede mejorar generando un metodo en el DAO que te devuela la lista en cuestión.
     public void setTablaVentas(ArrayList<Venta> misVentas, ArrayList<Usuario> misUsuarios, String dniUsuario) {
-        String[] columnas = {"ID Venta", "DNI Vendedor", "Nombre Vendedor", "Monto"};
+        String[] columnas = {"ID Venta", "DNI Vendedor", "Nombre Vendedor", "Monto vendido"};
         ArrayList<Venta> misVentasSeleccionadas = new ArrayList<>();
         // Recorre todas las ventas y selecciona las que coinciden con dniUsuario
         for (int i = 0; i < misVentas.size(); i++) {
