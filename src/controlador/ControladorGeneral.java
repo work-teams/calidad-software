@@ -98,6 +98,7 @@ public class ControladorGeneral {
 
     // MÉTODOS DE CLASE
     public void cargarPanelUsuarios() {
+        this.miVentanaPrincipal.panelHome.setVisible(false);
         this.miPanelProducto.setVisible(false);
         this.miPanelProveedores.setVisible(false);
         this.miPanelVentas.setVisible(false);
@@ -108,6 +109,7 @@ public class ControladorGeneral {
     }
 
     public void cargarPanelProveedores() {
+        this.miVentanaPrincipal.panelHome.setVisible(false);
         this.miPanelProducto.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
         this.miPanelVentas.setVisible(false);
@@ -118,6 +120,7 @@ public class ControladorGeneral {
     }
 
     public void cargarPanelProductos() {
+        this.miVentanaPrincipal.panelHome.setVisible(false);
         this.miPanelProveedores.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
         this.miPanelVentas.setVisible(false);
@@ -128,6 +131,7 @@ public class ControladorGeneral {
     }
 
     public void cargarPanelVentas() {
+        this.miVentanaPrincipal.panelHome.setVisible(false);
         this.miPanelProveedores.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
         this.miPanelProducto.setVisible(false);
@@ -138,6 +142,7 @@ public class ControladorGeneral {
     }
 
     public void cargarPanelClientes() {
+        this.miVentanaPrincipal.panelHome.setVisible(false);
         this.miPanelProveedores.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
         this.miPanelProducto.setVisible(false);
@@ -149,6 +154,7 @@ public class ControladorGeneral {
     }
 
     public void cargarPanelHistorialVentas() {
+        this.miVentanaPrincipal.panelHome.setVisible(false);
         this.miPanelProveedores.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
         this.miPanelProducto.setVisible(false);
@@ -159,17 +165,27 @@ public class ControladorGeneral {
         this.miPanelHistorialVentas.setTablaVentas(miVentaDAO.listarVentas());
     }
 
-    public void ocultarPaneles() {
+    public void cargarPanelHome() {
         this.miPanelProveedores.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
         this.miPanelProducto.setVisible(false);
         this.miPanelVentas.setVisible(false);
         this.miPanelClientes.setVisible(false);
         this.miPanelHistorialVentas.setVisible(false);
+        
+        this.miVentanaPrincipal.panelHome.setVisible(true);
     }
 
     public void logout() {
         this.miVentanaPrincipal.setVisible(false);
+        this.miVentanaPrincipal.panelHome.setVisible(false);
+        this.miPanelProveedores.setVisible(false);
+        this.miPanelUsuarios.setVisible(false);
+        this.miPanelProducto.setVisible(false);
+        this.miPanelVentas.setVisible(false);
+        this.miPanelClientes.setVisible(false);
+        this.miPanelHistorialVentas.setVisible(false);
+        
         this.miVentanaLogin.setVisible(true);
     }
 }

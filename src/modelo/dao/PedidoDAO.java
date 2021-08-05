@@ -25,12 +25,12 @@ public class PedidoDAO extends ConexionDB {
     private ResultSet miResultSet;
 
     // SENTENCIAS SQL
-    private final String INSERT = "INSERT INTO bikeshop.pedido (idVenta, idProducto, cantidad) VALUES (?,?,?)";
-    private final String UPDATE = "UPDATE bikeshop.pedido SET cantidad=? WHERE idPedido=?";
-    private final String DELETE = "DELETE FROM bikeshop.pedido WHERE idPedido=?";
-    private final String LISTAR = "SELECT * FROM bikeshop.pedido";
-    private final String SEARCH = "SELECT idVenta, idProducto, cantidad FROM bikeshop.pedido WHERE idPedido=?";
-    private final String SEARCH_CARRITO = "SELECT idPedido, idProducto, cantidad FROM bikeshop.pedido WHERE idVenta=?";
+    private final String INSERT = "INSERT INTO pedido (idVenta, idProducto, cantidad) VALUES (?,?,?)";
+    private final String UPDATE = "UPDATE pedido SET cantidad=? WHERE idPedido=?";
+    private final String DELETE = "DELETE FROM pedido WHERE idPedido=?";
+    private final String LISTAR = "SELECT * FROM pedido";
+    private final String SEARCH = "SELECT idVenta, idProducto, cantidad FROM pedido WHERE idPedido=?";
+    private final String SEARCH_CARRITO = "SELECT idPedido, idProducto, cantidad FROM pedido WHERE idVenta=?";
 
     // MÉTODOS C.R.U.D.
     public void registrarPedido(Pedido miPedido) {

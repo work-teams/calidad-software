@@ -42,10 +42,18 @@ public class PanelClientes extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCliente = new javax.swing.JTable();
+        tblCliente = tblCliente = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex,int colIndex){
+                return false;//Disallow the editing of any cell
+            }
+        };
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblVenta = new javax.swing.JTable();
+        tblVenta = tblVenta = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex,int colIndex){
+                return false;//Disallow the editing of any cell
+            }
+        };
 
         setMaximumSize(new java.awt.Dimension(1189, 903));
         setMinimumSize(new java.awt.Dimension(1189, 903));
@@ -115,7 +123,7 @@ public class PanelClientes extends javax.swing.JPanel {
         );
 
         jPanel6.setBackground(new java.awt.Color(57, 103, 196));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ventas realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número de compras realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(255, 255, 255))); // NOI18N
 
         tblVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,7 +193,7 @@ public class PanelClientes extends javax.swing.JPanel {
 
     // MÉTODOS AUXILIARES
     public void setTablaClientes(ArrayList<Cliente> misClientes) {
-        String[] columnas = {"DNI", "APELLIDO", "NOMBRE", "RUC"};
+        String[] columnas = {"DNI", "Apellido", "Nombre", "RUC"};
         Object[][] miData = new Object[misClientes.size()][4];
         for (int i = 0; i < misClientes.size(); i++) {
             miData[i][0] = misClientes.get(i).getDniCliente();
@@ -198,12 +206,12 @@ public class PanelClientes extends javax.swing.JPanel {
     }
 
     // Forma iterativa se puede mejorar generando un metodo en el DAO que te devuela la lista en cuestión.
-    public void setTablaVentas(ArrayList<Venta> misVentas, ArrayList<Usuario> misUsuarios, String dniUsuario) {
+    public void setTablaVentas(ArrayList<Venta> misVentas, ArrayList<Usuario> misUsuarios, String dniClienteSeleccionado) {
         String[] columnas = {"ID Venta", "DNI Vendedor", "Nombre Vendedor", "Monto vendido"};
         ArrayList<Venta> misVentasSeleccionadas = new ArrayList<>();
-        // Recorre todas las ventas y selecciona las que coinciden con dniUsuario
+        // Recorre todas las ventas y selecciona las que coinciden con dniClienteSeleccionado
         for (int i = 0; i < misVentas.size(); i++) {
-            if (misVentas.get(i).getDniUsuario().equals(dniUsuario)) {
+            if (misVentas.get(i).getDniCliente().equals(dniClienteSeleccionado)) {
                 misVentasSeleccionadas.add(misVentas.get(i));
             }
         }

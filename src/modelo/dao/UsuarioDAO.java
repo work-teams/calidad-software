@@ -25,12 +25,12 @@ public class UsuarioDAO extends ConexionDB {
     private ResultSet miResultSet;
 
     // SENTENCIAS SQL
-    private final String INSERT = "INSERT INTO bikeshop.usuarios (dniUsuario, apellido, nombre, username, password, rol) VALUES (?,?,?,?,?,?)";
-    private final String UPDATE = "UPDATE bikeshop.usuarios SET apellido=?, nombre=?, username=?, password=?, rol=? WHERE dniUsuario=?";
-    private final String SEARCH = "SELECT apellido, nombre, username, password, rol FROM bikeshop.usuarios WHERE dniUsuario=?";
-    private final String SEARCH_USERNAME = "SELECT dniUsuario, username, password, rol FROM bikeshop.usuarios WHERE username=?"; // Corregir no debe traer el username corregir el charset de la DB
-    private final String DELETE = "DELETE FROM bikeshop.usuarios WHERE dniUsuario=?";
-    private final String LISTAR = "SELECT * FROM bikeshop.usuarios";
+    private final String INSERT = "INSERT INTO usuarios (dniUsuario, apellido, nombre, username, password, rol) VALUES (?,?,?,?,?,?)";
+    private final String UPDATE = "UPDATE usuarios SET apellido=?, nombre=?, username=?, password=?, rol=? WHERE dniUsuario=?";
+    private final String SEARCH = "SELECT apellido, nombre, username, password, rol FROM usuarios WHERE dniUsuario=?";
+    private final String SEARCH_USERNAME = "SELECT dniUsuario, username, password, rol FROM usuarios WHERE username=?"; // Corregir no debe traer el username corregir el charset de la DB
+    private final String DELETE = "DELETE FROM usuarios WHERE dniUsuario=?";
+    private final String LISTAR = "SELECT * FROM usuarios";
 
     // MÉTODOS C.R.U.D.
     public void registrarUsuario(Usuario miUsuario) {

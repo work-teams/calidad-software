@@ -206,6 +206,7 @@
                         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tblClienteFocusGained"/>
                       </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="tblCliente = new javax.swing.JTable(){&#xd;&#xa;    public boolean isCellEditable(int rowIndex,int colIndex){&#xd;&#xa;        return false;//Disallow the editing of any cell&#xd;&#xa;    }&#xd;&#xa;};"/>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
                     </Component>
@@ -220,7 +221,7 @@
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Ventas realizadas">
+                    <TitledBorder title="N&#xfa;mero de compras realizadas">
                       <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
                     </TitledBorder>
                   </Border>
@@ -286,6 +287,7 @@
                         </Property>
                       </Properties>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="tblVenta = new javax.swing.JTable(){&#xd;&#xa;    public boolean isCellEditable(int rowIndex,int colIndex){&#xd;&#xa;        return false;//Disallow the editing of any cell&#xd;&#xa;    }&#xd;&#xa;};"/>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
                     </Component>

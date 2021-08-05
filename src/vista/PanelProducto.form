@@ -503,6 +503,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="tblCategoria = new javax.swing.JTable(){&#xa;    public boolean isCellEditable(int rowIndex,int colIndex){&#xa;        return false;//Disallow the editing of any cell&#xa;    }&#xa;};"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -576,6 +579,8 @@
                 </Property>
               </Properties>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="tblProductos = new javax.swing.JTable(){&#xa;    public boolean isCellEditable(int rowIndex,int colIndex){&#xa;        return false;//Disallow the editing of any cell&#xa;    }&#xa;};"/>
+                <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="PanelProducto_tblProductos"/>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>

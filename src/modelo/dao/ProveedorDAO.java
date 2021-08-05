@@ -25,11 +25,11 @@ public class ProveedorDAO extends ConexionDB {
     private ResultSet miResultSet;
 
     // SENTENCIAS SQL
-    private final String INSERT = "INSERT INTO bikeshop.proveedores(idProveedor, nombre, direccion, telefono) VALUES (?,?,?,?)";
-    private final String UPDATE = "UPDATE bikeshop.proveedores SET nombre=?, direccion=?, telefono=? WHERE idProveedor=?";
-    private final String DELETE = "DELETE FROM bikeshop.proveedores WHERE idProveedor=?";
-    private final String SEARCH = "SELECT nombre, direccion, telefono FROM bikeshop.proveedores WHERE idProveedor=?";
-    private final String LISTAR = "SELECT * FROM bikeshop.proveedores";
+    private final String INSERT = "INSERT INTO proveedores(idProveedor, nombre, direccion, telefono) VALUES (?,?,?,?)";
+    private final String UPDATE = "UPDATE proveedores SET nombre=?, direccion=?, telefono=? WHERE idProveedor=?";
+    private final String DELETE = "DELETE FROM proveedores WHERE idProveedor=?";
+    private final String SEARCH = "SELECT nombre, direccion, telefono FROM proveedores WHERE idProveedor=?";
+    private final String LISTAR = "SELECT * FROM proveedores";
 
     // MÉTODOS C.R.U.D.
     public void registrarProveedor(Proveedor miProveedor) {

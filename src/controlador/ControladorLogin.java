@@ -21,7 +21,8 @@ public class ControladorLogin {
     private VentanaLogin miVentanaLogin;
     private VentanaPrincipal miVentanaPrincipal;
     private UsuarioDAO miUsuarioDAO;
-    private Usuario miUsuario;
+    private Usuario miUsuario; // usuario principal del main
+    private Usuario miUsuarioBuscado; // Variable necesaria para setear el usuario principal del main
     private String username;
     private String password;
 
@@ -49,25 +50,28 @@ public class ControladorLogin {
     public void logearUsuario() {
         username = miVentanaLogin.getUsername();
         password = miVentanaLogin.getPassword();
-        Usuario tempUsuario = miUsuarioDAO.buscarUsuarioUsername(username);
-
-        if (tempUsuario != null) {
-            if (username.equals(tempUsuario.getUsername())) {
-                if (password.equals(tempUsuario.getPassword())) {
-                    miUsuario.setDniUsuario(tempUsuario.getDniUsuario());
+        miUsuarioBuscado = miUsuarioDAO.buscarUsuarioUsername(username);
+        if (miUsuarioBuscado != null) {
+            if (username.equals(miUsuarioBuscado.getUsername())) {
+                if (password.equals(miUsuarioBuscado.getPassword())) {
+                    // Setea usuario principal del main
+                    miUsuario.setDniUsuario(miUsuarioBuscado.getDniUsuario());
                     miUsuario.setUsername(username);
                     miUsuario.setPassword(password);
-                    miUsuario.setRol(tempUsuario.getRol());
+                    miUsuario.setRol(miUsuarioBuscado.getRol());
+                    // Intercambia ventanas
                     miVentanaLogin.setVisible(false);
                     miVentanaPrincipal.setVisible(true);
+                    miVentanaPrincipal.panelHome.setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "La contraseña proporcionada no coincide");
+                    JOptionPane.showMessageDialog(null, "La contraseña proporcionada es incorrecta");
+                    miVentanaLogin.limpiarCampoPassword();
                 }
             }
         } else {
             JOptionPane.showMessageDialog(null, "Usuario no registrado");
+            miVentanaLogin.limpiarCampos();
         }
-
         miVentanaLogin.limpiarCampos();
     }
 

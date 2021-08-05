@@ -375,7 +375,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
     }
     
     public void setTablaUsuarios(ArrayList<Usuario> miArrayList) {
-        String[] columnas = {"DNI", "APELLIDO", "NOMBRE", "USUARIO", "CONTRASEÑA", "ROL"};
+        String[] columnas = {"DNI", "Apellido", "Nombre", "Usuario", "Contraseña", "Rol"};
         Object[][] miData = new Object[miArrayList.size()][6];
         for (int i = 0; i < miArrayList.size(); i++) {
             miData[i][0] = miArrayList.get(i).getDniUsuario();

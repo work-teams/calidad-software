@@ -6,7 +6,6 @@
 package vista;
 
 import controlador.ControladorLogin;
-import modelo.vo.Usuario;
 
 /**
  *
@@ -151,5 +150,11 @@ public class VentanaLogin extends javax.swing.JFrame {
     public void limpiarCampos() {
         txtUsername.setText("");
         passPassword.setText("");
+        txtUsername.requestFocus();
+    }
+    
+    public void limpiarCampoPassword() {
+        passPassword.setText("");
+        passPassword.requestFocus();
     }
 }

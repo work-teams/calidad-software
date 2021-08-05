@@ -55,7 +55,11 @@ public class PanelVentas extends javax.swing.JPanel {
         txtApellido = new jtextfieldround.JTextFieldRound();
         jLabel17 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblPedido = new javax.swing.JTable();
+        tblPedido = tblPedido = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex,int colIndex){
+                return false;//Disallow the editing of any cell
+            }
+        };
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -592,7 +596,7 @@ public class PanelVentas extends javax.swing.JPanel {
     }
 
     public void setTablaPedido(ArrayList<Pedido> carritoPedidos, ArrayList<Categoria> misCategorias) {
-        String[] columnas = {"ID", "PRODUCTO", "CATEGORIA", "CANTIDAD", "PRECIO", "MONTO"};
+        String[] columnas = {"ID", "Producto", "Categoria", "Cantidad", "Precio", "Monto"};
         Object[][] miData = new Object[carritoPedidos.size()][6];
         Producto miProducto;
         float precio;

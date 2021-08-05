@@ -99,7 +99,6 @@ public class ControladorVenta {
     // PedidoDAO
     public void registrarPedido() {
         miPedido = miPanelVentas.empaquetarDatosPedido();
-        System.out.println(miUsuario.getDniUsuario());
         miPedidoDAO.registrarPedido(miPedido);
         miPanelVentas.setTablaPedido(miPedidoDAO.listarCarritoPedidos(miVentaDAO.generarIdVenta()), miCategoriaDAO.listarCategorias());
         miPanelVentas.limpiarCamposPanelProducto();

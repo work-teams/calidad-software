@@ -51,10 +51,18 @@ public class PanelProducto extends javax.swing.JPanel {
         btnModificar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblCategoria = new javax.swing.JTable();
+        tblCategoria = tblCategoria = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex,int colIndex){
+                return false;//Disallow the editing of any cell
+            }
+        };
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblProductos = new javax.swing.JTable();
+        tblProductos = tblProductos = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex,int colIndex){
+                return false;//Disallow the editing of any cell
+            }
+        };
         jLabel3 = new javax.swing.JLabel();
         txtProveedor = new jtextfieldround.JTextFieldRound();
         txtNombre = new jtextfieldround.JTextFieldRound();
