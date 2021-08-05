@@ -49,11 +49,15 @@ public class ControladorLogin {
     public void logearUsuario() {
         username = miVentanaLogin.getUsername();
         password = miVentanaLogin.getPassword();
-        miUsuario = miUsuarioDAO.buscarUsuarioUsername(username);
+        Usuario tempUsuario = miUsuarioDAO.buscarUsuarioUsername(username);
 
-        if (miUsuario != null) {
-            if (username.equals(miUsuario.getUsername())) {
-                if (password.equals(miUsuario.getPassword())) {
+        if (tempUsuario != null) {
+            if (username.equals(tempUsuario.getUsername())) {
+                if (password.equals(tempUsuario.getPassword())) {
+                    miUsuario.setDniUsuario(tempUsuario.getDniUsuario());
+                    miUsuario.setUsername(username);
+                    miUsuario.setPassword(password);
+                    miUsuario.setRol(tempUsuario.getRol());
                     miVentanaLogin.setVisible(false);
                     miVentanaPrincipal.setVisible(true);
                 } else {

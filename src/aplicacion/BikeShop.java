@@ -98,6 +98,7 @@ public class BikeShop {
         miControladorVenta.setVenta(miVenta);
         miControladorVenta.setCliente(miCliente);
         miControladorVenta.setPedido(miPedido);
+        miControladorVenta.setUsuario(miUsuario);
         miControladorLogin.setUsuario(miUsuario);
         // Dao
         miControladorUsuario.setUsuarioDAO(miUsuarioDAO);

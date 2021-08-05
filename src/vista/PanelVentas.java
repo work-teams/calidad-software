@@ -12,6 +12,7 @@ import modelo.vo.Categoria;
 import modelo.vo.Cliente;
 import modelo.vo.Pedido;
 import modelo.vo.Producto;
+//import modelo.vo.Usuario;
 import modelo.vo.Venta;
 
 /**
@@ -19,6 +20,7 @@ import modelo.vo.Venta;
  * @author Cesar
  */
 public class PanelVentas extends javax.swing.JPanel {
+
     // ATRIBUTOS DE CLASE
     ControladorVenta miControladorVenta;
     private DefaultTableModel miDefaultTableModel;
@@ -543,17 +545,17 @@ public class PanelVentas extends javax.swing.JPanel {
     public void setControlador(ControladorVenta miControladorVenta) {
         this.miControladorVenta = miControladorVenta;
     }
-    
+
     // MÉTODOS AUXILIARES
-    public Venta empaquetarDatosVenta() {
+    public Venta empaquetarDatosVenta(String dniUsuario) {
         Venta miVenta = new Venta();
-        miVenta.setDniUsuario("47519383"); // Por mientras hasta que se agregue el login.
+        miVenta.setDniUsuario(dniUsuario);
         miVenta.setDniCliente(txtDni.getText());
         miVenta.setMonto(Float.parseFloat(txtTotal.getText()));
         miVenta.setBoleta(true); // Agregar checkbox a vista para este campo.
         return miVenta;
     }
-    
+
     public Pedido empaquetarDatosPedido() {
         Pedido miPedido = new Pedido();
         miPedido.setIdVenta(miControladorVenta.generarIdVenta());
@@ -561,7 +563,7 @@ public class PanelVentas extends javax.swing.JPanel {
         miPedido.setCantidad(Integer.parseInt(txtCantProd.getText()));
         return miPedido;
     }
-    
+
     public Cliente empaquetarDatosCliente() {
         Cliente miCliente = new Cliente();
         miCliente.setDniCliente(txtDni.getText());
@@ -579,7 +581,7 @@ public class PanelVentas extends javax.swing.JPanel {
         txtPrecioProd.setText("");
         txtIdProd.requestFocus();
     }
-    
+
     public void limpiarCamposPanelCliente() {
         txtDni.setText("");
         txtNombre.setText("");
@@ -596,43 +598,43 @@ public class PanelVentas extends javax.swing.JPanel {
         float precio;
         int cantidad;
         float total = 0;
-        
+
         for (int i = 0; i < carritoPedidos.size(); i++) {
             miProducto = miControladorVenta.buscarIdProducto(carritoPedidos.get(i).getIdProducto());
             precio = miProducto.getPrecio();
             cantidad = carritoPedidos.get(i).getCantidad();
-            
+
             miData[i][0] = carritoPedidos.get(i).getIdPedido();
             miData[i][1] = miProducto.getNombre();
             miData[i][3] = cantidad;
             miData[i][4] = precio;
-            miData[i][5] = precio*cantidad;
-            total += precio*cantidad;
-            
+            miData[i][5] = precio * cantidad;
+            total += precio * cantidad;
+
             for (int j = 0; j < misCategorias.size(); j++) {
                 if (misCategorias.get(j).getIdCategoria() == miProducto.getIdCategoria()) {
                     miData[i][2] = misCategorias.get(j).getNombreCategoria();
                 }
             }
         }
-        
+
         miDefaultTableModel = new DefaultTableModel(miData, columnas);
         tblPedido.setModel(miDefaultTableModel);
-        txtTotal.setText(""+total);
+        txtTotal.setText("" + total);
     }
 
     public void desempaquetarDatosProducto(Producto miProducto, Categoria miCategoria) {
         txtNomProd.setText(miProducto.getNombre());
         txtCategoria.setText(miCategoria.getNombreCategoria());
-        txtPrecioProd.setText(""+miProducto.getPrecio());
+        txtPrecioProd.setText("" + miProducto.getPrecio());
     }
-    
+
     public void desempaquetarDatosPedido(Pedido miPedido) {
-        txtIdProd.setText(""+miPedido.getIdProducto());
-        txtCantProd.setText(""+miPedido.getCantidad());
+        txtIdProd.setText("" + miPedido.getIdProducto());
+        txtCantProd.setText("" + miPedido.getCantidad());
         txtCantProd.requestFocus();
     }
-    
+
     public int idPedidoSeleccionado() {
         int idPedidoSelecionado = -1;
         if (tblPedido.getSelectedRow() != -1) {
