@@ -13,6 +13,7 @@ import vista.PanelProducto;
 import vista.PanelProveedores;
 import vista.PanelUsuarios;
 import vista.PanelVentas;
+import vista.VentanaLogin;
 import vista.VentanaPrincipal;
 
 /**
@@ -22,13 +23,14 @@ import vista.VentanaPrincipal;
 public class ControladorGeneral {
 
     // ATRIBUTOS DE CLASE
-    VentanaPrincipal miVentanaPrincipal;
-    PanelProveedores miPanelProveedores;
-    PanelUsuarios miPanelUsuarios;
-    PanelProducto miPanelProducto;
-    PanelVentas miPanelVentas;
-    PanelClientes miPanelClientes;
-    PanelHistorialVentas miPanelHistorialVentas;
+    private VentanaPrincipal miVentanaPrincipal;
+    private VentanaLogin miVentanaLogin;
+    private PanelProveedores miPanelProveedores;
+    private PanelUsuarios miPanelUsuarios;
+    private PanelProducto miPanelProducto;
+    private PanelVentas miPanelVentas;
+    private PanelClientes miPanelClientes;
+    private PanelHistorialVentas miPanelHistorialVentas;
     private VentaDAO miVentaDAO;
     private ClienteDAO miClienteDAO;
 
@@ -45,7 +47,6 @@ public class ControladorGeneral {
     // ENLACE VENTANA PRINCIPAL
     public void setVentanaPrincipal(VentanaPrincipal miVentanaPrincipal) {
         this.miVentanaPrincipal = miVentanaPrincipal;
-        this.miVentanaPrincipal.setVisible(true);
     }
 
     // ENLACE PANEL USUARIOS
@@ -75,19 +76,24 @@ public class ControladorGeneral {
         this.miPanelVentas.setBounds(171, 0, 1265, 912);
         this.miPanelVentas.setVisible(false);
     }
-    
+
     // ENLACE PANEL CLIENTES       
     public void setPanelClientes(PanelClientes miPanelClientes) {
         this.miPanelClientes = miPanelClientes;
         this.miPanelClientes.setBounds(171, 0, 1265, 912);
         this.miPanelClientes.setVisible(false);
     }
-    
+
     // ENLACE PANEL HISTORIAL VENTAS      
     public void setPanelHistorialVentas(PanelHistorialVentas miPanelHistorialVentas) {
         this.miPanelHistorialVentas = miPanelHistorialVentas;
         this.miPanelHistorialVentas.setBounds(171, 0, 1265, 912);
         this.miPanelHistorialVentas.setVisible(false);
+    }
+
+    // ENLACE MI VENTANA LOGIN
+    public void setVentanaLogin(VentanaLogin miVentanaLogin) {
+        this.miVentanaLogin = miVentanaLogin;
     }
 
     // MÉTODOS DE CLASE
@@ -130,7 +136,7 @@ public class ControladorGeneral {
 
         this.miPanelVentas.setVisible(true);
     }
-    
+
     public void cargarPanelClientes() {
         this.miPanelProveedores.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
@@ -141,7 +147,7 @@ public class ControladorGeneral {
         this.miPanelClientes.setVisible(true);
         this.miPanelClientes.setTablaClientes(miClienteDAO.listarClientes());
     }
-    
+
     public void cargarPanelHistorialVentas() {
         this.miPanelProveedores.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
@@ -152,7 +158,7 @@ public class ControladorGeneral {
         this.miPanelHistorialVentas.setVisible(true);
         this.miPanelHistorialVentas.setTablaVentas(miVentaDAO.listarVentas());
     }
-    
+
     public void ocultarPaneles() {
         this.miPanelProveedores.setVisible(false);
         this.miPanelUsuarios.setVisible(false);
@@ -160,5 +166,10 @@ public class ControladorGeneral {
         this.miPanelVentas.setVisible(false);
         this.miPanelClientes.setVisible(false);
         this.miPanelHistorialVentas.setVisible(false);
+    }
+
+    public void logout() {
+        this.miVentanaPrincipal.setVisible(false);
+        this.miVentanaLogin.setVisible(true);
     }
 }

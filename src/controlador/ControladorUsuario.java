@@ -27,11 +27,6 @@ public class ControladorUsuario {
     }
 
     // ENLACE MODELO
-    // Vo
-    public void setUsuario(Usuario miUsuario) {
-        this.miUsuario = miUsuario;
-    }
-
     // Dao
     public void setUsuarioDAO(UsuarioDAO miUsuarioDAO) {
         this.miUsuarioDAO = miUsuarioDAO;

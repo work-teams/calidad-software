@@ -28,6 +28,7 @@ public class UsuarioDAO extends ConexionDB {
     private final String INSERT = "INSERT INTO bikeshop.usuarios (dniUsuario, apellido, nombre, username, password, rol) VALUES (?,?,?,?,?,?)";
     private final String UPDATE = "UPDATE bikeshop.usuarios SET apellido=?, nombre=?, username=?, password=?, rol=? WHERE dniUsuario=?";
     private final String SEARCH = "SELECT apellido, nombre, username, password, rol FROM bikeshop.usuarios WHERE dniUsuario=?";
+    private final String SEARCH_USERNAME = "SELECT dniUsuario, username, password, rol FROM bikeshop.usuarios WHERE username=?"; // Corregir no debe traer el username corregir el charset de la DB
     private final String DELETE = "DELETE FROM bikeshop.usuarios WHERE dniUsuario=?";
     private final String LISTAR = "SELECT * FROM bikeshop.usuarios";
 
@@ -68,6 +69,29 @@ public class UsuarioDAO extends ConexionDB {
             miResultSet = miPreparedStatement.executeQuery();
             if (miResultSet.next()) {
                 miUsuario = empaquetarDatosUsuario(miResultSet);
+            }
+            // Fin mensaje
+        } catch (SQLException | NullPointerException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                miConnection.close();
+            } catch (SQLException | NullPointerException e) {
+                System.out.println(e);
+            }
+        }
+        return miUsuario;
+    }
+
+    public Usuario buscarUsuarioUsername(String username) { // Busca usuario segun username para el login
+        Usuario miUsuario = null;
+        try {
+            miConnection = getConexion();
+            miPreparedStatement = miConnection.prepareStatement(SEARCH_USERNAME);
+            miPreparedStatement.setString(1, username);
+            miResultSet = miPreparedStatement.executeQuery();
+            if (miResultSet.next()) {
+                miUsuario = empaquetarDatosUsuarioLogin(miResultSet);
             }
             // Fin mensaje
         } catch (SQLException | NullPointerException e) {
@@ -158,6 +182,15 @@ public class UsuarioDAO extends ConexionDB {
         miUsuario.setApellido(miResultSet.getString("apellido"));
         miUsuario.setNombre(miResultSet.getString("nombre"));
         miUsuario.setUsername(miResultSet.getString("username"));
+        miUsuario.setPassword(miResultSet.getString("password"));
+        miUsuario.setRol(miResultSet.getString("rol"));
+        return miUsuario;
+    }
+
+    private Usuario empaquetarDatosUsuarioLogin(ResultSet miResultSet) throws SQLException {
+        Usuario miUsuario = new Usuario();
+        miUsuario.setDniUsuario(miResultSet.getString("dniUsuario"));
+        miUsuario.setUsername(miResultSet.getString("username")); // Esto no debe ir corregir el charset de la DB
         miUsuario.setPassword(miResultSet.getString("password"));
         miUsuario.setRol(miResultSet.getString("rol"));
         return miUsuario;

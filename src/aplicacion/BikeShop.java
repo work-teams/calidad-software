@@ -8,6 +8,7 @@ package aplicacion;
 import controlador.ControladorCliente;
 import controlador.ControladorGeneral;
 import controlador.ControladorHistorialVenta;
+import controlador.ControladorLogin;
 import controlador.ControladorProducto;
 import controlador.ControladorProveedor;
 import controlador.ControladorUsuario;
@@ -31,6 +32,7 @@ import vista.PanelProducto;
 import vista.PanelProveedores;
 import vista.PanelUsuarios;
 import vista.PanelVentas;
+import vista.VentanaLogin;
 import vista.VentanaPrincipal;
 
 /**
@@ -46,6 +48,7 @@ public class BikeShop {
         // ÚNICA INSTANCIA DE LOS ELEMENTOS A CONECTAR
         // Vista
         VentanaPrincipal miVentanaPrincipal = new VentanaPrincipal();
+        VentanaLogin miVentanaLogin = new VentanaLogin();
         PanelUsuarios miPanelUsuarios = new PanelUsuarios();
         PanelProducto miPanelProducto = new PanelProducto();
         PanelProveedores miPanelProveedores = new PanelProveedores();
@@ -74,6 +77,7 @@ public class BikeShop {
         ControladorVenta miControladorVenta = new ControladorVenta();
         ControladorCliente miControladorCliente = new ControladorCliente();
         ControladorHistorialVenta miControladorHistorialVenta = new ControladorHistorialVenta();
+        ControladorLogin miControladorLogin = new ControladorLogin();
         // Controlador general
         ControladorGeneral miControladorGeneral = new ControladorGeneral();
 
@@ -86,13 +90,15 @@ public class BikeShop {
         miControladorVenta.setPanelVentas(miPanelVentas);
         miControladorCliente.setPanelClientes(miPanelClientes);
         miControladorHistorialVenta.setPanelHistorialVentas(miPanelHistorialVentas);
+        miControladorLogin.setVentanaLogin(miVentanaLogin);
+        miControladorLogin.setVentanaPrincipal(miVentanaPrincipal);
         // Vo
-        miControladorUsuario.setUsuario(miUsuario);
         miControladorProveedor.setProveedor(miProveedor);
         miControladorProducto.setProducto(miProducto);
         miControladorVenta.setVenta(miVenta);
         miControladorVenta.setCliente(miCliente);
         miControladorVenta.setPedido(miPedido);
+        miControladorLogin.setUsuario(miUsuario);
         // Dao
         miControladorUsuario.setUsuarioDAO(miUsuarioDAO);
         miControladorProveedor.setProveedorDAO(miProveedorDAO);
@@ -111,6 +117,7 @@ public class BikeShop {
         miControladorHistorialVenta.setPedidoDAO(miPedidoDAO);
         miControladorHistorialVenta.setProductoDAO(miProductoDAO);
         miControladorHistorialVenta.setUsuarioDAO(miUsuarioDAO);
+        miControladorLogin.setUsuarioDAO(miUsuarioDAO);
         // General vistas
         miControladorGeneral.setPanelUsuarios(miPanelUsuarios);
         miControladorGeneral.setPanelProveedores(miPanelProveedores);
@@ -119,6 +126,7 @@ public class BikeShop {
         miControladorGeneral.setPanelClientes(miPanelClientes);
         miControladorGeneral.setPanelHistorialVentas(miPanelHistorialVentas);
         miControladorGeneral.setVentanaPrincipal(miVentanaPrincipal);
+        miControladorGeneral.setVentanaLogin(miVentanaLogin);
         // General dao
         miControladorGeneral.setMiClienteDAO(miClienteDAO);
         miControladorGeneral.setMiVentaDAO(miVentaDAO);
@@ -132,6 +140,7 @@ public class BikeShop {
         miPanelVentas.setControlador(miControladorVenta);
         miPanelClientes.setControlador(miControladorCliente);
         miPanelHistorialVentas.setControlador(miControladorHistorialVenta);
+        miVentanaLogin.setControlador(miControladorLogin);
         miVentanaPrincipal.setControladorGeneral(miControladorGeneral);
 
         /* ------------------------------------------------------------------ */

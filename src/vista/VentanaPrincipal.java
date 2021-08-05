@@ -19,15 +19,16 @@ import javax.swing.border.Border;
  * @author krypt97
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
+
     ControladorGeneral miControladorGeneral;
 
     /**
      * Creates new form VentanaPrincipal
      */
-    
     FondoPanel fondo = new FondoPanel();
+
     public VentanaPrincipal() {
-        
+
         this.setContentPane(fondo);
         initComponents();
     }
@@ -178,6 +179,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrarSesion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCerrarSesion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -222,43 +228,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.2.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Bienvenido a Bike Shop");
+        jLabel2.setText("Bienvenido a BikeShop");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("<html><p style=\\\"width:400px\\\">\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliquaUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.\"</p></html>");
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("<html>\n<p style=\\\"width:500px\\\">Los desarrolladores del proyecto BikeShop estamos felices de</p>\n<p style=\\\"width:500px\\\"> tenerte con nosotros.</p>\n<p style=\\\"width:500px\\\"></p>\n<p style=\\\"width:500px\\\">Mensaje de nuestro CEO :</p>\n<p style=\\\"width:500px\\\">Hola, gracias por elegir nuestro software para tus ventas,</p>\n<p style=\\\"width:500px\\\">espero que ahora seas más productivo al momento de</p>\n<p style=\\\"width:500px\\\">gestionar y administrar tu negocio.</p>\n<p style=\\\"width:500px\\\"></p>\n<p style=\\\"width:500px\\\">Siempre estaremos mejorando e innovando día a día para</p>\n<p style=\\\"width:500px\\\">facilitarte el trabajo.</p>\n</html>");
+        jLabel3.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(100, 100, 100))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(jLabel1))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(135, 135, 135))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(280, 280, 280))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -283,7 +287,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
         // TODO add your handling code here:
         jPanel1.setVisible(false);
-        
+
         miControladorGeneral.cargarPanelProveedores();
     }//GEN-LAST:event_btnProveedoresActionPerformed
 
@@ -323,6 +327,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         miControladorGeneral.ocultarPaneles();
     }//GEN-LAST:event_btnInicioActionPerformed
 
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        // TODO add your handling code here:
+        miControladorGeneral.logout();
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnClientes;
@@ -342,21 +351,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void setControladorGeneral(ControladorGeneral miControladorGeneral) {
         this.miControladorGeneral = miControladorGeneral;
     }
-    
-    class FondoPanel extends JPanel{
+
+    class FondoPanel extends JPanel {
+
         private Image imagen;
-        
+
         @Override
-        public void paint(Graphics g){
+        public void paint(Graphics g) {
             imagen = new ImageIcon(getClass().getResource("/imagenes/ventana3.0.png")).getImage();
-            
+
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
             setOpaque(false);
-            
+
             super.paint(g);
         }
     }
-    
+
     private static class RoundedBorder implements Border {
 
         private int radius;
@@ -366,7 +376,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 
         public Insets getBorderInsets(Component c) {
-            return new Insets(this.radius+1, this.radius+1, this.radius+2, this.radius);
+            return new Insets(this.radius + 1, this.radius + 1, this.radius + 2, this.radius);
         }
 
         public boolean isBorderOpaque() {
@@ -374,7 +384,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-            g.drawRoundRect(x, y, width-1, height-1, radius, radius);
+            g.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
         }
     }
 }
