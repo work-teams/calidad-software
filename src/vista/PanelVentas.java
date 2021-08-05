@@ -547,7 +547,7 @@ public class PanelVentas extends javax.swing.JPanel {
     // MÉTODOS AUXILIARES
     public Venta empaquetarDatosVenta() {
         Venta miVenta = new Venta();
-        miVenta.setDniUsuario("73367034"); // Por mientras hasta que se agregue el login.
+        miVenta.setDniUsuario("47519383"); // Por mientras hasta que se agregue el login.
         miVenta.setDniCliente(txtDni.getText());
         miVenta.setMonto(Float.parseFloat(txtTotal.getText()));
         miVenta.setBoleta(true); // Agregar checkbox a vista para este campo.

@@ -5,12 +5,23 @@
  */
 package vista;
 
+import controlador.ControladorHistorialVenta;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelo.vo.Categoria;
+import modelo.vo.Cliente;
+import modelo.vo.Pedido;
+import modelo.vo.Producto;
+import modelo.vo.Usuario;
+import modelo.vo.Venta;
+
 /**
  *
  * @author Daniel
  */
-
 public class PanelHistorialVentas extends javax.swing.JPanel {
+
+    private ControladorHistorialVenta miControladorHistorialVenta;
 
     /**
      * Creates new form NewPanelUsuarios
@@ -34,20 +45,20 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblVenta = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
-        jTextField1 = new jtextfieldround.JTextFieldRound();
+        txtNombreVendedor = new jtextfieldround.JTextFieldRound();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new jtextfieldround.JTextFieldRound();
+        txtNombreCliente = new jtextfieldround.JTextFieldRound();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new jtextfieldround.JTextFieldRound();
+        txtApellidoVendedor = new jtextfieldround.JTextFieldRound();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new jtextfieldround.JTextFieldRound();
+        txtApellidoCliente = new jtextfieldround.JTextFieldRound();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tblPedidos = new javax.swing.JTable();
 
         setMaximumSize(new java.awt.Dimension(1189, 903));
         setMinimumSize(new java.awt.Dimension(1189, 903));
@@ -90,18 +101,20 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         jPanel7.setBackground(new java.awt.Color(57, 103, 196));
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ventas realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID Venta", "DNI Vendedor", "DNI Cliente", "Monto"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        tblVenta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tblVentaFocusGained(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tblVenta);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -117,8 +130,9 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         jPanel8.setBackground(new java.awt.Color(57, 103, 196));
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalle de venta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNombreVendedor.setEditable(false);
+        txtNombreVendedor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtNombreVendedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel2.setBackground(new java.awt.Color(70, 106, 124));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -130,24 +144,27 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nombre del cliente");
 
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNombreCliente.setEditable(false);
+        txtNombreCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtNombreCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel4.setBackground(new java.awt.Color(70, 106, 124));
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Apellidos del venedor");
 
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtApellidoVendedor.setEditable(false);
+        txtApellidoVendedor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtApellidoVendedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel5.setBackground(new java.awt.Color(70, 106, 124));
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Apellidos del cliente");
 
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtApellidoCliente.setEditable(false);
+        txtApellidoCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtApellidoCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -158,17 +175,17 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtApellidoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(72, 72, 72)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                    .addComponent(txtApellidoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5))
                 .addGap(39, 39, 39))
         );
@@ -181,16 +198,16 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApellidoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellidoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jSeparator1)
@@ -200,18 +217,15 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         jPanel9.setBackground(new java.awt.Color(57, 103, 196));
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productos comprados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Producto", "Categoria", "Cantidad", "Precio"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tblPedidos);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -247,6 +261,11 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tblVentaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblVentaFocusGained
+        // TODO add your handling code here:
+        miControladorHistorialVenta.cargarPedidosSeleccionados();
+    }//GEN-LAST:event_tblVentaFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -263,12 +282,93 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private jtextfieldround.JTextFieldRound jTextField1;
-    private jtextfieldround.JTextFieldRound jTextField2;
-    private jtextfieldround.JTextFieldRound jTextField3;
-    private jtextfieldround.JTextFieldRound jTextField4;
+    public javax.swing.JTable tblPedidos;
+    public javax.swing.JTable tblVenta;
+    private jtextfieldround.JTextFieldRound txtApellidoCliente;
+    private jtextfieldround.JTextFieldRound txtApellidoVendedor;
+    private jtextfieldround.JTextFieldRound txtNombreCliente;
+    private jtextfieldround.JTextFieldRound txtNombreVendedor;
     // End of variables declaration//GEN-END:variables
 
+    // ENLACE CONTROLADOR
+    public void setControlador(ControladorHistorialVenta miControladorHistorialVenta) {
+        this.miControladorHistorialVenta = miControladorHistorialVenta;
+    }
+    
+    // MÉTODOS AUXILIARES
+    public void setTablaVentas(ArrayList<Venta> misVentas) {
+        String[] columnas = {"ID Venta", "DNI Vendedor", "DNI Cliente", "Monto"};
+        Object[][] miData = new Object[misVentas.size()][4];
+        for (int i = 0; i < misVentas.size(); i++) {
+            miData[i][0] = misVentas.get(i).getIdVenta();
+            miData[i][1] = misVentas.get(i).getDniUsuario();
+            miData[i][2] = misVentas.get(i).getDniCliente();
+            miData[i][3] = misVentas.get(i).getMonto();
+        }
+        DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas);
+        tblVenta.setModel(miDefaultTableModel);
+    }
+    
+    // Método por mejorar.
+    public void SetTablaPedidos(ArrayList<Pedido> listaCarritoPedidos, ArrayList<Producto> misProductos, ArrayList<Categoria> misCategorias) {
+        String[] columnas = {"Producto", "Categoria", "Cantidad", "Precio"};
+        Object[][] miData = new Object[listaCarritoPedidos.size()][4];
+        Producto miProductoBuscado = new Producto();
+        
+        for (int i = 0; i < miData.length; i++) {
+            miData[i][2] = listaCarritoPedidos.get(i).getCantidad();
+            
+            for (int j = 0; j < misProductos.size(); j++) {
+                miProductoBuscado = misProductos.get(j);
+                if (miProductoBuscado.getIdProducto() == listaCarritoPedidos.get(i).getIdProducto()) {
+                    miData[i][0] = miProductoBuscado.getNombre();
+                    miData[i][3] = miProductoBuscado.getPrecio();
+                    break;
+                }
+            }
+            
+            for (int j = 0; j < misCategorias.size(); j++) {
+                if (miProductoBuscado.getIdCategoria() == misCategorias.get(j).getIdCategoria()) {
+                    miData[i][1] = misCategorias.get(j).getNombreCategoria();
+                }
+            }
+        }
+        
+        DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas);
+        tblPedidos.setModel(miDefaultTableModel);
+    }
+
+    public int idVentaSeleccionado() {
+        int idVentaSeleccionado = -1;
+        if (tblVenta.getSelectedRow() != -1) {
+            idVentaSeleccionado = (int) tblVenta.getValueAt(tblVenta.getSelectedRow(), 0);
+        }
+        return idVentaSeleccionado;
+    }
+    
+    public String dniUsuarioSeleccionado() {
+        String dniUsuarioSelecionado = "";
+        if (tblVenta.getSelectedRow() != -1) {
+            dniUsuarioSelecionado = (String) tblVenta.getValueAt(tblVenta.getSelectedRow(), 1);
+        }
+        return dniUsuarioSelecionado;
+    }
+    
+    public String dniClienteSeleccionado() {
+        String dniClienteSeleccionado = "";
+        if (tblVenta.getSelectedRow() != -1) {
+            dniClienteSeleccionado = (String) tblVenta.getValueAt(tblVenta.getSelectedRow(), 2);
+        }
+        return dniClienteSeleccionado;
+    }
+
+    public void desempaquetarDatosUsuario(Usuario miUsuario) {
+        txtNombreVendedor.setText(miUsuario.getNombre());
+        txtApellidoVendedor.setText(miUsuario.getApellido());
+    }
+
+    public void desempaquetarDatosCliente(Cliente miCliente) {
+        txtNombreCliente.setText(miCliente.getNombre());
+        txtApellidoCliente.setText(miCliente.getApellido());
+    }
 }
