@@ -329,7 +329,7 @@ public class PanelProveedores extends javax.swing.JPanel {
     }
 
     public void setTablaProveedores(ArrayList<Proveedor> miArrayList) {
-        String[] columnas = {"ID", "NOMBRE", "DIRECCION", "TELEFONO"};
+        String[] columnas = {"ID", "Nombre", "Dirección", "Telefono"};
         Object[][] miData = new Object[miArrayList.size()][4];
 
         for (int i = 0; i < miArrayList.size(); i++) {

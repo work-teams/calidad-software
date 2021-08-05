@@ -45,7 +45,11 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tblVenta = new javax.swing.JTable();
+        tblVenta = tblVenta = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex,int colIndex){
+                return false;//Disallow the editing of any cell
+            }
+        };
         jPanel8 = new javax.swing.JPanel();
         txtNombreVendedor = new jtextfieldround.JTextFieldRound();
         jLabel2 = new javax.swing.JLabel();
@@ -58,7 +62,11 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblPedidos = new javax.swing.JTable();
+        tblPedidos = tblPedidos = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex,int colIndex){
+                return false;//Disallow the editing of any cell
+            }
+        };
 
         setMaximumSize(new java.awt.Dimension(1189, 903));
         setMinimumSize(new java.awt.Dimension(1189, 903));

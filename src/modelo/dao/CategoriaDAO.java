@@ -25,11 +25,11 @@ public class CategoriaDAO extends ConexionDB {
     private ResultSet miResultSet;
 
     // SENTENCIAS SQL
-    private final String INSERT = "INSERT INTO bikeshop.categoria (idCategoria, nombreCategoria) VALUES (?,?)";
-    private final String UPDATE = "UPDATE bikeshop.categoria SET nombreCategoria=? WHERE idCategoria=?";
-    private final String SEARCH = "SELECT nombreCategoria FROM bikeshop.categoria WHERE idCategoria=?";
-    private final String DELETE = "DELETE FROM bikeshop.categoria WHERE idCategoria=?";
-    private final String LISTAR = "SELECT * FROM bikeshop.categoria";
+    private final String INSERT = "INSERT INTO categoria (idCategoria, nombreCategoria) VALUES (?,?)";
+    private final String UPDATE = "UPDATE categoria SET nombreCategoria=? WHERE idCategoria=?";
+    private final String SEARCH = "SELECT nombreCategoria FROM categoria WHERE idCategoria=?";
+    private final String DELETE = "DELETE FROM categoria WHERE idCategoria=?";
+    private final String LISTAR = "SELECT * FROM categoria";
 
     // MÉTODOS C.R.U.D.
     public void registrarCategoria(Categoria miCategoria) {

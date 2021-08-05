@@ -15,6 +15,7 @@ import modelo.vo.Categoria;
 import modelo.vo.Cliente;
 import modelo.vo.Pedido;
 import modelo.vo.Producto;
+import modelo.vo.Usuario;
 import modelo.vo.Venta;
 import vista.PanelVentas;
 
@@ -36,7 +37,7 @@ public class ControladorVenta {
     private Pedido miPedido;
     private int idPedido;
     private int cantidad;
-    //private int idProducto;
+    private Usuario miUsuario;
 
     // ENLACE VISTA
     public void setPanelVentas(PanelVentas miPanelVentas) {
@@ -55,6 +56,10 @@ public class ControladorVenta {
 
     public void setPedido(Pedido miPedido) {
         this.miPedido = miPedido;
+    }
+
+    public void setUsuario(Usuario miUsuario) {
+        this.miUsuario = miUsuario;
     }
 
     // Dao
@@ -81,7 +86,7 @@ public class ControladorVenta {
     // METODOS DE CLASE
     // VentaDAO
     public void registrarVenta() {
-        miVenta = miPanelVentas.empaquetarDatosVenta();
+        miVenta = miPanelVentas.empaquetarDatosVenta(miUsuario.getDniUsuario());
         miVentaDAO.registrarVenta(miVenta);
         miPanelVentas.setTablaPedido(miPedidoDAO.listarCarritoPedidos(miVentaDAO.generarIdVenta()), miCategoriaDAO.listarCategorias());
         miPanelVentas.limpiarCamposPanelProducto();

@@ -25,10 +25,10 @@ public class VentaDAO extends ConexionDB {
     private ResultSet miResultSet;
 
     // SENTENCIAS SQL
-    private final String INSERT = "INSERT INTO bikeshop.venta (dniUsuario, dniCliente, monto, boleta) VALUES (?,?,?,?)";
-    private final String SEARCH = "SELECT dniUsuario, dniCliente, monto, boleta FROM bikeshop.venta WHERE idVenta=?";
-    private final String LISTAR = "SELECT * FROM bikeshop.venta";
-    private final String LAST_VENTA = "SELECT idVenta FROM bikeshop.venta ORDER BY idVenta DESC LIMIT 1";
+    private final String INSERT = "INSERT INTO venta (dniUsuario, dniCliente, monto, boleta) VALUES (?,?,?,?)";
+    private final String SEARCH = "SELECT dniUsuario, dniCliente, monto, boleta FROM venta WHERE idVenta=?";
+    private final String LISTAR = "SELECT * FROM venta";
+    private final String LAST_VENTA = "SELECT idVenta FROM venta ORDER BY idVenta DESC LIMIT 1";
 
     // MÉTODOS C.R.U.D.
     public void registrarVenta(Venta miVenta) {

@@ -25,11 +25,11 @@ public class ClienteDAO extends ConexionDB {
     private ResultSet miResultSet;
 
     // SENTENCIAS SQL
-    private final String INSERT = "INSERT INTO bikeshop.cliente (dniCliente, apellido, nombre, ruc) VALUES (?,?,?,?)";
-    private final String UPDATE = "UPDATE bikeshop.cliente SET apellido=?, nombre=?, ruc=? WHERE dniCliente=?";
-    private final String SEARCH = "SELECT apellido, nombre, ruc FROM bikeshop.cliente WHERE dniCliente=?";
-    private final String DELETE = "DELETE FROM bikeshop.cliente WHERE dniCliente=?";
-    private final String LISTAR = "SELECT * FROM bikeshop.cliente";
+    private final String INSERT = "INSERT INTO cliente (dniCliente, apellido, nombre, ruc) VALUES (?,?,?,?)";
+    private final String UPDATE = "UPDATE cliente SET apellido=?, nombre=?, ruc=? WHERE dniCliente=?";
+    private final String SEARCH = "SELECT apellido, nombre, ruc FROM cliente WHERE dniCliente=?";
+    private final String DELETE = "DELETE FROM cliente WHERE dniCliente=?";
+    private final String LISTAR = "SELECT * FROM cliente";
 
     // MÉTODOS C.R.U.D.
     public void registrarCliente(Cliente miCliente) {

@@ -25,11 +25,11 @@ public class ProductoDAO extends ConexionDB {
     private ResultSet miResultSet;
 
     // SENTENCIAS SQL
-    private final String INSERT = "INSERT INTO bikeshop.producto (idProducto, nombre, cantidad, precio, idProveedor, idCategoria) VALUES (?,?,?,?,?,?)";
-    private final String UPDATE = "UPDATE bikeshop.producto SET nombre=?, cantidad=?, precio=?, idProveedor=?, idCategoria=? WHERE idProducto=?";
-    private final String SEARCH = "SELECT nombre, cantidad, precio, idProveedor, idCategoria FROM bikeshop.producto WHERE idProducto=?";
-    private final String DELETE = "DELETE FROM bikeshop.producto WHERE idProducto=?";
-    private final String LISTAR = "SELECT * FROM bikeshop.producto";
+    private final String INSERT = "INSERT INTO producto (idProducto, nombre, cantidad, precio, idProveedor, idCategoria) VALUES (?,?,?,?,?,?)";
+    private final String UPDATE = "UPDATE producto SET nombre=?, cantidad=?, precio=?, idProveedor=?, idCategoria=? WHERE idProducto=?";
+    private final String SEARCH = "SELECT nombre, cantidad, precio, idProveedor, idCategoria FROM producto WHERE idProducto=?";
+    private final String DELETE = "DELETE FROM producto WHERE idProducto=?";
+    private final String LISTAR = "SELECT * FROM producto";
 
     // MÉTODOS C.R.U.D.
     public void registrarProducto(Producto miProducto) {

@@ -5,11 +5,17 @@
  */
 package vista;
 
+import controlador.ControladorLogin;
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author krypt97
  */
 public class VentanaLogin extends javax.swing.JFrame {
+
+    // ATRIBUTOS DE CLASE
+    private ControladorLogin miControladorLogin;
 
     /**
      * Creates new form VentanaLogin
@@ -30,10 +36,10 @@ public class VentanaLogin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtUser = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
         passPassword = new javax.swing.JPasswordField();
         btnIngresar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -53,19 +59,39 @@ public class VentanaLogin extends javax.swing.JFrame {
         jLabel2.setText("Contraseña:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 159, -1, -1));
 
-        txtUser.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 100, 274, 35));
+        txtUsername.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUsernameKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 100, 274, 35));
 
         passPassword.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        passPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                passPasswordKeyReleased(evt);
+            }
+        });
         jPanel1.add(passPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 149, 274, 35));
 
         btnIngresar.setText("Ingresar");
         btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 202, 94, 28));
 
-        btnCancelar.setText("Cerrar");
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 202, 94, 28));
+        btnCerrar.setText("Cerrar");
+        btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 202, 94, 28));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgHold.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 36, -1, -1));
@@ -95,8 +121,32 @@ public class VentanaLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        // TODO add your handling code here:
+        miControladorLogin.logearUsuario();
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        // TODO add your handling code here:
+        miControladorLogin.cerrarAplicacion();
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void passPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passPasswordKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            miControladorLogin.logearUsuario();
+        }
+    }//GEN-LAST:event_passPasswordKeyReleased
+
+    private void txtUsernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            miControladorLogin.cerrarAplicacion();
+        }
+    }//GEN-LAST:event_txtUsernameKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnCancelar;
+    public javax.swing.JButton btnCerrar;
     public javax.swing.JButton btnIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -105,6 +155,26 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPasswordField passPassword;
-    public javax.swing.JTextField txtUser;
+    public javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+    // ENLACE CONTROLADOR
+    public void setControlador(ControladorLogin miControladorLogin) {
+        this.miControladorLogin = miControladorLogin;
+    }
+
+    // MÉTODOS AUXILIARES
+    public String getUsername() {
+        return txtUsername.getText();
+    }
+
+    public String getPassword() {
+        return new String(passPassword.getPassword()); // Transforma en string un array password
+    }
+
+    public void limpiarCampos() {
+        txtUsername.setText("");
+        passPassword.setText("");
+        txtUsername.requestFocus();
+    }
 }
