@@ -65,12 +65,10 @@ public class ControladorLogin {
                     miVentanaPrincipal.panelHome.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "La contraseña proporcionada es incorrecta");
-                    miVentanaLogin.limpiarCampoPassword();
                 }
             }
         } else {
             JOptionPane.showMessageDialog(null, "Usuario no registrado");
-            miVentanaLogin.limpiarCampos();
         }
         miVentanaLogin.limpiarCampos();
     }

@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.ControladorLogin;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -59,9 +60,19 @@ public class VentanaLogin extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 159, -1, -1));
 
         txtUsername.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUsernameKeyReleased(evt);
+            }
+        });
         jPanel1.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 100, 274, 35));
 
         passPassword.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        passPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                passPasswordKeyReleased(evt);
+            }
+        });
         jPanel1.add(passPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 149, 274, 35));
 
         btnIngresar.setText("Ingresar");
@@ -120,6 +131,20 @@ public class VentanaLogin extends javax.swing.JFrame {
         miControladorLogin.cerrarAplicacion();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
+    private void passPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passPasswordKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            miControladorLogin.logearUsuario();
+        }
+    }//GEN-LAST:event_passPasswordKeyReleased
+
+    private void txtUsernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            miControladorLogin.cerrarAplicacion();
+        }
+    }//GEN-LAST:event_txtUsernameKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnCerrar;
     public javax.swing.JButton btnIngresar;
@@ -151,10 +176,5 @@ public class VentanaLogin extends javax.swing.JFrame {
         txtUsername.setText("");
         passPassword.setText("");
         txtUsername.requestFocus();
-    }
-    
-    public void limpiarCampoPassword() {
-        passPassword.setText("");
-        passPassword.requestFocus();
     }
 }
