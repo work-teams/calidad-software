@@ -41,29 +41,73 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        btnUsuarios = new javax.swing.JButton();
+        panLatBtn = new javax.swing.JPanel();
+        btnInicio = new javax.swing.JButton();
         btnProductos = new javax.swing.JButton();
+        btnUsuarios = new javax.swing.JButton();
         btnProveedores = new javax.swing.JButton();
         btnVentas = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
         btnHistorial = new javax.swing.JButton();
-        btnInicio = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        panCuerpo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        jPanel2.setBackground(new java.awt.Color(49, 213, 223));
-        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.setMinimumSize(new java.awt.Dimension(130, 720));
-        jPanel2.setOpaque(false);
-        jPanel2.setPreferredSize(new java.awt.Dimension(130, 720));
+        panLatBtn.setBackground(new java.awt.Color(49, 213, 223));
+        panLatBtn.setForeground(new java.awt.Color(255, 255, 255));
+        panLatBtn.setMinimumSize(new java.awt.Dimension(130, 720));
+        panLatBtn.setOpaque(false);
+        panLatBtn.setPreferredSize(new java.awt.Dimension(130, 720));
+        panLatBtn.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 25));
+
+        btnInicio.setBackground(new java.awt.Color(44, 80, 154));
+        btnInicio.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        btnInicio.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/home.png"))); // NOI18N
+        btnInicio.setText("Inicio");
+        btnInicio.setBorder(new RoundedBorder(20));
+        btnInicio.setContentAreaFilled(false);
+        btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnInicio.setMaximumSize(new java.awt.Dimension(110, 60));
+        btnInicio.setMinimumSize(new java.awt.Dimension(110, 60));
+        btnInicio.setPreferredSize(new java.awt.Dimension(110, 60));
+        btnInicio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
+        panLatBtn.add(btnInicio);
+
+        btnProductos.setBackground(new java.awt.Color(44, 80, 154));
+        btnProductos.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        btnProductos.setForeground(new java.awt.Color(255, 255, 255));
+        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/productos.png"))); // NOI18N
+        btnProductos.setBorder(new RoundedBorder(20));
+        btnProductos.setContentAreaFilled(false);
+        btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnProductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnProductos.setLabel("Productos");
+        btnProductos.setMaximumSize(new java.awt.Dimension(110, 60));
+        btnProductos.setMinimumSize(new java.awt.Dimension(110, 60));
+        btnProductos.setPreferredSize(new java.awt.Dimension(110, 60));
+        btnProductos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductosActionPerformed(evt);
+            }
+        });
+        panLatBtn.add(btnProductos);
 
         btnUsuarios.setBackground(new java.awt.Color(44, 80, 154));
+        btnUsuarios.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         btnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/people.png"))); // NOI18N
         btnUsuarios.setText("Usuarios");
@@ -73,30 +117,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnUsuarios.setContentAreaFilled(false);
         btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnUsuarios.setMaximumSize(new java.awt.Dimension(110, 60));
+        btnUsuarios.setMinimumSize(new java.awt.Dimension(110, 60));
+        btnUsuarios.setPreferredSize(new java.awt.Dimension(110, 60));
         btnUsuarios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuariosActionPerformed(evt);
             }
         });
-
-        btnProductos.setBackground(new java.awt.Color(44, 80, 154));
-        btnProductos.setForeground(new java.awt.Color(255, 255, 255));
-        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/productos.png"))); // NOI18N
-        btnProductos.setBorder(new RoundedBorder(20));
-        btnProductos.setContentAreaFilled(false);
-        btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnProductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnProductos.setLabel("Productos");
-        btnProductos.setPreferredSize(new java.awt.Dimension(120, 77));
-        btnProductos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProductosActionPerformed(evt);
-            }
-        });
+        panLatBtn.add(btnUsuarios);
 
         btnProveedores.setBackground(new java.awt.Color(44, 80, 154));
+        btnProveedores.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         btnProveedores.setForeground(new java.awt.Color(255, 255, 255));
         btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/proveedor32pbnx.png"))); // NOI18N
         btnProveedores.setBorder(new RoundedBorder(20));
@@ -104,14 +137,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnProveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnProveedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnProveedores.setLabel("Proveedores");
+        btnProveedores.setMaximumSize(new java.awt.Dimension(110, 60));
+        btnProveedores.setMinimumSize(new java.awt.Dimension(110, 60));
+        btnProveedores.setPreferredSize(new java.awt.Dimension(110, 60));
         btnProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProveedoresActionPerformed(evt);
             }
         });
+        panLatBtn.add(btnProveedores);
 
         btnVentas.setBackground(new java.awt.Color(44, 80, 154));
+        btnVentas.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         btnVentas.setForeground(new java.awt.Color(255, 255, 255));
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/monedas.png"))); // NOI18N
         btnVentas.setBorder(new RoundedBorder(20));
@@ -119,14 +157,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnVentas.setLabel("Ventas");
+        btnVentas.setMaximumSize(new java.awt.Dimension(110, 60));
+        btnVentas.setMinimumSize(new java.awt.Dimension(110, 60));
+        btnVentas.setPreferredSize(new java.awt.Dimension(110, 60));
         btnVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentasActionPerformed(evt);
             }
         });
+        panLatBtn.add(btnVentas);
 
         btnClientes.setBackground(new java.awt.Color(44, 80, 154));
+        btnClientes.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         btnClientes.setForeground(new java.awt.Color(255, 255, 255));
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/cliente_hand.png"))); // NOI18N
         btnClientes.setText("Clientes");
@@ -134,14 +177,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnClientes.setContentAreaFilled(false);
         btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClientes.setMaximumSize(new java.awt.Dimension(110, 60));
+        btnClientes.setMinimumSize(new java.awt.Dimension(110, 60));
+        btnClientes.setPreferredSize(new java.awt.Dimension(110, 60));
         btnClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClientesActionPerformed(evt);
             }
         });
+        panLatBtn.add(btnClientes);
 
         btnHistorial.setBackground(new java.awt.Color(44, 80, 154));
+        btnHistorial.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         btnHistorial.setForeground(new java.awt.Color(255, 255, 255));
         btnHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/historial.png"))); // NOI18N
         btnHistorial.setText("Historial");
@@ -149,29 +197,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnHistorial.setContentAreaFilled(false);
         btnHistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnHistorial.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnHistorial.setMaximumSize(new java.awt.Dimension(110, 60));
+        btnHistorial.setMinimumSize(new java.awt.Dimension(110, 60));
+        btnHistorial.setPreferredSize(new java.awt.Dimension(110, 60));
         btnHistorial.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHistorialActionPerformed(evt);
             }
         });
-
-        btnInicio.setBackground(new java.awt.Color(44, 80, 154));
-        btnInicio.setForeground(new java.awt.Color(255, 255, 255));
-        btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/home.png"))); // NOI18N
-        btnInicio.setText("Inicio");
-        btnInicio.setBorder(new RoundedBorder(20));
-        btnInicio.setContentAreaFilled(false);
-        btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnInicio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnInicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInicioActionPerformed(evt);
-            }
-        });
+        panLatBtn.add(btnHistorial);
 
         btnCerrarSesion.setBackground(new java.awt.Color(44, 80, 154));
+        btnCerrarSesion.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/logout.png"))); // NOI18N
         btnCerrarSesion.setText("Cerrar Sesión");
@@ -179,50 +217,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnCerrarSesion.setContentAreaFilled(false);
         btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrarSesion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCerrarSesion.setMaximumSize(new java.awt.Dimension(110, 60));
+        btnCerrarSesion.setMinimumSize(new java.awt.Dimension(110, 60));
+        btnCerrarSesion.setPreferredSize(new java.awt.Dimension(110, 60));
         btnCerrarSesion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        panLatBtn.add(btnCerrarSesion);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(152, 152, 152)
-                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(panLatBtn);
 
-        jPanel1.setMinimumSize(new java.awt.Dimension(1150, 720));
-        jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(1150, 720));
+        panCuerpo.setMinimumSize(new java.awt.Dimension(1150, 720));
+        panCuerpo.setOpaque(false);
+        panCuerpo.setPreferredSize(new java.awt.Dimension(1150, 720));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.2.png"))); // NOI18N
 
@@ -234,30 +239,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("<html><p style=\\\"width:400px\\\">\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliquaUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.\"</p></html>");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panCuerpoLayout = new javax.swing.GroupLayout(panCuerpo);
+        panCuerpo.setLayout(panCuerpoLayout);
+        panCuerpoLayout.setHorizontalGroup(
+            panCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panCuerpoLayout.createSequentialGroup()
+                .addGroup(panCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panCuerpoLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(100, 100, 100))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panCuerpoLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jLabel1))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        panCuerpoLayout.setVerticalGroup(
+            panCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panCuerpoLayout.createSequentialGroup()
+                .addGroup(panCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panCuerpoLayout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panCuerpoLayout.createSequentialGroup()
                         .addGap(206, 206, 206)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -265,20 +270,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(70, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(panCuerpo);
 
         pack();
         setLocationRelativeTo(null);
@@ -286,44 +278,44 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
         // TODO add your handling code here:
-        jPanel1.setVisible(false);
+        panCuerpo.setVisible(false);
         
         miControladorGeneral.cargarPanelProveedores();
     }//GEN-LAST:event_btnProveedoresActionPerformed
 
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
         // TODO add your handling code here:
-        jPanel1.setVisible(false);
+        panCuerpo.setVisible(false);
         miControladorGeneral.cargarPanelProductos();
     }//GEN-LAST:event_btnProductosActionPerformed
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
         // TODO add your handling code here:
-        jPanel1.setVisible(false);
+        panCuerpo.setVisible(false);
         miControladorGeneral.cargarPanelUsuarios();
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
         // TODO add your handling code here:
-        jPanel1.setVisible(false);
+        panCuerpo.setVisible(false);
         miControladorGeneral.cargarPanelVentas();
     }//GEN-LAST:event_btnVentasActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
-        jPanel1.setVisible(false);
+        panCuerpo.setVisible(false);
         miControladorGeneral.cargarPanelClientes();
     }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
         // TODO add your handling code here:
-        jPanel1.setVisible(false);
+        panCuerpo.setVisible(false);
         miControladorGeneral.cargarPanelHistorialVentas();
     }//GEN-LAST:event_btnHistorialActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         // TODO add your handling code here:
-        jPanel1.setVisible(true);
+        panCuerpo.setVisible(true);
         miControladorGeneral.ocultarPaneles();
     }//GEN-LAST:event_btnInicioActionPerformed
 
@@ -339,8 +331,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel panCuerpo;
+    private javax.swing.JPanel panLatBtn;
     // End of variables declaration//GEN-END:variables
 
     public void setControladorGeneral(ControladorGeneral miControladorGeneral) {
