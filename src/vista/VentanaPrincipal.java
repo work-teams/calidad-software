@@ -61,6 +61,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1300, 720));
         setPreferredSize(new java.awt.Dimension(1300, 720));
         setSize(new java.awt.Dimension(1300, 720));
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         panLatBtns.setBackground(new java.awt.Color(49, 213, 223));
         panLatBtns.setForeground(new java.awt.Color(255, 255, 255));
@@ -218,7 +219,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         panLatBtns.add(btnCerrarSesion);
 
-        getContentPane().add(panLatBtns, java.awt.BorderLayout.WEST);
+        getContentPane().add(panLatBtns);
 
         panelHome.setMinimumSize(new java.awt.Dimension(1150, 720));
         panelHome.setOpaque(false);
@@ -263,7 +264,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panelHome, java.awt.BorderLayout.EAST);
+        getContentPane().add(panelHome);
 
         pack();
         setLocationRelativeTo(null);
