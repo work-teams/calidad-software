@@ -42,14 +42,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        panLatBtns = new javax.swing.JPanel();
+        btnInicio = new javax.swing.JButton();
         btnUsuarios = new javax.swing.JButton();
         btnProductos = new javax.swing.JButton();
         btnProveedores = new javax.swing.JButton();
         btnVentas = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
         btnHistorial = new javax.swing.JButton();
-        btnInicio = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
         panelHome = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -57,10 +57,37 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(null);
+        setMinimumSize(new java.awt.Dimension(1300, 720));
+        setPreferredSize(new java.awt.Dimension(1300, 720));
+        setSize(new java.awt.Dimension(1300, 720));
 
-        jPanel2.setBackground(new java.awt.Color(49, 213, 223));
-        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.setOpaque(false);
+        panLatBtns.setBackground(new java.awt.Color(49, 213, 223));
+        panLatBtns.setForeground(new java.awt.Color(255, 255, 255));
+        panLatBtns.setMinimumSize(new java.awt.Dimension(150, 720));
+        panLatBtns.setOpaque(false);
+        panLatBtns.setPreferredSize(new java.awt.Dimension(150, 720));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 25);
+        flowLayout1.setAlignOnBaseline(true);
+        panLatBtns.setLayout(flowLayout1);
+
+        btnInicio.setBackground(new java.awt.Color(44, 80, 154));
+        btnInicio.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/home.png"))); // NOI18N
+        btnInicio.setText("Inicio");
+        btnInicio.setBorder(new RoundedBorder(20));
+        btnInicio.setContentAreaFilled(false);
+        btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnInicio.setMinimumSize(new java.awt.Dimension(130, 60));
+        btnInicio.setPreferredSize(new java.awt.Dimension(130, 60));
+        btnInicio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
+        panLatBtns.add(btnInicio);
 
         btnUsuarios.setBackground(new java.awt.Color(44, 80, 154));
         btnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
@@ -72,12 +99,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnUsuarios.setContentAreaFilled(false);
         btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnUsuarios.setMinimumSize(new java.awt.Dimension(130, 60));
+        btnUsuarios.setPreferredSize(new java.awt.Dimension(130, 60));
         btnUsuarios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuariosActionPerformed(evt);
             }
         });
+        panLatBtns.add(btnUsuarios);
 
         btnProductos.setBackground(new java.awt.Color(44, 80, 154));
         btnProductos.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,13 +117,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnProductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnProductos.setLabel("Productos");
-        btnProductos.setPreferredSize(new java.awt.Dimension(120, 77));
+        btnProductos.setMinimumSize(new java.awt.Dimension(130, 60));
+        btnProductos.setPreferredSize(new java.awt.Dimension(130, 60));
         btnProductos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProductosActionPerformed(evt);
             }
         });
+        panLatBtns.add(btnProductos);
 
         btnProveedores.setBackground(new java.awt.Color(44, 80, 154));
         btnProveedores.setForeground(new java.awt.Color(255, 255, 255));
@@ -103,12 +135,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnProveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnProveedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnProveedores.setLabel("Proveedores");
+        btnProveedores.setMinimumSize(new java.awt.Dimension(130, 60));
+        btnProveedores.setPreferredSize(new java.awt.Dimension(130, 60));
         btnProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProveedoresActionPerformed(evt);
             }
         });
+        panLatBtns.add(btnProveedores);
 
         btnVentas.setBackground(new java.awt.Color(44, 80, 154));
         btnVentas.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,12 +153,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnVentas.setLabel("Ventas");
+        btnVentas.setMinimumSize(new java.awt.Dimension(130, 60));
+        btnVentas.setPreferredSize(new java.awt.Dimension(130, 60));
         btnVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentasActionPerformed(evt);
             }
         });
+        panLatBtns.add(btnVentas);
 
         btnClientes.setBackground(new java.awt.Color(44, 80, 154));
         btnClientes.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,12 +171,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnClientes.setContentAreaFilled(false);
         btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClientes.setMinimumSize(new java.awt.Dimension(130, 60));
+        btnClientes.setPreferredSize(new java.awt.Dimension(130, 60));
         btnClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClientesActionPerformed(evt);
             }
         });
+        panLatBtns.add(btnClientes);
 
         btnHistorial.setBackground(new java.awt.Color(44, 80, 154));
         btnHistorial.setForeground(new java.awt.Color(255, 255, 255));
@@ -148,27 +189,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnHistorial.setContentAreaFilled(false);
         btnHistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnHistorial.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnHistorial.setMinimumSize(new java.awt.Dimension(130, 60));
+        btnHistorial.setPreferredSize(new java.awt.Dimension(130, 60));
         btnHistorial.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHistorialActionPerformed(evt);
             }
         });
-
-        btnInicio.setBackground(new java.awt.Color(44, 80, 154));
-        btnInicio.setForeground(new java.awt.Color(255, 255, 255));
-        btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/home.png"))); // NOI18N
-        btnInicio.setText("Inicio");
-        btnInicio.setBorder(new RoundedBorder(20));
-        btnInicio.setContentAreaFilled(false);
-        btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnInicio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnInicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInicioActionPerformed(evt);
-            }
-        });
+        panLatBtns.add(btnHistorial);
 
         btnCerrarSesion.setBackground(new java.awt.Color(44, 80, 154));
         btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
@@ -178,53 +207,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnCerrarSesion.setContentAreaFilled(false);
         btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrarSesion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCerrarSesion.setMaximumSize(new java.awt.Dimension(130, 60));
+        btnCerrarSesion.setMinimumSize(new java.awt.Dimension(130, 60));
+        btnCerrarSesion.setPreferredSize(new java.awt.Dimension(130, 60));
         btnCerrarSesion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarSesionActionPerformed(evt);
             }
         });
+        panLatBtns.add(btnCerrarSesion);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 23, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(152, 152, 152)
-                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
+        getContentPane().add(panLatBtns, java.awt.BorderLayout.WEST);
 
+        panelHome.setMinimumSize(new java.awt.Dimension(1150, 720));
         panelHome.setOpaque(false);
+        panelHome.setPreferredSize(new java.awt.Dimension(1150, 720));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.2.png"))); // NOI18N
 
@@ -243,42 +241,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelHomeLayout.setHorizontalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                .addComponent(jLabel1))
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
         );
         panelHomeLayout.setVerticalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHomeLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(135, 135, 135))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(280, 280, 280))))
+                .addContainerGap(183, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(253, 253, 253))
+            .addGroup(panelHomeLayout.createSequentialGroup()
+                .addGap(166, 166, 166)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelHome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(panelHome, java.awt.BorderLayout.EAST);
 
         pack();
         setLocationRelativeTo(null);
@@ -336,7 +321,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel panLatBtns;
     public javax.swing.JPanel panelHome;
     // End of variables declaration//GEN-END:variables
 
