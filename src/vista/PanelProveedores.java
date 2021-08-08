@@ -58,7 +58,6 @@ public class PanelProveedores extends javax.swing.JPanel {
         txtTelefono = new jtextfieldround.JTextFieldRound();
         txtDireccion = new jtextfieldround.JTextFieldRound();
 
-        setMaximumSize(null);
         setMinimumSize(new java.awt.Dimension(1120, 690));
         setPreferredSize(new java.awt.Dimension(1120, 690));
         setLayout(new java.awt.BorderLayout());

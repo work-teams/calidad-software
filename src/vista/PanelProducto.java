@@ -66,7 +66,6 @@ public class PanelProducto extends javax.swing.JPanel {
         };
         lblImg = new javax.swing.JLabel();
 
-        setMaximumSize(null);
         setMinimumSize(new java.awt.Dimension(1120, 690));
         setPreferredSize(new java.awt.Dimension(1120, 690));
         setLayout(new java.awt.BorderLayout());
@@ -256,7 +255,9 @@ public class PanelProducto extends javax.swing.JPanel {
 
         lblImg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblImg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblImg.setMinimumSize(new java.awt.Dimension(130, 130));
         lblImg.setOpaque(true);
+        lblImg.setPreferredSize(new java.awt.Dimension(130, 130));
 
         javax.swing.GroupLayout panDatosLayout = new javax.swing.GroupLayout(panDatos);
         panDatos.setLayout(panDatosLayout);
@@ -297,16 +298,14 @@ public class PanelProducto extends javax.swing.JPanel {
                         .addGap(48, 48, 48)
                         .addComponent(panBtns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1073, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         panDatosLayout.setVerticalGroup(
             panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panDatosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panDatosLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(panDatosLayout.createSequentialGroup()
                             .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
