@@ -34,7 +34,7 @@ public class ControladorGeneral {
     private PanelHistorialVentas miPanelHistorialVentas;
     private VentaDAO miVentaDAO;
     private ClienteDAO miClienteDAO;
-    final Rectangle bounds = new Rectangle(165, 15, 1120, 690);
+    private final Rectangle bounds = new Rectangle(165, 0, 1120, 690);
 
     // ENLACE VENTA DAO
     public void setMiVentaDAO(VentaDAO miVentaDAO) {
@@ -49,6 +49,7 @@ public class ControladorGeneral {
     // ENLACE VENTANA PRINCIPAL
     public void setVentanaPrincipal(VentanaPrincipal miVentanaPrincipal) {
         this.miVentanaPrincipal = miVentanaPrincipal;
+        this.miVentanaPrincipal.setSize(1285, 720);
     }
 
     // ENLACE PANEL USUARIOS

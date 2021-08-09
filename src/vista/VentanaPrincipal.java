@@ -62,8 +62,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblMensaje = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(null);
-        setMinimumSize(new java.awt.Dimension(1300, 720));
         setSize(new java.awt.Dimension(1300, 720));
 
         panLatBtns.setBackground(new java.awt.Color(49, 213, 223));
