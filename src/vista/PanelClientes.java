@@ -37,17 +37,17 @@ public class PanelClientes extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        panEncabezado = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        panCuerpo = new javax.swing.JPanel();
+        panHist = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCliente = tblCliente = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex,int colIndex){
                 return false;//Disallow the editing of any cell
             }
         };
-        jPanel6 = new javax.swing.JPanel();
+        panNCompras = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblVenta = tblVenta = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex,int colIndex){
@@ -55,46 +55,52 @@ public class PanelClientes extends javax.swing.JPanel {
             }
         };
 
-        setMaximumSize(new java.awt.Dimension(1189, 903));
-        setMinimumSize(new java.awt.Dimension(1189, 903));
+        setMinimumSize(new java.awt.Dimension(1120, 690));
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1189, 903));
-        setRequestFocusEnabled(false);
+        setPreferredSize(new java.awt.Dimension(1120, 690));
         setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(57, 103, 196));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.setMinimumSize(new java.awt.Dimension(1120, 690));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1120, 690));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(44, 80, 154));
-        jPanel1.setPreferredSize(new java.awt.Dimension(179, 44));
+        panEncabezado.setBackground(new java.awt.Color(44, 80, 154));
+        panEncabezado.setMinimumSize(new java.awt.Dimension(1120, 40));
+        panEncabezado.setName(""); // NOI18N
+        panEncabezado.setPreferredSize(new java.awt.Dimension(1120, 40));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 36));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Clientes");
         jLabel1.setPreferredSize(new java.awt.Dimension(183, 44));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panEncabezadoLayout = new javax.swing.GroupLayout(panEncabezado);
+        panEncabezado.setLayout(panEncabezadoLayout);
+        panEncabezadoLayout.setHorizontalGroup(
+            panEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panEncabezadoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(809, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        panEncabezadoLayout.setVerticalGroup(
+            panEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel1, java.awt.BorderLayout.NORTH);
+        jPanel2.add(panEncabezado, java.awt.BorderLayout.NORTH);
 
-        jPanel3.setBackground(new java.awt.Color(57, 103, 196));
+        panCuerpo.setBackground(new java.awt.Color(57, 103, 196));
+        panCuerpo.setMinimumSize(new java.awt.Dimension(1120, 650));
+        panCuerpo.setPreferredSize(new java.awt.Dimension(1120, 650));
 
-        jPanel5.setBackground(new java.awt.Color(57, 103, 196));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Historial de clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(255, 255, 255))); // NOI18N
+        panHist.setBackground(new java.awt.Color(57, 103, 196));
+        panHist.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Historial de clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(255, 255, 255)));
+        panHist.setForeground(new java.awt.Color(255, 255, 255));
+        panHist.setMinimumSize(new java.awt.Dimension(1120, 325));
+        panHist.setPreferredSize(new java.awt.Dimension(1120, 325));
 
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,19 +117,23 @@ public class PanelClientes extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblCliente);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1177, Short.MAX_VALUE)
+        javax.swing.GroupLayout panHistLayout = new javax.swing.GroupLayout(panHist);
+        panHist.setLayout(panHistLayout);
+        panHistLayout.setHorizontalGroup(
+            panHistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1120, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+        panHistLayout.setVerticalGroup(
+            panHistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panHistLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel6.setBackground(new java.awt.Color(57, 103, 196));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número de compras realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cantarell", 0, 15), new java.awt.Color(255, 255, 255))); // NOI18N
+        panNCompras.setBackground(new java.awt.Color(57, 103, 196));
+        panNCompras.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número de compras realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(255, 255, 255)));
+        panNCompras.setMinimumSize(new java.awt.Dimension(1120, 325));
+        panNCompras.setPreferredSize(new java.awt.Dimension(1120, 325));
 
         tblVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,34 +145,36 @@ public class PanelClientes extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblVenta);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panNComprasLayout = new javax.swing.GroupLayout(panNCompras);
+        panNCompras.setLayout(panNComprasLayout);
+        panNComprasLayout.setHorizontalGroup(
+            panNComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2)
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panNComprasLayout.setVerticalGroup(
+            panNComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panNComprasLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel2.add(jPanel3, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout panCuerpoLayout = new javax.swing.GroupLayout(panCuerpo);
+        panCuerpo.setLayout(panCuerpoLayout);
+        panCuerpoLayout.setHorizontalGroup(
+            panCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panHist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panNCompras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panCuerpoLayout.setVerticalGroup(
+            panCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panCuerpoLayout.createSequentialGroup()
+                .addComponent(panHist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panNCompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel2.add(panCuerpo, java.awt.BorderLayout.CENTER);
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -175,13 +187,13 @@ public class PanelClientes extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel panCuerpo;
+    private javax.swing.JPanel panEncabezado;
+    private javax.swing.JPanel panHist;
+    private javax.swing.JPanel panNCompras;
     public javax.swing.JTable tblCliente;
     public javax.swing.JTable tblVenta;
     // End of variables declaration//GEN-END:variables

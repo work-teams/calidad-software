@@ -51,15 +51,15 @@ public class VentanaLogin extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(525, 265));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 14));
         jLabel1.setText("Usuario:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 110, -1, 16));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 14));
         jLabel2.setText("Contraseña:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 159, -1, -1));
 
-        txtUsername.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtUsername.setFont(new java.awt.Font("Roboto", 0, 14));
         txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtUsernameKeyReleased(evt);
@@ -67,7 +67,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         });
         jPanel1.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 100, 274, 35));
 
-        passPassword.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        passPassword.setFont(new java.awt.Font("Roboto", 0, 14));
         passPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 passPasswordKeyReleased(evt);
@@ -75,8 +75,9 @@ public class VentanaLogin extends javax.swing.JFrame {
         });
         jPanel1.add(passPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 149, 274, 35));
 
+        btnIngresar.setFont(new java.awt.Font("Roboto", 1, 12));
         btnIngresar.setText("Ingresar");
-        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
@@ -84,8 +85,9 @@ public class VentanaLogin extends javax.swing.JFrame {
         });
         jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 202, 94, 28));
 
+        btnCerrar.setFont(new java.awt.Font("Roboto", 1, 12));
         btnCerrar.setText("Cerrar");
-        btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarActionPerformed(evt);
@@ -96,11 +98,11 @@ public class VentanaLogin extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgHold.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 36, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel4.setText("Bienvenido a BikeShop");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 36, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 14));
         jLabel5.setText("Ingresa tu usuario y contraseña para continuar.");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 59, -1, -1));
 

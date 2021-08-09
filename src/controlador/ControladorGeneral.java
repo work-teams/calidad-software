@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import java.awt.Rectangle;
 import modelo.dao.ClienteDAO;
 import modelo.dao.VentaDAO;
 import vista.PanelClientes;
@@ -33,6 +34,7 @@ public class ControladorGeneral {
     private PanelHistorialVentas miPanelHistorialVentas;
     private VentaDAO miVentaDAO;
     private ClienteDAO miClienteDAO;
+    private final Rectangle bounds = new Rectangle(165, 0, 1120, 690);
 
     // ENLACE VENTA DAO
     public void setMiVentaDAO(VentaDAO miVentaDAO) {
@@ -47,47 +49,48 @@ public class ControladorGeneral {
     // ENLACE VENTANA PRINCIPAL
     public void setVentanaPrincipal(VentanaPrincipal miVentanaPrincipal) {
         this.miVentanaPrincipal = miVentanaPrincipal;
+        this.miVentanaPrincipal.setSize(1285, 720);
     }
 
     // ENLACE PANEL USUARIOS
     public void setPanelUsuarios(PanelUsuarios miPanelUsuarios) {
         this.miPanelUsuarios = miPanelUsuarios;
-        this.miPanelUsuarios.setBounds(171, 0, 1265, 912);
+        this.miPanelUsuarios.setBounds(bounds);
         this.miPanelUsuarios.setVisible(false);
     }
 
     // ENLACE PANEL PROVEEDORES
     public void setPanelProveedores(PanelProveedores miPanelProveedores) {
         this.miPanelProveedores = miPanelProveedores;
-        this.miPanelProveedores.setBounds(171, 0, 1265, 912);
+        this.miPanelProveedores.setBounds(bounds);
         this.miPanelProveedores.setVisible(false);
     }
 
     // ENLACE PANEL PRODUCTO
     public void setPanelProducto(PanelProducto MiPanelProducto) {
         this.miPanelProducto = MiPanelProducto;
-        this.miPanelProducto.setBounds(171, 0, 1265, 912);
+        this.miPanelProducto.setBounds(bounds);
         this.miPanelProducto.setVisible(false);
     }
 
     // ENLACE PANEL VENTAS
     public void setPanelVentas(PanelVentas miPanelVentas) {
         this.miPanelVentas = miPanelVentas;
-        this.miPanelVentas.setBounds(171, 0, 1265, 912);
+        this.miPanelVentas.setBounds(bounds);
         this.miPanelVentas.setVisible(false);
     }
 
     // ENLACE PANEL CLIENTES       
     public void setPanelClientes(PanelClientes miPanelClientes) {
         this.miPanelClientes = miPanelClientes;
-        this.miPanelClientes.setBounds(171, 0, 1265, 912);
+        this.miPanelClientes.setBounds(bounds);
         this.miPanelClientes.setVisible(false);
     }
 
     // ENLACE PANEL HISTORIAL VENTAS      
     public void setPanelHistorialVentas(PanelHistorialVentas miPanelHistorialVentas) {
         this.miPanelHistorialVentas = miPanelHistorialVentas;
-        this.miPanelHistorialVentas.setBounds(171, 0, 1265, 912);
+        this.miPanelHistorialVentas.setBounds(bounds);
         this.miPanelHistorialVentas.setVisible(false);
     }
 
@@ -172,7 +175,7 @@ public class ControladorGeneral {
         this.miPanelVentas.setVisible(false);
         this.miPanelClientes.setVisible(false);
         this.miPanelHistorialVentas.setVisible(false);
-        
+
         this.miVentanaPrincipal.panelHome.setVisible(true);
     }
 
@@ -185,7 +188,7 @@ public class ControladorGeneral {
         this.miPanelVentas.setVisible(false);
         this.miPanelClientes.setVisible(false);
         this.miPanelHistorialVentas.setVisible(false);
-        
+
         this.miVentanaLogin.setVisible(true);
     }
 }
