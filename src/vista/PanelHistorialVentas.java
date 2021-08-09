@@ -67,7 +67,6 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
             }
         };
 
-        setMaximumSize(null);
         setMinimumSize(new java.awt.Dimension(1120, 690));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(1120, 690));
@@ -76,7 +75,6 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(57, 103, 196));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.setMaximumSize(null);
         jPanel2.setMinimumSize(new java.awt.Dimension(1120, 690));
         jPanel2.setPreferredSize(new java.awt.Dimension(1120, 690));
         jPanel2.setLayout(new java.awt.BorderLayout());
@@ -113,7 +111,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         panCuerpo.setPreferredSize(new java.awt.Dimension(1120, 650));
 
         panVent.setBackground(new java.awt.Color(57, 103, 196));
-        panVent.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Ventas realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        panVent.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ventas realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         panVent.setMinimumSize(new java.awt.Dimension(1120, 650));
         panVent.setPreferredSize(new java.awt.Dimension(1120, 250));
         panVent.setRequestFocusEnabled(false);
@@ -146,7 +144,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         );
 
         panDet.setBackground(new java.awt.Color(57, 103, 196));
-        panDet.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Detalle de venta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        panDet.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalle de venta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         panDet.setMinimumSize(new java.awt.Dimension(1120, 50));
         panDet.setPreferredSize(new java.awt.Dimension(1120, 150));
 
@@ -197,7 +195,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
                     .addComponent(txtApellidoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panDetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3)
                     .addComponent(txtNombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -227,7 +225,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         );
 
         panProd.setBackground(new java.awt.Color(57, 103, 196));
-        panProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Productos comprados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        panProd.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productos comprados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         panProd.setPreferredSize(new java.awt.Dimension(1120, 250));
 
         tblPedidos.setModel(new javax.swing.table.DefaultTableModel(
@@ -284,10 +282,10 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;

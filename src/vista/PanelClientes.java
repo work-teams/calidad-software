@@ -55,7 +55,6 @@ public class PanelClientes extends javax.swing.JPanel {
             }
         };
 
-        setMaximumSize(null);
         setMinimumSize(new java.awt.Dimension(1120, 690));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(1120, 690));
@@ -98,7 +97,7 @@ public class PanelClientes extends javax.swing.JPanel {
         panCuerpo.setPreferredSize(new java.awt.Dimension(1120, 650));
 
         panHist.setBackground(new java.awt.Color(57, 103, 196));
-        panHist.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Historial de clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        panHist.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Historial de clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         panHist.setForeground(new java.awt.Color(255, 255, 255));
         panHist.setMinimumSize(new java.awt.Dimension(1120, 325));
         panHist.setPreferredSize(new java.awt.Dimension(1120, 325));
@@ -132,7 +131,7 @@ public class PanelClientes extends javax.swing.JPanel {
         );
 
         panNCompras.setBackground(new java.awt.Color(57, 103, 196));
-        panNCompras.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Número de compras realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        panNCompras.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número de compras realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         panNCompras.setMinimumSize(new java.awt.Dimension(1120, 325));
         panNCompras.setPreferredSize(new java.awt.Dimension(1120, 325));
 

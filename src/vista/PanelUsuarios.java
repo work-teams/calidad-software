@@ -161,54 +161,50 @@ public class PanelUsuarios extends javax.swing.JPanel {
         lblImg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblImg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblImg.setOpaque(true);
-        panCuerpo.add(lblImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 120));
+        panCuerpo.add(lblImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 19, 120, 120));
 
         jLabel9.setBackground(new java.awt.Color(70, 106, 124));
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("DNI");
-        panCuerpo.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 19, -1, -1));
+        panCuerpo.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 28, -1, -1));
 
         jLabel11.setBackground(new java.awt.Color(70, 106, 124));
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Nombres");
-        panCuerpo.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 61, 70, 18));
+        panCuerpo.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 70, 70, 18));
 
         jLabel10.setBackground(new java.awt.Color(70, 106, 124));
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Apellidos");
-        panCuerpo.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 60, 84, 19));
+        panCuerpo.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 70, 84, 19));
 
         jLabel12.setBackground(new java.awt.Color(70, 106, 124));
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Usuario");
-        panCuerpo.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 102, 70, 19));
+        panCuerpo.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 111, 70, 19));
 
         jLabel14.setBackground(new java.awt.Color(70, 106, 124));
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Rol");
-        panCuerpo.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 19, -1, -1));
+        panCuerpo.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 28, -1, -1));
 
         cboxRol.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cboxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VENDEDOR", "ADMINISTRADOR" }));
-        panCuerpo.add(cboxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 14, 300, 27));
+        panCuerpo.add(cboxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 23, 300, 27));
 
         jLabel13.setBackground(new java.awt.Color(70, 106, 124));
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Contraseña");
-        panCuerpo.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 102, 84, 19));
+        panCuerpo.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 111, 90, 19));
 
         tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
             },
@@ -217,32 +213,34 @@ public class PanelUsuarios extends javax.swing.JPanel {
             }
         ));
         tblUsuarios.setDoubleBuffered(true);
-        tblUsuarios.setMinimumSize(new java.awt.Dimension(1100, 439));
-        tblUsuarios.setPreferredSize(new java.awt.Dimension(1100, 439));
+        tblUsuarios.setMinimumSize(new java.awt.Dimension(1100, 440));
+        tblUsuarios.setPreferredSize(null);
+        tblUsuarios.setRowSorter(null);
+        tblUsuarios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblUsuarios.setShowGrid(true);
         jScrollPane1.setViewportView(tblUsuarios);
 
-        panCuerpo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 1100, 470));
+        panCuerpo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 181, 1100, 440));
 
         txtDni.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtDni.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        panCuerpo.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 14, 300, 27));
+        panCuerpo.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 23, 300, 27));
 
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panCuerpo.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 98, 300, 27));
+        panCuerpo.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 108, 300, 27));
 
         txtNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panCuerpo.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 56, 300, 27));
+        panCuerpo.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 65, 300, 27));
 
         txtApellido.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panCuerpo.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 56, 300, 27));
+        panCuerpo.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 65, 300, 27));
 
         txtContrasenia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtContrasenia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panCuerpo.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 99, 300, 27));
+        panCuerpo.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 108, 300, 27));
 
         add(panCuerpo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
