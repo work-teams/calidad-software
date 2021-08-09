@@ -34,7 +34,7 @@ public class ControladorGeneral {
     private PanelHistorialVentas miPanelHistorialVentas;
     private VentaDAO miVentaDAO;
     private ClienteDAO miClienteDAO;
-    final Rectangle bounds = new Rectangle(0, 0, 0, 0);
+    final Rectangle bounds = new Rectangle(165, 15, 1120, 690);
 
     // ENLACE VENTA DAO
     public void setMiVentaDAO(VentaDAO miVentaDAO) {
