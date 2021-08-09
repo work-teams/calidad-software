@@ -71,7 +71,7 @@ public class PanelClientes extends javax.swing.JPanel {
         panEncabezado.setName(""); // NOI18N
         panEncabezado.setPreferredSize(new java.awt.Dimension(1120, 40));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 36));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Clientes");
         jLabel1.setPreferredSize(new java.awt.Dimension(183, 44));
@@ -87,7 +87,7 @@ public class PanelClientes extends javax.swing.JPanel {
         );
         panEncabezadoLayout.setVerticalGroup(
             panEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         jPanel2.add(panEncabezado, java.awt.BorderLayout.NORTH);
@@ -97,7 +97,7 @@ public class PanelClientes extends javax.swing.JPanel {
         panCuerpo.setPreferredSize(new java.awt.Dimension(1120, 650));
 
         panHist.setBackground(new java.awt.Color(57, 103, 196));
-        panHist.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Historial de clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        panHist.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Historial de clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(255, 255, 255)));
         panHist.setForeground(new java.awt.Color(255, 255, 255));
         panHist.setMinimumSize(new java.awt.Dimension(1120, 325));
         panHist.setPreferredSize(new java.awt.Dimension(1120, 325));
@@ -121,17 +121,17 @@ public class PanelClientes extends javax.swing.JPanel {
         panHist.setLayout(panHistLayout);
         panHistLayout.setHorizontalGroup(
             panHistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1120, Short.MAX_VALUE)
         );
         panHistLayout.setVerticalGroup(
             panHistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panHistLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         panNCompras.setBackground(new java.awt.Color(57, 103, 196));
-        panNCompras.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número de compras realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        panNCompras.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número de compras realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(255, 255, 255)));
         panNCompras.setMinimumSize(new java.awt.Dimension(1120, 325));
         panNCompras.setPreferredSize(new java.awt.Dimension(1120, 325));
 
@@ -154,7 +154,7 @@ public class PanelClientes extends javax.swing.JPanel {
         panNComprasLayout.setVerticalGroup(
             panNComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panNComprasLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

@@ -7,6 +7,7 @@ package vista;
 
 import controlador.ControladorGeneral;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Insets;
@@ -31,6 +32,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         this.setContentPane(fondo);
         initComponents();
+        
+        //Colocando fuentes
+        //Font roboto = new Font();
+        //lblTitulo.setFont(roboto);
     }
 
     /**
@@ -53,8 +58,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnCerrarSesion = new javax.swing.JButton();
         panelHome = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        lblMensaje = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(null);
@@ -71,6 +76,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panLatBtns.setLayout(flowLayout1);
 
         btnInicio.setBackground(new java.awt.Color(44, 80, 154));
+        btnInicio.setFont(new java.awt.Font("Roboto", 1, 12));
         btnInicio.setForeground(new java.awt.Color(255, 255, 255));
         btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/home.png"))); // NOI18N
         btnInicio.setText("Inicio");
@@ -89,6 +95,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panLatBtns.add(btnInicio);
 
         btnUsuarios.setBackground(new java.awt.Color(44, 80, 154));
+        btnUsuarios.setFont(new java.awt.Font("Roboto", 1, 12));
         btnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/people.png"))); // NOI18N
         btnUsuarios.setText("Usuarios");
@@ -109,6 +116,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panLatBtns.add(btnUsuarios);
 
         btnProductos.setBackground(new java.awt.Color(44, 80, 154));
+        btnProductos.setFont(new java.awt.Font("Roboto", 1, 12));
         btnProductos.setForeground(new java.awt.Color(255, 255, 255));
         btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/productos.png"))); // NOI18N
         btnProductos.setBorder(new RoundedBorder(20));
@@ -127,6 +135,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panLatBtns.add(btnProductos);
 
         btnProveedores.setBackground(new java.awt.Color(44, 80, 154));
+        btnProveedores.setFont(new java.awt.Font("Roboto", 1, 12));
         btnProveedores.setForeground(new java.awt.Color(255, 255, 255));
         btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/proveedor32pbnx.png"))); // NOI18N
         btnProveedores.setBorder(new RoundedBorder(20));
@@ -145,6 +154,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panLatBtns.add(btnProveedores);
 
         btnVentas.setBackground(new java.awt.Color(44, 80, 154));
+        btnVentas.setFont(new java.awt.Font("Roboto", 1, 12));
         btnVentas.setForeground(new java.awt.Color(255, 255, 255));
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/monedas.png"))); // NOI18N
         btnVentas.setBorder(new RoundedBorder(20));
@@ -163,6 +173,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panLatBtns.add(btnVentas);
 
         btnClientes.setBackground(new java.awt.Color(44, 80, 154));
+        btnClientes.setFont(new java.awt.Font("Roboto", 1, 12));
         btnClientes.setForeground(new java.awt.Color(255, 255, 255));
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/cliente_hand.png"))); // NOI18N
         btnClientes.setText("Clientes");
@@ -181,6 +192,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panLatBtns.add(btnClientes);
 
         btnHistorial.setBackground(new java.awt.Color(44, 80, 154));
+        btnHistorial.setFont(new java.awt.Font("Roboto", 1, 12));
         btnHistorial.setForeground(new java.awt.Color(255, 255, 255));
         btnHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/historial.png"))); // NOI18N
         btnHistorial.setText("Historial");
@@ -199,6 +211,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panLatBtns.add(btnHistorial);
 
         btnCerrarSesion.setBackground(new java.awt.Color(44, 80, 154));
+        btnCerrarSesion.setFont(new java.awt.Font("Roboto", 1, 12));
         btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/logout.png"))); // NOI18N
         btnCerrarSesion.setText("Cerrar Sesión");
@@ -223,25 +236,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.2.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Bienvenido a BikeShop");
+        lblTitulo.setFont(new java.awt.Font("Roboto",Font.BOLD, 50));
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Bienvenido a BikeShop");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("<html>\n<p style=\\\"width:500px\\\">Los desarrolladores del proyecto BikeShop estamos felices de</p>\n<p style=\\\"width:500px\\\"> tenerte con nosotros.</p>\n<p style=\\\"width:500px\\\"></p>\n<p style=\\\"width:500px\\\">Mensaje de nuestro CEO :</p>\n<p style=\\\"width:500px\\\">Hola, gracias por elegir nuestro software para tus ventas,</p>\n<p style=\\\"width:500px\\\">espero que ahora seas más productivo al momento de</p>\n<p style=\\\"width:500px\\\">gestionar y administrar tu negocio.</p>\n<p style=\\\"width:500px\\\"></p>\n<p style=\\\"width:500px\\\">Siempre estaremos mejorando e innovando día a día para</p>\n<p style=\\\"width:500px\\\">facilitarte el trabajo.</p>\n</html>");
-        jLabel3.setToolTipText("");
+        lblMensaje.setFont(new java.awt.Font("Roboto", 0, 18));
+        lblMensaje.setForeground(new java.awt.Color(255, 255, 255));
+        lblMensaje.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblMensaje.setText("<html>\n<p style=\\\"width:500px\\\">Los desarrolladores del proyecto BikeShop estamos felices de</p>\n<p style=\\\"width:500px\\\"> tenerte con nosotros.</p>\n<p style=\\\"width:500px\\\"></p>\n<p style=\\\"width:500px\\\">Mensaje de nuestro CEO :</p>\n<p style=\\\"width:500px\\\">Hola, gracias por elegir nuestro software para tus ventas,</p>\n<p style=\\\"width:500px\\\">espero que ahora seas más productivo al momento de</p>\n<p style=\\\"width:500px\\\">gestionar y administrar tu negocio.</p>\n<p style=\\\"width:500px\\\"></p>\n<p style=\\\"width:500px\\\">Siempre estaremos mejorando e innovando día a día para</p>\n<p style=\\\"width:500px\\\">facilitarte el trabajo.</p>\n</html>");
+        lblMensaje.setToolTipText("");
 
         javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
         panelHome.setLayout(panelHomeLayout);
         panelHomeLayout.setHorizontalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
-                .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
@@ -249,15 +262,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelHomeLayout.setVerticalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHomeLayout.createSequentialGroup()
-                .addContainerGap(183, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(253, 253, 253))
-            .addGroup(panelHomeLayout.createSequentialGroup()
                 .addGap(166, 166, 166)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelHomeLayout.createSequentialGroup()
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(253, 253, 253))
+                    .addGroup(panelHomeLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(227, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -329,8 +343,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnUsuarios;
     private javax.swing.JButton btnVentas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblMensaje;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panLatBtns;
     public javax.swing.JPanel panelHome;
     // End of variables declaration//GEN-END:variables

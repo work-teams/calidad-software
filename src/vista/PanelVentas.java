@@ -89,7 +89,7 @@ public class PanelVentas extends javax.swing.JPanel {
         panEncabezado.setBackground(new java.awt.Color(44, 80, 154));
         panEncabezado.setPreferredSize(new java.awt.Dimension(1120, 40));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 36));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ventas");
 
@@ -100,7 +100,7 @@ public class PanelVentas extends javax.swing.JPanel {
             .addGroup(panEncabezadoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(1002, Short.MAX_VALUE))
+                .addContainerGap(1086, Short.MAX_VALUE))
         );
         panEncabezadoLayout.setVerticalGroup(
             panEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,54 +117,54 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("DNI");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 39, -1, -1));
 
         jLabel13.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Apellido");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 113, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 18));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cliente");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, -1, -1));
 
         jLabel18.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel18.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("RUC");
         jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 39, -1, -1));
 
         jLabel11.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Nombre");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 75, -1, -1));
 
         txtDni.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtDni.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtDni.setFont(new java.awt.Font("Roboto", 0, 14));
         jPanel2.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 35, 126, -1));
 
         txtRuc.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtRuc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtRuc.setFont(new java.awt.Font("Roboto", 0, 14));
         jPanel2.add(txtRuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 35, 195, -1));
 
         txtNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Roboto", 0, 14));
         jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 70, 375, -1));
 
         txtApellido.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtApellido.setFont(new java.awt.Font("Roboto", 0, 14));
         jPanel2.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 109, 373, -1));
 
         panCuerpo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 450, 150));
 
         jLabel17.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("TOTAL");
         panCuerpo.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 580, -1, -1));
@@ -191,42 +191,42 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("IdProducto");
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 45, -1, -1));
 
         jLabel15.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Categoria");
         jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 45, -1, -1));
 
         jLabel16.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Cantidad");
         jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 123, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 18));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Producto");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, -1, -1));
 
         jLabel19.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel19.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Precio");
         jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 125, -1, -1));
 
         jLabel20.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel20.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Nombre");
         jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 85, -1, -1));
 
         txtIdProd.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtIdProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtIdProd.setFont(new java.awt.Font("Roboto", 0, 14));
         txtIdProd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtIdProdFocusGained(evt);
@@ -236,21 +236,21 @@ public class PanelVentas extends javax.swing.JPanel {
 
         txtNomProd.setEditable(false);
         txtNomProd.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtNomProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNomProd.setFont(new java.awt.Font("Roboto", 0, 14));
         jPanel3.add(txtNomProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 81, 350, -1));
 
         txtCantProd.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtCantProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtCantProd.setFont(new java.awt.Font("Roboto", 0, 14));
         jPanel3.add(txtCantProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 119, 160, -1));
 
         txtPrecioProd.setEditable(false);
         txtPrecioProd.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtPrecioProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtPrecioProd.setFont(new java.awt.Font("Roboto", 0, 14));
         jPanel3.add(txtPrecioProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 119, 120, -1));
 
         txtCategoria.setEditable(false);
         txtCategoria.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtCategoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtCategoria.setFont(new java.awt.Font("Roboto", 0, 14));
         jPanel3.add(txtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 41, 120, -1));
 
         panCuerpo.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 450, 150));

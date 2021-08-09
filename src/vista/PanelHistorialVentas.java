@@ -84,7 +84,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         panEncabezado.setMinimumSize(new java.awt.Dimension(1120, 40));
         panEncabezado.setPreferredSize(new java.awt.Dimension(1120, 40));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 36));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Historial de ventas");
         jLabel1.setPreferredSize(new java.awt.Dimension(183, 44));
@@ -100,7 +100,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         );
         panEncabezadoLayout.setVerticalGroup(
             panEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         jPanel2.add(panEncabezado, java.awt.BorderLayout.NORTH);
@@ -111,7 +111,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         panCuerpo.setPreferredSize(new java.awt.Dimension(1120, 650));
 
         panVent.setBackground(new java.awt.Color(57, 103, 196));
-        panVent.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ventas realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        panVent.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Ventas realizadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(255, 255, 255)));
         panVent.setMinimumSize(new java.awt.Dimension(1120, 650));
         panVent.setPreferredSize(new java.awt.Dimension(1120, 250));
         panVent.setRequestFocusEnabled(false);
@@ -136,7 +136,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         panVent.setLayout(panVentLayout);
         panVentLayout.setHorizontalGroup(
             panVentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1120, Short.MAX_VALUE)
         );
         panVentLayout.setVerticalGroup(
             panVentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,45 +144,45 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         );
 
         panDet.setBackground(new java.awt.Color(57, 103, 196));
-        panDet.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalle de venta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        panDet.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalle de venta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(255, 255, 255)));
         panDet.setMinimumSize(new java.awt.Dimension(1120, 50));
         panDet.setPreferredSize(new java.awt.Dimension(1120, 150));
 
         txtNombreVendedor.setEditable(false);
         txtNombreVendedor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtNombreVendedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNombreVendedor.setFont(new java.awt.Font("Roboto", 0, 14));
 
         jLabel2.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre del vendedor");
 
         jLabel3.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nombre del cliente");
 
         txtNombreCliente.setEditable(false);
         txtNombreCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtNombreCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNombreCliente.setFont(new java.awt.Font("Roboto", 0, 14));
 
         jLabel4.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Apellidos del venedor");
 
         txtApellidoVendedor.setEditable(false);
         txtApellidoVendedor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtApellidoVendedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtApellidoVendedor.setFont(new java.awt.Font("Roboto", 0, 14));
 
         jLabel5.setBackground(new java.awt.Color(70, 106, 124));
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Apellidos del cliente");
 
         txtApellidoCliente.setEditable(false);
         txtApellidoCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtApellidoCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtApellidoCliente.setFont(new java.awt.Font("Roboto", 0, 14));
 
         javax.swing.GroupLayout panDetLayout = new javax.swing.GroupLayout(panDet);
         panDet.setLayout(panDetLayout);
@@ -221,11 +221,11 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
                 .addGroup(panDetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtApellidoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtApellidoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addGap(0, 38, Short.MAX_VALUE))
         );
 
         panProd.setBackground(new java.awt.Color(57, 103, 196));
-        panProd.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productos comprados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        panProd.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productos comprados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(255, 255, 255)));
         panProd.setPreferredSize(new java.awt.Dimension(1120, 250));
 
         tblPedidos.setModel(new javax.swing.table.DefaultTableModel(
@@ -246,7 +246,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         );
         panProdLayout.setVerticalGroup(
             panProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panCuerpoLayout = new javax.swing.GroupLayout(panCuerpo);
