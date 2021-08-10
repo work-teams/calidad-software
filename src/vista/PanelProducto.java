@@ -318,8 +318,8 @@ public class PanelProducto extends javax.swing.JPanel {
                 }
             }
         }
-        //DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
-        //tblProductos.setModel(mopanDatos    
+        DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
+        tblProductos.setModel(modelo);
     }
 
     public void setTablaCategoria(ArrayList<Categoria> cat) {
