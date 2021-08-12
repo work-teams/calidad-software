@@ -163,5 +163,9 @@ public class BikeShop {
         miPanelVentas.setTablaPedido(miPedidoDAO.listarCarritoPedidos(miVentaDAO.generarIdVenta()), miCategoriaDAO.listarCategorias());
         miPanelClientes.setTablaClientes(miClienteDAO.listarClientes());
         miPanelHistorialVentas.setTablaVentas(miVentaDAO.listarVentas());
+        
+        miVentanaLogin.txtUsername.setText("alex");
+        miVentanaLogin.passPassword.setText("12345");
+        miControladorLogin.logearUsuario();
     }
 }

@@ -60,4 +60,11 @@ public class ControladorUsuario {
             miPanelUsuarios.desempaquetarDatosUsuario(miUsuarioDAO.buscarUsuario(dniUsuario));
         }
     }
+
+    public void cargarUsuarioSeleccionado() {
+        dniUsuario = miPanelUsuarios.dniSeleccionado();
+        miPanelUsuarios.txtDni.setText(dniUsuario);
+        miPanelUsuarios.desempaquetarDatosUsuario(miUsuarioDAO.buscarUsuario(dniUsuario));
+        miPanelUsuarios.txtDni.requestFocus();
+    }
 }
