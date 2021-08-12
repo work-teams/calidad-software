@@ -44,25 +44,32 @@ public class ControladorProveedor {
         miPanelProveedores.setTablaProveedores(miProveedorDAO.listarProveedores());
         miPanelProveedores.limpiarCampos();
     }
-
+    
     public void buscarProveedor() {
         idProveedor = Integer.parseInt(miPanelProveedores.txtIdProveedor.getText());
         if (miProveedorDAO.buscarProveedor(idProveedor) != null) {
             miPanelProveedores.desempaquetarDatosProveedor(miProveedorDAO.buscarProveedor(idProveedor));
         }
     }
-
+    
     public void modificarProveedor() {
         miProveedor = miPanelProveedores.empaquetarDatosProveedor();
         miProveedorDAO.modificarProveedor(miProveedor);
         miPanelProveedores.setTablaProveedores(miProveedorDAO.listarProveedores());
         miPanelProveedores.limpiarCampos();
     }
-
+    
     public void eliminarProveedor() {
         idProveedor = Integer.parseInt(miPanelProveedores.txtIdProveedor.getText());
         miProveedorDAO.eliminarProveedor(idProveedor);
         miPanelProveedores.setTablaProveedores(miProveedorDAO.listarProveedores());
         miPanelProveedores.limpiarCampos();
+    }
+    
+    public void cargarProveedorSeleccionado() {
+        idProveedor = miPanelProveedores.idSeleccionado();
+        miPanelProveedores.desempaquetarDatosProveedor(miProveedorDAO.buscarProveedor(idProveedor));
+        miPanelProveedores.txtIdProveedor.setText(idProveedor + "");
+        miPanelProveedores.txtIdProveedor.requestFocus();
     }
 }
