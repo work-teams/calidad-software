@@ -386,6 +386,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tblProductosFocusGained"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="tblProductos = new javax.swing.JTable(){&#xa;    public boolean isCellEditable(int rowIndex,int colIndex){&#xa;        return false;//Disallow the editing of any cell&#xa;    }&#xa;};"/>
                 <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="PanelProducto_tblProductos"/>

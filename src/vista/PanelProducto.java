@@ -174,6 +174,11 @@ public class PanelProducto extends javax.swing.JPanel {
             }
         });
         tblProductos.setShowGrid(true);
+        tblProductos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tblProductosFocusGained(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblProductos);
 
         panDatos.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 181, 1100, 440));
@@ -189,7 +194,7 @@ public class PanelProducto extends javax.swing.JPanel {
         btnAgregarProd.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/agregar.png"))); // NOI18N
         btnAgregarProd.setToolTipText("Agregar");
-        btnAgregarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnAgregarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(50, 133, 203))); // NOI18N
         btnAgregarProd.setBorderPainted(false);
         btnAgregarProd.setContentAreaFilled(false);
         btnAgregarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -204,7 +209,7 @@ public class PanelProducto extends javax.swing.JPanel {
         btnBuscar.setBackground(new java.awt.Color(44, 80, 154));
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
-        btnBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(50, 133, 203))); // NOI18N
         btnBuscar.setBorderPainted(false);
         btnBuscar.setContentAreaFilled(false);
         btnBuscar.setFocusPainted(false);
@@ -218,7 +223,7 @@ public class PanelProducto extends javax.swing.JPanel {
         btnModificar.setBackground(new java.awt.Color(44, 80, 154));
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/editar.png"))); // NOI18N
-        btnModificar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnModificar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(50, 133, 203))); // NOI18N
         btnModificar.setBorderPainted(false);
         btnModificar.setContentAreaFilled(false);
         btnModificar.setFocusPainted(false);
@@ -232,7 +237,7 @@ public class PanelProducto extends javax.swing.JPanel {
         btnBorrarProd.setBackground(new java.awt.Color(44, 80, 154));
         btnBorrarProd.setForeground(new java.awt.Color(255, 255, 255));
         btnBorrarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/eliminar.png"))); // NOI18N
-        btnBorrarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(50, 133, 203))); // NOI18N
+        btnBorrarProd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(50, 133, 203))); // NOI18N
         btnBorrarProd.setBorderPainted(false);
         btnBorrarProd.setContentAreaFilled(false);
         btnBorrarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -264,6 +269,11 @@ public class PanelProducto extends javax.swing.JPanel {
     private void btnAgregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProdActionPerformed
         miControladorProducto.registrarProducto();
     }//GEN-LAST:event_btnAgregarProdActionPerformed
+
+    private void tblProductosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblProductosFocusGained
+        // TODO add your handling code here:
+        miControladorProducto.cargarProductoSeleccionado();
+    }//GEN-LAST:event_tblProductosFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -372,4 +382,11 @@ public class PanelProducto extends javax.swing.JPanel {
         txtProveedor.setText(Integer.toString(miProducto.getIdProveedor()));
     }
 
+    public String idProductoSeleccionado() {
+        String id = "";
+        if (tblProductos.getSelectedRow() != -1) {
+            id = (String) tblProductos.getValueAt(tblProductos.getSelectedRow(), 0);
+        }
+        return id;
+    }
 }
