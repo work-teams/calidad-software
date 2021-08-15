@@ -200,6 +200,11 @@ public class PanelProveedores extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblProveedores.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tblProveedoresFocusGained(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblProveedores);
 
         panCuerpo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 181, 1100, 440));
@@ -244,6 +249,11 @@ public class PanelProveedores extends javax.swing.JPanel {
         // TODO add your handling code here:
         miControladorProveedor.registrarProveedor();
     }//GEN-LAST:event_BtnAgregarActionPerformed
+
+    private void tblProveedoresFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblProveedoresFocusGained
+        // TODO add your handling code here:
+        miControladorProveedor.cargarProveedorSeleccionado();
+    }//GEN-LAST:event_tblProveedoresFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -308,5 +318,13 @@ public class PanelProveedores extends javax.swing.JPanel {
         txtNombre.setText(miProveedor.getNombre());
         txtDireccion.setText(miProveedor.getDireccion());
         txtTelefono.setText(miProveedor.getTelefono());
+    }
+
+    public int idSeleccionado() {
+        int id = 0;
+        if (tblProveedores.getSelectedRow() != -1) {
+            id = (int) tblProveedores.getValueAt(tblProveedores.getSelectedRow(), 0);
+        }
+        return id;
     }
 }

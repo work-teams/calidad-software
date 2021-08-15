@@ -15,6 +15,7 @@ import modelo.vo.Usuario;
  * @author krypt97
  */
 public class PanelUsuarios extends javax.swing.JPanel {
+
     ControladorUsuario miControladorUsuario;
     private DefaultTableModel miDefaultTableModel;
 
@@ -205,18 +206,21 @@ public class PanelUsuarios extends javax.swing.JPanel {
 
         tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
-        tblUsuarios.setDoubleBuffered(true);
+        tblUsuarios.setColumnSelectionAllowed(false);
         tblUsuarios.setMinimumSize(new java.awt.Dimension(1100, 440));
-        tblUsuarios.setPreferredSize(null);
         tblUsuarios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblUsuarios.setShowGrid(true);
+        tblUsuarios.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tblUsuariosFocusGained(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblUsuarios);
 
         panCuerpo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 181, 1100, 440));
@@ -264,6 +268,11 @@ public class PanelUsuarios extends javax.swing.JPanel {
         miControladorUsuario.buscarUsuario();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void tblUsuariosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblUsuariosFocusGained
+        // TODO add your handling code here:
+        miControladorUsuario.cargarUsuarioSeleccionado();
+    }//GEN-LAST:event_tblUsuariosFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
@@ -282,7 +291,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
     private javax.swing.JLabel lblImg;
     private javax.swing.JPanel panCuerpo;
     private javax.swing.JPanel panEncabezado;
-    private javax.swing.JTable tblUsuarios;
+    public javax.swing.JTable tblUsuarios;
     private jtextfieldround.JTextFieldRound txtApellido;
     private jtextfieldround.JTextFieldRound txtContrasenia;
     public jtextfieldround.JTextFieldRound txtDni;
@@ -303,10 +312,10 @@ public class PanelUsuarios extends javax.swing.JPanel {
         miUsuario.setApellido(txtApellido.getText());
         miUsuario.setUsername(txtUsuario.getText());
         miUsuario.setPassword(txtContrasenia.getText());
-        miUsuario.setRol((String)cboxRol.getSelectedItem());
+        miUsuario.setRol((String) cboxRol.getSelectedItem());
         return miUsuario;
     }
-    
+
     public void setTablaUsuarios(ArrayList<Usuario> miArrayList) {
         String[] columnas = {"DNI", "Apellido", "Nombre", "Usuario", "Contraseña", "Rol"};
         Object[][] miData = new Object[miArrayList.size()][6];
@@ -321,21 +330,20 @@ public class PanelUsuarios extends javax.swing.JPanel {
         miDefaultTableModel = new DefaultTableModel(miData, columnas);
         tblUsuarios.setModel(miDefaultTableModel);
     }
-    
+
     public void desempaquetarDatosUsuario(Usuario miUsuario) {
         txtNombre.setText(miUsuario.getNombre());
         txtApellido.setText(miUsuario.getApellido());
         txtUsuario.setText(miUsuario.getUsername());
         txtContrasenia.setText(miUsuario.getPassword());
-        
+
         if (miUsuario.getRol().equals("VENDEDOR")) {
             cboxRol.setSelectedIndex(0);
-        }
-        else {
+        } else {
             cboxRol.setSelectedIndex(1);
         }
     }
-    
+
     public void limpiarCampos() {
         txtDni.setText("");
         txtNombre.setText("");
@@ -343,5 +351,13 @@ public class PanelUsuarios extends javax.swing.JPanel {
         txtUsuario.setText("");
         txtContrasenia.setText("");
         txtDni.requestFocus();
+    }
+
+    public String dniSeleccionado() {
+        String dni = "";
+        if (tblUsuarios.getSelectedRow() != -1) {
+            dni = (String) tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 0);
+        }
+        return dni;
     }
 }

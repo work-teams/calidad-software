@@ -422,7 +422,7 @@
             <Component class="javax.swing.JTable" name="tblUsuarios">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="2">
+                  <Table columnCount="7" rowCount="0">
                     <Column editable="true" title="Title 1" type="java.lang.Object"/>
                     <Column editable="true" title="Title 2" type="java.lang.Object"/>
                     <Column editable="true" title="Title 3" type="java.lang.Object"/>
@@ -432,12 +432,9 @@
                     <Column editable="true" title="Title 7" type="java.lang.Object"/>
                   </Table>
                 </Property>
-                <Property name="doubleBuffered" type="boolean" value="true"/>
+                <Property name="columnSelectionAllowed" type="boolean" value="false"/>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[1100, 440]"/>
-                </Property>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="null"/>
                 </Property>
                 <Property name="selectionMode" type="int" value="0"/>
                 <Property name="showGrid" type="boolean" value="true"/>
@@ -445,8 +442,12 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tblUsuariosFocusGained"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="tblUsuarios = new javax.swing.JTable(){&#xd;&#xa;    public boolean isCellEditable(int rowIndex,int colIndex){&#xd;&#xa;        return false;//Disallow the editing of any cell&#xd;&#xa;    }&#xd;&#xa;};"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
           </SubComponents>
