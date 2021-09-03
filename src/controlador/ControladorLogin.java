@@ -63,6 +63,7 @@ public class ControladorLogin {
                     miVentanaLogin.setVisible(false);
                     miVentanaPrincipal.setVisible(true);
                     miVentanaPrincipal.panelHome.setVisible(true);
+                    validarPermisoUsuario();
                 } else {
                     JOptionPane.showMessageDialog(null, "La contraseña proporcionada es incorrecta");
                 }
@@ -70,8 +71,7 @@ public class ControladorLogin {
         } else {
             JOptionPane.showMessageDialog(null, "Usuario no registrado");
         }
-        miVentanaLogin.limpiarCampos();
-        validarPermisoUsuario();
+        miVentanaLogin.limpiarCampos();        
     }
 
     public void cerrarAplicacion() {
@@ -82,7 +82,7 @@ public class ControladorLogin {
         String rol = miUsuario.getRol();
         if (rol.equalsIgnoreCase("VENDEDOR")) {
             miVentanaPrincipal.btnUsuarios.setVisible(false);
-            setLayoutBotonesVentanaPrincipal(5, 30);
+            setLayoutBotonesVentanaPrincipal(5, 35);
         } else {
             miVentanaPrincipal.btnUsuarios.setVisible(true);
             setLayoutBotonesVentanaPrincipal(5, 24);
