@@ -343,7 +343,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblMensaje;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JPanel panLatBtns;
+    public javax.swing.JPanel panLatBtns;
     public javax.swing.JPanel panelHome;
     // End of variables declaration//GEN-END:variables
 

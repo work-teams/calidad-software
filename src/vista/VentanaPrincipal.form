@@ -57,6 +57,9 @@
           <Dimension value="[150, 720]"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnInicio">
           <Properties>
@@ -398,7 +401,7 @@
         </CodeStatement>
         <CodeStatement>
           <CodeExpression id="6_panLatBtns">
-            <CodeVariable name="panLatBtns" type="8194" declaredType="javax.swing.JPanel"/>
+            <CodeVariable name="panLatBtns" type="8193" declaredType="javax.swing.JPanel"/>
             <ExpressionOrigin>
               <ExpressionProvider type="ComponentRef">
                 <ComponentRef name="panLatBtns"/>

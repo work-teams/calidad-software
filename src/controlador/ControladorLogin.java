@@ -82,8 +82,16 @@ public class ControladorLogin {
         String rol = miUsuario.getRol();
         if (rol.equalsIgnoreCase("VENDEDOR")) {
             miVentanaPrincipal.btnUsuarios.setVisible(false);
-        }else{
+            setLayoutBotonesVentanaPrincipal(5, 30);
+        } else {
             miVentanaPrincipal.btnUsuarios.setVisible(true);
+            setLayoutBotonesVentanaPrincipal(5, 24);
         }
+    }
+
+    public void setLayoutBotonesVentanaPrincipal(int ver,int hor) {
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, ver, hor);
+        flowLayout1.setAlignOnBaseline(true);
+        miVentanaPrincipal.panLatBtns.setLayout(flowLayout1);
     }
 }
