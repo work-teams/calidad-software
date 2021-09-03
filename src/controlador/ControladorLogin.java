@@ -82,6 +82,8 @@ public class ControladorLogin {
         String rol = miUsuario.getRol();
         if (rol.equalsIgnoreCase("VENDEDOR")) {
             miVentanaPrincipal.btnUsuarios.setVisible(false);
+        }else{
+            miVentanaPrincipal.btnUsuarios.setVisible(true);
         }
     }
 }
