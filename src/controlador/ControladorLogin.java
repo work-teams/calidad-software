@@ -71,9 +71,17 @@ public class ControladorLogin {
             JOptionPane.showMessageDialog(null, "Usuario no registrado");
         }
         miVentanaLogin.limpiarCampos();
+        validarPermisoUsuario();
     }
 
     public void cerrarAplicacion() {
         System.exit(0);
+    }
+
+    public void validarPermisoUsuario() {
+        String rol = miUsuario.getRol();
+        if (rol.equalsIgnoreCase("VENDEDOR")) {
+            miVentanaPrincipal.btnUsuarios.setVisible(false);
+        }
     }
 }
