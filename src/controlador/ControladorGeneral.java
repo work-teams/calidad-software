@@ -191,4 +191,5 @@ public class ControladorGeneral {
 
         this.miVentanaLogin.setVisible(true);
     }
+    
 }

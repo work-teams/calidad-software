@@ -102,22 +102,28 @@ public class BikeShop {
         miControladorLogin.setUsuario(miUsuario);
         // Dao
         miControladorUsuario.setUsuarioDAO(miUsuarioDAO);
+        
         miControladorProveedor.setProveedorDAO(miProveedorDAO);
+        
         miControladorProducto.SetProductoDAO(miProductoDAO);
         miControladorProducto.SetCategoriaDAO(miCategoriaDAO);
         miControladorProducto.SetProveedorDAO(miProveedorDAO);
+        
         miControladorVenta.setVentaDAO(miVentaDAO);
         miControladorVenta.setClienteDAO(miClienteDAO);
         miControladorVenta.setPedidoDAO(miPedidoDAO);
         miControladorVenta.SetProductoDAO(miProductoDAO);
         miControladorVenta.setCategoriaDAO(miCategoriaDAO);
+        
         miControladorCliente.setUsuarioDAO(miUsuarioDAO);
         miControladorCliente.setVentaDAO(miVentaDAO);
+        
         miControladorHistorialVenta.setCategoriaDAO(miCategoriaDAO);
         miControladorHistorialVenta.setClienteDAO(miClienteDAO);
         miControladorHistorialVenta.setPedidoDAO(miPedidoDAO);
         miControladorHistorialVenta.setProductoDAO(miProductoDAO);
         miControladorHistorialVenta.setUsuarioDAO(miUsuarioDAO);
+        
         miControladorLogin.setUsuarioDAO(miUsuarioDAO);
         // General vistas
         miControladorGeneral.setPanelUsuarios(miPanelUsuarios);
